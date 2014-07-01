@@ -1,0 +1,143 @@
+{template "content","header"}
+{h5:reviews action="get_reviews" reviewsid="$reviewsid"}
+{php $reviews = $data;}
+{/h5}
+<div class="main">
+        <h2 class="comment-title blue"><a href="{if $reviews[url]}{$reviews[url]}{else}{$url}{/if}">{if $reviews[title]}{$reviews[title]}{else}{$title}{/if}</a> <a href="#comment" class="f12 fn"><font color="#FF0000">[我来说两句]</font></a></h2>
+        <div class="comment_button"><a href="{APP_PATH}index.php?s=reviews/index/init&reviewsid={$reviewsid}&title={urlencode(($reviews[title] ? $reviews[title] : $title))}&url={urlencode(($reviews[url] ? $reviews[url] : $url))}&hot=0&star_type={$_GET['star_type']}"{if empty($hot)} class="on"{/if}>最新</a> <a href="{APP_PATH}index.php?s=reviews/index/init&reviewsid={$reviewsid}&title={urlencode(($reviews[title] ? $reviews[title] : $title))}&url={urlencode(($reviews[url] ? $reviews[url] : $url))}&hot=1&star_type={$_GET['star_type']}"{if $hot} class="on"{/if}>最热</a></div> 	
+	<div class="col-left">
+       <div class="comment">
+       <h4 class="f14">评论列表<span class="f12 fn">（点评 <font color="red">{if $reviews[total]}{$reviews[total]}{else}0{/if}</font>）以下网友评论只代表网友个人观点，不代表本站观点。</span></h4>
+{h5:reviews action="lists" reviewsid="$reviewsid" siteid="$siteid" page="$_GET[page]" hot="$hot" num="20"}
+{loop $data $r}
+    <h5 class="title fn"><font color="#FF0000">{format::date($r[creat_at], 1)}</font> {if $r[userid]}{get_nickname($r[userid])}{else}{$r[username]}{/if} </h5>
+    <div class="content">{$r[content]}
+	<div class="rt"><a href="javascript:void(0)" onclick="support({$r[id]}, '{$reviewsid}')">支持</a>（<font id="support_{$r[id]}">{$r[support]}</font>）
+	</div>
+	<div id="reply_{$r[id]}" style="display:none"></div>
+	</div>
+    <style type="text/css">
+		#star{padding:0 0 20px 0; overflow:hidden; zoom:1; clear:both}
+		#star ul{border-bottom:1px solid #DCDDDD; overflow:hidden;zoom:1; clear:both}
+		#star li{display:inline-block; float:left; width:49%; margin-right:0px; line-height:30px; height:30px;}
+		#star li b{ width:80px; text-align:right; display:inline-block;}
+		#star li img{margin-left:2px; padding:0px;}
+		#star_show{padding:0px; margin:0; clear:both; overflow:hidden; zoom:1; height:18px;}
+	</style>
+          <?php
+            	include HOUSE5_PATH.'star_config.php';
+                $star_type = $_GET['star_type'];
+            	$star_li = explode('|', $star_config[$star_type]['star_name']);
+                $star_img = explode('|', $star_config[$star_type]['star_images']);
+                $star_n = 0;
+          ?>
+	<div id="star_show">
+        {php $star_n=0}
+        {loop $star_li $star_code}
+        <?php $star_n++; $star_code = explode('$$', $star_code);?>
+        <b>{$star_code[0]}：</b>(<?php echo $r['star'.$star_n]?>) 分
+        {/loop}
+    </div>
+  <div class="bk30 hr mb8"></div>
+  {/loop}
+ 
+ 
+</div>
+ <div id="pages" class="text-r">{$pages}</div>
+ {/h5}
+<div class="bk10"></div><div class="comment-form">
+<form action="{APP_PATH}index.php?s=reviews/index/post&reviewsid={$reviewsid}" method="post">
+<input type="hidden" name="title" value="{urlencode(($reviews[title] ? $reviews[title] : $title))}">
+<input type="hidden" name="url" value="{urlencode(($reviews[url] ? $reviews[url] : $url))}">
+      <a name="comment"></a>
+      	<h5><strong>我来说两句</strong></h5>
+        <textarea rows="8" cols="80" name="content"></textarea><br>
+        <!-- 评分开始 -->
+      <div id="star">
+        <ul>
+        {php $star_n=0}
+          {loop $star_li $star_code}
+          <?php $star_n++; $star_code = explode('$$', $star_code);?>
+          <li> <b>{$star_code[0]}：</b>
+            <?php for($star_nn=1; $star_nn <= 5; $star_nn++){ ?>
+            <img id="star{$star_n}_{$star_nn}" onclick="changeScore('star{$star_n}', {$star_nn});" alt="{$star_nn}分" src="{$star_img[0]}" />
+            <?php } ?>
+            <input id="star{$star_n}_c" type="hidden" name="star{$star_n}" />
+            (<span id="star{$star_n}_Display">0</span>分)[{$star_code[1]}]</li>
+          {/loop}
+          <input type="hidden" name="startype" value="{$star_type}" />
+          <input type="hidden" name="starnum" value="{count($star_li)}" />
+        </ul>
+      </div>
+      <script type="text/javascript"> 
+			var star1="{$star_img[0]}";
+			var star2="{$star_img[1]}";
+			function changeScore(id, n){
+				for(var i=1;i<=5;i++){
+					var div=document.getElementById(id + "_" + i);
+					if(i <= n){
+						div.src= star2;
+					}else{
+						div.src= star1;
+					}
+					document.getElementById(id+"_Display").innerHTML=n;
+				}
+				document.getElementById(id+"_c").value=n;
+			}
+        </script>
+      <!-- 评分结束 -->
+		{if $setting[code]}
+		  <label>验证码：<input type="text" name="code"  class="input-text" id="yzmText" onfocus="var offset = $(this).offset();$('#yzm').css({'left': +offset.left-8, 'top': +offset.top-$('#yzm').height()});$('#yzm').show();$('#yzmText').data('hide', 1)" onblur='$("#yzmText").data("hide", 0);setTimeout("hide_code()", 3000)' /></label>
+		  <div id="yzm" class="yzm">{form::checkcode()}<br />点击图片更换</a></div>
+        <div class="bk10"></div>
+		{/if}
+        <div class="btn"><input type="submit" value="发表评论" /></div>&nbsp;&nbsp;&nbsp;&nbsp;{if $userid}{get_nickname()} <a href="{APP_PATH}index.php?s=member/index/logout&forward={urlencode(get_url())}">退出</a>{else}<a href="{APP_PATH}index.php?s=member/index/login&forward={urlencode(get_url())}" class="blue">登录</a><span> | </span><a href="{APP_PATH}index.php?s=member/index/register" class="blue">注册</a>  {if !$setting[guest]}<span style="color:red">需要登陆才可发布评论</span>{/if}{/if}
+	</form>
+<style type="text/css">
+.look-content{ padding:10px;border:1px dashed #ffbf7a; background:#fffced; margin:10px auto}
+.look-content ul{ color:#666}
+</style>
+            <div class="look-content">
+            <h6>请您注意：</h6>
+                <ul>
+                    <li>自觉遵守：爱国、守法、自律、真实、文明的原则</li>
+                    <li>尊重网上道德，遵守《全国人大常委会关于维护互联网安全的决定》及中华人民共和国其他各项有关法律法规</li>
+                    <li>严禁发表危害国家安全，破坏民族团结、国家宗教政策和社会稳定，含侮辱、诽谤、教唆、淫秽等内容的作品</li>
+                    <li>承担一切因您的行为而直接或间接导致的民事或刑事法律责任</li>
+                    <li>您在新浪新闻评论发表的作品，新浪网有权在网站内保留、转载、引用或者删除</li>
+                    <li>参与本评论即表明您已经阅读并接受上述条款</li>
+                </ul>
+            </div>
+      </div>
+  </div>
+    <div class="col-auto">
+        <div class="box">
+            <h5 class="title-2">点评排行</h5>
+            {h5:reviews action="bang" cache="0"}
+            <ul class="content list f12 lh22">
+				{loop $data $r}
+                <li>·<a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title], 26)}</a>({$r[total]})</li>
+				{/loop}
+            </ul>
+            {/h5}
+        </div>
+        <div class="bk10"></div>
+    </div>
+</div>
+<script type="text/javascript">
+function support(id, reviewsid) {
+	$.getJSON('{APP_PATH}index.php?s=reviews/index/support&format=jsonp&reviewsid='+reviewsid+'&id='+id+'&callback=?', function(data){
+		if(data.status == 1) {
+			$('#support_'+id).html(parseInt($('#support_'+id).html())+1);
+		} else {
+			alert(data.msg);
+		}
+	});
+}
+function hide_code() {
+	if ($('#yzmText').data('hide')==0) {
+		$('#yzm').hide();
+	}
+}
+</script>
+{template "content","footer"}

@@ -1,0 +1,33 @@
+#alertM,#alertT,#alertR,#alertP,#alertBtns{margin:0;padding:0;font-size:14px;line-height:24px;font-family:arial,sans-serif;text-align:left}
+#alertR,#alertBtns a{text-decoration:none;text-shadow:0px 1px 1px #000;}
+#hbg{display:none;position:absolute;top:0;left:0;background:#000;z-index:998;width:100%;}
+#alertM{display:none;position:absolute;height:auto;width: auto;background:#fff;z-index:999;box-shadow:0 0 32px #000;border-radius:9px;border:2px solid #ddd;-webkit-transition:-webkit-transform 0.4s ease;-moz-transition:-moz-transform 0.4s ease;-o-transition:-o-transform 0.4s ease;transition:transform 0.4s ease;-webkit-transform:scale(0);-moz-transform:scale(0);-o-transform:scale(0);transform:scale(0);}
+#alertM.on{-webkit-transform:scale(1);-moz-transform:scale(1);-o-transform:scale(1);transform:scale(1);}
+#alertT{padding:4px 9px;color:#333;text-shadow:0px 0px 1px rgba(99,99,99,.6);border-bottom:1px #ddd solid;background: #eee;}
+#alertP{padding:12px;}
+#alertR{float:right;padding:4px;font-size:24px;margin: -4px 0 0 0;color:#999;font-weight:bold;-webkit-transform: rotate(-360deg);-moz-transform: rotate(-360deg);-o-transform: rotate(-360deg);transform: rotate(-360deg);-webkit-transition: -webkit-transform 0.6s ease-out;-moz-transition: -moz-transform 0.6s ease-out;-o-transition: -o-transform 0.6s ease-out;transition: transform 0.6s ease-out;}
+#alertR:hover{color:#666;-webkit-transform: rotate(360deg);-moz-transform: rotate(360deg);-o-transform: rotate(360deg);transform: rotate(360deg);}
+#alertR:active{text-shadow:0px 0px 1px #000;}
+#alertBtns{text-align:right;background: #eee;border-top: 1px #ddd solid;}
+#alertBtns a{margin:4px 9px;padding:0 9px;color:#000;background: #fff;text-shadow: 0px 1px 1px white;background-image: -moz-linear-gradient(top, #fff, #ccc);background-image: -webkit-gradient(linear,left top, left bottom, color-stop(0, #fff),color-stop(1, #ccc));border: 1px #E6E6E6 solid;border-radius: 3px;display: inline-block;box-shadow: 0px 0px 2px rgba(0,0,0,0.8);}
+#alertBtns a:hover{background: #ccc;background-image: -moz-linear-gradient(top, #f6f6f6,#c6c6c6);background-image: -webkit-gradient(linear,left top, left bottom, color-stop(0, #f6f6f6),color-stop(1, #c6c6c6));box-shadow: 0px 0px 3px rgba(0,0,0,1);border: 1px #ddd solid;}
+#alertBtns a:active{background: #bbb;background-image: -moz-linear-gradient(top, #f3f3f3,#bbb);background-image: -webkit-gradient(linear,left top, left bottom, color-stop(0, #f3f3f3),color-stop(1, #bbb));box-shadow: 0px 0px 2px rgba(0,0,0,0.6);border: 1px #aaa solid;}
+#pricechange{padding: 0 0 0 128px;background: url(http://house.inhe.net/static2/images/xinfang/dingyue_phone-btn.gif) no-repeat 0 32px;}
+#alertM li{padding: 4px 0;}
+#alertM li span{display: inline-block;width: 72px;float: left;margin: 2px 0 0 0;text-align: right}
+#alertM input,#alertM textarea{border:1px #ddd solid;height: 24px;line-height: 24px;padding: 0 4px;width: 160px;font-size: 12px;color: #666;}
+#alertM textarea{height: 72px;width: 240px;}
+#alertM li#minfo{text-align: center;color: #f00;}
+#alertM input.radio{width: 20px;height: 20px;vertical-align: middle;border:0;}
+#pricechange a{color:#f00}
+#mobilea {padding: 0 0 0 140px;background: url(http://house.inhe.net/static2/images/xinfang/mobilea.png) no-repeat 0 32px;}
+#saveToDesk,#saveToFav,#saveToCopy{padding: 0 0 0 24px;background: url(http://house.inhe.net/static2/images/mod/fav.gif) no-repeat 0 2px;}
+#saveToFav{background-position: 0 -20px;}
+#saveToCopy{background-position: 0 -42px;}
+#saveToCopy.hover{color: #f00;text-decoration: underline;}
+.info #alertT,.info #alertBtns{display: none;}
+.info #alertP{_display:inline;_zoom:1;height: 64px;padding:0 9px 0 64px;white-space:nowrap;line-height: 64px;background-image: url(http://house.inhe.net/static2/images/common/loading.gif);background-repeat: no-repeat;background-position: 9px 50%;}
+.succ #alertP{background-image: url(http://house.inhe.net/static2/images/mod/succ.png);}
+.alert #alertP{background-image: url(http://house.inhe.net/static2/images/mod/alert.png)}
+.cross #alertP{background-image: url(http://house.inhe.net/static2/images/mod/cross.png)}
+.error #alertP{background-image: url(http://house.inhe.net/static2/images/mod/error.png)}

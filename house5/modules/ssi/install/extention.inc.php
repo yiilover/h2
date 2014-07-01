@@ -1,0 +1,11 @@
+<?php
+
+defined('IN_HOUSE5') or exit('Access Denied');
+defined('INSTALL') or exit('Access Denied');
+$parentid = $menu_db->insert(array('name'=>'ssi','parentid'=>826,'m'=>'ssi','c'=>'ssi','a'=>'init','data'=>'','listorder'=>0,'display'=>'1'),true);
+$menu_db->insert(array('name'=>'add_ssi','parentid'=>$parentid,'m'=>'ssi','c'=>'ssi','a'=>'add','data'=>'','listorder'=>0,'display'=>'0'));
+$menu_db->insert(array('name'=>'edit_ssi','parentid'=>$parentid,'m'=>'ssi','c'=>'ssi','a'=>'edit','data'=>'','listorder'=>0,'display'=>'0'));
+$menu_db->insert(array('name'=>'delete_ssi','parentid'=>$parentid,'m'=>'ssi','c'=>'ssi','a'=>'del','data'=>'','listorder'=>0,'display'=>'0'));
+$menu_db->insert(array('name'=>'ssi_lists','parentid'=>$parentid,'m'=>'ssi','c'=>'ssi','a'=>'lists','data'=>'','listorder'=>0,'display'=>'0'));
+$language = array('ssi'=>'ssiËéÆ¬','add_ssi'=>'Ìí¼ÓssiËéÆ¬','edit_ssi'=>'ÐÞ¸Ässi±êÇ©','delete_ssi'=>'É¾³ýssi±êÇ©','ssi_lists'=>'ssi±êÇ©ÁÐ±í');
+?>

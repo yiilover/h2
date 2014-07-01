@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 7 ]> <html lang="zh-CN" class="ie6 ielt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="zh-CN" class="ie7 ielt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="zh-CN" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="zh-CN"><!--<![endif]-->
+<head>
+	<meta charset="gbk">
+          <title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+	<link rel="shortcut icon" href="{APP_PATH}favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="{APP_PATH}statics/house5-style1/pic/css/house5-common.css" />
+	<link rel="stylesheet" type="text/css" href="{APP_PATH}statics/house5-style1/pic/css/house5-picture-show.css" />
+    <script type="text/javascript" src="{APP_PATH}statics/house5-style1/pic/js/jquery.js"></script>
+    <script type="text/javascript" src="{APP_PATH}statics/house5-style1/pic/js/jquery.cookie.js"></script>
+	<!--[if lt IE 9 ]>
+    <script type="text/javascript" src="{APP_PATH}statics/house5-style1/pic/js/modernizr.js"></script>
+    <![endif]-->
+  	<script type="text/javascript">
+	var IMG_URL="",UPLOAD_URL="",APP_URL="",WWW_URL="",SPACE_URL="",COOKIE_PRE="",COOKIE_DOMAIN="",COOKIE_PATH="/",SINA_APPKEY="",QQ_SOURCEID="";
+        var contentid = '90';
+        var topicid = '129';
+    </script>
+</head>
+<body>
+<!-- 头部 -->
+<header class="head-repeat-x">
+    		<!-- 顶部条 -->
+		<div class="header-topbar">
+			<!-- 带链接的顶部 -->
+			<ul class="head-top-nav">
+<li><a href="{APP_PATH}" title="首页" class="b" target="_self">首页</a></li>
+<li><a href="{catlink(6)}" title="新闻" target="_self">新闻</a></li>
+<li><a href="{catlink(7)}" title="图库" target="_self">图库</a></li>
+<li><a href="{HOUSE_PATH}" title="视频" target="_self">新房</a></li>
+<li><a href="{ESF_PATH}" title="访谈" target="_self">二手房</a></li>
+<li><a href="#" title="专题" target="_self">专题</a></li>
+</ul>
+			<!-- end带链接的顶部 -->
+		</div>
+		<!-- end顶部条 -->
+
+    <!-- 顶部背景条, -->
+    <div class="top-block"></div>
+    <!-- end顶部背景条 -->
+</header>
+<!-- @end头部 -->
+
+<section class="column picture-wrap">
+    <!-- 面包屑 -->
+    <div class="crumb">
+        <a href="{APP_PATH}">首页</a><em>&gt;</em>
+              {catpos($catid)}
+    </div><!-- @end 面包屑 -->
+    <!-- 组图展示区域 -->
+    <div class="picture-main">
+        <header class="picture-header">
+            <h1 class="h1"> {$title}</h1>
+            <div class="picture-infos">
+                <span class="post-time">{$inputtime}</span>
+                <span class="source">
+                                </span>
+                <span class="editor">责任编辑：{$username} </span>            </div>
+            <p class="summary">{$description}</p>        </header>
+
+        <div id="gallery" class="mod-gallery">
+            <div class="gallery-overlay" data-gallery="overlay"></div>
+            <div class="gallery-content" data-gallery="content" style="visibility:hidden;">
+                <div class="gallery-toolbar">
+                    <span style="float: left">
+                        <a data-gallery="view-origin" href="javascript:void(0);" hideFocus="true" target="_blank" class="mod-btn">
+                            <i class="btn-left"></i><span><i class="btn-icon icon-origin"></i>查看原图</span><i class="btn-right"></i>
+                        </a>
+                                                <a data-gallery="auto-stop" href="javascript:void(0);" hideFocus="true" class="mod-btn">
+                            <i class="btn-left"></i><span><i class="btn-icon icon-stop"></i>手动播放</span><i class="btn-right"></i>
+                        </a>
+                    </span>
+                </div>
+                <div class="gallery-photo">
+                    <div class="gallery-photo-items" data-gallery="photo-items">
+					{php $i=0;}
+					{loop $pictureurls $pic_k $r}
+					<img src="{$r[url]}" data-gallery="{$i}" style="left: 0px; {if $i==0}display: inline;{else}display: none;{/if}">
+				{$i++}
+				{/loop}
+					</div>
+                    <div class="gallery-photo-prev" data-gallery="photo-prev">
+                        <a title="点击浏览上一张图片，支持'←'翻页" href="javascript:void(0);" hideFocus="true">上一页</a>
+                    </div>
+                    <div class="gallery-photo-next" data-gallery="photo-next">
+                        <a title="点击浏览下一张图片，支持'→'翻页" href="javascript:void(0);" hideFocus="true">下一页</a>
+                    </div>
+                    <div class="gallery-loading" data-gallery="loading"><span></span></div>
+                    <div class="gallery-end" data-gallery="end">
+                        <a class="end-close" data-gallery="end-close"></a>
+                        <div class="end-intro">
+                            <div class="thumb">
+                                <a href="javascript:void(0);"><img src="{$thumb}" alt="" width="120" height="90" /></a>
+                            </div>
+                            <div class="texts">
+                                <h4>{$title}</h4>
+                                <div class="buttons">
+                                    <a class="mod-btn" data-gallery="replay"><i class="btn-left"></i><span><i class="btn-icon icon-replay"></i>重新播放</span><i class="btn-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="end-related">
+                            <ul class="piclist">
+							{h5:content  action="position" posid="74" num="4" order="id desc" cache="10800"}
+							{loop $data $v}
+								<li class="v-pic"><a title="{$v[title]}" href="{$v[url]}" target="_blank" ><img src="{thumb($v[thumb],120,90,0)}" class="thumb" width="120px" height="90px"/></a><span class="title"><a title="{$v[title]}" href="{$v[url]}" target="_blank" >{str_cut($v[title],16,'')}</a></span></li>
+							{/loop}
+						{/h5}
+                                                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-photo-description">
+                    <p data-gallery="photo-description"></p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="gallery-footer" data-gallery="footer" style="visibility:hidden;">
+                <div class="clearfix">
+                    <div class="gallery-thumb" data-gallery="slider">
+                        <span class="gallery-thumb-prev">
+                            <a href="javascript:void(0);" hideFocus="true" data-slider="items-left"></a>
+                        </span>
+                        <span class="gallery-thumb-next">
+                            <a href="javascript:void(0);" hideFocus="true" data-slider="items-right"></a>
+                        </span>
+                        <div class="gallery-thumbs" data-slider="control">
+                            <div class="gallery-thumb-list">
+                                <ul class="gallery-thumb-items" data-slider="items">
+								{php $j=1;}
+								{loop $pictureurls $pic_k $r}
+								<li data-slider-index="{$i}" class="" style="width: 104px;"><i></i><a hidefocus="true" href="javascript:void(0);" style="width: 100px; height: 75px;"><span><b>{$j}</b>/<b>n</b></span>
+								<img src="{thumb($r[url], 100, 75, 0)}" alt="" style="width: 100px; height: 75px;"></a></li>
+								{$j++}
+								{/loop}
+								</ul>
+                            </div>
+                            <div class="gallery-thumb-bar mod-bar" data-slider="bar">
+                                <span class="bar-left"></span>
+                                <span class="bar-right"></span>
+                                <div class="bar-body">
+                                    <div class="bar-content">
+                                        <a class="bar-btn" href="javascript:void(0);" hideFocus="true" data-slider="btn">
+                                            <b class="bar-btn-left"></b>
+                                            <b class="bar-btn-right"></b>
+                                            <span class="bar-btn-body">
+                                                <span>
+                                                    <b class="bar-btn-content"></b>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- @end 组图展示区域 -->
+</section>
+
+<!-- 推荐组图 -->
+<section class="column picture-hot">
+    <div class="inner">
+        <div class="hd title-hd">
+    <em class="ico"></em>
+    <div class="title"><a href="{catlink(7)}" target="_blank" title="" class="words">推荐组图</a></div>
+</div>
+<ul class="piclist">
+{h5:content  action="position" posid="70" num="6" order="id desc" cache="10800"}
+		   {loop $data $v}
+        <li class="v-pic">
+        <div class="thumb">
+            <a href="{$v[url]}" target="_blank" title="{$v[title]}"><img src="{$v[thumb]}" alt="" width="120" height="90"></a>
+        </div>
+        <div class="title"><a href="{$v[url]}" target="_blank" title="{$v[title]}">{$v[title]}</a></div>
+    </li>
+	{/loop} {/h5}
+    </ul>
+    </div>
+</section><!-- @end 推荐组图 -->
+
+<link rel="stylesheet" type="text/css" href="{APP_PATH}statics/house5-style1/newhouse/css/black.css" />
+<script type="text/javascript" src="{APP_PATH}statics/house5-style1/newhouse/js/house5.gallery.js"></script>
+<script type="text/javascript">
+$(function() {
+var photos = [];
+{loop $pictureurls $pic_k $r}
+photos.push({ orig: '{$r[url]}',big: '{$r[url]}', thumb: '{thumb($r[url], 100, 75, 0)}', note: "{$r[alt]}" });
+{/loop}
+$('#gallery').gallery({
+    photos: photos,
+    maxWidth: 900,
+    minHeight: 600,
+    preload: 1,
+    scrollIntoView: true,
+    hashPageParam: 'h5',
+    thumbWidth: 100,
+    thumbHeight: 75
+});
+})
+</script>
+<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>
+<!-- footer -->
+{template "content","footer"}
+<!-- end footer -->
+</body>
+</html>

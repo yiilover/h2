@@ -1,0 +1,97 @@
+{template "content","head_house_show"}
+ <div class="wrap mB10 crumb">您的位置：<a href="{APP_PATH}" title="">首页</a> > <a href="{HOUSE_PATH}" title="新房">新房</a> > <a href="{$url}" title="{$title}">{$title}</a> > <a href="{HOUSE_PATH}{$id}/tuan.html" title="参加团购">参加团购</a><span id="weizi"></span></div>
+
+<script language="javascript">
+function tuangou(){
+  var cname=document.getElementById('cname').value;
+   if ( cname.length < 2 )
+	{
+	alert("请输入正确的姓名.");
+	return false;
+	}
+  var tel=document.getElementById('tel').value;
+   if(/^13\d{9}$/g.test(tel)||(/^15[0-35-9]\d{8}$/g.test(tel))||(/^18[0-9]\d{8}$/g.test(tel))){       
+   }else{  
+    alert("请输入正确的号码.");
+	return false; 
+   }
+   
+   var sexstr="1";
+   if(document.getElementById('sex2').checked)  sexstr="2";
+   
+   $.post("{APP_PATH}index.php?s=formguide/index/show_js",{name:cname,sex:sexstr,phone:tel,content:document.getElementById('content').value,cid:"{$id}",subject:"{$title}",price:"{$price}",region:"{menu_linkinfo('3360',$region)}",regionid:"{$region}"},function(data){
+        alert(data);	
+		if(data.indexOf("成功")>-1){
+		  document.getElementById('cname').value="";
+		  document.getElementById('tel').value="";
+		  document.getElementById('content').value="";
+		  initTg(1);
+		}  
+   });
+   
+}
+
+function initTg(p){
+     $.post("{APP_PATH}index.php?s=formguide/index/show_list",{cid:"{$id}",page:p,perpage:10},function(data){
+       document.getElementById('tgbmlist').innerHTML=data;		 
+   });
+}
+
+initTg(1);
+
+</script>
+<div class="wrap clear wrap_shadow LP_TuanGou">
+    <div class="shadow fix">
+    	<div class="fix commHd">
+        	<span class="fr JS_jia"><div id="bdshare" class="bdshare_b" style="line-height: 12px;">
+            
+             <a class="shareCount"></a></div></span>
+        	<h3 class="fl fw_B fs_14">{$title}[{$xszt}]</h3>
+            <div class="fl fs_14 fw_B LP_hotline">售楼热线:<em class="en c_orangered fw_B">{$tel}</em></div>
+            <div class="fl LP_swm">
+                	<a href="javascript:showfceng('erweima',1);" ><img src="{APP_PATH}statics/house5-style1/newhouse/img/erweima.png" /></a>
+                    <div class="LP_swm_panel">
+                    	<b></b>
+                    	<div class="swm"><img src="{APP_PATH}caches/caches_content/caches_house/mobile_houseqrcode/{$siteid}/{$id}.png" alt="{$title}" width="171" height="171"/></div>
+                    </div>
+            </div>
+            <a href="javascript:callphones('4882430623961921590');" title="免费通话" class="forCALL"><b></b>免费通话</a><a href="javascript:showfceng('dxfsc',1);" title="发送到手机" class="forMAIL"><b></b>发送到手机</a><a title="收藏本楼盘" href="#" class="collect"><b></b>收藏</a> 
+        </div>
+        
+        <div class="fl commLeft">
+       <div class="LP_TuanGou_form">
+                <div class="LP_r_field"><label class="th">姓&nbsp;&nbsp;&nbsp;名<b class="c_orangered">*</b></label><div class="fl td"><input name="cname" type="text" class="txt" id="cname" maxlength="5" />
+                </div></div>
+                <div class="LP_r_field"><label class="th">性&nbsp;&nbsp;&nbsp;别</label><div class="fl td"><label class="mR10"><input name="sex" id="sex1" type="radio" class="radio" value="男" checked />
+                男</label><label class="mL10"><input name="sex" type="radio" value="女" id="sex2" />
+                女</label></div></div>
+                <div class="LP_r_field"><label class="th">手&nbsp;&nbsp;&nbsp;机<b class="c_orangered">*</b></label><div class="fl td"><input name="tel" type="text" class="txt" id="tel" maxlength="11" />
+                </div></div>
+                <div class="LP_r_field"><label class="th" style="height:71px;">参团备注</label><div class="fl td"><textarea name="content" id="content" cols="" rows="" class="textarea"></textarea></div></div>
+                <div class="LP_r_field LP_r_btn_field"><label class="th" style="height:35px;"></label><div class="fl td"><input type="button" class="btn" onClick="tuangou(0);" /></div></div>
+            </div>
+            <div class="tgMes_List_table">
+            	<div class="fix tgMes_List_thead">
+                	<span class="tgMes_td tgMes_tdNum">序号</span>
+                	<span class="tgMes_td tgMes_tdName">联系人姓名</span>
+                    <span class="tgMes_td tgMes_tdPhone">联系人电话</span>
+                    <span class="tgMes_td tgMes_tdMes">报名留言</span>
+                    <span class="tgMes_td tgMes_tdDate">报名日期</span>         	         	                                        
+                </div>
+                <div id="tgbmlist"></div>
+            </div>
+        </div>
+
+<div class="fl commRight">		
+          <div class="fw_B fs_14 title" style="margin:15px 0 10px;">{$title}楼盘关注</div>
+          <div class="ct_had"><span class="fl">已有<b class="en c_orangered" id="tuangou"></b>人参团</span><a href="javascript:showfceng('tgbmc',1);" class="fl">立即参团</a></div>
+         <div class="fw_B fs_14 title">热点楼盘推荐</div>
+		  {h5:content action="hits" catid="14" num="9" order="views DESC" cache="10800"}
+		{loop $data $v}
+			{php $menu_info = menu_info('3360',$v[region])}
+		            <div class="lp_faq_rank_tr"> <span class="lp_faq_t1"><a title="{$v[title]}" href="{$v[url]}/" target="_blank" >{str_cut($v[title],16,'')}</a></span><span class="lp_faq_t2">{$menu_info[0]}</span><span class="lp_faq_t3 c_orangered">{$v[views]}</span> </div>
+				{/loop}
+			{/h5}
+    </div>
+</div>
+{template "content","footer_house_show"}

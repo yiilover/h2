@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>二手房管理-经纪人管理中心-{$site_title}</title>
+<link href="/statics/default/member/css/main.css" rel="stylesheet" type="text/css" />
+<link href="/statics/default/member/css/footer.css" rel="stylesheet" type="text/css" />
+<link href="/statics/default/member/css/pages.css" rel="stylesheet" type="text/css" />
+<link href="/statics/default/member/css/center.css" rel="stylesheet" type="text/css" />
+<script>var cookiepre = 'menu_';var cookiepath = '/';var cookiedomain = '';var SiteUrl='{APP_PATH}';var JS_URL='/statics/default/member/js/';var imgUrl='/statics/default/member/img/';</script>
+<script src="/statics/default/member/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="/statics/default/member/js/manage.js" type="text/javascript"></script>
+<script src="/statics/default/member/js/menu.js" type="text/javascript"></script>
+<script src="/statics/default/member/js/cookie.js" type="text/javascript"></script>
+<script src="/statics/default/member/js/thickbox.js" type="text/javascript"></script>
+<link href="/statics/default/member/css/thickbox.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="{APP_PATH}favicon.ico" />
+</head>
+<body>
+<div class="head">
+  <div id="wrap"><span class="fl"><img src="/statics/default/member/img/logo_myagent.gif" width="281" height="50" /></span><span class="fr">
+	<p>欢迎您：<a href="index.php?s=member">{get_nickname()}</a> <a href="index.php?s=message/index/inbox" class="message">短消息(0)</a> <a href="{APP_PATH}index.php?s=member/index/logout">退出</a></p>
+    <ul>
+	    <li style="text-align:right;"><a href="{HOUSE_PATH}" target="_blank">首页</a> | <a href="{HOUSE_PATH}list.html" target="_blank">新房</a> | <a href="{ESF_PATH}" target="_blank">二手房</a> | <a href="{ESF_PATH}rent-list.html" target="_blank">出租房</a> | <a href="{catlink(6)}" target="_blank">资讯</a>{if BBS_PATH!=''} | <a href="{BBS_PATH}" target="_blank">论坛</a>{/if}</li>
+    </ul>
+    </span></div>
+</div>
+<div id="wrap">
+  <!--左边菜单-->
+  <div class="left" id="left_menu">
+    <div class="menu">
+      <div class="home">
+        <h1><a href="index.php?s=member">管理中心首页</a></h1>
+      </div>
+    </div>
+    <div class="menu">
+      <div class="tittle" id="titlebg_1" onclick="menu('1')" style="cursor:pointer"><img src="/statics/default/member/img/shouqi.jpg" id="menua_1" width="11" height="11" /><img src="/statics/default/member/img/zhankai.jpg" id="menub_1" width="11" height="11" style="display:none;" />
+        <h1><a href="javascript:;">二手房管理</a></h1>
+      </div>
+      <ul id="menu_1">
+        <li ><a href="index.php?s=member/index/esf">发布出售</a></li>
+        <li class="selecte"><a href="index.php?s=member/index/manage_sell">管理出售</a></li>
+      </ul>
+    </div>
+    <div class="menu">
+      <div class="tittle" id="titlebg_2" onclick="menu('2')" style="cursor:pointer"><img src="/statics/default/member/img/shouqi.jpg" id="menua_2" width="11" height="11" /><img src="/statics/default/member/img/zhankai.jpg" id="menub_2" width="11" height="11" style="display:none;" />
+        <h1 class="rent"><a href="javascript:;">出租房管理</a></h1>
+      </div>
+      <ul id="menu_2">
+        <li ><a href="index.php?s=member/index/rent">发布出租</a></li>
+        <li ><a href="index.php?s=member/index/manage_rent">管理出租</a></li>
+      </ul>
+    </div>
+	{if $memberinfo[modelid]=='42'}
+    <div class="menu">
+      <div class="tittle" id="titlebg_6" onclick="menu('6')" style="cursor:pointer"><img src="/statics/default/member/img/shouqi.jpg" id="menua_6" width="11" height="11" /><img src="/statics/default/member/img/zhankai.jpg" id="menub_6" width="11" height="11" style="display:none;" />
+        <h1 class="dianpu"><a href="javascript:;">店铺管理</a></h1>
+      </div>
+       <ul id="menu_6">
+        <li ><a href="/index.php?s=member/index/notice">店铺公告</a></li>
+      </ul>
+    </div>
+	{/if}
+    <div class="menu">
+      <div class="tittle" id="titlebg_7" onclick="menu('7')" style="cursor:pointer"><img src="/statics/default/member/img/shouqi.jpg" id="menua_7" width="11" height="11" /><img src="/statics/default/member/img/zhankai.jpg" id="menub_7" width="11" height="11" style="display:none;" />
+        <h1 class="ziliao"><a href="javascript:;">资料管理</a></h1>
+      </div> <ul id="menu_7">
+	  <li ><a href="/index.php?s=member/index/account_manage_info">修改资料</a></li>
+	  <li ><a href="/index.php?s=member/index/account_manage_avatar">头像认证</a></li>
+	  {if $memberinfo[modelid]=='42'}
+	  <li ><a href="/index.php?s=member/index/identity">身份证认证</a></li>
+	  <li ><a href="/index.php?s=member/index/certificate">执业资格证认证</a></li>
+	  {/if}
+      <li><a href="/index.php?s=member/index/account_manage_password">修改密码</a></li>
+      </ul>
+    </div>
+  </div>
+<script language="javascript">get_menu(8);</script>    <!--右边-->
+  <div class="text">
+    <div class="fold"></div>
+    <div class="bread"><a href="/index.php?s=member/index">管理中心</a>管理出售房源</div>
+        <div class="manage_search">
+	<form action="index.php" method="get" name="mysearch" id="mysearch">
+      <h1>搜索房源</h1>
+      <dl>
+        <dd>
+		<select name="place" style="width:100px;">
+		<option value="">按区域</option>
+	 {h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC" cache="86400"}
+		{loop $data $r}
+		{php $reg = explode('$$', $r);}
+		<option value={$reg[0]}>{$reg[1]}</option>
+		{/loop}
+	{/h5}
+		</select> 
+		<select name="price" style="width:100px;">
+		<option value="">按价格</option>
+				</select> <select name="area" style="width:100px;">
+		<option value="">按面积</option>
+				</select> <select name="room" style="width:80px;">
+		<option value="">按户型</option>
+				</select>
+		<select name="pic" style="width:80px;">
+		<option value="">按状态</option>
+		<option value="1">多图</option>
+		<option value="2">非多图</option>
+		</select> <select name="tag" style="width:80px;">
+		<option value="">按标签</option>
+		<option value="1">新推</option>
+		<option value="2">推荐</option>
+		<option value="3">急售</option>
+		</select>
+        
+        </dd>
+		<dd>自编号：<input name="number" type="text" value="" class="txt" /> 
+		小区/地址：<input type="text" name="village" id='villageid' autocomplete='off' class="txt" value=""/>
+		<input name="s" type="hidden" value="member/index/manage_sell" />
+		<input name="status" type="hidden" value="{$house_status}" />
+		<input name="submit" type="submit" class="search" value="搜索房源" />
+		<input name="submit" type="button" onclick="location.href='index.php?s=member/index/manage_sell/status/1'" class="search" value="全部房源" />
+        </dd>
+      </dl>
+      <div class="clear"></div>
+	</form>
+    </div>
+<script language="javascript">
+var sortUrl = [];
+sortUrl[0] = "index.php?s=member/index/manage_sell/status/1&place=0&village=&price=0&area=0&room=0&pic=0&tag=0&number=";
+sortUrl[1] = "index.php?s=member/index/manage_sell/status/1&place=0&village=&price=0&area=0&room=0&pic=0&tag=0&number=&order=1";
+sortUrl[2] = "index.php?s=member/index/manage_sell/status/1&place=0&village=&price=0&area=0&room=0&pic=0&tag=0&number=&order=2";
+sortUrl[3] = "index.php?s=member/index/manage_sell/status/1&place=0&village=&price=0&area=0&room=0&pic=0&tag=0&number=&order=3";
+sortUrl[4] = "index.php?s=member/index/manage_sell/status/1&place=0&village=&price=0&area=0&room=0&pic=0&tag=0&number=&order=4";
+sortUrl[5] = "index.php?s=member/index/manage_sell/status/1&place=0&village=&price=0&area=0&room=0&pic=0&tag=0&number=&order=5";
+sortUrl[6] = "index.php?s=member/index/manage_sell/status/1&place=0&village=&price=0&area=0&room=0&pic=0&tag=0&number=&order=6";
+sortUrl[7] = "index.php?s=member/index/manage_sell/status/1&place=0&village=&price=0&area=0&room=0&pic=0&tag=0&number=&order=7";
+sortUrl[8] = "index.php?s=member/index/manage_sell/status/1&place=0&village=&price=0&area=0&room=0&pic=0&tag=0&number=&order=8";
+</script>
+
+    <div class="box">
+	<form action="index.php?s=member/index/manage_sell"  method="post" name="myform">
+      <div class="tit">
+      <div class="tab">
+      <a  {if $house_status==1}class="hover"{/if} href="index.php?s=member/index/manage_sell">上架房源</a>
+      <a  {if $house_status==2}class="hover"{/if} href="index.php?s=member/index/manage_sell/status/2">下架房源</a>
+      <a  {if $house_status==4}class="hover"{/if} href="index.php?s=member/index/manage_sell/status/4">过期房源</a>
+      <a  {if $house_status==3}class="hover"{/if} href="index.php?s=member/index/manage_sell/status/3">违规房源</a>
+        </div>
+     </div>
+	  <div class="tool">
+		  <span class="fl">
+			<input type="button" class="button_1" onClick="CheckAll(true);" value="全选" />
+			<input type="button" class="button_1" onClick="CheckAll(false);" value="取消选择" />
+			{if $house_status==1}
+			<input name="doupdate" type="submit" class="button_1" value="手动刷新" onclick="return op_confirm()" />			<input name="dodown" type="submit" class="button_1" value="下架" onclick="return cron_confirm()" />
+			{/if}
+			{if $house_status==2}
+			<input name="doup" type="submit" class="button_1" value="上架" onclick="return op_confirm()" />
+			{/if}
+			<input name="dodel" type="submit" class="button_1" value="删除" onclick="return del_confirm()" />
+			{if $house_status==1}
+			<input name="doxintui" type="submit" class="button_1" value="新推" onclick="return op_confirm()" />
+			<input name="dotuijian" type="submit" class="button_1" value="推荐" onclick="return op_confirm()" />
+			<input name="dojishou" type="submit" class="button_1" value="急售" onclick="return op_confirm()" />
+			<input name="dozhiding" type="submit" class="button_1" value="置顶" onclick="return op_confirm()" />
+			<input name="dorecomm" type="submit" class="button_1" value="店铺推荐" onclick="return op_confirm()" />
+			{/if}
+		  </span>
+			<!-- <span class="fr">排序
+				<select onchange="javascript:if(this.value)window.location.href=sortUrl[this.value]">
+				  <option selected="selected" value="0">默认排序</option>
+				  <option value="1">发布时间从新到旧</option>
+				  <option value="2">发布时间从旧到新</option>
+				  <option value="3">刷新时间从新到旧</option>
+				  <option value="4">刷新时间从旧到新</option>
+				  <option value="5">价格从高到低</option>
+				  <option value="6">价格从低到高</option>
+				  <option value="7">面积从大到小</option>
+				  <option value="8">面积从小到大</option>
+				</select>
+			</span> -->
+	  </div>
+	        <table width="100%" height="86" border="0" cellspacing="0" class="manage" >
+        <tr class="name">
+          <td width="5%" height="45">选中</td>
+		  {if $house_status==1}
+          <td>基本信息</td>
+          <td width="13%">访问统计(次)<br />今/昨/总</td>
+          <td width="13%">刷新</td>
+		  <td width="12%">标签</td>
+          <td width="12%">发布/更新时间</td>
+		  <td width="6%">剩余</td>
+		  <td width="8%" class="remarks" style="display:none;">编号/备注</td>
+		{/if}
+		{if $house_status==2 || $house_status==4 || $house_status==3}
+		  <td width="20%">小区名称</td>
+			<td width="10%">区域</td>
+			<td width="15%">自编号</td>
+			<td width="10%">户型</td>
+			<td width="10%">价格</td>
+		{/if}
+		{if $house_status==2}
+			<td width="12%">下架时间</td>
+		{/if}
+		{if $house_status==3|| $house_status==4}
+			<td width="12%">发布时间</td>
+		{/if}
+		{if $house_status==1 || $house_status==2}
+          <td width="10%">操作</td>
+		 {/if}
+        </tr>
+		{loop $datas $info}
+			{if $info}
+			{php $relationxq = get_relationxq($info[id],$info[catid],110)}
+		<tr height="40">
+		<td><input name="ispost[{$info['id']}]" type="hidden" value="0"><input class="hid" name="hid[{$info['id']}]" type="checkbox" value="{$relationxq['id']}"></td>
+		{if $house_status==1}
+		<td style="text-align:left; padding-left:3px;"><a href="{$info[url]}" target="_blank" title="{$info['title']}">{str_cut($info['title'], 60)}</a>{if $info[status]!=99}<font color=red>(待审)</font>{/if}({$relationxq[title]})</td>
+		<td>{esf_hits(39,$info[id])}</td>
+		<td><span id="update_{$info[id]}"><A href="javascript:updatesell({$info[id]},'112');">刷新</A></span></td>
+		<td>{if $info[listorder]>0}
+					<img src="{APP_PATH}statics/default/img/esf/icon-ding.gif" alt="置顶楼盘" title="置顶楼盘" style="vertical-align:middle" />
+					{/if}
+					<?php $flag = explode(',', $info[flag]);
+						foreach ($flag as $t => $c) {
+					if(intval($c))
+					{
+						if($c=='5')
+						{
+					echo '<img src="'.APP_PATH.'statics/default/img/esf/icon-more-28x16.gif" alt="多图楼盘" title="多图楼盘" style="vertical-align:middle" />';		
+						}
+						if($c=='3')
+						{
+					echo '<img src="'.APP_PATH.'statics/default/img/esf/tag_urgent2.gif" alt="推荐楼盘" title="推荐楼盘" style="vertical-align:middle" />';		
+						}
+						if($c=='2')
+						{
+					echo '<img src="'.APP_PATH.'statics/default/img/esf/tag_urgent3.gif" alt="急售楼盘" title="急售楼盘" style="vertical-align:middle" />';		
+						}
+						if($c=='1')
+						{
+					echo '<img src="'.APP_PATH.'statics/default/img/esf/tag_urgent1.gif" alt="新推楼盘" title="新推楼盘" style="vertical-align:middle" />';		
+						}
+					}}?></td>
+		<td>{date('m-d H:i',$info['inputtime'])}<BR>{date('m-d H:i',$info['updatetime'])}</td>
+		<td>{$info['refresh']}</td>
+		<td class="remarks" style="display:none;">{$info['houseno']}<BR>{$info['remarks']}</td>
+		{/if}
+		{if $house_status==2 || $house_status==4}
+		<td style="text-align:left; padding-left:3px;"><a href="{$info[url]}" target="_blank" title="{$info['title']}">{$relationxq[title]}</a></td>
+		<td>{php $menu_info = menu_info('3360',$info[region])}
+		{$menu_info[0]}</td>
+		<td>{$info['houseno']}</td>
+		<td>{$info['huxingshi']}室{$info['huxingting']}厅</td>
+		<td>{$info['price']}万</td>
+		<td>{date('Y-m-d H:i',$info['house_downtime'])}</td>
+		{/if}
+		{if $house_status==1 || $house_status==2}
+		<td>
+		<a href="index.php?s=member/index/editsell/id/{$info[id]}">{L('edit')}</a> | <a onclick="return confirm('确实要删除吗？(不可恢复)')" href="index.php?s=member/index/delete/catid/{$info[catid]}/id/{$info[id]}"><font color="red">删除</font></a>
+		</td>
+		{/if}
+		</tr>
+		{else}
+		<tr>
+		  <td colspan="8" align="center">抱歉，没有找到符合要求的房子，试试其他条件吧！</td>
+		</tr>
+		{/if}
+		{/loop}
+		
+		      </table>
+            <div class="tool">
+		<span class="fl">
+			<input type="button" class="button_1" onClick="CheckAll(true);" value="全选" />
+			<input type="button" class="button_1" onClick="CheckAll(false);" value="取消选择" />
+			{if $house_status==1}
+			<input name="doupdate" type="submit" class="button_1" value="手动刷新" onclick="return op_confirm()" />			<input name="dodown" type="submit" class="button_1" value="下架" onclick="return cron_confirm()" />
+			{/if}
+			{if $house_status==2}
+			<input name="doup" type="submit" class="button_1" value="上架" onclick="return op_confirm()" />
+			{/if}
+			{if $house_status==4}
+			<input name="doresub" type="submit" class="button_1" value="重新发布" onclick="return op_confirm()" />
+			{/if}
+			<input name="dodel" type="submit" class="button_1" value="删除" onclick="return del_confirm()" />
+			<input type="checkbox" id="changeinfo" name="changeinfo" />显示编号和备注信息			<input type="hidden" name="action" value="sell" />
+			<input name="token" type="hidden"  value="95c787df8bb5673cab5db109bfdac640" />
+        </span>        
+		</div>
+    
+        </form>
+		{$pages}
+  </div>
+  <!--说明-->
+<div class="help_tips">
+	<h1>房源管理使用说明：</h1>
+	<p>
+		1.房源一旦删除不能恢复，请慎重使用。<br />
+		2.店铺首页展示房源为新推、推荐、急售标签房源。<br />
+		3.下架、过期、违规房源不对外展示,不会占用可发布量,下架房源可到待上架栏目下重新上架,过期房源可到已过期房源栏目对房源重新发布。<br />
+				4.房源展示期限为90天,超过期限的房源会自动下架到已过期栏目,您可以对房源进行重新发布,如90天内未重新发布,房源将由系统自动删除。<br />
+				5.房源可发布数量达到上限后,继续发布的房源将自动保存到待上架中。<br />
+		6.房源标签(新推、推荐、急售)展示期为7天,超过7天、下架、删除、房源被举报、房源到期，标签都会失效。<br />
+	</p>
+</div>
+</div>  <!--底部-->
+ <div style="clear:both"></div></div>
+{template 'content', 'footer'}
+</div>
+</body>
+</html>

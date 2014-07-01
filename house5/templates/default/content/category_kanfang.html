@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>看房团 - 威海房地产门户 - 威海问房网 - 买房子，就上问房网！</title>
+
+<meta name="keywords" content="看房团,威海楼盘团购,威海楼盘优惠打折,团购买房,优惠买房,问房网" />
+<meta name="description" content="看房团,威海楼盘团购,威海楼盘优惠打折,团购买房,优惠买房,问房" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link rel="shortcut icon" href="{APP_PATH}favicon.ico" />
+<link href="{CSS_PATH}static/style/kanfang/kj_style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+<div id="wrap"><div class="cArea">
+ {template "ssi","ssi_8"}
+	<!--通用头部 end-->
+
+<!--头部广告-->
+<div style="width:960px; margin:0 auto;">	
+</div>
+
+
+<script type="text/javascript" src="{CSS_PATH}static/js/jquery.min.js"></script>
+<script>
+function MM_over(mmObj) {		
+var mSubObj = mmObj.getElementsByTagName("div")[0];			
+mSubObj.style.display = "block";
+mSubObj.style.backgroundColor = "#fff";		
+}
+function MM_out(mmObj) {
+var mSubObj = mmObj.getElementsByTagName("div")[0];
+mSubObj.style.display = "none";
+
+}		
+</script>
+
+
+
+
+<DIV style="HEIGHT:57px; position:relative; z-index:999" class=logo_nav>
+
+<DIV style="BORDER-BOTTOM: #ccc 0px solid; BORDER-LEFT: #ccc 0px solid; FLOAT: left; HEIGHT: 57px; OVERFLOW: hidden; BORDER-TOP: #ccc 0px solid; BORDER-RIGHT: #ccc 0px solid" class=logo>
+<DIV style="float:left" >
+<a href="http://kj.venfang.com/"><img src="http://www.venfang.com/images/kftlogo.jpg" /></a>
+</DIV>
+</DIV>
+
+
+<div class="nav" style="padding:24px 0 0;border:0px solid #ccc;overflow: hidden;" onmouseover ="document.getElementById('city_list').style.display='none';">
+<ul style="border:0px solid #ccc;width:624px">					
+
+<li class="ab"><a href="http://kj.venfang.com/">联盟首页</a></li>
+<li class="aa"><a href="http://news.venfang.com/kanfangtuan/anli/" target=_blank>最新活动</a></li>
+<li class="aa"><a href="http://news.venfang.com/loushi/youhui/" target="_blank" title="点击查看更多威海楼盘优惠打折信息">优惠打折</a></li>
+<li class="ac"><a href="http://kj.venfang.com/?cp=intention">加入看房团</a></li>
+<li class="aa"><a href="http://kj.venfang.com/?cp=info">关于联盟</a></li>
+</ul>
+</div></DIV>
+
+
+
+<!--logo end -->
+
+<div class="hr10" ></div>
+</div>
+
+<div class="cAreb" >
+<div class="category-all">
+<h4><img src="/images/space.gif" /></h4>
+</div>
+<div class="left">
+<div class="join" onmouseover ="document.getElementById('city_list').style.display='none';">
+<form method="post" action="http://kj.venfang.com/index.php?s=formguide/index/show&formid=20&siteid=1" name="myform" id="myform">		
+<input type="hidden" name="submit" value="1">
+<input type="hidden" name="uid" value="">
+<li>
+<span class="td_1">
+<font style="color: #f00;">*</font>&nbsp;姓名：
+<input name="info[name]" type="text" class="input1" />
+</span>
+</li>
+<li>
+<span class="td_1">
+<font style="color: #f00;">*</font>&nbsp;手机：
+<input name="info[tel]" type="text" class="input1" onkeyup="this.value=this.value.replace(/[^\d]/g,'')"   />
+</span>
+</li>
+<li>
+<span class="td_1">&nbsp;QQ号：
+<input name="info[qq]" type="text" class="input1" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" />
+</span>
+</li>
+<li>
+<span class="td_1">
+<font style="color: #f00;">*</font>&nbsp;性别：
+<label><input name="info[gender]" type="radio" value="1" />男</label>	
+<label><input name="info[gender]" type="radio" value="2" />女</label>
+</span>
+</li>
+<li>
+<span class="td_2">
+<input name="dosubmit" type="submit" class="smb_btn" value=" " />
+</span>
+</li>
+</form>
+{h5:content  action="lists" catid="70" order="id DESC" num="1"}
+{loop $data $v}
+<li><span class="td_3">公告：<a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></span></li>
+{/loop}
+{/h5}
+</div>
+<div class="hr10"></div>
+
+<div class="leftwap"  onmouseover ="document.getElementById('city_list').style.display='none';">
+<div class="lefttitle linkb">看房团QQ群</div>
+<div class="qqgroup">
+{show_ad(1, 19)}
+</div>
+</div>
+
+<div class="hr10"></div>
+</div>
+
+<div class="center"  onmouseover ="document.getElementById('city_list').style.display='none';">
+<div class="hr5"></div>
+<a href="?cp=intention" target="_blank"><img src="http://www.venfang.com/images/join.jpg" /></a>
+<div class="hr10"></div>
+
+<div class="cenwap">
+<div class="menutitle">
+<div class="ab linkc"><a href="http://news.venfang.com/kanfangtuan/anli/" target=_blank>最新活动</a></div>
+<div class="ac"><a href="http://news.venfang.com/kanfangtuan/anli/" target=_blank>更多&gt;&gt;</a></div>
+</div>
+<div class="activities">
+{h5:content  action="position" posid="10" catid="71" order="listorder DESC" num="1"}
+	  {loop $data $v}
+<div class="a1 linkd"><a href="{$v['url']}" target="_blank" title="{$v[title]}">{$v[title]}</a></div>
+  {/loop}
+  {/h5}
+  {h5:content  action="lists" posids="0" catid="71" order="id DESC" num="4"}
+<ul class="linke">
+{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+</ul>
+{/h5}
+</div>
+</div>
+<div class="hr10"></div>
+</div>
+
+<div class="right">
+<div class="hr5"></div>
+<div class="rigwap">
+<div class="menutitle">
+<div class="aa"><div class="bb linkc">最新加入会员</div>
+<div class="cc">New Member</div></div>
+</div>
+<div class="latest linka">
+<ul><li>丛先生(1386905****)加入看房团&nbsp;&nbsp;2012-09-09 13:10:02</li><li>王女士(1379272****)加入看房团&nbsp;&nbsp;2012-09-07 09:14:38</li><li>赵先生(1386310****)加入看房团&nbsp;&nbsp;2012-09-06 09:12:36</li><li>刘女士(1351631****)加入看房团&nbsp;&nbsp;2012-09-06 07:12:22</li><li>武女士(1350630****)加入看房团&nbsp;&nbsp;2012-09-04 10:22:56</li><li>王先生(1526313****)加入看房团&nbsp;&nbsp;2012-09-03 08:30:25</li><li>邓女士(1886630****)加入看房团&nbsp;&nbsp;2012-09-03 00:12:33</li><li>张女士(1860630****)加入看房团&nbsp;&nbsp;2012-09-01 11:23:35</li><li>邹先生(1866311****)加入看房团&nbsp;&nbsp;2012-08-28 13:12:52</li><li>张先生(1826312****)加入看房团&nbsp;&nbsp;2012-08-24 10:20:45</li> 
+</ul>
+</div>
+</div>
+<div class="hr10"></div>
+<div class="rigwap">
+<div class="menutitle">
+<div class="ab linkc"><a href="http://t.bluebbs.com/" target="_blank">微博讨论</a></div>
+  <div class="ac"><a href="http://t.bluebbs.com/" target=_blank>我也说两句&gt;&gt;</a></div>
+</div>
+<div class="discussion">
+<div style="width:256px ; height:126px;">
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- 广告位：顶部通栏1 -->
+
+<div class="hr10"></div>	
+
+
+
+<div class="cArea">
+
+<div class="conwap">
+<div class="menutitle">
+<div class="ab linkc"><a href="http://news.venfang.com/loushi/youhui/" target="_blank" title="点击查看更多威海楼盘优惠打折信息">优惠打折信息</a></div>
+<div class="ac"><a href="http://news.venfang.com/loushi/youhui/" target="_blank"  title="点击查看更多威海楼盘优惠打折信息">更多&gt;&gt;</a></div>
+</div>
+<div class="piccona">
+{h5:content  action="kanfangtuan_position" posid="43" catid="29" order="listorder DESC" num="8"}
+<ul>
+{loop $data $v}
+{h5:content action="relationlp" xglp="$v[xglp]" id="$v[xglp]" catid="14" num="1" return="relationlp"}
+
+ {if $relationlp}
+ {loop $relationlp $r}
+ {php $menu_info = menu_info('3360',$r[region])}
+<li>
+<div class="aa" onmouseover="this.className='ab'" onmouseout="this.className='aa'">
+<div class="c3 linki"><a href="{$v[url]}" target=_blank title="{$v[title]}">{$v[title]}</a></div>
+<div class="c5"><a href="{HOUSE_PATH}{$r[id]}" target=_blank title="{$r[title]}"><img src="{thumb($r[thumb], 147, 110, 0)}" alt="{$r[title]}"/></a></div>
+<div class="c4"><a href="{HOUSE_PATH}{$r[id]}" target=_blank><b>{$r[title]}</b></a></div>
+<div class="c4">区域：{$menu_info[0]}</div>
+<div class="c4 grey">价格：{if !empty($r[price]) && $r[price]!="一房一价"} {$r[price]}{if $r[priceunit]=="0" }元/㎡{else}元/套{/if} {else}一房一价{/if}</div>
+</div>
+</li>
+	{/loop}
+	{/if}
+	{/h5}
+{/loop}
+</ul>
+{/h5}
+</div>
+</div>
+<div class="hr10"></div>
+<div class="conwap">
+<div class="menutitle">
+<div class="ab linkc"><a href="{HOUSE_PATH}list.html" target="_blank">热点楼盘团购</a></div>
+{h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC" cache="3600"}
+<div class="ac">
+{loop $data $r}
+				<?php
+			$reg = explode('$$', $r);//add by L 2012/3/22
+			?>
+		<a href="{HOUSE_PATH}list-r{$reg[0]}.html" target="_blank">{$reg[1]}</a>&nbsp;
+		{/loop}
+</div>
+{/h5}
+</div>
+<div class="piccon">
+{h5:content  action="house_position" posid="44" catid="14" order="listorder DESC" num="8"}
+<ul>
+{loop $data $r}
+<li>
+<div class="aa" onmouseover="this.className='ab'" onmouseout="this.className='aa'">
+
+<a href="{HOUSE_PATH}{$r[id]}/" target=_blank><img src="{if !empty($r[thumb])}{$r[thumb]}{else}{APP_PATH}statics/default/img/index/nopic.jpg{/if}" style="border:0px solid #ccc;padding:2px" title="{$r[title]}" width="147px" height="110px"/></a>
+<div class="c5 linkh"><a href="{HOUSE_PATH}{$r[id]}/" title="{$r[title]}" target=_blank>{$r[title]}</a></div>
+<div class="c4">参考均价：{if !empty($r[price]) && $r[price]!="一房一价"}{$r[price]}元/㎡{else}一房一价{/if}</div>
+<div class="c4">团购人数：328人</div>
+<div class="c3 linkg"><a href="{HOUSE_PATH}{$r[id]}/#tg" target=_blank>我要团购</a></div>
+</div>
+</li>
+{/loop}
+</ul>
+{/h5}
+</div>
+
+</div>
+
+<div class="hr10"></div>
+
+
+<div class="conwap">
+<div class="menutitle">
+<div class="ab linkc"><a href="http://news.venfang.com/kanfangtuan/anli/" target="_blank">看房团活动回顾</a></div>
+<div class="ac"><a href="http://news.venfang.com/kanfangtuan/anli/">更多&gt;&gt;</a></div>
+</div>
+<div class="cencona">
+<ul>
+<li><script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=20"></script></li>
+  </ul>
+</div>
+
+</div>
+<div class="hr10"></div>
+
+
+
+</div>
+{template "content","footer"}

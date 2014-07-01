@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS `house5_message_data`;

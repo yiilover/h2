@@ -1,0 +1,141 @@
+{template "content","head_house"}
+ <div class="hr10"></div>
+<!-- 图库检索start -->
+    <div class="PartAs">
+      <div class="PartAsc fl">
+        <div class="PartAsc1">
+          <ul>
+  	<a href="ybjlist.html"><li id="s1" class="SearchB">样板间库</li></a>
+            <a href="xclist.html"><li id="s2" class="SearchA">楼盘图库</li></a>
+            <a href="hxlist.html"><li id="s3" class="SearchA">户型图库</li></a>
+          </ul>
+        </div>
+
+        <div class="PartAs_wrap">
+
+<!--楼盘搜索-->
+          <div  class="listimgbak"> 
+  
+  		<div id="get" class="get">
+
+
+
+<div class="getLine">
+<strong>选择区域：</strong> 
+<?php
+	$parentid = intval($_GET['r']);
+	$page = intval($_GET['p']);
+	$typeid = intval($_GET['typeid']);
+ 	if(!empty($parentid))
+	{
+		$lst = "-r".$parentid;
+		$regionsql = "and h.region='$parentid'";
+	}
+	if(!empty($typeid))
+	{
+		$typesql = "and p.typeid='$typeid'";
+	}
+?>
+{if !empty($parentid)}
+<span  class="b_k">	
+{else}
+<span  class="j_k">	
+{/if}
+<a href="{HOUSE_PATH}ybjlist{deal_str2($lst)}-p1.html">不限</a>
+</span>	
+
+<ul>
+{h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC" cache="10800"}
+{loop $data $r}
+<?php
+ 	$reg = explode('$$', $r);//add by L 2012/3/22
+	?>
+<li>
+{if !empty($parentid) && $parentid==$reg[0]}
+<div class="a1 j_k">
+{else}
+<div class="a1 b_k">
+{/if}
+<a href="{HOUSE_PATH}ybjlist-r{$reg[0]}{deal_str2($lst,'r')}.html">{$reg[1]}</a>
+</div>					
+</li>
+{/loop}
+{/h5}
+</ul>
+</div>
+</div>
+  	
+   </div>
+   <!--楼盘搜索-->
+
+          
+   
+  
+
+        </div>
+
+        <div class="PartAs_end"></div>
+      </div>
+    </div>
+    <!-- 图库检索end -->
+
+  <!-- 公用头部结束 -->
+  <div class="hr10"></div>
+<!-- 列表内容开始 -->
+  <div class="cArea">
+ {h5:get sql="SELECT h.title,h.id,p.id as pid,p.typeid,pd.pictureurls from h5_picture_data pd inner join h5_picture p inner join h5_house h on p.id=pd.id and p.catid=$catid $typesql $regionsql and h.id=pd.relation order by h.id desc" page="$page" num="3" return="data" cache="3600"}
+  <div class="qq_title qq_title02">
+<div class="a1 linko">样板间</div><div class="a2" style="float:right">
+共有
+<span class="redb" id="num"></span>个符合条件的样板间图片
+</div>
+  </div>
+  <!-- 列表开始 -->
+  <div class="listconimg">
+  {loop $data $r}
+<?php
+$count+=count(string2array($r['pictureurls']));?>
+{loop string2array($r['pictureurls']) $pic_k $v}
+
+  <div class="tpstyle tpstyle02">
+<ul>
+<li class="bk bk02 ">
+<a title="{$r[title]}{$v[alt]}" target="_blank" href="{HOUSE_PATH}xclist-{$r[id]}-{$r[typeid]}-{$r[pid]}.html#{$n}"><img alt="{$r[title]}{$v[alt]}" src="{thumb($v[url], 156, 156, 0)}"></a>
+</li>
+
+<li class="imgstitle">
+<a title="{$r[title]}{$v[alt]}" target="_blank" href="{HOUSE_PATH}xclist-{$r[id]}-{$r[typeid]}-{$r[pid]}.html"><b>{str_cut($v[alt],20,'')}</b></a>
+</li>
+<li class="lpname">楼盘：<a title="{$r[title]}" target="_blank" href="{HOUSE_PATH}{$r[id]}">{str_cut($r[title],20,'')}</a></li>
+</ul>
+  </div>
+{/loop}
+{/loop}
+ <!-- listpages start -->
+<h2>	
+<div class="hr10"></div>
+<div class="pga"><div class="pages cl"><div class="pg">{$pages}</div></div></div>
+<div class="hr10"></div>
+</h2>
+<!-- listpages end -->
+<script>
+var num = {$count};
+$('#num').html(num);
+$('#num1').html(num);
+</script>
+  </div>
+  <!-- 列表结束 -->
+  <div class="display_com_end"></div>
+  </div>
+  	<!-- 列表内容开始 -->
+  
+    <div class="hr10"></div>
+<div class="hr10"></div>
+
+
+</div>
+
+{template "content","footer"}
+
+</body>
+</html><!--lpimg007-->

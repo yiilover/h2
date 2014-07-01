@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK"/>
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<title>{$title}-手机问房网</title>
+<link href="{APP_PATH}css/mobile/css.css" rel="stylesheet" type="text/css"/>
+<link href="{APP_PATH}css/mobile/styles.css" type="text/css" rel="stylesheet" />
+<link href="{APP_PATH}css/mobile/photoswipe.css" type="text/css" rel="stylesheet" />
+<script language="Javascript" src="{CSS_PATH}static/js/jquery.js"></script>
+<script type="text/javascript" src="{APP_PATH}css/mobile/klassmin.js"></script>
+<script type="text/javascript" src="{APP_PATH}css/mobile/swipe305min.js"></script>
+<script type="text/javascript" src="{APP_PATH}css/mobile/info.js"></script>
+<script type="text/javascript" src="{APP_PATH}css/mobile/iscroll.js"></script>
+<script type="text/javascript">
+var myScroll;
+window.addEventListener("DOMContentLoaded",function(){
+	myScroll = new iScroll('wrapper',{hScrollbar:false,hideScrollbar:true,fixedScrollbar:false,bounce:true});
+	//myScroll.scrollTo(0,20,0,true);
+},false);
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+(function(window, Util, PhotoSwipe){
+	Util.Events.domReady(function(e){
+			var instance, indicators;
+<?php
+
+$priceA = Array();
+
+$date = Array();
+
+foreach ($pic as $key=>$r)
+
+{
+
+	$img_array[] = "{url: '".thumb($r[url], 400, 350, 0)."', caption: '".$r[alt]."'}";
+}
+$imgs = implode(',',$img_array);
+?>
+			instance = PhotoSwipe.attach(
+				[
+					<?php echo $imgs;?>
+				
+				],
+				{
+					target: window.document.querySelectorAll('#PhotoSwipeTarget')[0],
+					preventHide: true,
+					captionAndToolbarHide: true,
+					getImageSource: function(obj){
+						return obj.url;
+					},
+					getImageCaption: function(obj){
+						return obj.caption;
+					}
+				}
+			);
+			indicators = window.document.querySelectorAll('#Indicators span');
+			instance.addEventHandler(PhotoSwipe.EventTypes.onDisplayImage, function(e){
+			var i, len;
+			for (i=0, len=indicators.length; i<len; i++){
+				indicators[i].setAttribute('class', '');
+			}
+			indicators[e.index].setAttribute('class', 'current');
+		});
+			instance.show(0);
+		});
+}(window, window.Code.Util, window.Code.PhotoSwipe));
+
+</script>
+</head>
+<body>
+<div class="wrap" id="wrapper">
+<div id="scroller">
+<div class="backbox">
+    <div class="back" style="margin-bottom:2px;margin-top:-2px"><a href="{HOUSE_PATH}list.html"><img src="{APP_PATH}css/mobile/images/btnback.png" width="70"></a></div>
+    <div class="flol title" style="padding-left:10px; color:#FFFFFF">{$title}</div>
+    <div class="flor" style="margin-right:6px;margin-top:-2px"> <a id="favorite" class="btntopbar ablack" href="javascript://">收藏</a></div>
+    <div class="clear"></div>
+</div>
+<div id="storageimg" class="none"></div>
+<div id="district" class="none district"></div>
+<div class="fora bordertop discount none"></div>
+<div class="clear"></div>
+<div id="content">
+  <div class="content">
+  <div id="xfphoto">
+  <input type="hidden" id="siteurl" value="{HOUSE_PATH}">
+  <input type="hidden" id="id" value="{$id}">
+  <div id="MainContent" class="xf">
+	<div id="PhotoSwipeTarget" class="photo"></div>
+	<div id="Indicators">
+	{loop $pic $r}
+		<span></span>
+	{/loop}
+	
+	</div>
+  </div>
+  
+  </div>
+    <div class="boxpadleft8">
+      <div class="nxqbox">
+        <div id="title" class="nxqtit">{$title}</div>
+        <table width="100%" border="0" cellspacing="0"  class="nxqtable">
+          <tr>
+            <th width="85" >价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：</th>
+            
+            	<td width="215"  ><span class="fblu2 f18 price">{if !empty($price) && $price!="一房一价"}{if $priceunit=="0" }{$price}元/平方米{elseif  $priceunit=="2"}{price_short($price)}/套{/if} {else}一房一价{/if}</span> </td>
+          	
+          	
+          </tr>
+          <tr>
+            <th width="85" class="fbla">开盘时间：</th>
+            <td class="fbla"><span class="fbla">{if !empty($opentimetips)}{$opentimetips}{elseif !empty($opentime)&& $opentime!="0000-00-00"}{$opentime}{else}待定{/if}</span></td>
+          </tr>
+        </table>
+        
+        <div id="discount" class="none"></div>
+        
+		<!-- 
+        
+         -->
+      </div> 
+<?php
+list($lngX, $latY,$zoom) = explode('|', $map);
+?>
+      <div id="" class="nxqbox">
+        <div class="nxqtit">
+          <div class="flol" style="width:55px">地址：</div>
+          
+          	<a href="{HOUSE_PATH}map/3gmap.php?x={$lngX}&y={$latY}"><div class="nxqaddress fgray">{$address}</div></a>
+          
+          
+        </div>
+        
+       	 <a href="{HOUSE_PATH}map/3gmap.php?x={$lngX}&y={$latY}">
+       	 <div class="nxq-intro" style="margin-bottom:4px" >
+		 
+       	  <img src="http://api.map.baidu.com/staticimage?width=300&height=130&zoom=13&markers={$lngX},{$latY}&markerStyles=m,Y" width="300px" height="130px">
+       	 </div>
+       	 </a>
+      	
+      </div>
+      <div class="nxqbox">
+        <div class="nxqtit">最新动态</div>
+        {h5:content action="salesinfo" xglp="$id" catid="6" morecatid="26,49,28,29" num="1" order="inputtime DESC" cache="86400"}<!-- 最新销售动态 -->
+        {loop $data $r}
+        	<div class="nxq-intro" >{str_cut($r['description'],144,'...')}</div>
+        {/loop}
+		{/h5}
+        <div class="clear"></div>
+      </div>
+      
+      <div class="clu">
+        <ul class="infolist" >
+		{h5:content action="pictypecount" relation="$id" catid="13" cache="172800" return="huxinginfo"}
+          <a href="{HOUSE_PATH}{$id}/huxing.html" class="ablack"><li>主力户型（共{$huxinginfo}个户型）</li></a>
+		 {/h5}
+          {h5:content action="huxinginfo" relation="$id" catid="13" num="5" order="inputtime DESC" cache="86400"}<!-- 户型图列表 -->
+		  {php $xx=0;}
+{loop $data $rs}
+{php $xx++}
+{loop string2array($rs['pictureurls']) $pic_k $v}
+{php if($n>1) continue;}
+{php if($xx>3) break;}
+          <a href="{HOUSE_PATH}hxlist-{$id}-{$rs[typeid]}-{$rs[id]}.html#{$n}" class="ablack"><li class="f14">{$v[alt]}</li></a>
+{/loop}
+{/loop}
+{/h5}
+          <div class="clear"></div>
+        </ul>
+        <div class=""> </div>
+      </div>
+      
+      <div class="nxqbox">
+        <div class="nxqtit">详细楼盘参数</div>
+        <table width="100%" border="0" cellpadding="3" cellspacing="0" class="nxqtable">
+          <tr>
+            <th width="81px">物业类型：</th>
+            <td >{get_typename($type)}</td>
+          </tr>
+          <tr>
+            <th width="81px">项目特色：</th>
+            <td >{$character}</td>
+          </tr>
+          <tr>
+            <th width="81px">建筑类别：</th>
+            <td >{$type2}</td>
+          </tr>
+          <tr>
+            <th width="81px">装修状况：</th>
+            <td >{$fix}</td>
+          </tr>
+          <tr>
+            <th width="81px">所属商圈：</th>
+            <td >{menu_lastinfo('3360',$region)}</td>
+          </tr>
+          <tr>
+            <th width="81px">开盘时间：</th>
+            <td >{if !empty($opentimetips)}{$opentimetips}{elseif !empty($opentime)&& $opentime!="0000-00-00"}{$opentime}{else}待定{/if}</td>
+          </tr>
+          <tr>
+            <th width="81px">入住时间：</th>
+            <td >{if !empty($jfdatetips)}{$jfdatetips}{elseif !empty($jfdate)&& $jfdate!="0000-00-00"}{$jfdate}{else}待定{/if}</td>
+          </tr>
+          <tr>
+            <th width="81px">容&nbsp;&nbsp;积&nbsp;&nbsp;率：</th>
+            <td >{if !empty($far)}{$far}{else}待定{/if}</td>
+          </tr>
+          <tr>
+            <th width="81px">绿&nbsp;&nbsp;化&nbsp;&nbsp;率：</th>
+            <td >{if !empty($lhl)}{$lhl}%{else}待定{/if}</td>
+          </tr>
+          <!-- <tr>
+            <th width="81px">住&nbsp;&nbsp;户&nbsp;&nbsp;数：</th>
+            <td > </td>
+          </tr> -->
+          <tr>
+            <th width="81px">物&nbsp;&nbsp;业&nbsp;&nbsp;费：</th>
+            <td >{if !empty($wyf)}{$wyf}{else}待定{/if}</td>
+          </tr>
+          <tr>
+            <th width="81px">物业公司：</th>
+            <td >{getcompany_name($property,12)}</td>
+          </tr>
+          <tr>
+            <th width="81px">开&nbsp;&nbsp;发&nbsp;&nbsp;商：</th>
+            <td >{getcompany_name($developer,12)}</td>
+          </tr>
+        </table>
+        <div class="nxqtit">
+          <div class="flol f16" style="width:100px; line-height:18px">预售许可证：</div>
+          <div class="fgray f16" style="margin-left:100px; line-height:18px" >{$license}</div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="nxqbox">
+        <div class="nxqtit">项目介绍</div>
+        
+        	<div id="short_1" class="nxq-intro" >{str_cut(strip_tags($content), 180)}</div>
+        	<div id="all_1" class="nxq-intro none" >{$content}</div>
+        	<div id="more_1" class="nxq-btnmore"><div class="arrm">更多</div ></div>
+        	<div id="up_1" class="nxq-btnmore2 none"><div class="arrm">收起</div></div>
+        
+        
+        <div class="clear"></div>
+      </div>
+      <div class="nxqbox">
+        <div class="nxqtit">周边配套</div>
+        
+        
+        	<div class="nxq-intro" >
+<?php
+
+$order = array("\r\n", "\n", "\r");
+
+$zbpt = str_replace($order,'</li><li>',$zbpt);
+
+?>{$zbpt}</div>
+        
+        <div class="clear"></div>
+      </div>
+      <div class="nxqbox">
+        <div class="nxqtit">交通配套</div>
+        
+        
+        	<div class="nxq-intro" >{$jiaotong}</div>
+        
+        <div class="clear"></div>
+      </div>
+       <div class="clear" style="margin-bottom:55px"></div>
+      <!-- 
+      <div class="clu">
+        <ul class="infolist" >
+          <li >周边楼盘</li>
+          <li>同价位楼盘</li>
+          <div class="clear"></div>
+        </ul>
+        <div class=""> </div>
+      </div>
+      -->
+    </div>
+  </div>
+  </div>
+</div>
+<div id="favorite_msg" class="favorite none">收藏成功</div>
+<div id="footer" class="none">
+<?php
+if(strpos($tel,'/') !== FALSE) {
+$pos = strpos($tel,'/');
+$tel = substr($tel, 0, $pos);
+}
+?>
+ <a href="tel:{$tel}" class="abwhite"><div class="flol" style="overflow:hidden">售楼电话:<span id="phone">{$tel}</span></div><div class="flor" style="height:50px; margin-right:16px"><img src="{APP_PATH}css/mobile/images/call.png" width="58" ></div></a>
+</div>
+</div>
+<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>
+</body>
+</html>

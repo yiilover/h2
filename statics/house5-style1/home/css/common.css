@@ -1,0 +1,73 @@
+@charset "gb2312";
+
+/* From Common Style */
+/*
+input[type=text], input[type=password]{padding:0 2px; height:22px; border:1px solid #ccc;}
+select {border:1px solid #ccc}
+textarea {padding:2px;border:1px solid #ccc;}
+*/
+/* Validate */
+
+.v_error, .v_success {background-image:url(validate.gif); background-repeat:no-repeat}
+span.v_error, span.v_success{padding:3px 0 0 18px; margin:3px 0 0 8px; display:inline-block; height:16px; white-space:nowrap}
+div.v_error, div.v_success {padding:3px 0 0 18px; margin:8px 0 10px; height:16px}
+span.v_error, div.v_error {background-position:0 -30px; color:#eb2934}
+span.v_success, div.v_success {background-position:0 0; color:#555}
+/*
+input.v_error {background:url('validate.gif') 0 -60px no-repeat}
+input.v_valid {background:url('validate.gif') 0 -120px no-repeat}
+*/
+input.v_error {background-image:none}
+input.v_valid {background-image:none}
+
+.v_errorlog {padding:8px; background:#fff2f2; border:1px solid #fa6e6e; margin-bottom:15px}
+.v_errorlog .v_logmsg {padding-left:25px; background:url(validate.gif) 0 -190px no-repeat; line-height:1.5; color:#fe5656}
+
+/* Auto Complete */
+.ac_results {padding:0px; border:1px solid #ccc; background-color:white; color:#666; overflow:hidden; z-index:99999}
+.ac_results ul {width:100%; list-style-position:outside; list-style:none; padding:0; margin:0;}
+.ac_results li {margin:0px; padding:2px 5px; cursor:default; display:block; font-size:12px; line-height:20px; white-space:nowrap; overflow:hidden;}
+.ac_loading {background:white url('loader_16.gif') right center no-repeat;}
+.ac_odd {background-color:#f5f5f5;}
+.ac_over {background-color:#0A246A; color:#fff;}
+
+body { margin:0; padding:0; text-align:center; font-family:"宋体", arial; background:#fff; font-size:12px; color:#000;}
+div,form,img,ul,ol,li,dl,dt,dd,img {margin: 0; padding: 0; border: 0; }
+/* 通用顶部登录 */
+#topbg_common  { margin:0 auto; width:100%; min-width:1003px; width:expression(document.body.clientWidth <= 1003? "1003px": "auto" ); background:#FAFAFA;border-bottom:1px solid #E7ECF0; height:28px; }
+#top948_common { margin:0 auto;width:948px;text-align:right; color:#414040; position:relative; padding:0;}
+.Loginbox{width:width:500px; float:right;line-height:16px; padding:8px 0 4px 0;}
+.City{ width:210px; float:left; text-align:left;line-height:16px; padding:8px 0 4px 0;}
+.City a:link,.City a:visited,.City a:active{color:#414040; text-decoration:none;}
+.City a:hover{color:#ff0000; text-decoration:underline;}
+#top948_common .Loginbox a , #top948_common .Loginbox a:link, #top948_common .Loginbox a:visited , #top948_common .Loginbox a:active { margin-right:10px; font-size:12px; color:#414040; text-decoration:none;}
+#top948_common .Loginbox a:hover {font-size:12px; color:#ff0000; text-decoration:underline;}
+#top948_common form { display:inline;}
+#top948_common .Loginbox a.QQlogin,#top948_common .Loginbox a.sinalogin{height:16px;line-height:16px border:0; cursor:pointer; margin:-2px 5px 0 0;display:block; float:left; text-align:left; color:#4b4a4a;}
+a.QQlogin{ background:url(QQlogin.gif) no-repeat 0 0;width:41px; padding:2px 0 0 20px;} 
+a.sinalogin{ background:url(sinalogin.gif) no-repeat 0 0;width:77px;padding:2px 0 0 22px;} 
+#top948_common .Loginbox a:hover.QQlogin,#top948_common .Loginbox a:hover.sinalogin{ text-decoration:none;color:#4b4a4a;}
+.login_common { margin:-4px 10px 0 0; width:40px; height:18px; overflow:hidden; border:0; background:url(http://www.letfind.com.cn/images/common.png) no-repeat -334px -167px; cursor:pointer;}
+.input_common { margin:-4px 4px 0 0; padding:2px 2px 0 2px; width:56px; height:15px; background:#fff; border:1px solid #B4B4B4; overflow:hidden; color:#666;}
+
+#tool{width:948px; margin:0 auto; background:#ededed; height:26px; line-height:26px; text-align:center; padding:4px 0 0;}
+#tool a:link,#tool a:visited{ color:#000; text-decoration:none;}
+#tool a:hover,#tool a:active{ color:#ff0000; text-decoration:underline;}
+#bottom {color: #707070;line-height: 20px;margin: 0 auto;overflow: hidden;padding: 12px 0 20px;text-align: center;width: 760px;}
+.cp12f {font-family: Arial,Helvetica,sans-serif;}
+
+/* 通用顶部广告样式 */
+.clr:after { /*/*/content: "."; /* IE8 hack */ display: block; height: 0; clear: both; visibility: hidden; }
+/* IE7 hack */
+.clr { display: inline-block; }
+/* IE-mac, IE5, IE6 */
+* html .clr { height: 1%; }
+.clr { display: block; }
+.ADtopwrap{width:948px; margin:0 auto; overflow: hidden;}
+.pb8{ padding-bottom:8px;}
+.topadbox {overflow: hidden;padding-bottom: 5px;width: 948px;}
+.topad470A{width:470px;float:left; overflow:hidden;}
+.topad470B{width:470px;float:right;overflow:hidden;}
+.topad310 {float: left;margin-right: 9px;overflow: hidden;width: 310px;}
+.topad310B {float: left;overflow: hidden;width: 310px;}
+

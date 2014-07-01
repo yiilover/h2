@@ -1,0 +1,246 @@
+{template "wap","header"}
+<link type="text/css" rel="stylesheet" href="/statics/house5-style1/3g/css/3g_details.css" />
+<link type="text/css" rel="stylesheet" href="/statics/house5-style1/3g/css/3g_common.css" />
+<script>
+window.addEventListener("load",function() {
+  setTimeout(function(){
+   window.scrollTo(0, 1);
+  }, 0);
+});
+
+</script>
+<style>
+
+
+</style>
+</head>
+
+<body class="h_bg">
+<header class="header">
+<a href="{WAP_SITEURL}" class="logo">{$WAP['sitename']}</a>
+    <a href="{WAP_SITEURL}pic/{$id}" class="bn_back bn_back2" >返回</a>
+    <a href="#" class="bn_search">搜索</a>
+    <a href="#" class="bn_nav">导航</a>
+    <i></i>
+</header>
+	<script>
+	/*点击搜索和导航触发的事件*/
+	$(".bn_search").bind("click", function(){
+		var getifclass = $(this).attr("class").indexOf("bn_search_on");
+		if(getifclass > -1)
+		{
+			$(".h_so").css("display", "none");
+			$(".bn_search").removeClass("bn_search_on");
+		}
+		else
+		{
+			$(".h_so").css("display", "block");
+			$(".bn_search").addClass("bn_search_on");
+			$(".h_nav").css("height", "0px");
+			$(".bn_nav").removeClass("bn_nav_on");
+			$('#ico_del').css('display', 'none');
+		}
+			
+	});
+	$(".bn_nav").bind("click", function(){
+		$(".bn_search").removeClass("bn_search_on");
+		var getifclass = $(this).attr("class").indexOf("bn_nav_on");
+		if(getifclass > -1)
+		{
+			$(".h_nav").css("height", "0px");
+			$(".bn_nav").removeClass("bn_nav_on");
+		}
+		else
+		{
+			$(".h_so").css("display", "none");
+			$(".bn_search").removeClass("bn_search_on");
+			$(".h_nav").css("height", "43px");
+			$(".bn_nav").addClass("bn_nav_on");
+		}
+	});
+	function changeCity()
+	{
+		var stylecss = $(".sel_city").attr("style").indexOf("0px");
+		if(stylecss > -1)
+		{
+			$(".sel_city").attr("style", "");
+			$(".sel_city").css("height", "auto");
+		}
+		else
+		{
+			$(".sel_city").css("height", "0px");
+			$(".sel_city").css("overflow", "hidden");
+		}
+		
+	}
+	</script>
+<script type="text/javascript" src="/statics/house5-style1/3g/js/3g_swipe.min.js"></script>
+<div class="h_so" style="display:none">
+	<div class="m_con">
+		<form id="search_form" name="f" action="{WAP_SITEURL}list.html" method="get">
+	    	<input type="search" name='k' id="kw" class="input_keys" id="kw"  value="请输入楼盘……"  onfocus="if(this.value=='请输入楼盘……'){this.value='';}$('#ico_del').css('display', 'block');" onblur="if(this.value=='')this.value='请输入楼盘……';" autocomplete="off">
+	        <span class="ico_clear" onclick="$('#search_form input').val('')"><i id="ico_del" style="display:none"></i></span>
+	        <div class="search_bn" onClick="$('form').submit()"><i></i></div>
+    	</form>
+    </div>
+</div>
+<nav class="h_nav" id="slidermnav" style="height: 0px; overflow:hidden;">
+	<ul>
+    	<li style="display:block">
+        <p class="m_con nav_1">
+        <a href="{WAP_SITEURL}" style="width:18%">首页<em></em></a><a href="{WAP_SITEURL}list.html" style="width:28%">楼盘检索<em></em></a><a href="{WAP_SITEURL}top/" style="width:26%">楼盘榜<em></em></a><a href="{WAP_SITEURL}map/" style="width:28%">找房楼盘</a><i onclick='slidermnav.next();return false;'></i>
+        </p>	
+        </li>
+        <li style="display:none">
+        <p class="m_con nav_2">
+        <a href="{WAP_SITEURL}news/" style="width:33%">新房导购<em></em></a><a href="{WAP_SITEURL}calcul/" style="width:34%">房贷计算<em></em></a><i onclick='slidermnav.prev();return false;'></i>
+        </p>	
+      </li>
+    </ul>
+</nav>
+
+<script>
+	var slidermnav = new Swipe(document.getElementById('slidermnav'));
+</script>
+{php $lid = intval($_GET['lid']);}
+{php $pid = intval($_GET['pid']);}
+<div class="hx_sel hx_sel_mp">
+	<select onchange="javascript:window.location.href=this.value"><option value="{WAP_SITEURL}pic/{$id}/" {if empty($lid)} selected='true'{/if}>全部图片</option>
+{h5:content action="huxingtype" relation="$id" catid="8" num="10" order="inputtime DESC" cache="86400"}<!-- 图片 -->
+ {if $data}
+ {loop $data $r}
+ {h5:content action="pictypecount" relation="$id" catid="8" typeid="$r[typeid]" cache="172800" return="info"}
+	<option value="{WAP_SITEURL}pic/{$id}/{$r[typeid]}/" {if !empty($lid) && $lid==$r[typeid]}selected='true'{/if}>{get_typename_bytypeid($siteid,$r[typeid])}({$info})</option>
+ {/h5}
+	{/loop}
+{/if}
+{/h5}
+			</select>
+</div>
+<section class="hx_mp">
+
+<a class="bn bn_l" href="javascript:;" title="上一张" onclick="showpic('pre')"><span>上一张</span></a><a class="bn bn_r" href="javascript:;" onclick="showpic('next')" title="下一张"><span>下一张</span></a>
+	<div class="pic_con">
+	<div id="big-pic"></div>
+	<ul class="cont picbig" id="pictureurls"  style="position:absolute">
+	{h5:content action="huxinginfo" relation="$id" typeid="$lid" id="$pid" catid="8" order="inputtime DESC" cache="86400"}<!-- 相册浏览 -->
+{loop $data $rs}
+	{loop string2array($rs['pictureurls']) $pic_k $r}
+			<li><a href="javascript:;" hidefocus="true"><img src="{$r[url]}" rel="{$r[url]}" alt="{$r[alt]}" style="display:none;"></a></li>
+	{/loop}
+{/loop}
+{/h5}
+			</ul>
+        <label><span id="picinfo"></span><br><strong style="top:10px" id="picnum"></strong></label>
+    </div>
+	<script>
+$(document).ready(function(){
+	//获取锚点即当前图片id
+	var picid = location.hash;
+	picid = picid.substring(1);
+	if(isNaN(picid) || picid=='' || picid==null) {
+		picid = 1;
+	}
+	picid = parseInt(picid);
+
+	//图集图片总数
+	var totalnum = $("#pictureurls li").length;
+	//如果当前图片id大于图片数，显示第一张图片
+	if(picid > totalnum || picid < 1) {
+		picid = 1;
+		next_picid = 1;	//下一张图片id
+	} else {
+		next_picid = picid + 1;
+	}
+
+	url = $("#pictureurls li:nth-child("+picid+") img").attr("rel");
+	$("#big-pic").html("<img src='"+url+"' onload='loadpic("+next_picid+")'>");
+	$("#picnum").html("("+picid+"/"+totalnum+")");
+	$("#picinfo").html($("#pictureurls li:nth-child("+picid+") img").attr("alt"));
+
+	$("#pictureurls li").click(function(){
+		i = $(this).index() + 1;
+		showpic(i);
+	});
+
+	//加载时图片滚动到中间
+//	var _w = $('.cont li').width()*$('.cont li').length;
+	if(picid>2) {
+		movestep = picid - 3;
+	} else {
+		movestep = 0;
+	}
+	$(".cont ul").css({"left":-+$('.cont li').width()*movestep});
+
+	//点击图片滚动
+	$('.cont ul').width(_w);
+	$(".cont li").click( function () {
+	    if($(this).index()>2){
+			movestep = $(this).index() - 2;
+			$(".cont ul").css({"left":-+$('.cont li').width()*movestep});
+		}
+	});
+	//当前缩略图添加样式
+	$("#pictureurls li:nth-child("+picid+")").addClass("on");
+
+});
+function showpic(type) {
+	//隐藏重复播放div
+
+	//图集图片总数
+	var totalnum = $("#pictureurls img").length;
+	if(type=='next' || type=='pre') {
+		//获取锚点即当前图片id
+		var picid = location.hash;
+		picid = picid.substring(1);
+		if(isNaN(picid) || picid=='' || picid==null) {
+			picid = 1;
+		}
+		picid = parseInt(picid);
+
+		if(type=='next') {
+			i = picid + 1;
+			//如果是最后一张图片，指针指向第一张
+			if(i > totalnum) {
+				i=1;
+				next_picid=1;
+			} else {
+				next_picid = parseInt(i) + 1;
+			}
+
+		} else if (type=='pre') {
+			i = picid - 1;
+			//如果是第一张图片，指针指向最后一张
+			if(i < 1) {
+				i=totalnum;
+				next_picid = totalnum;
+			} else {
+				next_picid = parseInt(i) - 1;
+			}
+		}
+		url = $("#pictureurls li:nth-child("+i+") img").attr("rel");
+		$("#big-pic").html("<img src='"+url+"' onload='loadpic("+next_picid+")'>");
+	//	$('#big-pic img').LoadImage(true, 890, 650,$("#load_pic").attr('rel'));
+		$("#picnum").html("("+i+"/"+totalnum+")");
+		$("#picinfo").html($("#pictureurls li:nth-child("+i+") img").attr("alt"));
+		//更新锚点
+		location.hash = i;
+		type = i;
+
+		//点击图片滚动
+		var _w = $('.cont li').width()*$('.cont li').length;
+		if(i>2) {
+			movestep = i - 3;
+		} else {
+			movestep = 0;
+		}
+		$(".cont ul").css({"left":-+$('.cont li').width()*movestep});
+	}
+}
+function loadpic(id) {
+	url = $(".cont li:nth-child("+id+") img").attr("rel");
+	}
+</script>
+</section>
+
+</body>

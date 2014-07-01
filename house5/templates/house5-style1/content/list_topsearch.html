@@ -1,0 +1,161 @@
+var pssUrl="{APP_PATH}";
+var hrefTo="href=\"javascript:void(0);\" target=\"_top\"";
+
+var url=top.location.href;
+var domain=url.split('/')[2];
+var tab_N;
+var d_kw="请输入关键字";
+
+
+document.writeln("<link href=\""+pssUrl+"statics/house5-style1/css/search/pss.css\" rel=\"stylesheet\" type=\"text/css\" />");
+document.writeln("<div class=\"pss_css\">");
+document.writeln("<div class=\"t\">");
+document.writeln("<a "+hrefTo+" id=\"ta1\" class=\"ta on\" onclick=\"cT(\'ta\',1,8);\">新房</a>");
+document.writeln("<a "+hrefTo+" id=\"ta2\" class=\"ta off\" onclick=\"cT(\'ta\',2,8);\">二手房</a>");
+document.writeln("<a "+hrefTo+" id=\"ta3\" class=\"ta off\" onclick=\"cT(\'ta\',3,8);\">租房</a>");
+document.writeln("<a "+hrefTo+" id=\"ta4\" class=\"ta off\" onclick=\"cT(\'ta\',4,8);\">资讯</a>");
+document.writeln("<a "+hrefTo+" id=\"ta5\" class=\"ta off\" onclick=\"cT(\'ta\',5,8);\">论坛</a>");
+
+if (domain=='{SEARCH_PATH}'){tab_N=' style=\"display:block;\"';}else{tab_N=' style=\"display:none;\"';}
+document.writeln("<a "+hrefTo+" "+tab_N+" id=\"ta6\" class=\"ta off \" onclick=\"cT(\'ta\',6,8);\">视频</a>");
+document.writeln("<a "+hrefTo+" "+tab_N+" id=\"ta7\" class=\"ta off \" onclick=\"cT(\'ta\',7,8);\">问房</a>");
+document.writeln("<a "+hrefTo+" "+tab_N+" id=\"ta8\" class=\"ta off \" onclick=\"cT(\'ta\',8,8);\">地图</a>");
+
+
+document.writeln("</div>");
+document.writeln("<div class=\"s\">");
+document.writeln("<div class=\"p\">");
+document.writeln("<div id=\"qxD\" class=\"sf sf1 B\" onclick=\"cC(\'qx\',\'N\',\'B\');\">");
+document.writeln("<span id=\"qx_W\">区域</span>");
+document.writeln("<img src=\""+pssUrl+"statics/house5-style1/img/search/pss_shift.gif\" width=\"19\" height=\"22\"/>");
+document.writeln("</div>");
+document.writeln("<div id=\"xwD\" class=\"sf sf1 N\" onclick=\"cC(\'xw\',\'N\',\'B\');\">");
+document.writeln("<span id=\"xw_W\">新闻</span>");
+document.writeln("<img src=\""+pssUrl+"statics/house5-style1/img/search/pss_shift.gif\" width=\"19\" height=\"22\"/>");
+document.writeln("</div>");
+document.writeln("<div id=\"ltD\" class=\"sf sf1 N\" onclick=\"cC(\'lt\',\'N\',\'B\');\">");
+document.writeln("<span id=\"lt_W\">帖子</span>");
+document.writeln("<img src=\""+pssUrl+"statics/house5-style1/img/search/pss_shift.gif\" width=\"19\" height=\"22\"/>");
+document.writeln("</div>");
+document.writeln("<div  id=\"wyD\" class=\"sf sf2  N\" onclick=\"cC(\'wyZ\',\'N\',\'B\');\">");
+document.writeln("<span id=\"wyZ_W\">物业类型</span>");
+document.writeln("<img src=\""+pssUrl+"statics/house5-style1/img/search/pss_shift.gif\" width=\"19\" height=\"22\"/>");
+document.writeln("</div>");
+document.writeln("<div  id=\"wyB\" class=\"sf sf2  B\" onclick=\"cC(\'wy\',\'N\',\'B\');\">");
+document.writeln("<span id=\"wy_W\">物业类型</span>");
+document.writeln("<img src=\""+pssUrl+"statics/house5-style1/img/search/pss_shift.gif\" width=\"19\" height=\"22\"/>");
+document.writeln("</div>");
+document.writeln("<div id=\"jgfwD\" class=\"sf sf3 N\" onclick=\"cC(\'jg\',\'N\',\'B\');\">");
+document.writeln("<span id=\"jg_W\">价格范围</span>");
+document.writeln("<img src=\""+pssUrl+"statics/house5-style1/img/search/pss_shift.gif\" width=\"19\" height=\"22\"/>");
+document.writeln("</div>");
+document.writeln("<div id=\"jgfwZD\" class=\"sf sf3 N\" onclick=\"cC(\'jgZ\',\'N\',\'B\');\">");
+document.writeln("<span id=\"jgZ_W\">价格范围</span>");
+document.writeln("<img src=\""+pssUrl+"statics/house5-style1/img/search/pss_shift.gif\" width=\"19\" height=\"22\"/>");
+document.writeln("</div>");
+document.writeln("<div id=\"jgfwXD\" class=\"sf sf3 B\" onclick=\"cC(\'jgX\',\'N\',\'B\');\">");
+document.writeln("<span id=\"jgX_W\">价格范围</span>");
+document.writeln("<img src=\""+pssUrl+"statics/house5-style1/img/search/pss_shift.gif\" width=\"19\" height=\"22\"/>");
+document.writeln("</div>");
+document.writeln("<div id=\"kwD\" class=\"sf sf4  B\">");
+document.writeln("<img class=\"k\" src=\""+pssUrl+"statics/house5-style1/img/search/pss_k.gif\" width=\"19\" height=\"19\"/>");
+document.writeln("<span>");
+document.writeln("<input id=\"kw_f\" size=\"30\" type=\"text\" onKeyUp=\"sendlx(this.value);\" onKeyDown=\"javascript:window.event?send():null;\" onfocus=\"cTV(\'kw_f\',\'on\')\" onblur=\"cTV(\'kw_f\',\'off\')\" value=\""+d_kw+"\" />");
+document.writeln("</span>");
+document.writeln("</div>");
+document.writeln("<div id=\"kwZD\" class=\"sf sf5 N\">");
+document.writeln("<img class=\"k\" src=\""+pssUrl+"statics/house5-style1/img/search/pss_k.gif\" width=\"19\" height=\"19\"/>");
+document.writeln("<span>");
+document.writeln("<input id=\"kw_n\" size=\"50\" type=\"text\" onKeyDown=\"javascript:window.event?send():null;\" onfocus=\"cTV(\'kw_n\',\'on\')\" onblur=\"cTV(\'kw_n\',\'off\')\" value=\""+d_kw+"\" />");
+document.writeln("</span>");
+document.writeln("</div>");
+document.writeln("</div>");
+document.writeln("<img src=\""+pssUrl+"statics/house5-style1/img/search/pss_submit.gif\" width=\"90\" height=\"34\" class=\"i\" onclick=\"go()\"/>");
+document.writeln("</div>");
+document.writeln("<!--搜获浮动-->");
+document.writeln("<div id=\"pss_fd\" onmouseover=\"mousedownflag=1;\" onmouseout=\"mousedownflag=0;\" >");
+document.writeln("<div id=\"qx\" class=\"c qx N\">");
+document.writeln("<a "+hrefTo+" onclick=\"cI(\'qx_I\',\'0\');cW(\'qx_W\',this.innerHTML);cC(\'qx\',\'B\',\'N\');\">全部区域</a>");
+
+{h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC" cache="86400"}
+{loop $data $r}
+{php $reg = explode('$$', $r);}
+
+document.writeln("<a "+hrefTo+" onclick=\"cI(\'qx_I\',\'{$n}\');cW(\'qx_W\',this.innerHTML);cC(\'qx\',\'B\',\'N\');\">{$reg[1]}</a>");
+
+{/loop}
+{/h5}
+
+document.writeln("</div>");
+document.writeln("<div id=\"xw\" class=\"c xw N\">");
+document.writeln("<a "+hrefTo+" onclick=\"cI(\'xw_I\',\'1\');cW(\'xw_W\',this.innerHTML);cC(\'xw\',\'B\',\'N\');\">新闻</a>");
+//document.writeln("<a "+hrefTo+" onclick=\"cI(\'xw_I\',\'91\');cW(\'xw_W\',this.innerHTML);cC(\'xw\',\'B\',\'N\');\">视频</a>");
+//document.writeln("<a "+hrefTo+" onclick=\"cI(\'xw_I\',\'52\');cW(\'xw_W\',this.innerHTML);cC(\'xw\',\'B\',\'N\');\">专题</a>");
+document.writeln("</div>");
+document.writeln("<div id=\"lt\" class=\"c xw N\">");
+document.writeln("<a "+hrefTo+" onclick=\"cI(\'lt_I\',\'1\');cW(\'lt_W\',this.innerHTML);cC(\'lt\',\'B\',\'N\');\">帖子</a>");
+document.writeln("<a "+hrefTo+" onclick=\"cI(\'lt_I\',\'2\');cW(\'lt_W\',this.innerHTML);cC(\'lt\',\'B\',\'N\');\">用户</a>");
+document.writeln("<a "+hrefTo+" onclick=\"cI(\'lt_I\',\'4\');cW(\'lt_W\',this.innerHTML);cC(\'lt\',\'B\',\'N\');\">日志</a>");
+document.writeln("<a "+hrefTo+" onclick=\"cI(\'lt_I\',\'5\');cW(\'lt_W\',this.innerHTML);cC(\'lt\',\'B\',\'N\');\">相册</a>");
+document.writeln("<a "+hrefTo+" onclick=\"cI(\'lt_I\',\'6\');cW(\'lt_W\',this.innerHTML);cC(\'lt\',\'B\',\'N\');\">群组</a>");
+document.writeln("</div>");
+document.writeln("<div id=\"wy\" class=\"c wy N\">");
+document.writeln("<a "+hrefTo+" onclick=\"cI(\'wy_I\',\'0\');cW(\'wy_W\',this.innerHTML);cC(\'wy\',\'B\',\'N\');\">不限类型</a>");
+{php $type_arr = getbox_name('13','type')}
+{loop $type_arr $key $v}
+document.writeln("<a "+hrefTo+" onclick=\"cI(\'wy_I\',\'{$key}\');cW(\'wy_W\',this.innerHTML);cC(\'wy\',\'B\',\'N\');\">{$v}</a>");
+{/loop}
+document.writeln("</div>");
+document.writeln("<div id=\"wyZ\" class=\"c wy N\">");
+document.writeln("<a "+hrefTo+" onclick=\"cI(\'wyZ_I\',\'0\');cW(\'wyZ_W\',this.innerHTML);cC(\'wyZ\',\'B\',\'N\');\">不限类型</a>");
+{php $type_arr = getbox_name('39','type')}
+{loop $type_arr $key $v}
+document.writeln("<a "+hrefTo+" onclick=\"cI(\'wyZ_I\',\'{$key}\');cW(\'wyZ_W\',this.innerHTML);cC(\'wyZ\',\'B\',\'N\');\">{$v}</a>");
+{/loop}
+document.writeln("</div>");
+document.writeln("<div id=\"jg\" class=\"c jg N\">");
+document.writeln("<a "+hrefTo+" onclick=\"cI(\'jg_I\',\'0\');cW(\'jg_W\',this.innerHTML);cC(\'jg\',\'B\',\'N\');\">不限价格</a>");
+{php $range_arr = getbox_name('39','range')}
+{loop $range_arr $key $v}
+document.writeln("<a "+hrefTo+" onclick=\"cI(\'jg_I\',\'{$key}\');cW(\'jg_W\',this.innerHTML);cC(\'jg\',\'B\',\'N\');\">{$v}</a>");
+{/loop}
+document.writeln("</div>");
+document.writeln("<div id=\"jgZ\" class=\"c jg N\">");
+document.writeln("<a "+hrefTo+" onclick=\"cI(\'jgZ_I\',\'0\');cW(\'jgZ_W\',this.innerHTML);cC(\'jgZ\',\'B\',\'N\');\">不限价格</a>");
+{php $range_arr = getbox_name('41','range')}
+{loop $range_arr $key $v}
+document.writeln("<a "+hrefTo+" onclick=\"cI(\'jgZ_I\',\'{$key}\');cW(\'jgZ_W\',this.innerHTML);cC(\'jgZ\',\'B\',\'N\');\">{$v}</a>");
+{/loop}
+document.writeln("</div>");
+document.writeln("<div id=\"jgX\" class=\"c jg N\">");
+document.writeln("<a "+hrefTo+" onclick=\"cI(\'jgX_I\',\'0\');cW(\'jgX_W\',this.innerHTML);cC(\'jgX\',\'B\',\'N\');\">不限价格</a>");
+{php $range_arr = getbox_name('13','range')}
+{loop $range_arr $key $v}
+document.writeln("<a "+hrefTo+" onclick=\"cI(\'jgX_I\',\'{$key}\');cW(\'jgX_W\',this.innerHTML);cC(\'jgX\',\'B\',\'N\');\"> {$v}</a>");
+{/loop}
+document.writeln("</div>");
+document.writeln("<div id=\"lx_xf\" class=\"c lx N\">");
+document.writeln("</div>");
+document.writeln("</div>");
+document.writeln("<input type=\"hidden\" id=\"t\" value=\"1\" />");
+document.writeln("<input type=\"hidden\" id=\"qx_I\" value=\"0\" />");
+document.writeln("<input type=\"hidden\" id=\"wy_I\" value=\"0\" />");
+document.writeln("<input type=\"hidden\" id=\"wyZ_I\" value=\"0\" />");
+document.writeln("<input type=\"hidden\" id=\"jg_I\" value=\"0\" />");
+document.writeln("<input type=\"hidden\" id=\"jgZ_I\" value=\"0\" />");
+document.writeln("<input type=\"hidden\" id=\"jgX_I\" value=\"0\" />");
+document.writeln("<input type=\"hidden\" id=\"xw_I\" value=\"1\" />");
+document.writeln("<input type=\"hidden\" id=\"lt_I\" value=\"1\" />");
+document.writeln("<form id=\"f\" action=\"\" method=\"post\" target=\"_blank\"></form>");
+
+if (domain!='<?php SEARCH_PATH?>'){tab_N=' style=\"display:block;\"';}else{tab_N=' style=\"display:none;\"';}
+document.writeln("<div class=\"adv\" "+tab_N+">");
+document.writeln("<a href=\""+pssUrl+"map\/\" target=\"_blank\">地图找房<\/a><br \/>");
+document.writeln("<a href=\"search\/\" target=\"_blank\">高级搜索<\/a>");
+document.writeln("</div>");
+
+
+document.writeln("</div>");
+
+
+document.writeln("<script src=\""+pssUrl+"index.php?s=content/index/topsearch/next/1\" type=\"text/javascript\"></script>");

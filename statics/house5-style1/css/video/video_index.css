@@ -1,0 +1,94 @@
+/* CSS Document */
+/**-------------------------全局样式---------------------------**/
+/*Copyright (c) 2011, zhijia! Inc. All rights reserved.*/
+@import url("main.css");
+
+/*-----------------------------------头部-----------------------------------*/
+#wrapper{background:#fff;margin: 0 auto;overflow: visible;text-align: left;width: 960px;}
+.header{width:100%;height:30px;line-height:30px;text-align:center;padding:5px 0 0 0;}
+.header .header_logo{background:url("../../img/video/inhe_logo.jpg") no-repeat;float: left;height: 25px;width: 81px;}
+.header .header_menu{float: right;height: 25px;line-height: 25px;}
+.header .header_menu a{margin: 0 10px;}
+
+/*广告位*/
+.ad{padding:10px;border:1px solid #e7e7e7}
+
+
+
+.conLeft{float:left;width:670px;}
+.conRight{float:right;width:280px;}
+/*------------------------焦点图------------------------*/
+/*.focusFlash{width:670px;height:370px;overflow:hidden;text-align:center;}
+#flashcontent01{width:668px;border:1px solid #dedede;background:#ebebeb;padding:2px 0;margin:0 auto;}*/
+#focus {width:670px; height:280px; overflow:hidden; position:relative;margin-bottom:10px;}
+#focus ul {height:280px; position:absolute;}
+#focus ul li {float:left; width:670px; height:280px; overflow:hidden; position:relative; background:#000;}
+#focus ul li div {position:absolute; overflow:hidden;}
+#focus .btnBg {position:absolute; width:670px; height:20px; left:0; bottom:0; background:#000;}
+#focus .btn {position:absolute; width:650px; height:10px; padding:5px 10px; right:0; bottom:0; text-align:right;}
+#focus .btn span {display:inline-block; _display:inline; _zoom:1; width:25px; height:10px; _font-size:0; margin-left:5px; cursor:pointer; background:#fff;}
+#focus .btn span.on {background:#fff;}
+#focus .preNext {width:45px; height:100px; position:absolute; top:90px; background:url("../../../img/video/sprite.png") no-repeat 0 0; cursor:pointer;}
+#focus .pre {left:0;}
+#focus .next {right:0; background-position:right top;}
+/*------------------------左侧区块------------------------*/
+.leftBox{margin-bottom:10px;border:1px solid #dedede;}
+.leftTle{height:32px;line-height:32px;padding-left:15px;font-size:14px;font-weight:bold;color:#484848;background:url("../../img/video/lefttlebg.gif") repeat-x center top;}
+.leftTle span{float:right;padding:5px 15px 0 0;font-size:12px;font-weight:normal;color:#666;}
+.leftCon{height:265px;overflow:hidden;background:#fff;padding:15px 0 10px 20px; width:648px;}
+.fouceTxt{float:left;width:284px;}
+.fouceTxt a:link img,
+.fouceTxt a:visited img{width:275px;height:160px;border:1px solid #dedede;padding:3px;}
+.fouceTxt a:hover img{width:275px;height:160px;border:1px solid #f00;padding:3px;}
+.fouceTxt h1{display:block;padding-top:13px;font-size:14px;}
+.fouceTxt h1 a:link,
+.fouceTxt h1 a:visited{color:#2e2e2e;}
+.fouceTxt span{color:#787878;line-height:24px;}
+.fouceTxt span a:link,
+.fouceTxt span a:visited{color:#f00;}
+ul.ImgList{float:right;width:330px;}
+ul.ImgList li{float:left;width:142px;height:136px;overflow:hidden;padding-right:23px;}
+ul.ImgList li img{width:142px;height:80px;}
+ul.ImgList li div{height:24px;line-height:24px;}
+ul.ImgList li div a:link,
+ul.ImgList li div a:visited{color:#2e2e2e;}
+ul.ImgList li div a:hover{color:#f00;}
+ul.ImgList li p{display:block;color:#999;}
+ul.ImgList li p span{background:url("../../img/video/icon6.gif") no-repeat left top;padding-left:20px;}
+ul.ImgList li p em{ background:url("../../img/video/icon7.gif") no-repeat left top;padding-left:20px;margin-left:6px; font-style:normal}
+
+/*------------------------右侧区块------------------------*/
+.rightTle{height:32px;line-height:32px;color:#484848;font-size:14px;font-weight:bold;padding-left:10px;background:url("../../img/video/righttlebg.gif") repeat-x center top;border:1px solid #e8e8e8;}
+.rightCon{padding-top:15px;}
+/*------------------------视频分类------------------------*/
+.rightCon ul.btn{}
+.rightCon ul.btn li{float:left;width:110px;height:28px;line-height:28px;color:#000;font-size:12px;text-align:center;background:url("../../img/video/btn_fenlei.gif") no-repeat center top;margin:0px 0 6px 20px;#margin:0px 0 6px 20px;_margin:0px 0 6px 13px;}
+
+/*------------------------热门推荐------------------------*/
+ul.hotList{padding-left:5px;}
+ul.hotList li{height:75px;padding-bottom:13px;overflow:hidden;}
+ul.hotList li .ImgA{float:left;width:125px;height:75px;}
+ul.hotList li p{float:right;width:140px;margin-left:10px;color:#787878;}
+ul.hotList li p strong a:link,
+ul.hotList li p strong a:visited{display:block;color:#2e2e2e;}
+ul.hotList li p strong a:hover{color:#f00;}
+
+/*------------------------最新发布------------------------*/
+ul.newList{}
+ul.newList li{height:31px;line-height:31px;overflow:hidden;border-bottom:1px solid #e3e3e3;}
+ul.newList li font{float:left;width:27px;text-align:center;font-size:14px; font-family:Arial, Helvetica, sans-serif;color:#787878;}
+ul.newList li strong{float:left;width:215px; font-weight:normal}
+ul.newList li strong a:link,
+ul.newList li strong a:visited{color:#2e2e2e;height:31px;line-height:31px;}
+ul.newList li strong a:hover{color:#f00;}
+ul.newList li span{float:right;padding-right:7px;color:#ff9805;}
+.tit{padding-left:2px;}
+.tab01UL{height:28px;}
+.tit li {float:left;cursor:pointer;width:68px;height:28px;line-height:25px;background:url("../../img/video/tab_normal.gif") no-repeat left top;text-align:center;color:#5c5c5c;}
+.tit li.tab01active{width:69px;line-height:25px;background:url("../../img/video/tab_active.gif") no-repeat left top;font-weight:bold;color:#dd0d0b;}
+/***当前状态背景**/
+.cont{width:280px;padding-top:5px;}
+
+/* fonts Styles*/
+a.red,a.red:visited{color:#f00}
+.red{color:#f00}

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="gbk"/>
+	<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+	<meta name="keywords" content="{$SEO['keyword']}">
+    <meta name="description" content="{$SEO['description']}">
+    <link href="{APP_PATH}favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+	<link href="{APP_PATH}statics/house5-style1/index/css/reset.css"  rel="stylesheet" type="text/css"/>
+	<link href="{APP_PATH}statics/house5-style1/news/css/news.css" rel="stylesheet" type="text/css"/>
+	<script src="{APP_PATH}statics/house5-style1/sea/js/sea.js"  type="text/javascript"></script>
+</head>
+<body>
+<div id="main" class="xfindex">
+		<div id="header">
+   {template "ssi","ssi_8"}
+	<div class="mt5 cf">
+	
+</div>
+	
+
+	   <h1><a href="{APP_PATH}"  title="{$site_title}" class="logo fl">
+	<img src="{APP_PATH}statics/house5-style1/img/logo.png" alt="{$SEO['site_title']}" width="150" height="50"/></a></h1>
+	<div id="Search">
+		<ul class="searchURL">
+			<li class="on"><a   target="_blank">资讯</a></li>
+			<li><a href="{HOUSE_PATH}"  target="_blank">新房</a></li>
+			<li><a href="{ESF_PATH}list.html"  target="_blank">二手房</a></li>
+			<li><a href="{ESF_PATH}rent-list.html"  target="_blank">出租房</a></li>
+			<li><a href="{catlink(7)}"  target="_blank">图库</a></li>
+			<li><a href="{catlink(10)}"  target="_blank">视频</a></li>
+			<li class="more"><a href="javascript:void(0)">更多<em></em></a>
+				<div>
+					<a target="_blank" href="{BBS_PATH}">论坛</a>
+				</div>
+			</li>
+		</ul>
+		<a href="{APP_PATH}map/" target="_blank" class="mapS">地图找房</a>
+		<input type="text" value="请输入关键字" data-val="请输入关键字">
+		<button> </button>
+	</div>
+	<div id="indexMenu"> 
+		<em class="r2"></em>
+		<div id="newMenu">
+	<a href="javascript:void(0)" class="fir">网站导航</a>
+	{template "ssi","ssi_12"}
+</div>
+<script type="text/javascript">
+seajs.use("jquery",function($){
+	var $newMenu=$("#newMenu")
+	$newMenu.hover(function(){
+		$newMenu.addClass("on")
+	},function(){
+		$newMenu.removeClass("on")
+	}).find("li").hover(function(){
+		$(this).addClass("on")
+	},function(){
+		$(this).removeClass("on")
+	})
+})
+</script>		<ul class="menuL">
+
+			<li class="s">
+				<a href="{catlink(6)}" target="_self" >首页<em></em></a>
+			</li>
+			{h5:content action="category" catid="6" num="7" siteid="$siteid" order="listorder ASC"}{loop $data $r}
+			<li >
+				<a href={$r[url]}>{$r[catname]}<em></em></a>
+            </li>
+			{/loop} {/h5} 
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	seajs.use(["jquery","nsearch"],function($){
+		$("#Search").hSearch("{APP_PATH}index.php?s=search/index/init/siteid/1/typeid/1/","#")//前面是搜索地址，后面是ajax查询新盘api
+	})
+</script> 
+	
+	   
+	   
+	   <div class="mt5"></div>
+		<div class="cf mt10">
+			<div class="w300 fl">
+				<div class="focus-pic" id="tab2">
+    <div class="dt">
+        <i class="on">1</i>
+        <i>2</i>
+        <i>3</i>
+        <i>4</i>
+        <i>5</i>
+    </div>
+    <ul class="dd">
+	{h5:content  action="position" posid="1" thumb="1" order="listorder DESC" num="5" cache="3600"}<!-- 首页幻灯新闻 -->
+{loop $data $v}
+       <li {if $n>1}style="display:none"{/if}><a href="{$v[url]}"><img border="0" src="{thumb($v[thumb],340,190)}" width="340" height="190" alt="{$v[title]}"/></a>
+       <p><a href="{$v[url]}" title="{$v[title]}">{$v[title]}</a></p></li>{/loop}{/h5} 
+    </ul>
+</div>
+
+				<div class="newsA mt10">
+            <h2> <strong>{catname(37)}</strong><!-- 楼盘导购 -->
+            <a class="more" href="{catlink(37)}" title="{catname(37)}" target="_blank">更多</a>
+        </h2>
+        <ul class="NewsList">
+		 {h5:content  action="lists" catid="37" order="listorder DESC" num="8" cache="3600"}
+				 {loop $data $v}
+                        <li><a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{str_cut($v[title],40,'')}</a> </li>
+						 {/loop}{/h5}
+                        
+            </ul>
+</div>
+			</div>
+			<div class="w360 newsB fl">
+				<div class="ti">
+				 {h5:content  action="position" posid="2" order="listorder DESC" num="1" cache="3600"}<!-- 头条1 -->
+				{loop $data $v}
+					    <h1><a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{str_cut($v[title],30,'')}</a></h1>
+						{/loop}{/h5}
+<ul class="txtone cf">
+  {h5:content  action="position" posid="37" order="listorder DESC" num="4" cache="3600"}<!-- 头条1下4条 -->
+  {loop $data $v}
+            <li><a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{str_cut($v[title],30,'')}</a></li>
+           {/loop}{/h5}
+    </ul>
+
+				</div>
+				<ul class="NewsList NL14">
+				<!-- 最新前6条 -->
+				 {h5:content  action="lists" catid="37" order="listorder DESC" limit="1,6" cache="3600"}
+				 {loop $data $v}
+            <li>
+           <a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{str_cut($v[title],80,'')}</a>
+        </li>{/loop}{/h5}
+        </ul>
+		<ul class="NewsList nobor_b"> <!-- 最新下7条 -->
+		{h5:content  action="lists" catid="37" order="listorder DESC" limit="7,7" cache="3600"}
+				 {loop $data $v}
+				  <li>
+           <a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{str_cut($v[title],80,'')}</a>
+        </li>{/loop}{/h5}
+              
+        </ul>
+			</div>
+			<div class="w280 fr">
+				<div class="newsA">
+    <h2> <strong>{catname(16)}</strong>
+	        <a href="{catlink(37)}" title="{catname(16)}" target="_blank" class="more">更多</a>
+    </h2>
+    <div class="inbox inbox1 cf">
+	{h5:content  action="lists" catid="16" order="listorder DESC" thumb="1" limit="1" cache="3600"}<!-- 全国楼市第一个带图片的 -->
+				 {loop $data $v}
+        <a href="{$v[url]}" target="_blank"  class="fl" title="{$v[title]}"><img src="{thumb($v[thumb],70,60)}" width="70" height="60" alt="{$v[title]}"/></a>
+        <h5>
+           <a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{str_cut($v[title],26,'')}</a>
+        </h5>{str_cut($v[description],46)}<a href="{$v[url]}" target="_blank">[详细]</a>{/loop}{/h5}
+    </div>
+    <ul class="NewsList">
+	{h5:content  action="lists" catid="16" order="listorder DESC" limit="6" cache="3600"}<!-- 排除第一个带图的新闻调用5条 -->
+	{loop $data $v} {if $n>1}
+                <li> <a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{str_cut($v[title],38,'')}</a></li>
+	 {/if}{/loop}{/h5}
+                    
+            </ul>
+</div>
+				<div class="mt5"><!-- 广告 --><script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=207"></script></div>
+			</div>
+		</div>
+        <div class="mt2"><!-- 广告区 --></div>
+<div class="mt2 cf">
+<!-- 广告区 -->
+<div class="clear"></div></div>
+<div class="mt2"><!-- 广告区 --></div>
+<div class="mt2 cf">
+<!-- 广告区 -->
+<div class="clear"></div></div>
+<div class="mt2 mb5"><!-- 广告区 --></div>
+		<!--第二屏-->
+		<div class="cf">
+			<div class="w300 fl">
+				<div class="newsA">
+    <h2>
+        <strong>新闻排行</strong>
+        </h2>
+    <ol class="Top10" style="padding-top:-10px;">
+	{h5:content  action="hits" catid="6" limit="10" cache="3600"}<!-- 排除第一个带图的新闻调用5条 -->
+	{loop $data $v} 
+	        <li class="A"> <i>{$n}</i>
+               <a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{str_cut($v[title],40,'')}</a>
+            </li>{/loop}{/h5}
+                 
+            </ol>
+</div>
+
+				<div class="mt10"><script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=208"></script></div>
+			</div>
+			<div class="w650 cf fr bor_br">
+				<div class="NewsList2">
+            <h2>
+            <a href="{catlink(27)}" title="{catname(27)}" target="_blank">更多</a>
+            {catname(27)}        </h2>
+        <div class="inbox cf">
+{h5:content  action="lists" catid="27" limit="1"  thumb="1"  order="listorder DESC" }{loop $data $v}
+        <a href="{$v[url]}" title="{$v[title]}" target="_blank" class="fl"><img src="{thumb($v[thumb],105,80)}" width="105" height="80"></a>
+        <h5>
+            <a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a>
+        </h5>
+        {str_cut($r[description],50)}<a href="{$v[url]}" target="_blank">[详细]</a>
+		{/loop}
+			 {/h5}
+    </div>
+    <ul class="NewsList">
+	{h5:content  action="lists" catid="27" limit="5"   order="listorder DESC" }{loop $data $v}
+                <li> <a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></li>
+				{/loop}
+			 {/h5}
+            </ul>
+</div>
+
+				<div class="NewsList2">
+            <h2>
+          <a href="{catlink(30)}" title="{catname(30)}" target="_blank">更多</a>
+           {catname(30)}     </h2>
+        <div class="inbox cf">
+{h5:content  action="lists" catid="30" limit="1"  thumb="1"  order="listorder DESC" }{loop $data $v}
+        <a href="{$v[url]}" title="{$v[title]}" target="_blank" class="fl"><img src="{thumb($v[thumb],105,80)}" width="105" height="80"></a>
+        <h5>
+            <a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a>
+        </h5>
+        {str_cut($r[description],50)}<a href="{$v[url]}" target="_blank">[详细]</a>
+		{/loop}
+			 {/h5}
+    </div>
+    <ul class="NewsList">
+             {h5:content  action="lists" catid="30" limit="5"   order="listorder DESC" }{loop $data $v}
+                <li> <a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></li>
+				{/loop}
+			 {/h5}
+            </ul>
+</div>
+                <div class="NewsList2">
+            <h2>
+           <a  class="more"  href="{catlink(31)}" title="{catname(31)}" target="_blank">更多</a>
+           {catname(31)}     </h2>
+        <ul class="NewsList">
+   {h5:content  action="lists" catid="31" limit="8"   order="listorder DESC" }{loop $data $v}
+                <li> <a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></li>
+				{/loop}
+			 {/h5}
+            </ul>
+</div>
+
+                <div class="NewsList2">
+            <h2>
+          <a href="{catlink(34)}" title="{catname(34)}" target="_blank">更多</a>
+           {catname(34)}     </h2>
+        <ul class="NewsList">
+                       {h5:content  action="lists" catid="34" limit="8"   order="listorder DESC" }{loop $data $v}
+                <li> <a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></li>
+				{/loop}
+			 {/h5}
+            </ul>
+</div>
+
+			</div>
+		</div>
+        <div class="mt5"><!-- 广告区 --></div>
+<div class="mt2"></div>
+		<div class="cf mt10">
+			<div class="w300 fl">
+				<div class="newsA">
+             <h2>
+            <strong>{catname(38)}</strong>
+            <a class="more" href="{catlink(38)}" title="{catname(38)}" target="_blank">更多</a>
+        </h2>
+             <div class="esfimg">
+{h5:content  action="lists" catid="38" limit="1"  thumb="1"  order="listorder DESC" }{loop $data $v}
+            <a href="{$v[url]}" title="{$v[title]}" target="_blank">
+                <img src="{thumb($v[thumb],300, 178)}" alt="{$v[title]}" width="300" height="178">
+            </a>
+            <h5>
+               <a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a>
+            </h5>{/loop}
+			 {/h5}
+        </div>
+         <ul class="NewsList">
+       {h5:content  action="lists" catid="38" limit="5"   order="listorder DESC" }{loop $data $v}
+                     <li><a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></li>{/loop}
+			 {/h5}
+    </ul>
+</div>
+
+				<div class="mt5"><script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=208"></script></div>
+				<div class="newsA mt10">
+            <h2>
+            <strong>{catname(32)}</strong>
+            <a class="more" href="{catlink(32)}" title="{catname(32)}" target="_blank">更多</a>
+        </h2>
+        <ul class="NewsList">
+
+                     {h5:content  action="lists" catid="32" limit="8"   order="listorder DESC" }{loop $data $v}
+                     <li><a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></li>{/loop}
+			 {/h5}
+            </ul>
+</div>
+
+			</div>
+			<div class="w650 cf fr bor_br">
+				<div class="NewsList2">
+            <h2>
+           <a class="more" href="{catlink(34)}" title="{catname(34)}" target="_blank">更多</a>
+            {catname(34)}        </h2>
+        <div class="inbox cf">
+{h5:content  action="lists" catid="34" limit="1"  thumb="1"  order="listorder DESC" }{loop $data $v}
+        <a href="{$v[url]}" title="{$v[title]}" target="_blank" class="fl"><img src="{thumb($v[thumb],105,80)}" width="105" height="80"></a>
+        <h5>
+            <a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a>
+        </h5>
+        {str_cut($r[description],50)}<a href="{$v[url]}" target="_blank">[详细]</a>
+		{/loop}
+			 {/h5}
+    </div>
+    <ul class="NewsList">
+                 {h5:content  action="lists" catid="34" limit="5"   order="listorder DESC" }{loop $data $v}
+                <li> <a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></li>
+				{/loop}
+			 {/h5}
+            </ul>
+</div>
+
+                <div class="NewsList2">
+             <h2>
+           <a class="more" href="{catlink(33)}" title="{catname(33)}" target="_blank">更多</a>
+            {catname(33)}        </h2>
+        <div class="inbox cf">
+       {h5:content  action="lists" catid="33" limit="1"  thumb="1"  order="listorder DESC" }{loop $data $v}
+        <a href="{$v[url]}" title="{$v[title]}" target="_blank" class="fl"><img src="{thumb($v[thumb],105,80)}" width="105" height="80"></a>
+        <h5>
+            <a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a>
+        </h5>
+        {str_cut($r[description],50)}<a href="{$v[url]}" target="_blank">[详细]</a>
+		{/loop}
+			 {/h5}
+    </div>
+    <ul class="NewsList">
+                {h5:content  action="lists" catid="33" limit="5"   order="listorder DESC" }{loop $data $v}
+                <li> <a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></li>
+				{/loop}
+			 {/h5}
+            </ul>
+</div>
+
+                <div class="NewsList2">
+               <h2>
+           <a class="more" href="{catlink(24)}" title="{catname(24)}" target="_blank">更多</a>
+            {catname(24)}        </h2>
+        <ul class="NewsList">
+ {h5:content  action="lists" catid="24" limit="8"   order="listorder DESC" }{loop $data $v}
+                <li> <a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></li>
+				{/loop}
+			 {/h5}
+            </ul>
+</div>
+                <div class="NewsList2">
+                 <h2>
+           <a class="more" href="{catlink(29)}" title="{catname(29)}" target="_blank">更多</a>
+            {catname(29)}        </h2>
+        <ul class="NewsList">
+                       {h5:content  action="lists" catid="29" limit="8"   order="listorder DESC" }{loop $data $v}
+                <li> <a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></li>
+				{/loop}
+			 {/h5}
+            </ul>
+</div>
+               <div class="NewsList2">
+                 <h2>
+           <a class="more" href="{catlink(37)}" title="{catname(37)}" target="_blank">更多</a>
+            {catname(37)}        </h2>
+        <ul class="NewsList">
+                       {h5:content  action="lists" catid="37" limit="8"   order="listorder DESC" }{loop $data $v}
+                <li> <a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></li>
+				{/loop}
+			 {/h5}
+            </ul>
+</div>
+             <div class="NewsList2">
+                 <h2>
+           <a class="more" href="{catlink(35)}" title="{catname(35)}" target="_blank">更多</a>
+            {catname(35)}        </h2>
+        <ul class="NewsList">
+                       {h5:content  action="lists" catid="35" limit="8"   order="listorder DESC" }{loop $data $v}
+                <li> <a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></li>
+				{/loop}
+			 {/h5}
+            </ul>
+</div>
+			</div>
+		</div>
+		<div class="Imgs cf">
+ {h5:content  action="lists" catid="39" limit="1"  thumb="1"  order="listorder DESC" }{loop $data $v}
+            <div class="One" style="margin-right:10px;">
+<a target="_blank" href="{$v[url]}" title="{$v[title]}">
+        <img alt="{$v[title]}" src="{thumb($v[thumb],270,250)}" width="270" height="250">
+    </a>
+    <a target="_blank" href="{$v[url]}" title="{$v[title]}">{$v[title]}</a>
+</div>
+{/loop}
+			 {/h5}
+            <ul class="cf" style="margin-left:10px;">
+			{h5:content  action="lists" catid="39" limit="1,9"  thumb="1"  order="listorder DESC" }{loop $data $v}
+ <li>
+  <div class="frimg">
+    <div class="pic"><a target="_blank" href="{$v[url]}" title="{$v[title]}"><img alt="{$v[title]}" src="{thumb($v[thumb],140,105)}" width="140" height="105"></a></div>
+    <div class="text"><a target="_blank" href="{$v[url]}" title="{$v[title]}">{$v[title]}</a></div>
+  </div>
+</li>
+{/loop}
+			 {/h5}
+</ul>
+
+		</div>
+		<div class="friendslink mt10" id="tab1">
+    <h4>
+        <span>区域楼盘</span>
+        <ul class="areatab">
+{h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC"}
+{loop $data $r}
+{php $reg = explode('$$', $r)}
+ <li {if $n==1}class="on"{else}{/if}><a href="javascript:void(0);">{$reg[1]}</a></li>
+ {/loop} 
+</ul></h4>
+{php $i=1}
+{loop $data $r}
+{php $where = "status=99";}
+{php $reg = explode('$$', $r)}
+{php $arrchildid = get_arrchildid('3360',$reg[0]);}
+{php $where.=" and `region` in ($arrchildid)";}
+<ul class="link cf" {if $i!=1}style="display: none;"{/if}>
+{h5:content action="lists" where="$where" catid="14" num="40" order="listorder ASC"}
+{loop $data $v}
+<li><a href="{$v[url]}" title="{$v[title]}" target="_blank">{str_cut($v[title],16)}</a></li>
+{/loop}{/h5} </ul>
+{$i++}
+{/loop}
+{/h5}
+
+        </div>
+
+     
+
+</div>
+
+<script type="text/javascript">
+seajs.use(["jquery","autab"],function($){
+	$("#tab1").autab("ul.areatab li","ul.cf");
+	$("#tab2").autab("i","li",4);
+})
+</script>
+{template "content","footer"}

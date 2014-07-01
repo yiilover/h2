@@ -1,0 +1,33 @@
+<style>
+/* footer
+------------------------------- */
+.footer{width:960px;margin:0 auto;}
+.footer p.info{}
+.footer p.info{color:#666; line-height:24px;text-align:center; padding:12px 0; margin-top:15px; border-top:1px solid #dbe7ed}
+.footer p.info a{color:#666;}
+</style>
+<div class="footer">
+<p class="info">
+{h5:content action="category" catid="1" num="15" siteid="$siteid" order="listorder ASC"}
+
+{loop $data $r}
+
+<a href="{$r[url]}" target="_blank">{$r[catname]}</a>{if $n<count($data)} |{/if}    
+
+{/loop}
+| <a href="{APP_PATH}sitemap.html" target="_blank">ÍøÕ¾µØÍ¼</a>
+{/h5}
+<br />
+{$copyright}
+<script type="text/javascript">
+$(function(){
+	$(".picbig").each(function(i){
+		var cur = $(this).find('.img-wrap').eq(0);
+		var w = cur.width();
+		var h = cur.height();
+	   $(this).find('.img-wrap img').LoadImage(true, w, h,'{IMG_PATH}msg_img/loading.gif');
+	});
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+{template "wap","header"}
+<link type="text/css" rel="stylesheet" href="/statics/default/3g/css/3g_details.css" />
+<link type="text/css" rel="stylesheet" href="/statics/default/3g/css/3g_common.css" />
+<script>
+window.addEventListener("load",function() {
+  setTimeout(function(){
+    window.scrollTo(0, 1);
+  }, 0);
+}); 
+</script>
+<script>
+$(function(){
+	/*参数部分js start*/
+	$("#sec a:gt(9)").hide();
+	$("#more").parent().toggle(
+			function () {
+				$("#more").attr('class', 'num up');
+				re=/(\d+)\/(\d+)/i;
+				var arr = re.exec($("#more em").text());
+				if(arr[2] > 10)
+				{
+					before = arr[2];
+				}
+				else
+				{
+					before = arr[1];
+				}
+				var content = "全部收起 <em>(" + before + "/" + arr[2] + ")</em>";
+				$("#more").html(content);
+				$("#sec a:gt(9)").fadeIn(100);
+			},
+			function () {
+				$("#more").attr('class', 'num');
+				re=/(\d+)\/(\d+)/i;
+				var arr = re.exec($("#more em").text());
+				if(arr[1] > 10)
+				{
+					before = 10;
+				}
+				else
+				{
+					before = arr[2];
+				}
+				var content = "更多户型 <em>(" + before + "/" + arr[2] + ")</em>";
+				$("#more").html(content);
+				$("#sec a:gt(9)").fadeOut(100);
+				location.href = "#moremao";
+			}
+		); 
+	/*参数部分js end*/
+});
+</script>
+</head>
+<body>
+<header class="header">
+	<a href="{WAP_SITEURL}" class="logo">{$WAP['sitename']}</a>
+    <a href="{WAP_SITEURL}" class="bn_back bn_back2" >返回</a>
+    <a href="#" class="bn_search">搜索</a>
+    <a href="#" class="bn_nav">导航</a>
+    <i></i>
+</header>
+	<script>
+	/*点击搜索和导航触发的事件*/
+	$(".bn_search").bind("click", function(){
+		var getifclass = $(this).attr("class").indexOf("bn_search_on");
+		if(getifclass > -1)
+		{
+			$(".h_so").css("display", "none");
+			$(".bn_search").removeClass("bn_search_on");
+		}
+		else
+		{
+			$(".h_so").css("display", "block");
+			$(".bn_search").addClass("bn_search_on");
+			$(".h_nav").css("height", "0px");
+			$(".bn_nav").removeClass("bn_nav_on");
+			$('#ico_del').css('display', 'none');
+		}
+			
+	});
+	$(".bn_nav").bind("click", function(){
+		$(".bn_search").removeClass("bn_search_on");
+		var getifclass = $(this).attr("class").indexOf("bn_nav_on");
+		if(getifclass > -1)
+		{
+			$(".h_nav").css("height", "0px");
+			$(".bn_nav").removeClass("bn_nav_on");
+		}
+		else
+		{
+			$(".h_so").css("display", "none");
+			$(".bn_search").removeClass("bn_search_on");
+			$(".h_nav").css("height", "43px");
+			$(".bn_nav").addClass("bn_nav_on");
+		}
+	});
+	function changeCity()
+	{
+		var stylecss = $(".sel_city").attr("style").indexOf("0px");
+		if(stylecss > -1)
+		{
+			$(".sel_city").attr("style", "");
+			$(".sel_city").css("height", "auto");
+		}
+		else
+		{
+			$(".sel_city").css("height", "0px");
+			$(".sel_city").css("overflow", "hidden");
+		}
+		
+	}
+	</script>
+<script type="text/javascript" src="/statics/default/3g/js/3g_swipe.min.js"></script>
+<div class="h_so" style="display:none">
+	<div class="m_con">
+		<form id="search_form" name="f" action="{WAP_SITEURL}list.html" method="get">
+	    	<input type="search" name='k' id="kw" class="input_keys" id="kw"  value="请输入楼盘……"  onfocus="if(this.value=='请输入楼盘……'){this.value='';}$('#ico_del').css('display', 'block');" onblur="if(this.value=='')this.value='请输入楼盘……';" autocomplete="off">
+	        <span class="ico_clear" onclick="$('#search_form input').val('')"><i id="ico_del" style="display:none"></i></span>
+	        <div class="search_bn" onClick="$('form').submit()"><i></i></div>
+    	</form>
+    </div>
+</div>
+<nav class="h_nav" id="slidermnav" style="height: 0px; overflow:hidden;">
+<ul>
+    	<li style="display:block">
+        <p class="m_con nav_1">
+        <a href="{WAP_SITEURL}" style="width:18%">首页<em></em></a><a href="{WAP_SITEURL}list.html" style="width:28%">楼盘检索<em></em></a><a href="{WAP_SITEURL}top/" style="width:26%">楼盘榜<em></em></a><a href="{WAP_SITEURL}map/" style="width:28%">找房楼盘</a><i onclick='slidermnav.next();return false;'></i>
+        </p>	
+        </li>
+        <li style="display:none">
+        <p class="m_con nav_2">
+        <a href="{WAP_SITEURL}news/" style="width:33%">新房导购<em></em></a><a href="{WAP_SITEURL}calcul/" style="width:34%">房贷计算<em></em></a><i onclick='slidermnav.prev();return false;'></i>
+        </p>	
+      </li>
+    </ul>
+</nav>
+
+<script>
+	var slidermnav = new Swipe(document.getElementById('slidermnav'));
+</script><nav class="lp_nav">
+		<a href="{WAP_SITEURL}detail/{$id}/">参数<i></i></a><a href="{WAP_SITEURL}news/{$id}/">资讯<i></i></a><a href="{WAP_SITEURL}huxing/{$id}/" class="sel_on b_b">户型<i></i></a><a href="{WAP_SITEURL}device/{$id}/">配套<i></i></a><a href="{WAP_SITEURL}pic/{$id}/">图片<i></i></a><a href="{WAP_SITEURL}dianping/{$id}/">点评</a>
+</nav>
+{php $lid = intval($_GET['lid']);}
+<div class="hx_sel hx_sel_b">
+	<select onchange="javascript:window.location.href=this.value">
+	<option  value="{WAP_SITEURL}huxing/{$id}/" {if empty($lid)} selected='true'{/if}>全部户型</option>
+	{h5:content action="huxingtype" relation="$id" catid="13" num="10" order="inputtime DESC" cache="86400"}<!-- 户型图 -->
+ {if $data}
+ {loop $data $r}
+ {h5:content action="pictypecount" relation="$id" catid="13" typeid="$r[typeid]" cache="172800" return="info"}
+	<option value="{WAP_SITEURL}huxing/{$id}/{$r[typeid]}/" {if !empty($lid) && $lid==$r[typeid]}selected='true'{/if}>{get_typename_bytypeid($siteid,$r[typeid])}({$info})</option>
+ {/h5}
+	{/loop}
+{/if}
+{/h5}
+	<i></i>
+	</select>
+</div>
+<section class="hx_m p_b10" id="sec">
+{h5:content action="huxinginfo" relation="$id" typeid="$lid" catid="13" num="5" order="inputtime DESC" cache="86400"}<!-- 户型列表 -->
+{loop $data $rs}
+{loop string2array($rs['pictureurls']) $pic_k $v}
+<a href="{WAP_SITEURL}huxing/{$id}/{$rs[typeid]}/{$rs[id]}#{$n}"><img src="{thumb($v[url], 140, 140, 0)}" class="pic">{$v[alt]}<i></i></a>
+{/loop}
+{/loop}
+{/h5}
+</section>
+ {h5:content action="pictypecount" relation="$id" typeid="$lid" catid="13" cache="172800" return="huxinginfo"}
+ {if $huxinginfo>10}
+<div class="bn_most">
+	<div>
+    <a class="top" href="#">顶部</a>
+    <a class="most" href="#"><span class="num" id="more">更多户型 <em>(10/{$huxinginfo})</em></span></a>
+    <i class="h"></i>
+    <b></b>
+    </div>
+</div>
+{/if}
+{/h5}
+<a href="tel:{$tel}" class="bot_tel"><i></i><span><strong>咨询电话：</strong>{$tel}</span></a>
+
+{template "wap","footer"}

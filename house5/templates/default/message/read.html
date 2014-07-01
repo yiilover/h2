@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>查看已发消息-经纪人管理中心-{$site_title}</title>
+<link href="/statics/default/member/css/main.css" rel="stylesheet" type="text/css" />
+<link href="/statics/default/member/css/footer.css" rel="stylesheet" type="text/css" />
+<link href="/statics/default/member/css/pages.css" rel="stylesheet" type="text/css" />
+<link href="/statics/default/member/css/center.css" rel="stylesheet" type="text/css" />
+<script>var cookiepre = 'menu_';var cookiepath = '/';var cookiedomain = '';var SiteUrl='{MEMBER_PATH}';var JS_URL='/statics/default/member/js/';var imgUrl='/statics/default/member/img/';</script>
+<script src="/statics/default/member/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="/statics/default/member/js/manage.js" type="text/javascript"></script>
+<script src="/statics/default/member/js/menu.js" type="text/javascript"></script>
+<script src="/statics/default/member/js/cookie.js" type="text/javascript"></script>
+<script src="/statics/default/member/js/thickbox.js" type="text/javascript"></script>
+<link href="/statics/default/member/css/thickbox.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}table_form.css" rel="stylesheet" type="text/css" />
+{if isset($show_validator)}
+<script type="text/javascript" src="{JS_PATH}formvalidator.js" charset="UTF-8"></script>
+<script type="text/javascript" src="{JS_PATH}formvalidatorregex.js" charset="UTF-8"></script>
+{/if}
+<link rel="shortcut icon" href="{APP_PATH}favicon.ico" />
+</head>
+<body>
+<div class="head">
+  <div id="wrap"><span class="fl"><img src="/statics/default/member/img/logo_myagent.gif" width="281" height="50" /></span><span class="fr">
+	<p>欢迎您：<a href="index.php?s=member">{get_nickname()}</a> <a href="index.php?s=message/index/inbox" class="message">短消息(0)</a> <a href="{APP_PATH}index.php?s=member/index/logout">退出</a></p>
+    <ul>
+	    <li style="text-align:right;"><a href="{HOUSE_PATH}" target="_blank">首页</a> | <a href="{HOUSE_PATH}list.html" target="_blank">新房</a> | <a href="{ESF_PATH}" target="_blank">二手房</a> | <a href="{ESF_PATH}rent-list.html" target="_blank">出租房</a> | <a href="{catlink(6)}" target="_blank">资讯</a>{if BBS_PATH!=''} | <a href="{BBS_PATH}" target="_blank">论坛</a>{/if}</li>
+    </ul>
+    </span></div>
+</div>
+<div id="wrap">
+  <!--左边菜单-->
+  <div class="left" id="left_menu">
+    <div class="menu">
+      <div class="home">
+        <h1><a href="index.php?s=member">管理中心首页</a></h1>
+      </div>
+    </div>
+    <div class="menu">
+      <div class="tittle" id="titlebg_1" onclick="menu('1')" style="cursor:pointer"><img src="/statics/default/member/img/shouqi.jpg" id="menua_1" width="11" height="11" /><img src="/statics/default/member/img/zhankai.jpg" id="menub_1" width="11" height="11" style="display:none;" />
+        <h1><a href="javascript:;">二手房管理</a></h1>
+      </div>
+      <ul id="menu_1">
+        <li ><a href="index.php?s=member/index/esf">发布出售</a></li>
+        <li ><a href="index.php?s=member/index/manage_sell">管理出售</a></li>
+      </ul>
+    </div>
+    <div class="menu">
+      <div class="tittle" id="titlebg_2" onclick="menu('2')" style="cursor:pointer"><img src="/statics/default/member/img/shouqi.jpg" id="menua_2" width="11" height="11" /><img src="/statics/default/member/img/zhankai.jpg" id="menub_2" width="11" height="11" style="display:none;" />
+        <h1 class="rent"><a href="javascript:;">出租房管理</a></h1>
+      </div>
+      <ul id="menu_2">
+        <li ><a href="index.php?s=member/index/rent">发布出租</a></li>
+        <li ><a href="index.php?s=member/index/manage_rent">管理出租</a></li>
+      </ul>
+    </div>
+    <div class="menu">
+      <div class="tittle" id="titlebg_6" onclick="menu('6')" style="cursor:pointer"><img src="/statics/default/member/img/shouqi.jpg" id="menua_6" width="11" height="11" /><img src="/statics/default/member/img/zhankai.jpg" id="menub_6" width="11" height="11" style="display:none;" />
+        <h1 class="dianpu"><a href="javascript:;">店铺管理</a></h1>
+      </div>
+       <ul id="menu_6">
+        <li><a href="/index.php?s=member/index/notice">店铺公告</a></li>
+      </ul>
+    </div>
+    <div class="menu">
+      <div class="tittle" id="titlebg_7" onclick="menu('7')" style="cursor:pointer"><img src="/statics/default/member/img/shouqi.jpg" id="menua_7" width="11" height="11" /><img src="/statics/default/member/img/zhankai.jpg" id="menub_7" width="11" height="11" style="display:none;" />
+        <h1 class="ziliao"><a href="javascript:;">资料管理</a></h1>
+      </div> <ul id="menu_7">
+	  <li ><a href="/index.php?s=member/index/account_manage_info">修改资料</a></li>
+	  <li ><a href="/index.php?s=member/index/account_manage_avatar">头像认证</a></li>
+	  <li ><a href="/index.php?s=member/index/identity">身份证认证</a></li>
+	  <li ><a href="/index.php?s=member/index/certificate">执业资格证认证</a></li>
+      <li><a href="/index.php?s=member/index/account_manage_password">修改密码</a></li>
+      </ul>
+    </div>
+  </div>
+<script language="javascript">get_menu(8);</script>  <!--右边-->
+<script type="text/javascript">
+<!--
+$(function(){
+	$.formValidator.initConfig({autotip:true,formid:"myform",onerror:function(msg){}});
+	$("#subject").formValidator({empty:true,onshow:"标题，可以为空",onfocus:"请输入标题",oncorrect:"输入正确！",onempty:"不填替标题了吗？"}).inputValidator({min:1,onerror:"请输入标题"});
+	$("#con").formValidator({onshow:"请输入内容",onfocus:"内容不能为空"}).inputValidator({min:1,max:999,onerror:"内容不能为空"});
+	$("#code").formValidator({onshow:"请输入验证码",onfocus:"验证码不能为空"}).inputValidator({min:1,max:999,onerror:"验证码不能为空"}).ajaxValidator({
+	    type : "get",
+		url : "index.php",
+		data :"s=pay/deposit/public_checkcode",
+		datatype : "html",
+		async:'false',
+		success : function(data){	
+            if(data == 1)
+			{
+                return true;
+			}
+            else
+			{
+                return false;
+			}
+		},
+		buttons: $("#dosubmit"),
+		onerror : "验证码错误",
+		onwait : "验证中"
+	});
+})
+//-->
+</script>
+<div class="text">
+    <div class="fold"></div>
+    <div class="bread"><a href="/index.php?s=member/index/">管理中心</a>短消息</div>
+    <!--房源信息-->
+    <div class="box">
+      <div class="tit">
+        <div class="tab"><a class="hover" href="/index.php?s=message/index/inbox">站内消息</a><a href="/index.php?s=message/index/send">发送新消息</a><a href="/index.php?s=message/index/outbox">已发送</a></div>
+      </div> <div class="hr10"></div> <div class="hr10"></div>
+<h6 class="title">与  {$infos['send_from_id']} 的短消息记录</h6>
+<div class="content">
+<form name="myform1" action="?s=message/index/reply" method="post" id="myform1">
+<table width="100%" cellspacing="0" class="table_form">
+	 {php $userid = get_memberinfo_buyusername($infos['send_from_id'],userid)}
+     {php $user_pic = get_memberavatar($userid,1,45);}
+     <tr>
+       <th><div align=center><img src="{$user_pic}" width="50" height="50" onerror="this.src='{IMG_PATH}member/nophoto.gif'"><br><font color=red>{$infos['send_from_id']}</font></div></th>
+       <td>{$infos['subject']} - {date('Y-m-d H:i:s',$infos['message_time'])}<br><br>{$infos['content']}</td>
+     </tr>
+     
+     {loop $reply_infos $reply_info}  
+     {php $userid = get_memberinfo_buyusername($reply_info['send_from_id'],userid)}
+     {php $user_pic = get_memberavatar($userid,1,45);}
+      <tr>
+       <th><div align=center><img src="{$user_pic}" width="50" height="50" onerror="this.src='{IMG_PATH}member/nophoto.gif'"></img><br>{$reply_info['send_from_id']}</div></th>
+       <td>{$reply_info['subject']} - {date('Y-m-d H:i:s',$reply_info['message_time'])}<br><br></br>{$reply_info['content']}</td>
+     </tr> 
+     {/loop}
+     
+     
+         </label></td>
+     </tr>
+   </table>
+   </form>
+   </div>
+   <span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
+   </div>
+<div class="bk10"></div>
+{if $infos['send_from_id']!='SYSTEM'}
+<div class="col-1 ">
+<h5 class="title">回复此消息 </h5>
+<div class="content">
+
+<form name="myform" action="?s=message/index/reply" method="post" id="myform">
+<table width="100%" cellspacing="0" class="table_form">
+<tr>
+<th>标 题：</th>
+<td><input name="info[subject]" type="text" id="subject" size="30" value="Re: {$infos[subject]}"  class="input-text"/></td>
+</tr> 
+<tr>
+<th>内 容：</th>
+<td><textarea name="info[content]"  id="con" rows="5" cols="50"></textarea></td>
+</tr>
+<input type="hidden" name="info[replyid]" value="{$infos['messageid']}" /> 
+<input type="hidden" name="info[send_to_id]" value="{$infos['send_from_id']}" /> 
+
+<tr>
+<th>验证码：</th>
+<td><input name="code" type="text" id="code" size="10"  class="input-text"/> {form::checkcode('code_img','4','14',110,30)}</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2"><label>
+<input type="submit" name="dosubmit" value="确 定"/>
+</label></td>
+</tr>
+</table>
+</form>
+
+</div>
+<span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
+</div>
+  {/if}
+<div class="clear"></div>
+	</div>
+    <!--说明-->
+  </div>
+</div>   <!--底部-->
+ <div style="clear:both"></div></div>
+{template 'content', 'footer'}
+</div>
+</body>
+</html>

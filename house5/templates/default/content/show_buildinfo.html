@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	楼栋
+</title>
+    <script type="text/javascript">
+        var sweetTitles = {
+            x: 10,
+            y: 20,
+            tipElements: "a",
+            init: function () {
+                $(this.tipElements).mouseover(function (e) {
+                    this.myTitle = this.title;
+                    this.myHref = this.href;
+                    this.myHref = (this.myHref.length > 200 ? this.myHref.toString().substring(0, 200) + "..." : this.myHref);
+                    this.title = "";
+                    var tooltip = "";
+                    if (this.myTitle == "") {
+                        tooltip = "";
+                    }
+                    else {
+                        tooltip = "<div id='tooltip'><p>" + this.myTitle + "</p></div>";
+                    }
+                    $('body').append(tooltip);
+                    $('#tooltip')
+				.css({
+				    "opacity": "0.9",
+				    "top": (e.pageY + 20) + "px",
+				    "left": (e.pageX + 10) + "px"
+				}).show('fast');
+                }).mouseout(function () {
+                    this.title = this.myTitle;
+                    $('#tooltip').remove();
+                }).mousemove(function (e) {
+                    $('#tooltip')
+			.css({
+			    "top": (e.pageY + 20) + "px",
+			    "left": (e.pageX + 10) + "px"
+			});
+                });
+            }
+        };
+        $(function () {
+            sweetTitles.init();
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $(".donglan ul li").hover(
+					function () {
+					    $(this).addClass("donghover");   //鼠标经过时增加样式P02
+					},
+					function () {
+					    $(this).removeClass("donghover"); //鼠标离开时移除样式P02
+					}
+				)
+        });
+    </script>
+</head>
+<body>
+<div class="donglan">
+{if $key_array}
+<div class='donglan_box'><ul>
+{loop $key_array $v}
+<li><a href="javascript:;"title="房屋号：{$v[title]}<br />性质：{getbox_val('30','character',$v['character'])}<br />楼层：<span>{$v[floor]}</span> 层<br />层高：<span>{$v[height]}                                               </span> 米<br />建筑面积：<span>{$v[jzmj]}</span> ㎡<br />套内面积：<span>{$v[tnmj]}</span> ㎡<br />分摊面积：<span>{$v[ftmj]}</span> ㎡<br />参考价：<span>{$v[price]}</span> 元/㎡">{$v[title]}</a></li>
+{/loop}
+</ul></div>
+{/if}
+<table border="0" cellspacing="1" cellpadding="0" class="main_tab_dong">
+<tr><td class="main_tab_dong_td3">楼号</td>
+<td class="main_tab_dong_td3">总套数</td><td class="main_tab_dong_td3">在售</td><td class="main_tab_dong_td3">层数</td><td class="main_tab_dong_td3">单元</td><td class="main_tab_dong_td3">施工</td><td class="main_tab_dong_td3">开盘时间</td><td class="main_tab_dong_td3">交付时间</td><td class="main_tab_dong_td3">交付标准</td></tr><tr><td class="main_tab_dong_td4">{$r[title]}</td><td class="main_tab_dong_td4">{$r[hushu]} 套</td><td class="main_tab_dong_td4">{$total} 套</td><td class="main_tab_dong_td4">{$r[floor]}层</td><td class="main_tab_dong_td4">{$r[unit]}个单元</td><td class="main_tab_dong_td4">{$r[progress]}</td><td class="main_tab_dong_td4">{$r[opentime]}</td><td class="main_tab_dong_td4">{$r[jfdate]}</td><td class="main_tab_dong_td4">{getbox_val('29','fix',$r['fix'])}</td></tr><tr><td class="main_tab_dong_td1">预售许可：</td><td class="main_tab_dong_td2" colspan="8">{$r[license]}</td></tr><tr><td class="main_tab_dong_td1">近期动态：</td><td class="main_tab_dong_td2" colspan="8">{$r[dongtai]}</td></tr></table><div class="clear"></div></div>
+</body>
+</html>

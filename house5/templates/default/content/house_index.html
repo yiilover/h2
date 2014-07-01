@@ -1,0 +1,691 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={CHARSET}" />
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link rel="shortcut icon" href="{APP_PATH}favicon.ico" />
+<link rel="stylesheet" href="{APP_PATH}/statics/default/css/house/house_style.css"  type="text/css" />
+<script language="Javascript" src="{APP_PATH}/statics/default/js/house/default.js"></script>
+<script language="javascript" src="{APP_PATH}/statics/default/js/house/scrollSZ.js"></script>
+<!-- 请置于所有广告位代码之前 -->
+</head>
+<style type="text/css">
+.partbd ul li{display:block; float:left; width:50px; line-height:22px;  height:22px; text-align:center; text-decoration:none;}
+.partbd ul li a{display:inline-block;}
+.partbd li a:link, .partbd li a:visited {display: inline-block; height: 17px;line-height: 17px;padding: 0 5px;text-decoration:none;}
+.partbd li a:hover{background: none repeat scroll 0 0 #30c8f7;color:#ffffff;text-decoration:none;}
+.PartAs_wrap_house UL.PartAs_wrap_house_left {
+	WIDTH: 421px; DISPLAY: block; OVERFLOW: hidden;  float:left
+}
+.PartAs_wrap_house UL.PartAs_wrap_house_center{
+	 width:410px; float:left; DISPLAY: block; OVERFLOW: hidden;
+}
+.PartAs_wrap_house UL.PartAs_wrap_house_center li{
+	 width:410px;
+}
+.PartAs_wrap_house UL.PartAs_wrap_house_right{
+	 width:80px; float:left; DISPLAY: block; OVERFLOW: hidden; margin-left:8px;
+}
+.PartAs_wrap_house UL.PartAs_wrap_house_right li{
+	 width:110px;
+}
+</style>
+<script>
+function MM_over(mmObj) {
+	var mSubObj = mmObj.getElementsByTagName("div")[0];
+	mSubObj.style.display = "block";
+	mSubObj.style.backgroundColor = "#fff";
+}
+function MM_out(mmObj) {
+	var mSubObj = mmObj.getElementsByTagName("div")[0];
+	mSubObj.style.display = "none";
+	
+}
+</script>
+<body>
+<div id="wrap">
+<div class="cArea">
+ {template "ssi","ssi_8"}
+<div style="text-align:center;width:950px;margin:0px auto;margin-bottom:3px;">
+ <!-- 广告位：全站顶部通栏1 -->
+<script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=25"></script>
+</div>
+<div style="text-align:center;width:950px;margin:0px auto;margin-bottom:3px;">
+<!-- 广告位：楼盘首页通栏1 -->
+<script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=45"></script>
+</div>
+<div style="text-align:center;width:950px;margin:0px auto;margin-bottom:3px;">
+<!-- 广告位：楼盘首页通栏2 -->
+<script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=48"></script>
+</div>
+<!--logo+搜索 begin -->
+<div class="logo_search" style="padding-left:0px; padding-right:0px; width:960px;">
+<div class="logo" style="float:left; padding:0; width:155px;"><a href="{APP_PATH}"><img src="{APP_PATH}statics/default/img/logo.png" alt="{$SEO['site_title']}" /></a></div>
+<!-- 切换城市开始 -->
+      <div onmouseover="MM_over(this)" onmouseout="MM_out(this)" class="city" style=" line-height:40px; padding-left:5px; width:70px;  float:left; position:relative; top:5px; border-left:1px dashed #CCCCCC; z-index:9999"> <span  style="display:block; float:left; cursor:pointer; padding-left:5px; padding-right:0px;">{$default_city}</span><span style="float:left; cursor:pointer; width:12px; display:block; background:url({APP_PATH}statics/default/img/icon/city.jpg) center no-repeat; height:40px;"></span>
+      </div>
+      <!-- 切换城市结束 -->
+<!--分站End-->
+<div class="search"  style="float:right; z-index:1"><script src="{APP_PATH}index.php?s=content/index/topsearch" type="text/javascript"></script></div>
+</div>
+<!--导航 begin -->
+<div class="nav">
+ {template "ssi","ssi_9"}
+</div>
+<div class="hr10"></div>
+<!--导航 end -->
+<!--细化搜索 begin -->
+<div class="PartAs">
+    <div class="PartAsc fl">
+      <div class="PartAsc1">
+        <ul>
+          <li class="SearchB" id=s1 onclick=Search(1)>按区域查找楼盘</li>
+          <li class="SearchA" id=s2 onclick=Search(2)>按售价查找楼盘</li>
+        <a href="{APP_PATH}map/">  <li class="SearchA">地图找楼盘</li></a>
+        </ul>
+      </div>
+      
+      <div class="PartAs_wrap">
+      <div class="PartAs_wrap_house" id=b1>
+      <ul class="PartAs_wrap_house_left">
+	  {h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC" cache="86400"}
+		{loop $data $r}
+		{$i++}
+		<?php
+			$reg = explode('$$', $r);//add by L 2012/3/22
+			
+				$where = "status=99";
+				$arrchildid = get_arrchildid('3360',$reg[0]);
+				$where.=" and `region` in ($arrchildid)";
+				?>
+				{h5:content action="regioncount" catid="$catid" $where="$where" cache="172800" return="info"}
+				
+				<li><span class="link4"><a href="{HOUSE_PATH}list-r{$reg[0]}.html">{$reg[1]}</a>[{$info}]</span>
+				{/h5}
+		{h5:content action="getlinkage" keyid="3360" parentid="$reg[0]" order="listorder ASC" cache="86400"}
+			{php $j=0}
+			{if $data}
+			{loop $data $r}
+				{$j++}
+				{if count($data)>7}
+					{if $j%5==0}
+					{$i++}
+						</li>
+						<li><span style="width:70px;">&nbsp;</span>
+					{/if}
+				{/if}
+				<?php
+				$reg2 = explode('$$', $r);//add by L 2012/3/22
+				?>
+		<a href="{HOUSE_PATH}list-r{$reg[0]}-b{$reg2[0]}.html">{$reg2[1]}</a> 
+        		{/loop}
+				{/if}
+			{/h5}
+        				</li>
+   {if $i%4==0}</ul><ul  class="PartAs_wrap_house_center">{/if}
+		
+			{/loop}
+	{/h5}	
+	</ul>
+      </div>
+      <div class="PartAs_wrap_house search_undis" id=b2>
+      <ul>
+     	
+	<li><span class="link4"><a href="{HOUSE_PATH}list-p1.html" title="10000以下">10000以下</a></span>
+	{php $where="status=99 and `range`='1' and price<>''"}
+	  {h5:content action="lists" catid="$catid" where="$where" num="12" order="id DESC" cache="86400"}<!-- 楼盘列表 -->
+	  {loop $data $r}
+	 <a href="{$r[url]}" title="{$r[title]}" target="_blank">{$r[title]}</a> 
+	   {/loop}
+	{/h5}
+	    		</li>
+				
+					  <li><span class="link4"><a href="{HOUSE_PATH}list-p2.html" title="10000-15000">10000-15000</a></span>
+	  			 {php $where="status=99 and `range`='2'"}
+				  {h5:content action="lists" catid="$catid" where="$where" num="12" order="id DESC" cache="86400"}<!-- 楼盘列表 -->
+				  {loop $data $r}
+				 <a href="{$r[url]}" title="{$r[title]}" target="_blank">{$r[title]}</a> 
+				   {/loop}
+					{/h5}
+	    			  </li>
+				   
+					  <li><span class="link4"><a href="{HOUSE_PATH}list-p3.html" title="15000-20000">15000-20000</a></span>
+	  			 {php $where="status=99 and `range`='3'"}
+				  {h5:content action="lists" catid="$catid" where="$where" num="12" order="id DESC" cache="86400"}<!-- 楼盘列表 -->
+				  {loop $data $r}
+				 <a href="{$r[url]}" title="{$r[title]}" target="_blank">{$r[title]}</a> 
+				   {/loop}
+					{/h5}
+	    			  </li>
+				
+  					  <li><span class="link4"><a href="{HOUSE_PATH}list-p4.html" title="20000-25000">20000-25000</a></span>
+	  			 {php $where="status=99 and `range`='4'"}
+				  {h5:content action="lists" catid="$catid" where="$where" num="12" order="id DESC" cache="86400"}<!-- 楼盘列表 -->
+				  {loop $data $r}
+				 <a href="{$r[url]}" title="{$r[title]}" target="_blank">{$r[title]}</a> 
+				   {/loop}
+					{/h5}
+	    			  </li>
+				 <li><span class="link4"><a href="{HOUSE_PATH}list-p5.html" title="25000-30000">25000-30000</a></span>
+	  			 {php $where="status=99 and `range`='5'"}
+				  {h5:content action="lists" catid="$catid" where="$where" num="12" order="id DESC" cache="86400"}<!-- 楼盘列表 -->
+				  {loop $data $r}
+				 <a href="{$r[url]}" title="{$r[title]}" target="_blank">{$r[title]}</a> 
+				   {/loop}
+					{/h5}
+	    			  </li>
+					
+				<li><span class="link4"><a href="{HOUSE_PATH}list-p6.html" title="30000-40000">30000-40000</a></span>
+	  			 {php $where="status=99 and `range`='6'"}
+				  {h5:content action="lists" catid="$catid" where="$where" num="12" order="id DESC" cache="86400"}<!-- 楼盘列表 -->
+				  {loop $data $r}
+				 <a href="{$r[url]}" title="{$r[title]}" target="_blank">{$r[title]}</a> 
+				   {/loop}
+					{/h5}
+	    		</li>
+				<li><span class="link4"><a href="{HOUSE_PATH}list-p7.html" title="40000-50000">4000-50000</a></span>
+	  			 {php $where="status=99 and `range`='7'"}
+				  {h5:content action="lists" catid="$catid" where="$where" num="12" order="id DESC" cache="86400"}<!-- 楼盘列表 -->
+				  {loop $data $r}
+				 <a href="{$r[url]}" title="{$r[title]}" target="_blank">{$r[title]}</a> 
+				   {/loop}
+					{/h5}
+	    			  </li>
+				<li><span class="link4"><a href="{HOUSE_PATH}list-p8.html" title="50000以上">50000以上</a></span>
+	  			 {php $where="status=99 and `range`='8'"}
+				  {h5:content action="lists" catid="$catid" where="$where" num="12" order="id DESC" cache="86400"}<!-- 楼盘列表 -->
+				  {loop $data $r}
+				 <a href="{$r[url]}" title="{$r[title]}" target="_blank">{$r[title]}</a> 
+				   {/loop}
+					{/h5}
+	    			  </li>
+				      </ul>
+      </div>
+      </div> 
+      <div class="PartAs_end"></div>    
+    </div>
+  </div>
+<!--细化搜索 end -->
+<div class="hr10"></div>
+<!--楼市快报 begin -->
+<div class="scroll">
+<div class="a1 link3"><a href="{catlink(26)}">{catname(26)}</a></div>
+<ul>
+{h5:content  action="lists" catid="26" order="id DESC" num="20" cache="3600"}
+<div id="left_1" class="left_1" style="padding:0;width:850px;">
+	<div class="left_1_i" >
+		{loop $data $v}
+			<li><img src="{APP_PATH}statics/default/img/icon/ann.gif" style="margin:9px 5px; vertical-align:middle;" /><a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{$v[title]}</a><span>({date('m/d',$v[inputtime])})</span></li>
+		{/loop}
+			</div>
+</div>
+{/h5}
+</ul>
+</div>
+<!--楼盘速递 end -->
+<div class="hr10"></div>
+</div>
+<div class="venfang_ad1">
+<!-- 广告位：楼盘首页通栏3 -->
+<script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=49"></script>
+</div>
+<div class="cArea">
+<div class="left">
+  <!--价格分布+热点购房板块 end-->
+  <div class="hr10"></div>
+  <!--看房团 begin-->
+  <div class="left_wrap">
+ {template "ssi","ssi_10"}
+         
+  </div>
+  <div class="left_end"></div>
+  </div>
+  <!--看房团 end-->
+  <div class="hr10"></div>
+  <!--业主交流群+购房宝典 begin-->
+  <div class="left_wrap">
+   <div class="PartDs">
+ 
+            <div class="PartDsc1">
+        <ul>
+          <li class="searchF" id=g1 onmouseover=Search3(1)><a href="{HOUSE_PATH}qqqun-p1.html">业主交流群</a></li>
+          <li class="searchE" id=g2 onmouseover=Search3(2)><a href="{catlink(35)}">{catname(35)}</a></li>
+        </ul>
+      </div>
+     
+      <DIV id=h1>
+	  <form action="{HOUSE_PATH}qqqun-p1.html" name="myform" id="myform">
+            <DIV class="left_4">
+            <div class="a1"><span class="red">12</span>个楼盘QQ群，<span class="red">1683</span>人加入
+            </div>
+            <div class="a2"><input name="keyword" type="text" class="input1" id="keyword" value="输入楼盘名搜索楼盘QQ群" onfocus="OnFocusFun(this,'输入楼盘名搜索楼盘QQ群')"  style="color:#999"  onblur="OnBlurFun(this,'输入楼盘名搜索楼盘QQ群')" />
+            </div>
+            <div class="a3"><input type="submit" value="搜索" class="smb_btn" /></div>
+            {show_ad(1, 11)}
+            </DIV>
+			</form>
+      </DIV>
+      
+      <DIV class="search_undis"  id=h2>
+	  {h5:content  action="lists" catid="35" order="id DESC" num="6" cache="86400"}
+      <DIV class="left_5">
+           <ul>
+		   {loop $data $v}
+		<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+				 {/loop}
+       
+            </ul>
+            </DIV>
+	{/h5}
+      </DIV> 
+     </div>
+  <div class="left_end"></div>
+  </div>
+  <!--业主交流群+购房宝典 end-->
+  <div class="hr10"></div>
+  <!-- 广告位：楼盘首页_业主交流群_下广告 	-->
+<script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=50"></script>
+</div>
+<div class="center">
+  <!--楼市快讯 begin-->
+  <div class="center_wrap">
+  <div class="title_center link5"><span class="link_span"><a href="{catlink(49)}">更多>></a></span><a style="padding-left:12px;" href="{catlink(49)}">{catname(49)}</a></div>
+  <div class="content_center">
+  {h5:content  action="position" posid="10" catid="49" order="listorder DESC" num="1" cache="10800"}
+	  {loop $data $v}
+  <div class="a1 link9">
+<a  style="color:#ee0000;" href="{$v['url']}" target="_blank" title="{$v[title]}">{$v[title]}</a>
+  </div>
+  
+  {/loop}
+  {/h5}
+  {h5:content  action="lists" posids="0" catid="49" order="id DESC" num="8" cache="10800"}
+  <ul class="link8">
+{loop $data $v}
+ <li><img style="margin-top:8px 0; vertical-align:middle; " src="{APP_PATH}statics/default/img/icon/ann.gif" /><a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+  </ul>
+ {/h5}
+  </div>
+  <div class="center_end"></div>
+  </div>
+  <!--楼市快讯 end-->
+  <div class="hr10"></div>
+  <!--楼市快报+楼市预告 begin-->
+  <div class="PartCs">
+            <div class="PartCsc1">
+        <ul>
+          <li class="SearchD" id=e1 onmouseover=Search2(1)><a href="{catlink(26)}">{catname(26)}</a></li>
+          <li class="SearchC" id=e2 onmouseover=Search2(2)><a href="{catlink(37)}">{catname(37)}</a></li>
+        </ul>
+      </div>
+      <div id=f1>
+	  <div class="content_center">
+	  {h5:content  action="position" posid="10" catid="26" order="listorder DESC" num="1" cache="10800"}
+	  {loop $data $v}
+  <div class="a1 link9">  
+<a href="{$v['url']}" target="_blank" title="{$v[title]}">{$v[title]}</a>
+  </div>
+  {/loop}
+   {/h5}
+  {h5:content  action="lists" catid="26" order="id DESC" num="11" cache="10800"}
+  <ul class="link8">
+	{loop $data $v}
+  <li><img src="{APP_PATH}statics/default/img/icon/object.png" style="margin:9px 5px; vertical-align:middle;" /><a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+	{/loop}	
+  </ul>
+  {/h5}
+  </div>
+  </div>
+  <div class="search_undis" id=f2>
+   <div class="content_center">
+   {h5:content  action="position" posid="10" catid="37" order="listorder DESC" num="1" cache="10800"}
+   {loop $data $v}
+  <div class="a1 link9">
+<a href="{$v['url']}" target="_blank" title="{$v[title]}">{$v[title]}</a>
+  </div>
+   {/loop}
+  {/h5}
+ {h5:content  action="lists" catid="37" order="id DESC" num="11" cache="10800"}
+  <ul class="link8">
+  {loop $data $v}
+ <li><img src="{APP_PATH}statics/default/img/icon/object.png" style="margin:9px 5px; vertical-align:middle;" /><a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+ {/loop}	
+  </ul>
+ {/h5}
+  </div>
+  </div>    
+  
+     <div class="center_end"></div>
+     </div>
+  <!--楼市快报+楼市预告 end-->
+  <div class="hr10"></div>
+</div>
+<div class="right">
+<!--最新开盘 begin-->
+     <div class="rig_wrap">
+     <div class="title_rig link5"><span class="link_span"><a href="{HOUSE_PATH}list-o1.html">更多>></a></span><a style="padding-left:12px;" href="{HOUSE_PATH}list-o1.html">最新开盘</a></div>
+	<?php
+	$where = "status=99";
+	?>
+	 {h5:content action="lists" catid="$catid" where="$where" num="9" order="opentime desc" cache="10800"}
+      <DIV class="rig_cont px6">
+            <UL class="hlist_a">
+             <LI class="title"><SPAN class="td_1">楼盘名称</SPAN><SPAN class="td_2">价格(元/㎡)</SPAN><SPAN class="td_3">开盘时间</SPAN></LI>
+			 {loop $data $r}
+                                <LI><SPAN class="td_1">·<A title="{$r[title]}" href="{$r[url]}/">{$r[title]}</A></SPAN><SPAN class="td_2 link6">{if !empty($r[price]) && $r[price]!="一房一价"}{$r[price]}{else}一房一价{/if}</SPAN><SPAN class="td_3">{date('m-d',strtotime($r[opentime]))}</SPAN></LI>			  
+				   {/loop}
+								 
+            </UL>
+      </DIV>
+	  {/h5}
+     <div class="rig_end"></div>
+     </div>
+     <!--最新开盘 end-->
+     <div class="hr10"></div>
+     <!--优惠信息 begin-->
+     <div class="rig_wrap">
+     <div class="title_rig link5"><span class="link_span"><a href="{catlink(29)}">更多>></a></span><a style="padding-left:12px;" href="{catlink(29)}">{catname(29)}</a></div>
+	 {h5:content  action="lists" catid="29" order="id DESC" num="6" cache="86400"}
+     <div class="content_rig">
+          <ul>
+				{loop $data $v}
+						<li><img src="{APP_PATH}statics/default/img/icon/object.png" style="margin:9px 5px; vertical-align:middle;" /><a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+				 {/loop}
+						
+          </ul>
+		  <div class="hr7"></div>
+     </div>
+	 {/h5}
+     <div class="rig_end"></div>
+     </div>
+     <!--优惠信息 end-->
+     <div class="hr10"></div>
+     <!--行情播报 begin-->
+     <div class="rig_wrap">
+     <div class="title_rig link5"><span class="link_span"><a href="{catlink(27)}">更多>></a></span><a style="padding-left:12px;" href="{catlink(27)}">{catname(29)}</a></div>
+	 {h5:content  action="lists" catid="27" order="id DESC" num="5" cache="10800"}
+     <div class="content_rig3">
+          <ul>
+			{loop $data $v}
+						<li><img src="{APP_PATH}statics/default/img/icon/object.png" style="margin:9px 5px; vertical-align:middle;" /><a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+				 {/loop}
+          </ul>
+     </div>	 
+	 {/h5}
+     <div class="rig_end"></div>
+     </div>
+     <!--行情播报 end-->
+     <div class="hr10"></div>
+</div>
+</div>
+<div class="cArea">
+<div class="cen_box">
+<!--楼盘超市 begin-->
+      <div class="cen_wrap">
+      <div class="title_cen1 link5"><span class="link_span"><a href="{HOUSE_PATH}list.html">更多>></a></span><img src="{APP_PATH}statics/default/img/icon/shop.gif" style="margin:5px 0; vertical-align:middle;" /><a href="{HOUSE_PATH}list.html">楼盘超市</a>
+
+	  <span style="margin-right:10px;"><a href="{HOUSE_PATH}baojia.html" target="_blank" style="font-weight:lighter; margin-left:10px;">楼盘报价</a><a href="{HOUSE_PATH}zimu.html" target="_blank" style="font-weight:lighter; margin-left:10px;">字母楼盘索引</a></span></div>
+      <!--begin-->
+	  {h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC" cache="86400"}
+		{loop $data $r}
+		<?php
+			$reg = explode('$$', $r);//add by L 2012/3/22
+			?>
+      <div class="content_cen2">
+	  {if strlen($reg[1])>6}
+	  <div class="a1 link7"><a href="{HOUSE_PATH}list-r{$reg[0]}.html">{$reg[1]}</a></div>
+	  {else}
+      <span class="link7"><a href="{HOUSE_PATH}list-r{$reg[0]}.html">{$reg[1]}</a></span>
+	  {/if}
+      <ul>
+		{h5:content action="house_position" catid="$catid" posid="15" regionid="$reg[0]" num="100" order="id DESC" return="house" cache="86400"}<!-- 楼盘列表 -->		
+				  {loop $house $h}
+				  {php if($n>12) break;}
+				  <li ><a href="{HOUSE_PATH}{$h[id]}/">{$h[title]}</a>
+				  <?php $hot = explode(',', $h[hot]);
+						foreach ($hot as $t => $c) {
+					if(intval($c))
+					{
+						if($c=='4')
+						{
+					echo '<img src="'.APP_PATH.'statics/default/img/icon/hot.gif" alt="热门楼盘" title="热门楼盘" style="margin:2px 0; vertical-align:middle;padding-left:10px;" />';	
+						}
+						if($c=='5')
+						{
+					echo '<img src="'.APP_PATH.'statics/default/img/icon/new_1.gif" alt="最新楼盘" title="最新楼盘" style="margin:2px 0; vertical-align:middle;padding-left:3px;" />';		
+						}
+						if($c=='6')
+						{
+					echo '<img src="'.APP_PATH.'statics/default/img/icon/jing.gif" alt="精品楼盘" title="精品楼盘" style="margin:2px 0; vertical-align:middle;padding-left:3px;" />';		
+						}
+					}
+				}?>
+				</li>				  
+				   {/loop}
+				{/h5}
+        		      </ul>
+      </div>
+	  {/loop}
+	  {/h5}
+      <!--end-->
+      <div class="cen_end"></div>
+      <div class="hr10"></div>
+      </div>
+<!--楼盘超市 end-->
+
+</div>
+<div class="right">
+     <!--热点楼盘+最新楼盘 begin-->
+     <div class="PartBs">
+            <div class="PartBsc1">
+        <ul>
+          <li class="SearchD" id=c1 onmouseover=Search1(1)>热点楼盘</li>
+          <li class="SearchC" id=c2 onmouseover=Search1(2)>最新楼盘</li>
+        </ul>
+      </div>
+{h5:content action="hits" catid="$catid" num="12" order="views DESC" cache="86400"}
+      <DIV class="rig_cont px7"  id=d1 >
+            <UL class="hlist_aa">
+            <LI class="title"><SPAN class="td_1">楼盘名称</SPAN><SPAN class="td_03">区域</SPAN><SPAN class="td_02">价格(元/㎡)</SPAN></LI>	 
+           
+			{loop $data $r}
+			{php $menu_info = menu_info('3360',$r[region])}
+			 <LI><SPAN class="td_1">·<a href="{$r[url]}">{$r[title]}</a></SPAN><SPAN class="td_2 link6"><a href="{HOUSE_PATH}list-r{$menu_info[1]}.html">{$menu_info[0]}</a></SPAN><SPAN class="td_4">{if !empty($r[price]) && $r[price]!="一房一价"}{$r[price]}{else}一房一价{/if}</SPAN></LI>
+			{/loop}
+            </UL>
+      </DIV>
+  {/h5}	
+{h5:content action="lists" catid="$catid" where="`hot` like '%5%'" num="12" order="id desc" cache="86400"}
+    <DIV class="rig_cont px7 search_undis"  id=d2>
+            <UL class="hlist_aa">
+            			 <LI class="title"><SPAN class="td_1">楼盘名称</SPAN><SPAN class="td_03">区域</SPAN><SPAN class="td_02">价格(元/㎡)</SPAN></LI>
+          {loop $data $v}
+			{php $menu_info = menu_info('3360',$v[region])}
+			 
+             <LI><SPAN class="td_1">·<a href="{$v[url]}">{$v[title]}</a></SPAN><SPAN class="td_2 link6"><a href="{HOUSE_PATH}list-r{$menu_info[1]}.html">{$menu_info[0]}</a></SPAN><SPAN class="td_4">{if !empty($v[price]) && $v[price]!="一房一价"}{$v[price]}{else}一房一价{/if}</SPAN></LI>
+        		 
+			 {/loop}	       
+            </UL>
+      </DIV>         						            
+	{/h5}	
+  
+     <div class="rig_end"></div>
+     </div>
+     <!--热点楼盘+最新楼盘 end-->
+     <div class="hr10"></div>
+     <!--精品楼盘推荐 begin-->
+     <div class="rig_wrap">
+	 <div class="title_rig link5"><span class="link_span"><a href="{HOUSE_PATH}list-h6.html">更多>></a></span><a style="padding-left:12px;" href="{HOUSE_PATH}list-h6.html">精品楼盘推荐</a></div>
+      <DIV class="rig_cont px7">
+            <UL class="hlist_a">
+           
+			 <LI class="title"><SPAN class="td_1">楼盘名称</SPAN><SPAN class="td_3">区域</SPAN><SPAN class="td_02">价格(元/㎡)</SPAN></LI>
+        {h5:content  action="house_position" posid="26" catid="14" order="listorder DESC" num="2" cache="86400"}
+			 {loop $data $r}
+			{php $menu_info = menu_info('3360',$r[region])}                       
+				 <LI><SPAN class="td_1">·<a href="{$r[url]}">{$r[title]}</a></SPAN><SPAN class="td_2 link6"><a href="{HOUSE_PATH}list-r{$menu_info[1]}.html">{$menu_info[0]}</a></SPAN><SPAN class="td_4">{if !empty($r[price]) && $r[price]!="一房一价"}{$r[price]}{else}一房一价{/if}</SPAN></LI>
+			 {/loop}
+		 {/h5}
+		{h5:content  action="house_position" posid="27" catid="14" order="listorder DESC" num="7" cache="86400"}
+	       {loop $data $r}
+		{php $menu_info = menu_info('3360',$r[region])}                       
+             <LI><SPAN class="td_1">·<a href="{$r[url]}">{$r[title]}</a></SPAN><SPAN class="td_2 link6"><a href="{HOUSE_PATH}list-r{$menu_info[1]}.html">{$menu_info[0]}</a></SPAN><SPAN class="td_4">{if !empty($r[price]) && $r[price]!="一房一价"}{$r[price]}{else}一房一价{/if}</SPAN></LI>
+		 {/loop}
+		 {/h5}
+            </UL>
+      </DIV>
+     <div class="rig_end"></div>
+     </div>
+	 {/h5}
+     <!--精品楼盘推荐 end-->
+     <div class="hr10"></div>
+</div>
+</div>
+<div class="cArea">
+<div class="cen_box">
+<div class="hr10"></div>
+<!--推荐户型 begin-->
+      <div class="cen_wrap">
+      <div class="title_cen link5"><span class="link_span"><a href="{HOUSE_PATH}hxlist.html">更多>></a> </span>推荐户型</div>
+	  <DIV class=unit_nk>
+		          
+{h5:content action="position" posid="16" num="4" order="id DESC" cache="86400"}
+{loop $data $r}
+{h5:content action="huxinginfo" relation="$r[id]" catid="13" num="1" order="inputtime DESC" cache="86400"}<!-- 户型图 -->
+{loop $data $rs}
+{php $xx++}
+{php if($xx>1) continue;}{$xx}
+{loop string2array($rs['pictureurls']) $pic_k $v}
+{php $yy++}
+{php if($yy>1) continue;}{$yy}
+<DIV class=ntpstyle>  <!-- 循环此标签 -->
+<UL>
+  	<li class=bk02><a href="{$r[url]}/huxing.html" title="{$r[title]}户型图"><img src="{thumb($v[url], 156, 156, 0)}" width="140" height="105" /></a></li> 
+  	<li><a href="{$r[url]}/huxing.html" title="{$r[title]}户型图">{$r[title]}户型图</a></li>
+</UL>
+</DIV>
+{/loop}
+{/loop}
+{/h5}
+{/loop}
+		{/h5}
+  </DIV>
+      <div class="cen_end"></div>
+      </div>
+<!--推荐户型 end-->
+<div class="hr10"></div>
+<!--推荐样板房 begin-->
+      <div class="cen_wrap">
+      <div class="title_cen link5"><span class="link_span"><a href="{HOUSE_PATH}ybjlist.html">更多>></a></span>推荐样板房</div>
+	  <DIV class=unit_nk>
+		          
+{h5:content action="position" posid="17" num="4" order="id DESC" cache="86400"}
+{loop $data $r}
+{h5:content action="huxinginfo" relation="$r[id]" catid="8" typeid="16" num="1" order="inputtime DESC" cache="86400"}<!-- 户型图 -->
+{loop $data $rs}
+{php $xx++}
+{php if($xx>1) continue;}{$xx}
+{loop string2array($rs['pictureurls']) $pic_k $v}
+{php $yy++}
+{php if($yy>1) continue;}{$yy}
+<DIV class=ntpstyle>  <!-- 循环此标签 -->
+<UL>
+  	<li class=bk02><a href="{$r[url]}/xclist-16.html" title="{$r[title]}样板间"><img src="{thumb($v[url], 156, 156, 0)}" width="140" height="105" /></a></li> 
+  	<li><a href="{$r[url]}/xclist-16.html" title="{$r[title]}样板间">{$r[title]}样板间</a></li>
+</UL>
+</DIV>
+{/loop}
+{/loop}
+{/h5}
+{/loop}
+		{/h5}  			
+  </DIV>
+      <div class="cen_end"></div>
+      </div>
+<!--推荐样板房 end-->
+</div>
+<div class="right">
+     <!--项目进度 begin-->
+     <div class="rig_wrap">
+     <div class="title_rig link5"><span class="link_span"><a href="{catlink(28)}">更多>></a></span><a style="padding-left:12px;" href="{catlink(28)}">{catname(28)}</a></div>
+	 {h5:content  action="lists" catid="28" order="id DESC" num="8" cache="10800"}
+     <div class="content_rig2">
+          <ul>
+				{loop $data $v}
+						<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+				 {/loop}
+          </ul>
+     </div>
+	 {/h5}
+     <div class="rig_end"></div>
+     </div>
+     <!--项目进度 end-->
+     <div class="hr10"></div>
+     <!--看房进度 begin-->
+     <div class="rig_wrap">
+     <div class="title_rig link5"><span class="link_span"><a href="{catlink(31)}">更多>></a></span><a style="padding-left:12px;" href="{catlink(31)}">{catname(31)}</a></div>
+	 {h5:content  action="lists" catid="31" order="id DESC" num="7" cache="10800"}
+     <div class="content_rig2">
+          <ul>
+				{loop $data $v}
+						<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+				 {/loop}
+						          </ul>
+     </div>
+     <div class="rig_end"></div>
+     </div>
+     <!--看房进度 end-->
+     <div class="hr10"></div>
+</div>
+</div>
+<!--友情链接 begin-->
+<div class="hr10"></div>
+<div class="cArea">
+<!--户型图 begin-->
+<div class="mthz">
+<div class="mthz_bt">
+  <div class="a1 link5">友情链接</div>
+  <div class="a2">链接交换：</div>
+</div>
+<div class="linkyq">
+       {h5:link  action="type_list" typeid="42" siteid="$siteid" order="listorder DESC" return="data" cache="86400"}
+             <ul>
+			 {loop $data $r}
+                            <li><a href="{$r[url]}" title="{$r[name]}" target="_blank">{$r[name]}</a></li>
+             {/loop}
+			 </ul>
+		 {/h5}
+   </div>
+<div class="content_end"></div>
+</div>
+<div class="hr10"></div>
+</div>
+<!--友情链接 end-->
+</div>
+{template "content","footer"}
+<script language="javascript">
+window.onload=function(){
+scrollSP("left_1",50,"left");
+}
+	function OnFocusFun(element,elementvalue)
+	{
+		if(element.value==elementvalue)
+		{
+			element.value="";
+			element.style.color="#000";
+		}
+	}
+	
+		function OnBlurFun(element,elementvalue)
+	{
+		if(element.value==""||element.value.replace(/\s/g,"")=="")
+		{
+			element.value=elementvalue;
+			element.style.color="#999";
+		}
+	} 
+</script>

@@ -1,0 +1,580 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<link rel="shortcut icon" href="{APP_PATH}favicon.ico" />
+<LINK 
+rel=stylesheet type=text/css href="{APP_PATH}/statics/house5-style1/css/tuan/routecontent.css" 
+media=screen>
+<META name=author content=xiaokzhang>
+<SCRIPT>var mapFlag=true;var houseInfoListOnMap = [{"FId":"111299","FName":"\u89c2\u5de2","FLongitude":"116.406933611981","FLatitude":"39.9994714780552"},{"FId":"9515","FName":"\u4e00\u74f6\u00b7\u56db\u548c\u9662","FLongitude":"116.419235229492","FLatitude":"40.0017051696777"}];</SCRIPT>
+
+<META name=GENERATOR content="MSHTML 9.00.8112.16450"></HEAD>
+<BODY><!--公共头部-->
+<STYLE>.miniNavWrap {
+	BACKGROUND: url({APP_PATH}/statics/house5-style1/img/tuan/miniNavWrap.png) repeat-x center top; HEIGHT: 32px
+}
+.miniNav {
+	LINE-HEIGHT: 30px; HEIGHT: 32px; COLOR: #222
+}
+.miniNav A {
+	COLOR: #5b5b5b
+}
+.miniNav A:hover {
+	COLOR: #2d374b; TEXT-DECORATION: none
+}
+.miniNav .login {
+	_padding-top: 4px
+}
+.miniNav .loginBtn {
+	TEXT-ALIGN: center; LINE-HEIGHT: 20px; WIDTH: 59px; DISPLAY: inline-block; HEIGHT: 20px; COLOR: #6994c1
+}
+.miniNav .loginBtn:hover {
+	BACKGROUND-POSITION: -60px 0px; COLOR: #fff
+}
+.miniNav .msg A {
+	COLOR: #ee5f00
+}
+.header {
+	HEIGHT: 90px
+}
+.header .telBox {
+	MARGIN-TOP: 20px; PADDING-LEFT: 55px; WIDTH: 215px; BACKGROUND-POSITION: -690px 5px; OVERFLOW: hidden
+}
+.header .telBox H2 {
+	FONT: bold 22px/30px "微软雅黑","黑体"; COLOR: #505050
+}
+.header .telBox P {
+	FONT: bold 18px/22px "微软雅黑","黑体"; COLOR: #ee5f00
+}
+.header .telBox P SPAN {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; COLOR: #888; PADDING-TOP: 0px
+}
+.header .selCity {
+	Z-INDEX: 99; BORDER-BOTTOM: #c2c2c2 1px solid; POSITION: relative; TEXT-ALIGN: center; BORDER-LEFT: #c2c2c2 1px solid; LINE-HEIGHT: 14px; MARGIN: 34px 0px 0px 13px; WIDTH: 53px; HEIGHT: 17px; BORDER-TOP: #c2c2c2 1px solid; BORDER-RIGHT: #c2c2c2 1px solid; PADDING-TOP: 4px
+}
+.header .selCity EM {
+	LINE-HEIGHT: 0; WIDTH: 5px; DISPLAY: inline-block; BACKGROUND-POSITION: -560px -140px; HEIGHT: 3px; MARGIN-LEFT: 3px; FONT-SIZE: 0px; VERTICAL-ALIGN: middle
+}
+.header .current .cityList {
+	DISPLAY: block
+}
+.header .cityList {
+	BORDER-BOTTOM: #c2c2c2 1px solid; POSITION: absolute; TEXT-ALIGN: left; BORDER-LEFT: #c2c2c2 1px solid; PADDING-BOTTOM: 18px; LINE-HEIGHT: 18px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; DISPLAY: none; BACKGROUND: #fff; BORDER-TOP: #c2c2c2 1px solid; BORDER-RIGHT: #c2c2c2 1px solid; PADDING-TOP: 18px; TOP: 21px; LEFT: -1px
+}
+.header .cityList .btnClose {
+	POSITION: absolute; WIDTH: 11px; DISPLAY: inline-block; BACKGROUND-POSITION: -600px -50px; HEIGHT: 12px; CURSOR: pointer; RIGHT: 9px; TOP: 7px
+}
+.header .cityList A {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; MARGIN: 0px 2px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; DISPLAY: inline-block; HEIGHT: 18px; PADDING-TOP: 0px
+}
+.header .cityList A:hover {
+	BACKGROUND: #5673ce; COLOR: #fff; TEXT-DECORATION: none
+}
+.header .cityList .item {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 5px
+}
+.header .cityList .item SPAN {
+	PADDING-LEFT: 10px; COLOR: #8e9fe1; FONT-WEIGHT: bold
+}
+.mainNavWrap {
+	BACKGROUND: url({APP_PATH}/statics/house5-style1/img/tuan/mainNavWrap.png) repeat-x center top; HEIGHT: 40px
+}
+.mainNav {
+	HEIGHT: 40px
+}
+.mainNav LI {
+	FLOAT: left; HEIGHT: 40px
+}
+.mainNav LI A {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 40px; PADDING-LEFT: 26px; PADDING-RIGHT: 26px; DISPLAY: inline-block; HEIGHT: 40px; COLOR: #fff; FONT-SIZE: 14px; PADDING-TOP: 0px
+}
+.mainNav LI A:hover {
+	TEXT-DECORATION: none
+}
+.mainNav .current {
+	BORDER-LEFT: #3e5dc1 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 25px; PADDING-RIGHT: 25px; BACKGROUND: url({APP_PATH}/statics/house5-style1/img/tuan/icons.png) no-repeat 0px -70px; COLOR: #fff; OVERFLOW: hidden; BORDER-RIGHT: #4c69c7 1px solid; PADDING-TOP: 0px
+}
+.mainNav LI A:hover {
+	BORDER-LEFT: #3e5dc1 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 25px; PADDING-RIGHT: 25px; BACKGROUND: url({APP_PATH}/statics/house5-style1/img/tuan/icons.png) no-repeat 0px -70px; COLOR: #fff; OVERFLOW: hidden; BORDER-RIGHT: #4c69c7 1px solid; PADDING-TOP: 0px
+}
+</STYLE>
+<SCRIPT>
+function kft_signup_submit()
+{
+if (document.Tgform.truename.value=="")
+  {
+    alert("请输入姓名！");
+    document.Tgform.truename.focus();
+    return false;
+   }
+
+	if (document.Tgform.phone.value=="")
+  {
+    alert("请输入手机！");
+    document.Tgform.phone.focus();
+    return false;
+   }
+	if(document.Tgform.relation.value=="")
+	{
+		document.Tgform.action='{APP_PATH}index.php?s=formguide/index/show&formid=17&siteid=1&flag=act';
+		document.Tgform.submit();
+	}
+	else
+	{
+		document.Tgform.action='{APP_PATH}index.php?s=formguide/index/show&formid=17&siteid=1&flag=lp';
+		document.Tgform.submit();
+	}
+   /*
+   if (document.Tgform.num.value=="")
+  {
+    alert("请输入团购人数！");
+    document.Tgform.num.focus();
+    return false;
+   }
+   if (/\D/g.test(document.Tgform.num.value)){
+	  document.Tgform.num.value=(document.Tgform.num.value).replace(/\D/g,'');
+	  return false;
+   }*/
+   return true;
+}
+function kft_login_submit()
+{
+	if (document.Tgform.username.value=="")
+  {
+    alert("请输入帐号！");
+    document.Tgform.username.focus();
+    return false;
+   }
+
+	if (document.Tgform.password.value=="")
+  {
+    alert("请输入密码！");
+    document.Tgform.password.focus();
+    return false;
+   }
+   if (document.Tgform.code.value=="")
+  {
+    alert("请输入验证码！");
+    document.Tgform.code.focus();
+    return false;
+   }
+	document.Tgform.action='{APP_PATH}index.php?s=member/index/login';
+	document.Tgform.submit();
+   return true;
+}
+</SCRIPT>
+<script type="text/javascript" src="{APP_PATH}/statics/house5-style1/js/tuan/lightBox.js"></script>
+<script type="text/javascript">
+var vf_box1='<DIV id=resgInfo class=resgInfo><DIV class="hd cf"><H2>填写报名资料&nbsp;<SPAN>（带<EM>*</EM>为必填项）</SPAN></H2></DIV><FORM id=Tgform method=post name=Tgform action= target=ifr_1><DIV class=bd><DIV><SPAN class=name><EM>*</EM>姓　名：</SPAN><INPUT style="VERTICAL-ALIGN: middle" id=gb_name class="icons txt" name=truename></DIV><DIV><SPAN class=name>性　别：</SPAN><LABEL><INPUT style="VERTICAL-ALIGN: middle" id=gb_sex name=sex type=radio value=2>女士</LABEL>&nbsp;&nbsp;<LABEL><INPUT style="VERTICAL-ALIGN: middle" name=sex type=radio value=1>先生</LABEL></DIV><DIV><SPAN class=name><EM>*</EM>手　机：</SPAN><INPUT style="VERTICAL-ALIGN: middle" id=gb_mobile class="icons txt" name=phone></DIV><DIV><SPAN class=name>QQ：</SPAN><INPUT style="VERTICAL-ALIGN: middle" id=gb_email class="icons txt" name=qq></DIV><DIV></DIV><DIV><SPAN class=name></SPAN><INPUT class="icons submit" title=立即报名 tabIndex=21 onclick="kft_signup_submit();" value=立即报名 type=button><input type=hidden name=from id=from value={TUAN_PATH}><SPAN style="LINE-HEIGHT: 40px; DISPLAY: none; COLOR: #ff0000; MARGIN-LEFT: 30px; FONT-SIZE: 12px" id=kft_error_result></SPAN></DIV></DIV><INPUT id=dosubmit name=dosubmit value="提&nbsp;交" type=hidden> add_hidden</FORM></DIV>';
+var vf_box2='<DIV id=loginInfo class=resgInfo><DIV class="hd cf"><H2>会员登录&nbsp;<SPAN>（带<EM>*</EM>为必填项）</SPAN></H2></DIV><FORM id=loginform method=post name=Tgform action= target=ifr_1><DIV class=bd><DIV><SPAN class=name><EM>*</EM>帐　号：</SPAN><INPUT style="VERTICAL-ALIGN: middle" id=username class="icons txt" name=username></DIV><DIV><SPAN class=name><EM>*</EM>密　码：</SPAN><INPUT style="VERTICAL-ALIGN: middle" id=password class="icons txt" type="password" name=password></DIV><DIV><SPAN class=name><EM>*</EM>验证码：</SPAN><INPUT style="VERTICAL-ALIGN: middle" id=code class="icons txt" name=code><img id="code_img" onclick="this.src=this.src+&quot;&amp;&quot;+Math.random()" src="{APP_PATH}api.php?op=checkcode&amp;code_len=4&amp;font_size=14&amp;width=84&amp;height=29&amp;font_color=&amp;background="></DIV><DIV style="margin-top:10px;"><SPAN class=name></SPAN><INPUT class="loginicons" title=登录 tabIndex=21 onclick="kft_login_submit();" value="" type=button><input type=hidden name=forward id=forward value={TUAN_PATH}><input type="hidden" name="cookietime" value="2592000" id="cookietime"><SPAN style="LINE-HEIGHT: 40px; DISPLAY: none; COLOR: #ff0000; MARGIN-LEFT: 30px; FONT-SIZE: 12px" id=kft_error_result></SPAN></DIV><DIV>您还可以使用以下帐号直接登录</DIV><DIV class="login_other"><A class="lo_sina" title="新浪微博帐号登录" href="{APP_PATH}index.php?s=member/index/public_sina_login&forward={TUAN_PATH}">新浪微博</A><A class="lo_qq" title="QQ帐号登录" href="{APP_PATH}index.php?s=member/index/public_qq_loginnew&forward={TUAN_PATH}">QQ帐号</A></P></DIV><DIV><span style="float:left;line-height:25px;">还没有帐号？马上注册吧！</span><a class="login_ljzc" title="立即注册" href="{APP_PATH}register.html?forward={TUAN_PATH}">立即注册</a></DIV></DIV><INPUT id=dosubmit name=dosubmit value="提&nbsp;交" type=hidden></FORM></DIV>';
+var	footerhtml1='<input type="image" alt="Cancel" src="{APP_PATH}/statics/house5-style1/img/tuan/cancel_button.gif" class="btn" id="msg1cancel" />';	
+</script>
+<!-- miniNavWrap s -->
+<DIV class="miniNavWrap cf">
+<DIV class="miniNav layout cf"><SPAN class=fl><A href="{APP_PATH}" 
+target=_blank>首页</A>&nbsp;|&nbsp; <A href="{HOUSE_PATH}" 
+target=_blank>新房</A>&nbsp;|&nbsp; <A href="{APP_PATH}sitemap.html" 
+target=_blank>网站导航</A> </SPAN><SPAN class="fr login"><script type="text/javascript">document.write('<iframe src="{APP_PATH}index.php?s=member/index/mini&forward='+encodeURIComponent(location.href)+'&siteid={get_siteid()}" allowTransparency="true"  width="200" height="24" frameborder="0" scrolling="no"></iframe>')</script></SPAN> </DIV></DIV><!-- miniNavWrap e --><!-- ad s --><!-- ads head start--><!-- ads head end --><!-- ad e --><!-- header s -->
+<DIV class="header layout cf">
+<DIV class=fl>
+<H1 class="fl" style="margin-top:15px;"><A href="{TUAN_PATH}"><IMG alt=看房团 
+src="{APP_PATH}/statics/house5-style1/img/logo.png"></A></H1>
+<DIV id=selCity class="selCity fl">{$default_city}<EM class=icons></EM> 
+</DIV></DIV>
+<DIV class=fr>
+<DIV class="telBox icons">
+<H2>看房团热线</H2>
+<P>5888888</P></DIV></DIV></DIV><!-- header e --><!-- mainNavWrap s -->
+<DIV class="mainNavWrap mb15">
+<DIV class="mainNav layout">
+<UL class=cf>
+  <LI><A href="{TUAN_PATH}">首页</A> </LI>
+  <LI><A onclick="boss_statistics(1556,'getmymsg','mainnavigation','other')" 
+  href="#">我的看房单</A> </LI>
+  <LI><A href="{APP_PATH}special-1-1.html" 
+  target=_blank>往期看房团</A> 
+<!--<li><a href="">自主看房团说明</a></li>--></LI></UL></DIV></DIV><!-- mainNavWrap e -->
+<SCRIPT>
+
+var g_city_info = {"FId":"1","FName":"\u5317\u4eac","FFirstLetter":"B","FSubName":"bj","FEnName":"beijing","FIsNewYouth":"1","FQQGroups":null,"FStatus":"1","FType":"2","FLatitude":"39.916527","FLongitude":"116.397128","FZoomLevel":"11","FOpenMap":"1","FMapInfo":"a:2:{s:3:\"day\";a:4:{s:2:\"sp\";s:5:\"10.00\";s:2:\"sd\";i:3000;s:4:\"unit\";s:4:\"2.00\";s:2:\"sc\";s:4:\"3.00\";}s:5:\"night\";a:4:{s:2:\"sp\";s:5:\"10.00\";s:2:\"sd\";i:3000;s:4:\"unit\";s:4:\"2.40\";s:2:\"sc\";s:4:\"3.00\";}}","FOpenKft":"1","FKftLatitude":"39.916527","FKftLongitude":"116.397128","FKftZoomLevel":"11","FIsOpenConsulHotline":"1"};
+var house_front_domain = "http://db.house.qq.com";
+function getByClass(oParent, sClass) {
+    var aTmp = [],
+    aEle = oParent.getElementsByTagName('*');
+    for (var i = 0, l = aEle.length; i < l; i++) {
+        if (aEle[i].className.indexOf(sClass) != -1) {
+            aTmp.push(aEle[i]);
+        }
+    }
+    return aTmp;
+}
+/* selCity */
+var cityBtn = document.getElementById("selCity");
+var btnClose = getByClass(cityBtn, "btnClose")[0];
+
+function isMouseLeave(evt, element) {  
+    if (evt.type != 'mouseout' && evt.type != 'mouseover') return false;   
+    var target = evt.relatedTarget ? evt.relatedTarget : evt.toElement;  
+    while (target && target != element) {  
+        target = target.parentNode;  
+    }  
+    return (target != element);  
+}
+
+btnClose.onclick = function(){
+    cityBtn.className = "selCity fl"
+       }
+cityBtn.onmouseover = function(){
+    this.className = "selCity current fl";
+}
+cityBtn.onmouseout = function(e){
+        e = arguments[0] || window.event;
+        if (isMouseLeave(e, this)) {  
+    this.className = "selCity fl";
+    }
+}
+document.getElementById("cityList").style.width = "90px";
+</SCRIPT>
+<!-- main content-->
+<DIV class=wrap>
+<DIV class="mainWrap mb10 cf">
+<DIV class=main>
+<DIV id=mainList class="mainTop mb20"><!--<div class="tit cf">首页 > 腾讯房产看房团第16期  > 朝阳线：优惠15万，送10万家电</div>-->
+<DIV class=con><!-- item s -->
+<DIV class="item cf">
+<DIV class=cf>
+<DIV style="WIDTH: 530px" class="titleBox fl">
+<DIV>
+<H3><SPAN 
+class=day>[{date('m月d日',strtotime($addtime))}]</SPAN>{$title}</H3></DIV></DIV>
+<DIV class="shareBox fr"><SPAN class="ico-title fl">分享到：</SPAN> <A 
+href="javascript:window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+encodeURIComponent(url) + '&amp;pics=' + encodeURIComponent(pic) + '&amp;title=' + encodeURIComponent(title)+ '&amp;summary=' + encodeURIComponent(description));void(0);" 
+rel=nofollow><SPAN class="ico-qqspace fl"></SPAN></A><A 
+href="javascript:window.open('http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;url='+encodeURIComponent(url)+'&amp;title='+encodeURIComponent(weibo_title)+'&amp;pic='+encodeURIComponent(pic));void(0)" 
+rel=nofollow><SPAN class="ico-qqwb fl"></SPAN></A><A 
+href="javascript:window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?to=pengyou&amp;url='+encodeURIComponent(url) + '&amp;pics=' + encodeURIComponent(pic) + '&amp;title=' + encodeURIComponent(title)+ '&amp;summary=' + encodeURIComponent(description));void(0)" 
+rel=nofollow><SPAN class="ico-qqpengyou fl"></SPAN></A><A 
+href="javascript:window.open('http://mail.qq.com/cgi-bin/qm_share?url='+encodeURIComponent(url)+'&amp;to=qqmail'+ '&amp;pics=' + encodeURIComponent(pic)+'&amp;title=' + encodeURIComponent(title)+ '&amp;summary=' + encodeURIComponent(description));void(0)" 
+rel=nofollow><SPAN class="ico-qqmail fl"></SPAN></A></DIV></DIV>
+<DIV class=cf>
+<DIV class="txtBox fl">
+<DIV>
+<P>{$description}</P>
+<UL class=list>
+  <LI><SPAN class=bold>所属区域：</SPAN>{menu_linkinfo('3360',$region,1)} 
+  <LI><SPAN class=bold>线路特点：</SPAN>{$character} </LI></UL></DIV>
+<DIV class=ft><A id=kft_route_105 class="btn btnBm fl" 
+onclick="var addr='<input type=\'hidden\' name=\'relation\' id=\'relation\' value=><input type=\'hidden\' name=\'relatedid\' id=\'relatedid\' value=<?php echo $id;?>>';Box('msg1',502,345,vf_box1,footerhtml1,addr);" href="javascript:void(0);">立即报名</A><SPAN class="btnRes fl">已报名<SPAN 
+id=kft_route_signup_num_105 class=btnTxt>{get_routecount($id)}</SPAN>人</SPAN> </DIV></DIV>
+<DIV class="picBox fr"><IMG alt={$title} 
+src="{thumb($thumb,370,235)}" width=370 height=235> </DIV></DIV>
+<TABLE class="lineList icons">
+  <TBODY>
+  <TR>
+    <!--线路下楼盘开始-->
+{h5:content action="houseinfo" catid="$housecatid" relation="$relation" order="id DESC" cache="86400" return="houseinfo"}
+{loop $houseinfo $v}
+    <TD>
+      <DIV style="PADDING-TOP: 15px" class=lineItem>
+      <DIV class="iconDot icons">
+      <DIV style="Z-INDEX: 2" class=detail><EM class=icons></EM>
+      <DIV class=cf>
+      <DIV class="picBox2 fl"><A href="{$v[url]}" 
+      target=_blank><IMG alt={$v[title]} width=140 height=101 
+      _src="{thumb($v[thumb],140,101)}"></A></DIV>
+      <DIV class=txtBox2>
+      <H4 class=bold><A href="{$v[url]}" 
+      target=_blank><SPAN title={$v[title]}>{$v[title]}</SPAN></A></H4>
+      <P>价格：<SPAN>{if !empty($v[price]) && $v[price]!="一房一价"} 均价{if $v[priceunit]=="0" }<SPAN 
+class=num>{$v[price]}</SPAN>元/平米{elseif  $v[priceunit]=="2"}<SPAN 
+class=num>{price_short($v[price])}</SPAN>/套{/if}{else}一房一价{/if}</SPAN></P>
+      <P><SPAN title={$v[dzinfo]}>{$v[dzinfo]}</SPAN></P>
+      <P>开盘时间：{if !empty($v[opentimetips])}{$v[opentimetips]}{elseif !empty($v[opentime])&& $v[opentime]!="0000-00-00"}{$v[opentime]}{else}待定{/if}</P></DIV></DIV>
+      <DIV class=tese>项目特色：<SPAN title="{get_charactername($v[character])}">{get_charactername($v[character])}</DIV></DIV></DIV>
+      <P class="center f14">{$v[title]}</P></DIV></TD>
+<!--第一个结束-->
+  {/loop}
+{/h5}
+</TR></TBODY></TABLE></DIV><!-- item e --></DIV></DIV>
+<DIV class="mainList mb20">
+<DIV class="tit t1">楼盘介绍</DIV>
+<DIV class=con>
+{h5:content action="houseinfo" catid="14" relation="$relation" order="id DESC" cache="86400" return="houseinfo"}
+{loop $houseinfo $v}
+<?php
+if($houseid)
+{
+	$houseid=$houseid.','.$v[id];
+}
+else
+{
+	$houseid=$v[id];
+}
+?>
+<DIV class="list cf">
+<DIV class="picBox fl"><A class=title href="{$v[url]}" 
+target=_blank><IMG alt={$v[title]} src="{thumb($v[thumb],200,150)}" width=200 height=150></A> 
+</DIV>
+<DIV class="txtBox fl">
+<DIV><A class=title href="{$v[url]}" target=_blank><SPAN 
+title={$v[title]}>{$v[title]}</SPAN></A> <A href="{$v[url]}" 
+target=_blank>[详情]</A>&nbsp; <A href="{$v[url]}/xinxi.html" 
+target=_blank>[动态]</A> </DIV>
+<DIV class="txtlist mt5"><SPAN title=均价44000元/平米>
+<P>价格：{if !empty($v[price]) && $v[price]!="一房一价"} 均价{if $v[priceunit]=="0" }<SPAN 
+class=num>{$v[price]}</SPAN>元/平米{elseif  $v[priceunit]=="2"}<SPAN 
+class=num>{price_short($v[price])}</SPAN>/套{/if}{else}一房一价{/if}</P></SPAN><SPAN title={$v[dzinfo]}>
+<P>打折优惠：{$v[dzinfo]}</P></SPAN><SPAN title={$v[address]}>
+<P>楼盘地址：{$v[address]}</P></SPAN><SPAN 
+title="{$v[jiaotong]}">
+<P>交通状况：{str_cut($v[jiaotong],30)}</P></SPAN><SPAN title="{$v[tel]}">
+<P>咨询热线：{$v[tel]}</P></SPAN></DIV></DIV>
+{php $reviewsid = "content_14-$v[id]-1";}
+	{h5:reviews action="get_reviews" reviewsid="$reviewsid" cache="86400" return="reviews"}
+{/h5}
+<DIV class="scoreBox fl">
+<DIV class="score cf">
+<?php
+				if($reviews[total]>0)
+				{
+				   $percent = round($reviews[allstar]/$reviews[total]*5);
+				}
+				else
+				{
+				   $percent = 0;
+				}
+              ?>
+<DIV class=fl><SPAN>{$percent}</SPAN> （{$reviews[total]}人评分） </DIV>
+<DIV class="btn fr"><A href="{$v[url]}/dianping.html" target=_blank>评分</A> 
+</DIV></DIV>
+{php unset($reviewsid);}
+{h5:reviews action="impression_lists" houseid="$v[id]" siteid="$siteid" num="4" cache="86400"}
+{if $data}
+<div class="impress">
+	<div>楼盘印象：</div>
+	<div class="tag">
+	
+		<div class="cf">
+		{loop $data $r}
+			<div class="lt fl"><span title="{$r[impression]}">{$r[impression]}</span></div>{/loop}
+		</div>
+	</div>
+</div>
+{/if}
+{/h5}
+<DIV class=comments>网友点评： <A class=good 
+onclick=" href="{$v[url]}/dianping.html" 
+target=_blank>优点（1）</A> <A class=bad 
+onclick=" href="{$v[url]}/dianping.html" 
+target=_blank>缺点（1）</A> </DIV></DIV></DIV>
+  {/loop}
+{/h5}
+</DIV></DIV>
+<DIV class="mainMap mb20">
+<DIV class="tit t2">楼盘地图</DIV>
+<DIV id=mapContainer class=con><iframe id="building_{$id}" src="{APP_PATH}map/map_tuan.php?ids={$houseid}" frameborder="0" width="745" height="666" marginheight="0" marginwidth="0" scrolling="no"></iframe></DIV></DIV>
+<DIV class="mainWb mb20">
+<DIV class="tit t3">大家都在说</DIV>
+<DIV style="DISPLAY: none" class=more>已有4424条评论，共14882人参与 查看所有</DIV>
+<DIV class=ico></DIV>
+<DIV class=con style="height:100%;">
+{if $allow_comment && module_exists('comment')}   
+  <iframe src="{APP_PATH}index.php?s=comment/index/init&commentid={id_encode("content_$catid",$id,$siteid)}&iframe=1" width="100%" height="100%" id="comment_iframe" frameborder="0" scrolling="no"></iframe>
+{/if}
+</DIV></DIV></DIV>
+<DIV class=side>
+<DIV class="userBox mb10">
+<DIV class=hd {if $_username} style="DISPLAY: none" {else} style="DISPLAY: block" {/if}>
+<DIV><A class="icons userLogin" onclick="var addr='&nbsp;';Box('msg1',502,345,vf_box2,footerhtml1,addr);" href="javascript:void(0);">会员登录</A></DIV>
+<DIV><A 
+href="{MEMBER_PATH}forget_password.html" 
+target=_blank>忘记密码</A>&nbsp;|&nbsp;<A 
+href="#">帮助中心</A></DIV></DIV>
+<DIV id=myInfo class="hd login"{if $_username} style="DISPLAY: block" {else} style="DISPLAY: none" {/if}>
+<DIV class="cf myList">
+<H2 class=bold><A class=num href="{APP_PATH}index.php?s=member/index/follow&t=2" target=_blank>{$_username}的看房单</A></H2><A href="{APP_PATH}index.php?s=member/index/logout&forward={TUAN_PATH}&siteid=1">[退出]</A></DIV>
+<DIV class=cf><SPAN class=fl>我的消息：<A class=num href="{APP_PATH}index.php?s=message/index/inbox" target=_blank>0<SUP>+0</SUP></A></SPAN><SPAN class=fr>我的楼盘：<A class=num href="{APP_PATH}index.php?s=member/index/follow&t=2" 
+target=_blank>4</A></SPAN></DIV>
+<DIV id=myGroupedHouses>
+<DIV class="cf tuanList">
+<H2 class="bold f12">已成团楼盘</H2></DIV></DIV></DIV>
+<DIV class="bd l24">
+<H3 class="bold f12">看房团动态</H3><!-- kft dynamic recommend s-->
+<P class=hide><B style="COLOR: red">每行最多共计输入17个汉字或者字符</B></P>
+{template "ssi","ssi_13"}
+<!--[if !IE]>|xGv00|8e9de9c7e53a6efdf0db933f4f8a3665<![endif]--><!--[if !IE]>|xGv00|7a89ba7b4c31746da307895a1ef3afb3<![endif]--><!-- kft dynamic recommend e--></DIV></DIV>
+<DIV class="sideAd mt20"></DIV><!-- route activity info s-->
+<DIV class="actinfo mt20">
+<P class=title>活动流程</P>
+<DIV class=con>
+<DIV></DIV>
+<H3>报名渠道</H3>
+<DIV>每期看房团通过网站线上报名，欢迎广大网友积极参与。</DIV>
+<H3>选择路线</H3>
+<DIV>在已成团线路中选出您感兴趣的线路，并留下您的姓名及联系方式，我们会第一时间通知您。如果已成团线路中没有您感兴趣的项目，您可以通过求组团的方式或者在楼盘详情页中找到您感兴趣的项目参与该项目的团购报名，等待线路成团后，我们会通过线上线下两种方式通知您。</DIV>
+<H3>电话通知</H3>
+<DIV>在您成功报名之后，我们会在看房团出发前与您联系，确认看房团的时间、地点及参与人数。</DIV>
+<H3>短信通知</H3>
+<DIV>在电话确认您要参与本次看房团后，我们会以短信的形式通知您看房团的时间和集合地点，希望您准时参加哦。</DIV>
+<H3>集合出发</H3>
+<DIV>在规定的时间、地点集合后，我们就要开始本次的看房团之旅了。</DIV></DIV></DIV>
+<DIV class="state mt20">
+<P class=title>免责声明</P>
+<DIV class=con>
+<DIV>&nbsp;&nbsp;&nbsp;&nbsp;一、看房团所涉及的楼盘价格、折扣信息及其相关资料图表仅供参考，一切以活动所涉及的开发商公布的信息为准。如本看房团活动因任何不可抗力被中止或取消，本站不承担任何责任。具备完全民事行为能力的人员方可参加本次看房活动，非活动主办方及其发起人原因发生的人身损害及财物损失，活动主办方及其发起人不承担责任。</DIV>
+<DIV>&nbsp;&nbsp;&nbsp;&nbsp;二、由于看房团活动暂时不能做到一对一的服务，为了安全起见，本活动暂不接受孕妇、65岁以上老人以及6岁以下儿童的报名参加。参加者应完全理解并同意接受本声明后方可报名参加本次活动，如有异议，请勿参与报名。活动开始后，参加者均需服从组织者的安排，如需临时退出，请提前告知组织者及其相关人员，如因不服从安排而发生的任何意外及事故，活动主办方及其发起人不承担任何责任。本声明及其修改权、更新权及解释权均属本站所有。</DIV></DIV></DIV><!--[if !IE]>|xGv00|ba4fe36eb10314472af60b49cbae09e7<![endif]--><!--[if !IE]>|xGv00|cc15d8634c0f8199b575721ffb33b364<![endif]--><!-- route activity info e--></DIV></DIV></DIV><!--公共底部-->
+<STYLE>.tcopyright {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 8px; LINE-HEIGHT: 28px; MARGIN: 0px auto; PADDING-LEFT: 0px; WIDTH: 960px; PADDING-RIGHT: 0px; COLOR: #333; CLEAR: both; FONT-SIZE: 12px; OVERFLOW: hidden; PADDING-TOP: 18px
+}
+.tcopyright .en {
+	FONT-FAMILY: Arial
+}
+.tcopyright A {
+	COLOR: #333; TEXT-DECORATION: none
+}
+.tcopyright A:hover {
+	COLOR: #bd0a01; TEXT-DECORATION: underline
+}
+</STYLE>
+{template "content","footer"}
+<DIV style="DISPLAY: none">
+<SCRIPT language=javascript>
+function inHref(str)
+{
+    return (window.location.href.indexOf(str) != -1) ? true : false;
+}
+function get_param(sName)
+{
+    var reg = new RegExp("(^|&)" + sName + "=([^&]*)(&|$)");
+    if (window.location.search.substr(1).match(reg))
+    {
+        return RegExp.$2;
+    }else
+    {
+        return null;
+    }
+}
+function getCity(url)
+{
+    if(typeof g_city_info != 'undefined'){
+        return g_city_info.FSubName;
+    }else{
+        url = url.substring(url.indexOf(".com")+5);
+        url = url.substring(0,url.indexOf("_"));
+        if (url == "" || url == null)
+        {
+            return get_param("city");
+        }
+        
+        return url;
+    }
+}
+
+if(typeof(pgvMain) == 'function')
+{
+    /*
+    pgv_house_index 项目首页
+    pgv_house_info 详细信息
+    pgv_house_news 最新动态  
+    pgv_house_photo 图库列表页
+    pgv_house_pic 图库底层页
+    pgv_house_search 搜索页
+    pgv_house_city_XX 城市栏目
+    pgv_house_comment 点评列表
+    pgv_house_commentreply 点评详情
+    pgv_house_price 价格走势
+    pgv_house_video 楼盘视频
+    pgv_house_calculator 购房工具
+    pgv_house_kanfang 看房团
+    */
+    if(inHref("info"))
+    {
+        vsPgvCol = "pgv_house_info";
+    }else if(inHref("news"))
+    {
+        vsPgvCol = "pgv_house_news";
+    }else if(inHref("photo"))
+    {
+        vsPgvCol = "pgv_house_photo";
+    }else if(typeof g_page_type != 'undefined' && g_page_type == 'search')
+    {
+        vsPgvCol = "pgv_house_search";
+    }else if(inHref("pic"))
+    {
+        vsPgvCol = "pgv_house_pic";
+    }else if(inHref("comment_"))
+    {
+        vsPgvCol = "pgv_house_commentreply";
+    }else if(inHref("comment"))
+    {
+        vsPgvCol = "pgv_house_comment";
+    }else if(inHref("price"))
+    {
+        vsPgvCol = "pgv_house_price";
+    }else if(inHref("video"))
+    {
+        vsPgvCol = "pgv_house_video";
+    }else if(inHref("compare"))
+    {
+        vsPgvCol = "pgv_house_compare";
+    }else if(inHref("calculator"))
+    {
+    	vsPgvCol = "pgv_house_calculator";
+    }else if(inHref("kanfang"))
+    {
+    	vsPgvCol = "pgv_house_kanfang";
+    }else
+    {
+       vsPgvCol = "pgv_house_index";
+    }
+    
+    vsPgvCol += ";pgv_house_city_" + getCity(window.location.href);
+
+    pvCurDomain = "#";
+    pvCurUrl = window.location.href.substring(window.location.href.indexOf(".com") + 4);
+    pgvMain();
+}
+</SCRIPT>
+</DIV><!-- 浮层页面代码 s -->
+<STYLE type=text/css>HTML {
+	WIDTH: 100%; HEIGHT: 100%
+}
+BODY {
+	WIDTH: 100%; HEIGHT: 100%
+}
+.float_layer_box_warp {
+	Z-INDEX: 1001; POSITION: fixed; WIDTH: 100%; HEIGHT: 100%; TOP: 0px; LEFT: 0px; _position: absolute
+}
+.float_layer_box_bg {
+	Z-INDEX: 1000; FILTER: alpha(opacity=60); WIDTH: 100%; BACKGROUND: #000; HEIGHT: 100%; TOP: 0px; LEFT: 0px; _position: absolute; -moz-opacity: 0.6; opacity: 0.6
+}
+.float_layer_box_inner {
+	Z-INDEX: 1001; WIDTH: 100%; HEIGHT: 100%; TOP: 0px; LEFT: 0px; _position: absolute
+}
+.float_layer_box {
+	Z-INDEX: 1002; POSITION: absolute; PADDING-BOTTOM: 0px; MARGIN: -300px 0px 0px -310px; PADDING-LEFT: 0px; WIDTH: 620px; PADDING-RIGHT: 0px; HEIGHT: 600px; PADDING-TOP: 0px; TOP: 50%; LEFT: 50%
+}
+.float_layer_box_iframe {
+	POSITION: absolute; FILTER: alpha(opacity=0); WIDTH: 100%; HEIGHT: 100%; TOP: 0px; LEFT: 0px; -moz-opacity: 0
+}
+.float_layer_box {
+	Z-INDEX: 1002; POSITION: absolute; PADDING-BOTTOM: 0px; MARGIN: -100px 0px 0px -153px; PADDING-LEFT: 0px; WIDTH: 306px; PADDING-RIGHT: 0px; HEIGHT: 200px; PADDING-TOP: 0px; TOP: 50%; LEFT: 50%
+}
+.bg_white {
+	BACKGROUND-COLOR: #fff
+}
+</STYLE>
+
+<SCRIPT charset=utf-8 src="{APP_PATH}/statics/house5-style1/js/tuan/main.js"></SCRIPT>
+<SCRIPT src="{APP_PATH}/statics/house5-style1/js/tuan/kft_index_v22.js"></SCRIPT>
+<SCRIPT>
+var url 		= '{$url}';
+var pic 		= '{thumb($thumb,370,235)}';
+var title 		= '{$title}';
+var description = '{$description}';
+var weibo_title = '【{$title}】{$description}';
+</SCRIPT>
+</BODY></HTML>

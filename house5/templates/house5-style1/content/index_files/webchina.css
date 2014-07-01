@@ -1,0 +1,132 @@
+body {
+	background-color: #FFFFFF;
+	background:url(Images/mainbg.gif) top repeat-x;
+}
+A{TEXT-DECORATION: none;}
+A:link {color: #6B6B6B;}
+A:visited {color: #6B6B6B}
+A:active {color: #6B6B6B}
+A:hover{COLOR:#cc0000;position: relative; right: 0px; top: 1px}
+
+BODY
+{
+FONT-SIZE:14px;
+font-family:"Î¢ÈíÑÅºÚ";
+color:#444444;
+}
+TD tr
+{
+	font-family:"Î¢ÈíÑÅºÚ";
+	font-size:14px;
+color: #444444;
+line-height: 150%;
+text-align:center; 
+
+}
+.menu
+{
+text-align:center;
+display:block;
+height:42px;
+}
+.menu a:hover{
+	display:block;
+}
+
+#syimg a:hover{
+	border:1px #F00 solid;
+	relative; right: 0px; top: 0px
+}
+.tit
+{font-family:"Î¢ÈíÑÅºÚ"; font-size:16px;
+color:#cc0000;
+border-bottom:#666 solid 1px;
+}
+.tite
+{font-family:"Î¢ÈíÑÅºÚ"; font-size:14px;
+color:#999999;
+}
+Input
+{
+BACKGROUND-COLOR: #FFFDFB; 
+BORDER-BOTTOM: #89a5e6 1px solid;
+BORDER-LEFT: #89a5e6 1px solid;
+BORDER-RIGHT: #89a5e6 1px solid;
+BORDER-TOP: #89a5e6 1px solid;
+COLOR: #205064;
+border-color: #B2C2D7 #B2C2D7 #B2C2D7 #B2C2D7; font-size: 9pt
+}
+Button
+{
+FONT-SIZE: 9pt;HEIGHT: 20px; 
+
+}
+Select
+{
+FONT-SIZE: 9pt;HEIGHT: 20px;
+
+}
+.border
+{
+border: 1px solid #FB9F47;
+}
+.diggArea .diggNum {
+	MARGIN-TOP: 9px; DISPLAY: block; FONT-WEIGHT: bold; FONT-SIZE: 16px; WIDTH: 54px; FONT-FAMILY: Georgia; HEIGHT: 34px; TEXT-ALIGN: center
+}
+.diggArea .top8 {
+	padding-top:8px;
+}
+.diggArea .shoucang {
+	border:1px #B0941B solid;width:50px;height:20px; background-color:#F9E47A;
+}
+.diggArea .diggLink {
+	DISPLAY: block; WIDTH: 54px; COLOR: #999; TEXT-ALIGN: center;
+}
+.diggArea .diggLink A {
+	COLOR: #bf2f38
+}
+.diggArea .diggLink A:hover {
+	COLOR: #f00
+}
+DL.digg-row {
+	PADDING-RIGHT: 9px; PADDING-LEFT: 9px;  PADDING-BOTTOM: 9px; MARGIN: 0px; PADDING-TOP: 0px; 
+}
+DL.digg-row DT {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(../images/dig.gif) no-repeat; FLOAT: right; PADDING-BOTTOM: 0px; MARGIN: 6px 0px 0px; WIDTH: 54px; PADDING-TOP: 0px; HEIGHT: 70px
+}
+DL.digg-row DD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 512px; COLOR: #555; PADDING-TOP: 0px
+}
+DL.digg-row DD H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; HEIGHT: 24px
+}
+DL.digg-row DD H3 A {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; FLOAT: left; OVERFLOW: hidden; WIDTH: 412px; WHITE-SPACE: nowrap; TEXT-OVERFLOW: ellipsis
+}
+DL.digg-row DD H3 SPAN {
+	FONT-WEIGHT: normal; FONT-SIZE: 10px; COLOR: #999
+}
+/*ÎÄÕÂÁÐ±íÑùÊ½½áÊø*/
+ul li{
+ list-style-type:none;
+}
+.mainleft {
+	float: left;width: 178px; margin-left:-6px; 
+}
+.mainleft ul{
+	float:left;width: 150px; background-color:#ff0000; overflow:hidden;
+}
+.mainleft ul li{
+	float:left;width: 178px;
+}
+.mainleft ul li a{
+	display:block;color:#333;background-color:inherit;text-decoration:none;font-family: "Î¢ÈíÑÅºÚ";font-size: 16px;line-height: 22px; height:30px;
+}
+.mainleft ul li a:hover{
+	color:#9D1600; background:url(images/hover.jpg) center repeat-y;display: block; height:30px;
+}
+.mainleft ul li a.hover{
+	display:block;color:#000000; background:url(images/hover.jpg) center repeat-y;text-decoration:none; width: 178px; height:30px;
+}
+
+

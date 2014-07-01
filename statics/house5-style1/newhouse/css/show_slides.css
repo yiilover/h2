@@ -1,0 +1,30 @@
+#slide1 .next,#slide1 .prev,#slide2 .next,#slide2 .prev,#sell_slide .next,#sell_slide .prev,#slide3 .next,#slide3 .prev,#slide4 .next,#slide4 .prev,#slide5 .next,#slide5 .prev{position:absolute; width:6px; height:9px; display:block; z-index:101; background:url(../images/sprites.png) -64px -85px no-repeat; overflow:hidden; text-indent:-999px;}
+#slide1 .prev{left:94px; top:80px;}
+#slide1 .next{background-position:-75px -85px; right:94px; top:80px;}
+#slide1 .pagination,#sell_slide .pagination,#slide3 .pagination {margin:0 auto; width:56px;}
+#slide1 .pagination li,#sell_slide .pagination li,#slide3 .pagination li{float:left; display:inline; margin:0 2px 0 3px;}
+#slide1 .pagination li a,#sell_slide .pagination li a,#slide3 .pagination li a,#slide4 .pagination li a,#slide5 .pagination li a {display:block; width:9px; height:0; padding-top:9px; background-image:url(../images/pagination.png); background-position:0 0; float:left; overflow:hidden;}
+#slide1 .pagination li.current a,#sell_slide .pagination li.current a,#slide3 .pagination li.current a{background-position:0 -10px;}
+
+#slide2 .prev{left:0; top:35px;}
+#slide2 .next{background-position:-75px -85px; right:0; top:35px;}
+#slide2 .pagination{display:none;}
+
+#sell_slide .prev{left:302px; top:380px;}
+#sell_slide .next{background-position:-75px -85px; right:301px; top:380px;}
+
+#slide3 .prev{left:94px; top:223px;}
+#slide3 .next{background-position:-75px -85px; right:94px; top:223px;}
+
+#slide5 .pagination,#slide4 .pagination {margin:0 auto; width:100px;}
+#slide5 .pagination li,#slide4 .pagination li {float:left; margin:0 5px;}
+#slide5 .pagination li a,#slide4 .pagination li a{width:15px; height:15px; text-align:center; line-height:15px; font-family:Arial, Helvetica, sans-serif; color:#FFF; padding:0; background-image:url(../images/pagination1.gif); background-position:0 0;}
+#slide5 .pagination li a:hover,#slide4 .pagination li a:hover{text-decoration:none;}
+#slide5 .pagination li.current a,#slide4 .pagination li.current a{background-position:0 -16px;}
+#slide5 .prev{left:27px; top:415px; width:12px; height:13px; background-position:-86px -85px;}
+#slide5 .next{background-position:-103px -85px; right:28px; top:415px; width:12px; height:13px;}
+
+#slide4 .prev{left:256px; top:116px; width:12px; height:13px; background-position:-86px -85px;}
+#slide4 .next{background-position:-103px -85px; right:255px; top:116px; width:12px; height:13px;}
+
+

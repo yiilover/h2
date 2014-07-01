@@ -1,0 +1,427 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link rel="shortcut icon" href="{APP_PATH}favicon.ico" />
+<link href="{APP_PATH}statics/default/css/news/news_style.css" rel="stylesheet" type="text/css" />
+<script language="Javascript" src="{APP_PATH}/statics/default/js/news/default.js"></script>
+<script type="text/javascript" src="{APP_PATH}statics/default/js/news/search_common.js"></script>
+<link href="{APP_PATH}statics/default/pic/css/white.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="{APP_PATH}statics/default/pic/js/jquery.js"></script>
+<script type="text/javascript" src="{APP_PATH}statics/default/pic/js/fet.js"></script>
+<script src="{APP_PATH}statics/default/sea/js/sea.js"  type="text/javascript"></script>
+<script type="text/javascript" src="{APP_PATH}statics//js/swfobject.js"></script>
+    <script type="text/javascript">//输入框文字消失function OnFocusFun(element,elementvalue){if(element.value==elementvalue){element.value="";}}function OnBlurFun(element,elementvalue){if(element.value==""||element.value.replace(/\s/g,"")==""){element.value=elementvalue;}}</script></head>
+<body>
+<div id="wrap">
+<div class="cArea">
+ {template "ssi","ssi_8"}
+<div style="margin:5px auto; width:960px;">
+ <!-- 广告位：全站顶部通栏1 -->
+<script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=25"></script>
+</div>
+<div class="hr10"></div>
+<!--logo+搜索 begin -->
+<div class="logo_search_a">
+  <div class="rssa linkaa"><a href="{APP_PATH}" target="_blank">首页</a> ></span>{catpos($catid)}  正文</div>
+  <a href="javascript:;" onclick="setmodel(1, $(this));" style="outline:medium none;" hidefocus="true"  class="on" ></a>
+  <a href="javascript:;" onclick="setmodel(91, $(this));" style="outline:medium none;" hidefocus="true" ></a>
+  <a href="javascript:;" onclick="setmodel(205, $(this));" style="outline:medium none;" hidefocus="true" ></a>
+  <a href="javascript:;" onclick="setmodel(267, $(this));" style="outline:medium none;" hidefocus="true" ></a>	
+  <a href="javascript:;" onclick="setmodel(316, $(this));" style="outline:medium none;" hidefocus="true" ></a>
+         <form action="{APP_PATH}index.php" method="get" target="_blank">
+				<input type="hidden" name="s" value="search/index/init"/>  
+  <div class="searchb">
+    <div class="d3">
+      <input name="q" type="text" class="input01" id="q" value="输入关键字" onfocus="OnFocusFun(this,'输入关键字')" onblur="OnBlurFun(this,'输入关键字')" />
+    </div>
+    <div class="d2">
+      <input name="submit" type="submit" class="smb_btn" value="新闻搜索" />
+    </div>
+  </div>
+  
+   </form>
+</div>
+<!--logo+搜索 end -->
+</div>
+<style type="text/css">
+.bgcolors{background-color:#e6f1f5; width:590px; height:116px; }
+.tjnews {
+    background-color: #FFFFFF;
+    border: 1px solid #B5D0E5;
+    height: 92px;
+    padding: 10px;
+	_padding: 10px 10px 0 10px;
+    width: 567px; 
+}
+.Nimgnews{width:283px; height:100px; float:left;}
+.Nimgnews .Nimg{display:block; float:left;width:104px; height:76px;}
+.Nimgnews .Nimgconter{float:right; display:block; width:140px;}
+.Nimgnews img{width:100px; height:75px; padding:2px; border:1px solid #c8c8ca; display:block;}
+.Nimgnews h2{line-height:22px; font-size:12px; display:block; padding:0; width:104px; text-align:center} 
+.Nimgnews h2 a{font-size:12px; font-weight:lighter; color:#666666; text-align:center;  text-align:center}
+.Nimgnews h2 a:link{font-size:12px; font-weight:lighter;  color:#666666;  text-align:center}
+.Nimgnews h2 a:visited{font-size:12px; font-weight:lighter;  color:#666666;  text-align:center}
+.Nimgnews h2 a:hover{font-size:12px; font-weight:lighter; color:#cc0000;  text-align:center}
+.Nimgnews h2 a:active{font-size:12px; font-weight:lighter; color:#666666; text-align:center}
+.Nimgnews p{display:block; width:140px; margin:0; padding:0; font-size:12px; color:#999999; line-height:18px;}
+.Nimgnews p a, .Nimgnews p a:link, .Nimgnews p a:hover, .Nimgnews p a:visited, .Nimgnews p a:active{font-size:12px;}
+.tjnews ul{margin:0; padding:0; float:right; display:block; width:175px;}
+.tjnews ul li{margin:0; padding:0; display:block; width:175px; float:left; height:19px; line-height:19px; color:#969696;}
+.tjnews ul li a,.tjnews ul li a:link,.tjnews ul li a:hover, .tjnews ul li a:active, .tjnews ul li a:visited{font-size:12px;}
+.tjnews ul li a:hover{font-size:12px; color:#cc0000;}
+.tabnews{float: left;width:648px; height:340px; background-color:#999999; border:1px solid #CADBF1; overflow:hidden; display:block; background:#fff;}
+.tabnews ul.tabtitle{list-style:none;margin:0;padding:0;line-hei ght:0px;display:block;648; height:34px; background:url({APP_PATH}/statics/default/img/news/xqbg.gif) left top  repeat-x;  border-bottom:1px solid #CADBF1; _overflow:hidden;}
+.tabnews ul.tabtitle li{float:left; overflow:hidden; display:inline-block; color:#73787b; cursor:pointer; width:161px; border:none; border-right:1px  solid #CADBF1; text-align:center;line-height:35px; height:35px;margin:0;padding:0px;font-family:宋体;font-size:16px; font-weight:bold;}
+.tabnews ul.tabtitle .li2_4{  border-right:none;}
+.tabnews ul.tabtitle .selected { background:url({APP_PATH}/statics/default/img/news/xqonmouse.gif) left top repeat-x; width:161px; color:#0c58a4; _position:relative;}
+.tabnews div.tab_content{display:block; padding:0px; margin:0; clear:both;background:white; height:285px; padding:10px;}
+.tjnewslist{ height:285px; background:url({APP_PATH}/statics/default/img/news/tjnewline.gif) center center no-repeat}
+.tjnewslist ul{display:block; width:294px; float:left; padding-right:10px; padding-left:10px; height:285px;}
+.tjnewslist dl{display:block; height:90px; border-bottom:1px dashed #adadad}
+.tjnewslist dl dt{display:block; width:104px; height:76px; float:left;}
+.tjnewslist dl dt img{width:100px; height:75px; padding:2px; border:1px solid #dce0e3;} 
+.tjnewslist dl dd{display:block; float:right; width:180px; height:80px;}
+.tjnewslist dl dd h2{ padding:4px 0 10px 0;}
+.tjnewslist dl dd h2 a{font-size:14px; font-weight:bold; color:#303030; padding:4px 0 10px 0;}
+.tjnewslist dl dd h2 a:hover{ color:#cc0000;}
+.tjnewslist dl dd h2 a:active{ color:#303030;}
+.tjnewslist dl dd h2 a:visited{ color:#303030;}
+.tjnewslist dl dd p{ line-height:18px; text-indent:20px; color:#9b9b9b;}
+.tjnewslist dl dd p a{color:#0f59a2;}
+.tjnewslist dl dd p a:hover{color:#cc0000;}
+.tjnewslist dl dd p a:active{color:#0f59a2;}
+.tjnewslist dl dd p a:visited{color:#0f59a2;}
+.tjnewslist ul li{display:block;}
+.tjnewslist ul li.listnews{ display:block; width:294px; float:left; margin:0; padding:0; height:24px; line-height:24px;} 
+.tjnewslist ul li.listnews a{color:#1154a5;}
+.tjnewslist ul li.listnews a:hover{color:#cc0000}
+.tjnewslist ul li.listnews a:active{color:#1154a5}
+.tjnewslist ul li.listnews a:visited{color:#1154a5}
+.h5{ display:block; height:5px; font-size:0; clear:both;}
+</style>
+<script language="javascript">
+    function showTab(liobj, liname) {
+    if (liname.indexOf(' selected') !== -1) return; 
+    var tag = liobj.parentNode.childNodes;
+    for (var i = 0; i < tag.length; i++) {
+    var item = tag[i];
+    if (item.nodeType === 1) {
+    if (item.className.indexOf(' selected') !== -1) {
+    item.className = item.className.replace(' selected', '');
+    document.getElementById(item.className).style.display = 'none';
+    }
+    }
+    }
+    document.getElementById(liname).style.display = 'block';
+    liobj.className += ' selected';
+    }
+$(document).ready(function(){    //防止大图
+    $("#topic_content img").each(function(){     //
+        var width = 600;
+        var height = 600;
+        var image = $(this);
+        if (image.width() > image.height()){
+           if(image.width()>width){
+            image.width(width);
+            image.height(width/image.width()*image.height());
+           }
+        }
+        else{
+           if(image.height()>height){
+            image.height(height);
+            image.width(height/image.height()*image.width());
+           }
+        }
+    });
+});
+</script>
+<div class="cArea">
+<div class="cen_boxA">
+<div class="listwapb">
+<div class="banner2">
+<!-- 广告位：新闻画中画-标题上 -->
+</div>
+<div class="listtitlea"><h1>{$title}</h1></div>
+<div class="source">{$inputtime}  作者：{$username} |  来源：{$copyfrom} | 点击：<span id="hits"  class="text"></span> | <span class="linkaa"><a href="#comment0">我要评论</a></span></div>
+<div class="sourcea"><div class="d1">字号：<span id="l1" class="linkee"><a href="javascript:ContentSize(14)" onclick="l1.className='linkee';l2.className='linkeea';">小</a></span>|<span  id="l2" class="linkeea"><a href="javascript:ContentSize(16)" onclick="l1.className='linkeea';l2.className='linkee';"><font style="font-size:14px;">大</font></a></span></div>
+</div>
+<!--新闻内容 begin-->
+<div class="banner1"></div>
+<div class="hr15"></div>
+	<!--开始-->
+<div class="bgcolors">
+	<div class="tjnews">
+		<div class="Nimgnews">
+			{h5:content  action="position" posid="32" thumb="1" order="listorder DESC" num="1" cache="10800"}
+				{loop $data $v}
+							<span class="Nimg">
+			<a href="{$v[url]}"  target="_blank" title="{$v[title]}"><img src="{thumb($v[thumb],106,81)}" width="106" height="81" border="0"/></a>
+			<h2><a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{str_cut($v[title],16)}</a></h2>
+			</span>
+				{/loop}
+			 {/h5}
+			{h5:content  action="position" posid="14" order="listorder DESC" num="5" cache="10800"}
+		 		 			<ul>
+							 {loop $data $v}
+		   		   				<li>·<a  href="{$v[url]}"  target="_blank"{title_style($v[style])} title="{$v[title]}">{str_cut($v[title],26)}</a></li>
+		    				 {/loop}
+		    		    			</ul>
+				{/h5}
+		</div>
+		
+			
+		<div class="Nimgnews">
+				{h5:content  action="position" posid="33" thumb="1" order="listorder DESC" num="1" cache="10800"}
+				{loop $data $v}
+							<span class="Nimg">
+			<a href="{$v[url]}"  target="_blank" title="{$v[title]}"><img src="{thumb($v[thumb],106,81)}" width="106" height="81" border="0"/></a>
+			<h2><a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{str_cut($v[title],16)}</a></h2>
+			</span>
+				{/loop}
+			 {/h5}
+		 		 			{h5:content  action="position" posid="31" order="listorder DESC" num="5" cache="10800"}
+		 		 			<ul>
+							 {loop $data $v}
+		   		   				<li>·<a  href="{$v[url]}"  target="_blank"{title_style($v[style])} title="{$v[title]}">{str_cut($v[title],26)}</a></li>
+		    				 {/loop}
+		    		    			</ul>
+				{/h5}
+		</div>
+	</div>
+</div>
+<!--结束-->
+	<div class="hr10"></div>
+{if $xgsp}
+   {php $video_src = $xgsp;}
+   <script language="javascript" src="{APP_PATH}index.php?s=content/index/showvideo/action/js/id/{$xgsp}"></script>
+ {/if}
+   {if $xgtk}<script language="javascript" src="{APP_PATH}index.php?s=content/index/showrelation/action/js/id/{$xgtk}"></script>{/if}
+<div class="ArticleCnt"  id="ArticleCnt" >
+{if $allow_visitor==1}
+				{$content}
+				<!--内容关联投票-->
+				{if $voteid}<script language="javascript" src="{APP_PATH}index.php?s=vote/index/show/action/js/subjectid/{$voteid}/type/2"></script>{/if}
+                
+			{else}
+				<CENTER><a href="{APP_PATH}index.php?s=content/readpoint/allow_visitor/{$allow_visitor}"><font color="red">阅读此信息需要您支付 <B><I>{$readpoint} {if $paytype}元{else}点{/if}</I></B>，点击这里支付</font></a></CENTER>
+			{/if}
+</div>
+<!-- {if $titles}
+<fieldset>
+	<legend class="f14">本文导航</legend><ul class="list blue row-2">
+{loop $titles $r}
+	<li>{$n}、<a href="{$r[url]}">{$r[title]}</a></li>
+{/loop}
+</ul>
+</fieldset>
+{/if} -->
+<div class="hr15"></div>
+<!--翻页 begin-->
+<div class="pagea cnn"><div class="pg">{$pages}</div></div>
+<div class="hr15"></div>
+<!--翻页 end-->
+<!--新闻内容 end-->
+<!--相关楼盘 begin-->
+{h5:content action="relationlp" xglp="$xglp" id="$xglp" catid="14" num="5" cache="3600"}
+ {if $data}
+ {loop $data $r}
+ {php $menu_info = menu_info('3360',$r[region])}
+<div class="relevantwap">
+<div class="listtp"><a href="{$r[url]}" target="_blank"><img src="{thumb($r[thumb], 147, 110, 0)}" width="138" height="98" alt="{$r[title]}" title="{$r[title]}"/></a></div>
+<ul>
+<li><span class="td_1"><a href="{$r[url]}" target="_blank">{$r[title]}</a>({get_typename($r[type])})	 </span><span class="td_2 linkaa">[{get_ztname($r[xszt])}]</span></li>
+    <li><span class="td_4">价&nbsp;&nbsp;&nbsp;&nbsp;格：</span>
+	<span class="td_5">{if !empty($r[price]) && $r[price]!="一房一价"} {$r[price]}{if $r[priceunit]=="0" }元/平方米{else}元/套{/if} {else}一房一价{/if}</span></li>
+	<li><span class="td_4">地&nbsp;&nbsp;&nbsp;&nbsp;址：[<a href="{HOUSE_PATH}list-r{$menu_info[1]}.html" target="_blank">{$menu_info[0]}</a>]{$r[address]}</span></li>
+	<li><span class="td_4">销售电话：</span><span class="td_5">{$r[tel]}</span></li>
+	<li><span class="td_4 linkaa"><a href="{HOUSE_PATH}{$r[id]}/xinxi.html" target="_blank">楼盘资料</a>｜<a href="{HOUSE_PATH}{$r[id]}/huxing.html" target="_blank">户型图</a>｜<a href="{HOUSE_PATH}{$r[id]}/xiangce.html">楼盘相册</a>｜<a href="{HOUSE_PATH}{$r[id]}/dianping.html">楼盘点评</a>｜<a href="{HOUSE_PATH}{$r[id]}/dongtai.html" target="_blank">销售动态</a>｜<a href="{HOUSE_PATH}{$r[id]}/jiage.html" target="_blank">价格明细</a>｜<a href="{$r[bbs]}" target="_blank">论坛</a></span></li>
+</ul>
+</div>
+<div class="hr10"></div>
+{/loop}
+{/if}
+          {/h5}
+<!--相关楼盘 end-->
+<!--您可能感兴趣的文章 begin-->
+<!--您可能感兴趣的文章 end-->
+<!--本文导航 begin-->
+<div class="hr10"></div>
+<!--本文导航 end-->
+<!--表情 begin-->
+<div>
+  {if module_exists('mood')}<script type="text/javascript" src="{APP_PATH}index.php?s=mood/index/init&id={id_encode($catid,$id,$siteid)}"></script>{/if}</div>
+<!--表情 end-->
+<!--返回+分享 begin-->
+<div class="share">
+<div class="c1 linkaa"><a href="{APP_PATH}" target="_blank">返回首页>></a>　<a href="{catlink(6)}" target="_blank">返回资讯中心>></a></div>
+<div class="c2 linkff">
+<!-- Baidu Button BEGIN -->
+    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+        <span class="bds_more">分享到：</span>
+        <a class="bds_qzone"></a>
+        <a class="bds_tsina"></a>
+        <a class="bds_tqq"></a>
+        <a class="bds_renren"></a>
+        <a class="bds_kaixin001"></a>
+    </div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=657066" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?t=" + new Date().getHours();
+</script>
+<!-- Baidu Button END -->
+</div>
+</div>
+<div class="hr10"></div>
+<!--返回+分享 end-->
+{h5:content action="relation" relation="$relation" id="$id" catid="$catid" num="6" keywords="$rs[keywords]" cache="3600"}
+     {if $data}
+<!--相关资讯： begin-->
+<div class="probablywap">
+<div class="probablytitle blue">关于 {loop $keywords $keyword}
+{php $keyword1=iconv('GBK','UTF-8',$keyword);}
+<b><a href="{catlink(6)}keyword-{$catid}-{urlencode($keyword1)}.html" class="blue">{$keyword}</a></b> 	{/loop}的相关资讯：</div>
+<ul>	   
+	{loop $data $r} 
+<li class="linkeea"><span>{date('Y-m-d',$r[inputtime])}</span>·<a href="{$r[url]}" target="_blank">{$r[title]}</a></li>
+ {/loop}
+ 
+     </ul>
+</div>
+<div class="hr10"></div>
+<!--关于相关资讯： end-->
+ {/if}
+          {/h5}
+</div>
+<div class="hr10"></div>
+<div ><a name="comment0" id="comment0"></a>
+{if $allow_comment && module_exists('comment')}   
+<iframe src="{APP_PATH}index.php?s=comment/index/init&commentid={id_encode("content_$catid",$id,$siteid)}&iframe=1" width="100%" height="100%" id="comment_iframe" frameborder="0" scrolling="no"></iframe>
+{/if} 		
+</div>
+</div>
+<div class="rightA">
+ 
+<!-- 广告位：新闻内页右侧旗帜1 -->
+   <!-- 广告位：新闻内页右侧旗帜2 -->
+ 
+  <!--每日头条 begin-->
+  <div class="rightwapa">
+    <div class="lefttitlea">
+      <div class="righttitlel linkc"><a href="{APP_PATH}list.html" target="_blank">每日头条</a></div>
+      <div class="lefttitlerrr"><a href="{APP_PATH}list.html" target="_blank">更多>></a></div>
+    </div>
+    <div class="rightnewsc rightnewsc02">
+     <ul>
+     {h5:content  action="position" posid="2" order="listorder DESC" num="4" cache="10800"}
+	  {loop $data $v}
+	  <li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}" style="text-align:center"{title_style($v[style])}>{str_cut($v[title],48)}</a>
+        </li>
+		{/loop}
+	  {/h5}
+	  {h5:content  action="position" posid="35" order="listorder DESC" num="4" cache="10800"}
+	  {loop $data $v}
+	  <li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}" style="text-align:center"{title_style($v[style])}>{str_cut($v[title],48)}</a>
+        </li>
+		{/loop}
+	  {/h5}
+	  {h5:content  action="position" posid="36" order="listorder DESC" num="2" cache="10800"}
+	  {loop $data $v}
+	  <li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}" style="text-align:center"{title_style($v[style])}>{str_cut($v[title],48)}</a>
+        </li>
+		{/loop}
+	  {/h5}
+      </ul>
+    </div>
+  </div>
+  <!--每日头条 end-->
+  <div class="hr10"></div>
+  <!--文字新闻 begin-->
+  <!--文字新闻 end-->
+<!-- 广告位：新闻内页右侧小横幅1 -->
+  <!-- 广告位：新闻内页右侧小横幅2 -->
+ 
+    <!--图片推荐 begin-->
+  <div class="rightwapa">
+    <div class="lefttitlea">
+      <div class="righttitlel linkc"><a href="{APP_PATH}piclist.html" target="_blank">图片推荐</a></div>
+      <div class="lefttitlerrr"><a href="{APP_PATH}piclist.html" target="_blank">更多>></a></div>
+    </div>
+    <div class="rigcona">
+	{h5:content  action="position" posid="30" thumb="1" order="listorder DESC" num="4" cache="86400"}
+      <ul>
+	  {loop $data $v}
+		<li><a href="{$v[url]}" target="_blank" title="{$v[title]}"><img src="{thumb($v[thumb],120,90)}" width="120" height="90"/></a>
+            <div class="d4"><a href="{$v[url]}" target="_blank" title="{$v[title]}" style="text-align:center"  style="" >{str_cut($v[title],22)}</a></div>
+        </li>
+		{/loop}
+      </ul>
+	  {/h5}
+    </div>
+  </div>
+  <!--图片推荐 begin-->
+  <div class="hr10"></div>
+  <!--论坛热帖 begin-->
+
+    <div class="hr10"></div>
+  <!--热点楼盘+最新开盘 begin--> <!--热点楼盘+最新开盘 begin-->
+  <div class="rightwapa">
+    <div class="PartAs">
+      <div class="PartAsc1">
+        <ul>
+          <li class="SearchD" id="e1" onmouseover="Search2(1)">热点楼盘</li>
+          <li class="SearchC" id="e2" onmouseover="Search2(2)">最新开盘</li>
+        </ul>
+      </div>
+      <div id="f1">
+        <div class="rig_contA px1">
+          <ul class="hlist_b">
+           {h5:content action="hits" catid="14" num="10" order="views DESC" cache="10800"}
+			<li class="title"><span class="td_4">楼盘名称</span><span class="td_06">区域</span><span class="td_5">价格(元/㎡)</span><span class="td_7">点击(次)</span></li>
+			{loop $data $v}
+				{php $menu_info = menu_info('3360',$v[region])}
+                   				<li><span class="td_4"><a title="{$v[title]}" href="{$v[url]}/" target="_blank" >{str_cut($v[title],16,'')}</a></span><span class="td_06"><a href="{HOUSE_PATH}list-r{$menu_info[1]}.html" target="_blank" >{$menu_info[0]}</a></span><span class="td_05 link6">{if !empty($v[price]) && $v[price]!="一房一价"}{$v[price]}{else}一房一价{/if}</span><span class="td_07">{$v[views]}</span></li>
+				{/loop}
+			{/h5}            
+          </ul>
+        </div>
+      </div>
+      <div class="search_undis"  id="f2">
+        <div class="rig_contA px1">
+          <ul class="hlist_b">
+		  {php $where= "status=99";}
+		  {h5:content action="lists" catid="14" where="$where" num="10" order="opentime desc" cache="10800"}
+            <li class="title"><span class="td_4">楼盘名称</span><span class="td_06">区域</span><span class="td_5">价格(元/㎡)</span><span class="td_7">开盘时间</span></li>
+			{loop $data $v}
+				{php $menu_info = menu_info('3360',$v[region])}
+			          				<li><span class="td_4"><a title="{$v[title]}" href="{$v[url]}/" target="_blank" >{str_cut($v[title],16,'')}</a></span><span class="td_06"><a href="{HOUSE_PATH}list-r{$menu_info[1]}.html" target="_blank" >{$menu_info[0]}</a></span><span class="td_05 link6">{if !empty($v[price]) && $v[price]!="一房一价"}{$v[price]}{else}一房一价{/if}</span><span class="td_07">{date('m-d',strtotime($v[opentime]))}</span></li>
+			{/loop}
+		{/h5}
+          </ul>
+        </div>
+      </div>
+   
+      <div class="rig_end"></div>
+    </div>
+  </div>
+  <!--热点楼盘+最新开盘 end-->
+  <div class="hr10"></div>
+</div></div>
+<!--页尾 begin-->
+<script type="text/javascript" src="{APP_PATH}/statics/default/js/lib/jquery.min.js"></script>
+<script type="text/javascript" src="{APP_PATH}/statics/default/js/lib/jquery.sGallery.js"></script>
+<script type="text/javascript" src="{APP_PATH}/statics/js/show_picture.js"></script>
+<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>
+<script type="text/javascript" language="javascript"><!--
+function ContentSize(size){
+var obj=document.getElementById("ArticleCnt");obj.style.fontSize=size+"px";
+}
+--></script>
+<!--页尾 end-->
+</div>
+{template "content","footer"}

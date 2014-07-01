@@ -1,0 +1,394 @@
+<link href="http://www.jhm2012.com/m1/baidu3g/images/logo114.png" sizes="114x114" rel="apple-touch-icon-precomposed">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0 user-scalable=no">
+
+<link type="text/css" rel="stylesheet" href="/statics/house5-style1/3g/css/3g_index.css" />
+<script type="text/javascript" src="/statics/house5-style1/3g/js/3g_swipe.min.js"></script>
+<script src="/statics/house5-style1/3g/js/jquery.min.js" type="text/javascript"></script>
+<title>{$WAP['sitename']}</title>
+<script>
+window.addEventListener("load",function() {
+  setTimeout(function(){
+    window.scrollTo(0, 1);
+  }, 0);
+}); 
+</script>
+<script src="http://api.map.baidu.com/api?v=1.4" type="text/javascript"></script>
+<script>
+$(function(){
+	if (navigator.geolocation)
+    {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    }  
+    else
+    {
+      $("#mysite").html("<a href='{WAP_SITEURL}'>点击获取当前位置</a>");
+    }
+
+    function showPosition(position)
+  	{
+  		map = new BMap.Map('ttt');
+	    xposition = position.coords.longitude;
+	    yposition = position.coords.latitude;
+	    point = new BMap.Point(xposition, yposition);
+	    
+	    var gc = new BMap.Geocoder();//地址解析类  
+	    gc.getLocation(point, function(rs){
+	        var addComp = rs.addressComponents;
+	        var district = addComp.district;
+	        var street = addComp.street;
+	        var mysite = "当前位于：" + district + " " + street;
+	        $("#mysite").html(mysite);
+	    });
+	}
+
+	/*参数部分js start*/
+	$("#sec a:gt(5)").hide();
+	$("#more").parent().toggle(
+			function () {
+				$("#more").attr('class', 'num up');
+				re=/(\d+)\/(\d+)/i;
+				var arr = re.exec($("#more em").text());
+				if(arr[2] > 4)
+				{
+					before = arr[2];
+				}
+				else
+				{
+					before = arr[1];
+				}
+				var content = "全部收起 <em>(" + before + "/" + arr[2] + ")</em>";
+				$("#more").html(content);
+				$("#sec a:gt(5)").fadeIn(100);
+			},
+			function () {
+				$("#more").attr('class', 'num');
+				re=/(\d+)\/(\d+)/i;
+				var arr = re.exec($("#more em").text());
+				if(arr[1] > 4)
+				{
+					before = 4;
+				}
+				else
+				{
+					before = arr[2];
+				}
+				var content = "更多资讯 <em>(" + before + "/" + arr[2] + ")</em>";
+				$("#more").html(content);
+				$("#sec a:gt(5)").fadeOut(100);
+				location.href = "#sec";
+			}
+		); 
+	/*参数部分js end*/
+});
+</script>
+	<script>
+	/*点击搜索和导航触发的事件*/
+	$(".bn_search").bind("click", function(){
+		var getifclass = $(this).attr("class").indexOf("bn_search_on");
+		if(getifclass > -1)
+		{
+			$(".h_so").css("display", "none");
+			$(".bn_search").removeClass("bn_search_on");
+		}
+		else
+		{
+			$(".h_so").css("display", "block");
+			$(".bn_search").addClass("bn_search_on");
+			$(".h_nav").css("height", "0px");
+			$(".bn_nav").removeClass("bn_nav_on");
+		}
+			
+	});
+	$(".bn_nav").bind("click", function(){
+		$(".bn_search").removeClass("bn_search_on");
+		var getifclass = $(this).attr("class").indexOf("bn_nav_on");
+		if(getifclass > -1)
+		{
+			$(".h_nav").css("height", "0px");
+			$(".bn_nav").removeClass("bn_nav_on");
+		}
+		else
+		{
+			$(".h_so").css("display", "none");
+			$(".bn_search").removeClass("bn_search_on");
+			$(".h_nav").css("height", "43px");
+			$(".bn_nav").addClass("bn_nav_on");
+		}
+	});
+	</script>
+</head>
+
+<body>
+<div class="main">
+	<div class="top_line"></div>
+    <div class="logo">
+    	<div class="img"> <p>{$WAP['sitename']}</p></div>
+        <a href="#" class="sel_city_bn" onClick="changeCity();">{$WAP_SETTING['default_city']}</a>
+    </div>
+
+    <div class="m_ser">
+		<form id="search_form" name="f" action="{WAP_SITEURL}list.html" method="get">
+	    	<input type="search" name='k' id="kw" class="input_keys" id="kw"  value="请输入楼盘……"  onfocus="if(this.value=='请输入楼盘……'){this.value='';}$('#ico_del').css('display', 'block');" onblur="if(this.value=='')this.value='请输入楼盘……'" autocomplete="off">
+	        <span class="ico_clear" onclick="$('#search_form input').val('')"><i id="ico_del" style="display:none"></i></span>
+	        <div class="search_bn" onClick="$('form').submit()"><i></i></div>
+    	</form>	
+    </div>
+    <div class="m_wz">
+    	<div id="mysite" class="t"><span onClick="javascript:window.location.href='{WAP_SITEURL}'">如果没有共享方位，请点击重新获取</span></div>
+      <a href="{WAP_SITEURL}map/" class="b">附近楼盘</a>
+    </div>
+    <div class="m_sel">
+    	<nav class="top_nav">
+            <ul id='xzSelector'>
+  			<li class='on'><em style="border-radius:3px 0 0 0;" class="on">区域</em></li>
+  			<li><em>价格</em></li>
+  			<li><em>类型</em></li>
+            <li><em>特色</em></li>
+			</ul>
+            
+        </nav>
+        <div class="m_con"  id="xztab">
+    	<ul>
+        	<li style='display:block' class="l4">
+{h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC" cache="86400"}
+{loop $data $r}
+{$i++}
+<?php
+ 	$reg = explode('$$', $r);//add by L 2012/3/22
+	?>
+					{if $i==1}
+	            	<p class="s_p">
+					{/if}
+					<label><a href="{WAP_SITEURL}list-r{$reg[0]}.html">{$reg[1]}<i></i></a></label>
+					{if $i%4==0}
+								</p>
+						{if count($data)%4>0 || $i< count($data)}
+					<p>		
+					{/if}
+					{/if}
+				
+{/loop}
+{/h5}
+				{if count($data)%4>0}
+							</p>
+					{/if}
+				            </li>
+            <li style='display:none'>
+	{php $range_arr = getbox_name('13','range')}
+	{php $i=0}
+	{loop $range_arr $key $v}
+	{$i++}
+		{if $i==1}
+			<p class="s_p">
+			{/if}
+	<label><a href="{WAP_SITEURL}list-p{$key}.html">{$v}</a></label>
+	{if $i%3==0}
+								</p>
+						{if count($range_arr)%3>0 || $i< count($range_arr)}
+					<p>		
+{/if}
+					{/if}
+				
+{/loop}
+	{if count($range_arr)%3>0}
+					</p>
+	{/if}
+				</li>
+            <li style='display:none'>
+            	{php $type_arr = getbox_name('13','type')}
+	{php $i=0}
+	{loop $type_arr $key $v}
+	{$i++}
+		{if $i==1}
+			<p class="s_p">
+			{/if}
+	<label><a href="{WAP_SITEURL}list-t{$key}.html">{$v}</a></label>
+	{if $i%3==0}
+								</p>
+						{if count($type_arr)%3>0 || $i< count($type_arr)}
+					<p>		
+{/if}
+					{/if}
+				
+{/loop}
+	{if count($type_arr)%3>0}
+					</p>
+	{/if}
+				            </li>
+            <li style='display:none'>
+            	{php $character_arr = getbox_name('13','character')}
+	{php $i=0}
+	{loop $character_arr $key $v}
+	{$i++}
+		{if $i==1}
+			<p class="s_p">
+			{/if}
+	<label><a href="{WAP_SITEURL}list-l{$key}.html">{$v}</a></label>
+	{if $i%3==0}
+								</p>
+						{if count($character_arr)%3>0 || $i< count($character_arr)}
+					<p>		
+{/if}
+					{/if}
+				
+{/loop}
+	{if count($character_arr)%3>0}
+					</p>
+	{/if}
+				            </li>
+        </ul>
+        </div>
+        <nav class="bot_nav"><span id='sel_house_p2'><em class='on'></em><em></em><em></em><em></em></span></nav>
+    </div>
+    <script>
+	// tabs
+	bullets2 = document.getElementById('sel_house_p2').getElementsByTagName('em');
+    xztab = new Swipe(document.getElementById('xztab'), {
+      callback: function(event,index,elem) {
+        setTab2(selectors[index]);
+		bullets2[index].className = 'on';
+      }
+    }),
+    selectors = document.getElementById('xzSelector').children;
+
+for (var i = 0; i < selectors.length; i++) {
+  var elem = selectors[i];
+  elem.setAttribute('data-tab', i);
+  elem.onclick = function(e) {
+    e.preventDefault();
+    setTab2(this);
+    xztab.slide(parseInt(this.getAttribute('data-tab'),10),300);
+  }
+}
+
+function setTab2(elem) {
+  for (var i = 0; i < selectors.length; i++) {
+    selectors[i].className = selectors[i].className.replace('on',' ');
+	bullets2[i].className = '';
+  }
+  elem.className += ' on';
+}
+</script>
+
+	<div class="m_tool">
+    	<a href="{WAP_SITEURL}list.html"><span><i></i><b>楼盘检索</b></span></a><a href="{WAP_SITEURL}top/"><span><i class="ico2"></i><b>楼盘榜单</b></span></a><a href="{WAP_SITEURL}news/"><span><i class="ico3"></i><b>楼盘导购</b></span></a><a href="{WAP_SITEURL}calcul/"><span><i class="ico4"></i><b>贷款计算</b></span></a>
+    </div>
+    
+    <div class="m_bg"></div>
+</div>
+
+<h2 class="tit_h2">导购资讯<i></i></h2>
+{h5:wap  action="position" posid="12" moreposid="2,35,36" order="listorder DESC" num="20"}
+<section class="new_list" >
+	<div id="sec">
+ {loop $data $r}
+	<a href="{WAP_SITEURL}show/{$r[url]}"><i></i><label>{date('Y-m-d',$r[inputtime])}{if $n==1}<em></em>{/if}</label><span>{str_cut($r['title'],40,'')}</span></a>
+   {/loop}  
+     	     </div>
+</section>
+{if count($data)>4}
+<div class="bn_most" style="margin:0 0 10px 0">
+	<div class="s2">
+    <a class="top" href="#">顶部</a>
+    <a class="most" href="#"><span class="num" id="more">更多资讯 <em>(4/{count($data)})</span></a>
+    <i></i>
+    <b></b><sub></sub>
+    </div>
+</div>
+{/if}
+{/h5} 
+<div class="pm_tit">
+	<ul id="pm_p">
+	<li class="on"><h2>最热楼盘<i></i></h2></li>
+    <li><h2>最新楼盘<i></i></h2></li>
+    </ul>
+</div>
+<div class="pm_con" id="pm_con">
+<ul>
+{h5:content action="hits" catid="14" num="12" order="views DESC" cache="86400"}
+<li style='display:block'>
+{loop $data $r}
+			{php $menu_info = menu_info('3360',$r[region])}
+			<a href="{WAP_SITEURL}detail/{$r[id]}" >
+	<sub>{$n}</sub>
+	<label class="lpic" style="background:url({if !empty($r[thumb])}{thumb($r[thumb],120,90)}{else}{APP_PATH}statics/house5-style1/img/index/nopic.jpg{/if})"></label>
+    <p class="ltxt">
+    	<label class="h1">{$r[title]}</label>
+        <label class="jg">{if !empty($r[price]) && $r[price]!="一房一价"} 均价{if $r[priceunit]=="0" }{$r[price]}元/平方米{elseif  $r[priceunit]=="2"}{price_short($r[price])}/套{/if} {else}一房一价{/if}</label>
+        <label class="wz">{$menu_info[0]} <b>|</b> {getbox_val('13','character',$r['character'])}</label>
+    </p>
+	</a>
+	{/loop}
+		</li>
+	 {/h5}
+{h5:content action="lists" catid="14" where="`hot` like '%5%'" num="12" order="id desc" cache="86400"}
+<li style='display:none'>
+	{loop $data $r}
+			{php $menu_info = menu_info('3360',$r[region])}
+			<a href="{WAP_SITEURL}detail/{$r[id]}" >
+	<sub>{$n}</sub>
+	<label class="lpic" style="background:url({if !empty($r[thumb])}{thumb($r[thumb],120,90)}{else}{APP_PATH}statics/house5-style1/img/index/nopic.jpg{/if})"></label>
+    <p class="ltxt">
+    	<label class="h1">{$r[title]}</label>
+        <label class="jg">{if !empty($r[price]) && $r[price]!="一房一价"} 均价{if $r[priceunit]=="0" }{$r[price]}元/平方米{elseif  $r[priceunit]=="2"}{price_short($r[price])}/套{/if} {else}一房一价{/if}</label>
+        <label class="wz">{$menu_info[0]} <b>|</b> {getbox_val('13','character',$r['character'])}</label>
+    </p>
+	</a>
+	{/loop}
+		</li>
+	 {/h5}
+</ul>
+
+<script>
+	// pm_con
+    pm_con = new Swipe(document.getElementById('pm_con'), {
+      callback: function(event,index,elem) {
+        setpm(selpmp[index]);
+      }
+    }),
+    selpmp = document.getElementById('pm_p').children;
+
+for (var i = 0; i < selpmp.length; i++) {
+  var elem = selpmp[i];
+  elem.setAttribute('data-tab', i);
+  elem.onclick = function(e) {
+    e.preventDefault();
+    setpm(this);
+    pm_con.slide(parseInt(this.getAttribute('data-tab'),10),300);
+  }
+}
+
+function setpm(elem) {
+  for (var i = 0; i < selpmp.length; i++) {
+    selpmp[i].className = selpmp[i].className.replace('on',' ');
+  }
+  elem.className += ' on';
+}
+</script>
+</div>
+<script>
+	function changeCity()
+	{
+		var stylecss = $(".sel_city").attr("style").indexOf("0px");
+		if(stylecss > -1)
+		{
+			$(".sel_city").attr("style", "");
+			$(".sel_city").css("height", "auto");
+		}
+		else
+		{
+			$(".sel_city").css("height", "0px");
+			$(".sel_city").css("overflow", "hidden");
+		}
+		
+	}
+	var slidermnav = new Swipe(document.getElementById('slidermnav'));
+</script>
+
+<!--foot star-->
+<footer >
+	<p class="p1">{$WAP['sitename']}</p>
+    <p class="p2"></p>
+</footer>
+</body>

@@ -1,0 +1,124 @@
+<div class="wrap clear wrap_shadow">
+    <div class="shadow fix fs_14 shengming">
+		<b class="c_red fw_B">免责声明：</b>本网站所刊载的“新房”所有资料及图表仅供参考使用，不声明或保证其内容之正确性或可靠性。刊载这些文档不视为{$title}已取得商品房预售许可证或达到可以销售的标准，且不构成对任何楼盘的购买的邀约或意图。参阅本网站上所刊的文档的人士，应被视为已确认得悉上述立场。购房者依据本网站提供的信息、资料及图表进 行房屋交易做造成的任何后果与本网站无关。本网站有权但无此义务，改善或更正资料及图表任何部分之错误或疏忽。以上信息仅供参考，所有信息以开发商提供为准！ </div>
+</div>
+<div id="footer" class="clear">
+	<div class="wrap">
+    	<div class="fNav">
+        	<p><a href="../newhouse/maps.php" title="地图找房" target="_blank">地图找房</a>|<a href="../about/partnerships.html" title="合作伙伴">合作伙伴</a>|<a href="../about/contact.html" title="联系我们" target="_blank">联系我们</a>|<a href="../lvshi/" title="网站律师">网站律师</a>|<a href="../esfang/regist1.php" title="会员注册" target="_blank">会员注册</a>|<a href="#" title="意见反馈">意见反馈</a></p>
+        </div>
+        <div class="copyright">
+        	<p>{$copyright}</p>            
+        </div>
+    </div>
+</div>
+<div class="sideQueryNav">
+	<a href="http://wpa.qq.com/msgrd?v=3&uin=97194074&site=qq&menu=yes" target="_blank" class="zx">咨询</a><a href="javascript:showfceng('tgbmc',1);" class="tg">团购</a><a href="javascript:;" class="sc">收藏</a><a href="javascript:showfceng('zxzxc',1);" class="wd">问答</a><a href="javascript:scrollTo(0,0);" class="db">顶部</a>
+</div>
+
+<!--楼盘大全 浮动层开始-->
+<div id="tree_btn" class="tree_btn" style="_top:expression(eval(document.compatMode &amp;&amp; document.compatMode=='CSS1Compat') ?documentElement.scrollTop+270:document.body.scrollTop+270);"><img src="{APP_PATH}statics/house5-style1/newhouse/img/tree_btn.png" alt="楼盘大全" /></div>
+<div id="Allhouse_content">
+ <div id="Allhouse_content_box"><div class="Allhouse_nav"><ul><li><a href="#A">A</a></li><li><a href="#B">B</a></li><li><a href="#C">C</a></li><li><a href="#D" title="">D</a></li><li><a href="#F">F</a></li><li><a href="#G" title="">G</a></li><li><a href="#H" title="">H</a></li><li><a href="#J">J</a></li><li><a href="#K">K</a></li><li><a href="#L" title="">L</a></li><li><a href="#M">M</a></li><li><a href="#N">N</a></li><li><a href="#O">O</a></li><li><a href="#P" title="">P</a></li><li><a href="#Q">Q</a></li><li><a href="#R">R</a></li><li><a href="#S" title="">S</a></li><li><a href="#T">T</a></li><li><a href="#W">W</a></li><li><a href="#X">X</a></li><li><a href="#Y">Y</a></li><li><a href="#Z">Z</a></li></ul></div>
+ 
+ <div class="Allhouse_con">
+{php $a_z = range('a','z');}
+{loop $a_z $v}
+	{php $where = "status=99";}
+	{php $where.=" and `ename` like '$v%'";}
+{h5:content action="lists" catid="$catid" where="$where" num="20" order="id DESC" cache="864000"}
+{if $data}
+ <h3 class="Allhouse_top" id="{strtoupper($v)}"><b>{strtoupper($v)}</b></h3>
+ <ul>
+ {loop $data $r}
+  {php $menu_info = menu_info('3360',$r[region])}
+ <li class="lichu"><span>[{$menu_info[0]}-{menu_lastinfo('3360',$r[region])}]</span><a href="{$r[url]}" target="_blank" alt="{$r[title]}楼盘" title="{$r[title]}楼盘">{$r[title]}</a><em>{if !empty($r[price])}{$r[price]}/㎡{else}待定{/if}</em></li>
+ {/loop}</ul>
+{/if}
+{/h5}
+{/loop}
+
+</div>
+   
+
+
+ </div>
+   <div id="tree_btn_return" class="tree_btn_return"><img src="{APP_PATH}statics/house5-style1/newhouse/img/tree_btn_return.png" alt="" /></div>
+</div>
+<!--楼盘大全 浮动层结束-->
+
+<!--发送到手机 浮动层开始-->
+<div id="dxfsc" class="floatLayer floatLayer_sentMes tabnone">
+	<div class="floatLayer_head">
+		<a href="javascript:showfceng('dxfsc',0);" class="fr closeLayer">关闭</a><h3><b class="fl"></b>发送到手机</h3>
+    </div>
+    <div class="floatLayer_body">
+        <div class="field"><label class="fl field_th">短信内容</label><textarea name="dxmsgs" id="dxmsgs" cols="" rows="" class="txtarea">{$title},{menu_lastinfo('3360',$region)},售楼地址:{$office},电话:{$tel}</textarea></div>
+        <div class="field"><label class="fl field_th">接收号码</label><input type="text" class="txt" name="phones" id="phones" maxlength="11" /><input name="lpids" id="lpids" type="hidden" value="{$id}" /></div>
+        <div class="field field_btn"><input type="button" class="btn btn_tj mR10" onClick="fsduanxin();" /><input type="button" class="btn btn_qx" onclick="showfceng('dxfsc',0);" /></div>
+    </div>
+</div>
+<!--发送到手机 浮动层结束-->
+<!--二维码 浮动层开始-->
+<div id="erweima" class="floatLayer floatLayer_tg tabnone">
+	<div class="floatLayer_head">
+		<a href="javascript:showfceng('erweima',0);" class="fr closeLayer">关闭</a><h3>二维码</h3>
+    </div>
+    <div class="floatLayer_body">
+         <div class="LP_swm_panel">
+                    	<b></b>
+                    	<div class="swm"><img src="{APP_PATH}caches/caches_content/caches_house/mobile_houseqrcode/{$siteid}/{$id}.png" alt="{$title}二维码" width="171" height="171"/></div>
+                    </div>
+    </div>
+</div>
+ 
+<!--立即参团 浮动层开始-->
+<div id="tgbmc" class="floatLayer floatLayer_tg tabnone">
+	<div class="floatLayer_head">
+		<a href="javascript:showfceng('tgbmc',0);" class="fr closeLayer">关闭</a><h3>立即参团</h3>
+    </div>
+    <div class="floatLayer_body">
+        <div class="field"><label class="fl field_th">您的姓名</label><input name="cnames" id="cnames" type="text" class="txt" maxlength="5"/></div>
+        <div class="field"><label class="fl field_th">性&nbsp;&nbsp;&nbsp;&nbsp;别</label><label class="mR10"><input name="sexs"  id="sexs1" type="radio" class="radio" checked="checked"/>男</label><label class="mL10"><input name="sexs"  id="sexs2" type="radio" class="radio" />女</label></div>
+        <div class="field"><label class="fl field_th">您的手机</label><input name="tels" id="tels" type="text" class="txt" maxlength="11"/></div>
+        <div class="field"><label class="fl field_th">参团备注</label><textarea name="contents" id="contents" cols="" rows="" class="txtarea"></textarea></div>
+		<input type='hidden' id='relation' value="{$id}"/>
+		<input type='hidden' id='subject' value="{$title}"/>
+		<input type='hidden' id='price' value="{$price}"/>
+		<input type='hidden' id='region' value="{menu_linkinfo('3360',$region)}" />
+		<input type='hidden' id='regionid' value="{$region}" />
+        <div class="field field_btn"><input type="button" class="btn btn_tj mR10" onClick="floattuangou();"/><input type="button" class="btn btn_qx" onclick="showfceng('tgbmc',0);" /></div>
+    </div>
+</div>
+<!--立即参团 浮动层结束-->
+
+<!--在线咨询 浮动层开始-->
+<div id="zxzxc" class="floatLayer floatLayer_zx tabnone">
+	<div class="floatLayer_head">
+		<a href="javascript:showfceng('zxzxc',0);" class="fr closeLayer">关闭</a><h3>在线咨询</h3>
+    </div>
+    <div class="floatLayer_body">
+        <div class="field"><label class="fl field_th">昵&nbsp;&nbsp;&nbsp;&nbsp;称</label><input id="cnametws" name="cnametws" type="text" class="txt" maxlength="5"/></div>
+        <div class="field"><label class="fl field_th">手&nbsp;&nbsp;&nbsp;&nbsp;机</label><input type="text" class="txt" id="titletws" name="titletws" maxlength="30"/></div>
+        <div class="field"><label class="fl field_th">提问内容</label><textarea name="contenttws" id="contenttws" cols="" rows="" class="txtarea"></textarea></div>
+        <div class="field field_btn"><input type="button" class="btn btn_tj mR10" onclick="floattiwen();" /><input type="button" class="btn btn_qx" onclick="showfceng('zxzxc',0);"/></div>
+    </div>
+</div>
+<!--在线咨询 浮动层结束-->
+
+
+<!--用户登录 浮动层结束-->
+<script type="text/javascript" src="{APP_PATH}statics/house5-style1/newhouse/js/show_house_functions.js"></script>
+<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>
+<script type="text/javascript">
+seajs.use(["jquery","hsearch"],function($){
+	$("#Search").hSearch("{HOUSE_PATH}list","{APP_PATH}api.php?op=house");
+	})
+</script>
+<div class="zzcLayer"></div>
+</body>
+<!--[if IE 6]>  
+ <script src="{APP_PATH}statics/house5-style1/newhouse/js/DD_belatedPNG.js" type="text/javascript"></script>  
+ <script type="text/javascript">DD_belatedPNG.fix('.ribbon_img,.wrap_shadow,.toggleLeft');</script>  
+ <![endif]-->
+</html>

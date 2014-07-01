@@ -1,0 +1,1 @@
+var IMG_URL="http://house.inhe.net/img/",UPLOAD_URL="http://house.inhe.net/upload/",APP_URL="http://house.inhe.net/app/",WWW_URL="http://house.inhe.net/",SPACE_URL="http://house.inhe.net/space/",COOKIE_PRE="yinhe_",COOKIE_DOMAIN=".inhe.net",COOKIE_PATH="/",SINA_APPKEY="",QQ_SOURCEID="";

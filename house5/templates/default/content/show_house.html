@@ -1,0 +1,1500 @@
+{template "content","head_house"}
+<style>
+.mask_left{background-position:0 0;padding:0 5px 0 11px}
+.mask_left,.mask_right{background:url({APP_PATH}statics/default/newhouse/img/mask_bk.png) no-repeat scroll 0 0 transparent;color:#FFF;font-size:12px;height:40px;line-height:28px;vertical-align:text-top;white-space:nowrap}
+.mask_right{background-position:100% -40px;width:3px}
+.mapicon p,.mapicon a,.mapicon span{display:inline-block;padding-left:18px;background:url({APP_PATH}statics/default/newhouse/img/icon_side.gif) no-repeat;cursor:pointer;margin:9px 0 9px 19px;float:left}
+.mapindex .icon{height:32px;background:url({APP_PATH}statics/default/newhouse/img/map_select_icon.gif) no-repeat scroll 11px -374px transparent;color:#fff;font-weight:bold}
+.mapindex span {padding-right:10px;height:20px;line-height:20px;margin-top:10px;margin-left:8px;scroll no-repeat;padding-left:18px}
+p.lp{background-position:0 4px;line-height:18px;}
+p.gj{background-position:0 -26px;line-height:18px;}
+p.cy{background-position:0 -56px;line-height:18px;}
+p.yh{background-position:0 -86px;line-height:18px;}
+p.xxx{background-position:0 -176px;line-height:18px;}
+p.yy{background-position:0 -206px;line-height:18px;}
+p.jyz{background-position:0 -296px;line-height:18px;}
+</style>
+<script type="text/javascript" language="javascript">
+ function displayBox1(cb){
+  var div1 = document.getElementById("box1");
+  var div2 = document.getElementById("box");
+  var value1 = document.getElementById("button").value;
+  if(cb.click && div2.style.display == ""){
+   div1.style.display='';
+   div2.style.display='none';   
+  }else{
+   div1.style.display='none';
+   div2.style.display='';
+  }
+ }
+function cookiesave(n, v, mins, dn, path)
+{
+    if(n)
+    {
+		
+	    if(!mins) mins = 365 * 24 * 60;
+		if(!path) path = "/";
+	    var date = new Date();
+		
+	    date.setTime(date.getTime() + (mins * 60 * 1000));
+		
+	    var expires = "; expires=" + date.toGMTString();
+		
+	    if(dn) dn = "domain=" + dn + "; ";
+	    document.cookie = n + "=" + v + expires + "; " + dn + "path=" + path;
+    }
+}
+function cookieget(n)
+{
+    var name = n + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i<ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+	}
+	return "";
+}
+function closeclick(){
+	document.getElementById('note').style.display='none';
+	cookiesave('closeclick','closeclick','','','');
+}
+function clickclose(){
+	if(cookieget('closeclick')=='closeclick'){
+		document.getElementById('note').style.display='none';
+	}else{
+		document.getElementById('note').style.display='block';
+	}
+}
+window.onload=clickclose;
+</script>
+<style type="text/css">	
+	.dianping_top{width:420px; height:230px;}
+	.pf_jg {height:80px; width:225px; margin:5px; float:left; _margin:0 5px;}
+	.pf_fs{height:70px; width:170px; _width:170px; float:left; text-align:center; margin-top:20px; border-left:1px dashed #CADBF1;}
+	.xx {margin:0px 0 10px; width:225px; height:10px; line-height:20px; _margin:0;}
+	.xx span {float:left; width:40px;}
+	.xx_pic {background:url({APP_PATH}statics/default/img/house/img_bar.gif) no-repeat 0 0; width:180px; height:12px; float:left; margin-top:5px; display:block; line-height:1.5;}
+	.dianping_comment{width:420px; height:90px; clear:both; position:relative;}
+	.title {width:70px;text-align:center; float:right; }
+	.h2 { font-size:25px;}
+	.sj {width:17px; height:28px;background:url({APP_PATH}images/top/sj1-r.png) no-repeat; float:right; position:relative; top:10px; right:1px;}
+	.u-name{float:right; width:60px; font-size:14px; font-weight:bold; margin:10px 30px 10px 0;}
+	.content1 {width:300px; _width:290px; float:left; overflow:hidden;  margin:5px 0; padding:0px 5px;}
+	.dianping_but{float:right; margin:0px 30px 10px 0px ;}
+	.dp_but{display:block; background-color:rgb(244, 249, 255); border:1px solid #CADBF1; width:60px; height:26px;text-align:center; line-height:26px}
+	.subNav{height:39px;}
+	.subNav ul{padding-top:6px;}
+	.box{width:504px; overflow:hidden; position:relative; font-size:12px;}
+    .oHx{height:30px; line-height:30px; font-size:12px; cursor:pointer;}
+    .fold{position:absolute; top:9px; right:12px;}
+    .box_content{line-height:18px; overflow:hidden; display:none; width:504px;}
+	.jg_img {background:url({APP_PATH}statics/default/img/house/img_bar.gif) no-repeat 0 -14px; vertical-align:top; }
+	.hj_img {background:url({APP_PATH}statics/default/img/house/img_bar.gif) no-repeat 0 -42px; vertical-align:top; }
+	.gh_img {background:url({APP_PATH}statics/default/img/house/img_bar.gif) no-repeat 0 -56px; vertical-align:top;}
+	.pt_img {background:url({APP_PATH}statics/default/img/house/img_bar.gif) no-repeat 0 -70px; vertical-align:top;}
+	.pf_yx{width:405px; height:90px; clear:both; text-align:center;}
+	.yx_inp{height:28px; width:400px;}
+	.yx_inp span{height:25px; line-height:20px; font-size:14px;}
+	.pf_yx .pf_btn{border-style:none; background:rgb(244,249,255); border:1px solid #cadbf1; width:60px; height:25px; line-height:18px;}
+	.pf_yx .pf_inpt{border-style:none; border:1px solid #cadbf1; height:20px; width:150px;}
+	.yx_img {width:370px; margin:0px auto; height:90px;}
+	.yx_img .i1{background:#ffc447 ; color:#FFF; float:left;height:29px; line-height:29px; min-width:70px; max-width:120px; text-align:center; margin:7px 5px 5px; border:1px solid #000;}
+	.yx_img .i2{background:#c8b0fe; color:#FFF; float:left;height:29px; line-height:29px; min-width:70px; max-width:120px; margin:7px 5px 5px; border:1px solid #000;}
+	.yx_img .i3{background:#ff9900; color:#FFF; float:left;height:29px; line-height:29px; min-width:70px; max-width:120px; margin:7px 5px 5px; border:1px solid #000;}
+	.yx_img .i4{background:#33cbcc; color:#FFF; float:left;height:29px; line-height:29px; min-width:70px; max-width:120px; margin:7px 5px 5px; border:1px solid #000;}
+	.yx_img .i5{background:#febcc0; color:#FFF; float:left;height:29px; line-height:29px; min-width:70px; max-width:120px; margin:7px 5px 5px; border:1px solid #000;}
+	.yx_img .i6{background:#fe4f6b; color:#FFF; float:left;height:29px; line-height:29px; min-width:70px; max-width:120px; margin:7px 5px 5px; border:1px solid #000;}
+	.yx_img .i7{background:#c8b0fe; color:#FFF; float:left;height:29px; line-height:29px; min-width:70px; max-width:120px; margin:7px 5px 5px; border:1px solid #000;}
+	.yx_img .i8{background:#ff9900; color:#FFF; float:left;height:29px; line-height:29px; min-width:70px; max-width:120px; margin:7px 5px 5px; border:1px solid #000;}
+	.hlist_e li{height:30px; width:500px;}
+	.dianping_fengel{width:36px; height:17px; color:#FFF; font-size:14px; font-weight:bold; line-height:17px;margin:10px 5px; display:block; float:left; text-align:center; }
+	.dianping_fenger{width:240px; height:29px; line-height:18px; display:block; float:left; padding:10px 5px; _padding:10px 0;}
+	.mask 
+	{
+		background-color: rgb(0, 0, 0);
+		display:none;
+		opacity: 1; /* Safari, Opera */
+		-moz-opacity:1; /* FireFox */
+		filter: alpha(opacity=100); /* IE */
+		z-index: 9999;
+		height: 100%;
+		width: 100%;
+		background-repeat:repeat;
+		position:fixed;
+		top: 0px;
+		left: 0px;
+	}
+	.code{background:url("{APP_PATH}statics/default/img/house/codebg.jpg") no-repeat 0 0;font-size:14px;left:45%;
+		margin-top:-50px;
+		margin-left:-100px;
+		top:45%;
+		position:fixed;}
+			.code dl{}
+			.code dt{font-weight:700;color:#000;text-indent:23px;}
+			.code dt.shoot{height:40px;line-height:40px;text-indent:65px;margin-top:16px;margin-bottom:8px;}
+				.code_img{height:160px;}
+				.code_img img{margin-left:132px;margin-top:4px;}
+			.code dd.url{text-indent:23px;padding-top:10px;}
+.mt-tips {
+    position: absolute;
+    z-index: 1001;
+}
+.mt-tips a, .mt-tips a:hover {
+    color: #336699;
+}
+.mt-tips .wrap {
+    position: relative;
+}
+.mt-tips .mt-tip-arrow-top, .mt-tips .mt-tip-arrow-right, .mt-tips .mt-tip-arrow-bottom, .mt-tips .mt-tip-arrow-left {
+    background: url("{APP_PATH}statics/default/img/house/tips.png") no-repeat scroll 0 0 transparent;
+    overflow: hidden;
+    position: absolute;
+    text-decoration: none;
+}
+.mt-tips .mt-tip-arrow-top {
+    background-position: -10px -40px;
+    height: 6px;
+    left: 5px;
+    top: -5px;
+    width: 11px;
+}
+.mt-tips .mt-tip-arrow-right {
+    background-position: -15px -40px;
+    height: 11px;
+    right: -5px;
+    top: 5px;
+    width: 6px;
+}
+.mt-tips .mt-tip-arrow-bottom {
+    background-position: -10px -45px;
+    bottom: -5px;
+    height: 6px;
+    left: 5px;
+    width: 11px;
+}
+.mt-tips .mt-tip-arrow-left {
+    background-position: -10px -40px;
+    height: 11px;
+    left: -5px;
+    top: 5px;
+    width: 6px;
+}
+.mt-tips .mt-tip-content {
+    background: none repeat scroll 0 0 #FFFFCC;
+    border: 1px solid #FFC662;
+    color: #555555;
+    padding: 3px 6px;
+}
+.wrap {
+    padding-left: 5px;
+    position: relative;
+}
+.mt-tip-arrow-top, .mt-tips .mt-tip-arrow-right, .mt-tips .mt-tip-arrow-bottom, .mt-tips .mt-tip-arrow-left {
+    background: url("{APP_PATH}statics/default/img/house/tips.png") no-repeat scroll 0 0 transparent;
+    overflow: hidden;
+    position: absolute;
+    text-decoration: none;
+}
+.mt-tips .mt-tip-arrow-top {
+    background-position: -10px -40px;
+    height: 6px;
+    left: 5px;/*移动顶部小三角*/
+    top: -5px;
+    width: 11px;
+}
+</style>
+<div class="cArea">
+<!--当前位置 begin-->
+<div class="column">
+<div class="a1 linka">
+<a href="{HOUSE_PATH}" target="_blank">新房首页</a> > {menu_links('3360',$region,0)} <h3 style="display:inline"><a href="{$url}">{$title}</a> </h3> >
+楼盘主页</div>
+<div class="a2 linka">
+<a href="javascript:void(0)" onclick="jQuery('#mask').show();">手机看房</a> 
+<a href="javascript:void(0)" onclick="addCompareItem({$id}, '{$title}')">比较</a> 
+<a href="javascript:void(0)" onclick="addBookmark('{$title} - {$SEO['site_title']}',  location.href)">收藏</a> 
+<a href="javascript:void(0)" onclick="copysiteurl('{$title}', location.href)">复制</a> 
+<a href="javascript:void(0);" onclick="print();">打印</a>  │  
+<span>最后更新:{date('Y年m月d日',strtotime($updatetime))}</span>
+</div>
+</div>
+<div id="note" class="mt-tips" style="left: 785.5px; top: 184px;display:none;"><div class="wrap"><s class="mt-tip-arrow-top"></s><div style="width: 142px; height: 18px" class="mt-tip-content"><p>用手机看楼盘信息 <a id="J_MtHideAccountTip" href="javascript:void(0)" onclick="closeclick()">知道了</a></p></div></div></div>
+<!--当前位置 end-->
+<div class="hr10"></div>
+<!--楼盘名称 begin-->
+<div class="tab_a">
+<div class="tab_a_l">
+<div class="a1"><h1>{$title}</h1></div>
+{if $xszt=="在售"}
+{php $saling=1}
+<div class="a2 state_zs">
+{/if}
+{if $xszt=="即将上市"}
+{php $saling=2}
+<div class="a2 state_jjss">
+{/if}
+{if $xszt=="尾盘"}
+{php $saling=3}
+<div class="a2 state_wp">
+{/if}
+{if $xszt=="售完"}
+{php $saling=4}
+<div class="a2 state_sw">
+{/if}
+{$xszt}
+</div>
+{get_typename($type,1)}
+{get_relationlp($id,$catid)}
+</div>
+<div class="tab_a_r">
+<span class="reda" id="hits"></span> 人关注 
+<span class="reda" id="tuangou"></span> 人报名团购 
+[<span class="linka"><a href="{HOUSE_PATH}{$id}/#tg">我要团购</a>] 
+</span>
+</div>
+</div>
+<!--楼盘名称 end-->
+<div class="hr15"></div>
+<!--浮动导航begin-->
+<div class="box_img_list">
+<div id="index_nav_box">
+<div class="qlink" id="index_nav">
+<!--楼盘顶部导航栏目 begin-->
+{template "content","show_house_top1"}
+<!--楼盘顶部导航栏目 end-->
+<div class="hr10"></div>
+</div>
+</div>
+</div>
+<!--浮动导航end-->
+</div>
+<!--当前位置 cArea--><link href="{APP_PATH}statics/default/css/house/house_zhuye_js.css" rel="stylesheet" type="text/css" />
+<!--zhuye img div-->
+<div class="cArea">
+<div class="main_l">
+<!--楼盘推荐图片 begin-->
+<div class="gathered">
+<!--切换图片-->		
+<div id="ifocus">
+<div id="ifocus_pic">
+<div id="ifocus_piclist" style="left:0; top:0;">
+<ul>
+{loop $pic $pic_k $r}
+<li><a href="{HOUSE_PATH}{$id}/xiangce.html" target="_blank">
+<img src="{thumb($r[url], 400, 240, 0)}" alt="{$r[alt]}" border="0"/></a>
+</li>
+{/loop}
+</ul>
+</div>
+<div id="ifocus_opdiv"></div>
+<div id="ifocus_tx">
+<ul>
+{loop $pic $pic_k $r}
+<li class="current">{$r[alt]}</li>
+{/loop}
+</ul>
+</div>
+</div>
+<div id="ifocus_btn">
+<ul>
+{loop $pic $pic_k $r}
+<li class="current"><img src="{thumb($r[url], 156, 156, 0)}" alt="{$r[alt]}" width="156" height="156" /></a><br>{$r[alt]}</li>
+{/loop}
+</ul>
+</div>
+<a  name="tg" id="tg">&nbsp;</a>
+</div>
+<!--切换图片-->	
+</div>
+<!--楼盘推荐图片 end-->
+<div class="hr10"></div>
+<div id="mask" class="mask" onclick="jQuery('#mask').hide();"><div class="code y">
+<dl>
+<dt class="shoot" style="width:360px;">拍摄二维码快速访问本楼盘:</dt>
+<dd class="code_img"><img src="{APP_PATH}caches/caches_content/caches_house/mobile_houseqrcode/{$siteid}/{$id}.png" alt="{$title}楼盘二维码"/></dd>
+<dt>或者通过以下地址访问:</dt>
+<dd class="url"><a href="{$url}" target="_blank">{$url}</a></dd>
+</dl>
+</div></div>
+<!--幻灯片下方广告-->
+<!--幻灯片下方广告-->
+{php $reviewsid = "content_14-$id-1";}
+	{h5:reviews action="get_reviews" reviewsid="$reviewsid" cache="1800"}
+	{php $reviews = $data;}
+{/h5}
+<!--点评 begin-->
+<div class="dianping_top">
+	<div class="kjlm_title link5"><a href="{HOUSE_PATH}{$id}/dianping.html" target="_blank">楼盘点评</a></div>
+    <div class="kjlm_k" style="height:190px;">
+	
+	
+    	<?php
+				if($reviews[total]>0)
+				{
+				   $percent = round($reviews[allstar]/$reviews[total]*5);				   
+					$star1 = round($reviews[star1]/$reviews[total]*20);
+					$star2 = round($reviews[star2]/$reviews[total]*20);
+					$star3 = round($reviews[star3]/$reviews[total]*20);
+					$star4 = round($reviews[star4]/$reviews[total]*20);
+				}
+				else
+				{
+				   $percent = 0;
+					$star1 = 0;
+					$star2 = 0;
+					$star3 = 0;
+					$star4 = 0;
+				}
+              ?>
+    	<div class="pf_jg">
+            <div class="xx"><span>价格：</span><div class="xx_pic"><img style=" vertical-align:top;" height="12" width="{$star1}%" class="jg_img" src="{APP_PATH}images/top/news_mj_005.gif" title="{$star1}"/></div></div>
+            <div class="xx"><span>环境：</span><div class="xx_pic"><img height="12" width="{$star2}%" class="hj_img" src="{APP_PATH}statics/default/img/house/news_mj_005.gif" title="{$star2}"/></div></div>
+            <div class="xx"><span>规划：</span><div class="xx_pic"><img height="12" width="{$star3}%" class="gh_img" src="{APP_PATH}statics/default/img/house/news_mj_005.gif" title="{$star3}" /></div></div>
+            <div class="xx"><span>配套：</span><div class="xx_pic"><img height="12" width="{$star4}%" class="pt_img" src="{APP_PATH}statics/default/img/house/news_mj_005.gif" title="{$star4}" /></div></div>
+        </div>
+        <div class="pf_fs">
+        	
+            <span class="h2"><strong>评分</strong></span><input type="hidden" id="percent" value="{$reviews[total]}"><span class="h2">{$percent}/</span>100<br />
+            网友综合楼盘评分({$reviews[total]}人参加)
+        </div>
+        <div class="dianping_comment">
+        	<div class="content1">
+			{h5:content action="dianpinginfo" relation="$id" catid="99" num="1" order="id DESC" cache="172800" return="expertdp"}<!-- 编辑点评2012/8/6 -->
+				{php $expertreviews = $expertdp;}
+                
+                
+                        <div class="dianping_fengel" valign="top" style="background:#E66266; border:1px solid #C8584B;">优点</div><div class="dianping_fenger" >{$expertreviews[advantage]}</div>
+                    <div style="border-bottom:1px dotted #999; clear:both;"></div>
+                    
+                        <div class="dianping_fengel" valign="top" style="background:#8F8F8F; border-color:1px solid #7B7B7B;" >缺点</div><div class="dianping_fenger" >{$expertreviews[disadvantage]}</div>
+                    
+			{/h5}
+        	</div>
+            <div class="u-name"><img src="{APP_PATH}statics/default/img/house/admin.jpg" /></div>
+            <div class="dianping_but"><a class="dp_but" href="{HOUSE_PATH}{$id}/dianping.html">我来点评</a></div></div>
+               
+	</div>
+    <div class="kjlm_end"></div>
+</div>
+<!--点评 end-->
+<div class="hr10"></div>
+<!--印象 start-->
+<div class="yx_top">
+	<div class="kjlm_title link5"><a href="{HOUSE_PATH}{$id}/dianping.html" target="_blank">楼盘点评</a></div>
+    <div class="kjlm_k" style="height:112px;">
+	<div class="pf_yx">
+        	<div class="yx_inp"><form name="formyx" action="{APP_PATH}index.php?s=reviews/index/impression&reviewsid={$reviewsid}" method="post" onsubmit="return(checkformyx())"><span>小区印象：</span><input class="pf_inpt" maxlength="10" type="text" name="impression" id="impression"/> <input class="pf_btn" type="submit" value="提交" /></form></div>
+			{h5:reviews action="impression_lists" houseid="$id" siteid="$siteid" num="8" cache="1800"}
+            <div class="yx_img">
+            	<ul>
+				{loop $data $r}
+                	<li class="i{$n}"><a href="javascript:;" title="已被这样描述{$r[counts]}次" onclick="document.formyx.impression.value='{$r[impression]}';formyx.submit();">{$r[impression]}</a></li>
+					{/loop}
+                </ul>
+            </div>
+			{/h5}
+        </div> 
+       </div>
+    <div class="kjlm_end"></div>   
+    </div>
+<!--印象 end-->        
+</div>
+<div class="main_r">
+<!--基本信息 begin-->
+<div class="main_r_k">
+<div class="sales_title1">
+<span class="smb_reg1" onclick="addCompareItem({$id}, '{$title}')">加入对比</span>
+<div class="a1 link5">基本信息</div>
+<h4 class="a2 linka"><a href="{HOUSE_PATH}{$id}/xinxi.html" target="_blank">查看{$title}详细信息>></a></h4>
+</div>
+<div class="sales">
+<div class="hlist_f">
+  <ul>
+  <li>
+<span class="td_01">物业类别：</span>
+<span class="td_1">{get_typename($type)}
+</span>
+<span class="td_01">建筑类别：</span>
+<span class="td_2">{$type2}</span>
+  </li>
+  <li>
+<span class="td_01">主力户型：</span>
+<span class="td_1" title="{$huxing}"><A href="{HOUSE_PATH}{$id}/huxing.html" title="{$title}户型图">{$huxing}</A>
+</span>
+<span class="td_01">业主QQ群：</span>
+<span class="td_4">{if $qqqun}<img style="vertical-align:middle;" src="{APP_PATH}statics/default/img/icon/qqq_icon.gif"><a onclick="ow('http://qun.qq.com/#jointhegroup/gid/{$qqqun}')" href="javascript:void(0)" title="{$title}业主QQ群({$qqqun})">{$qqqun}</a>
+<SCRIPT>
+function ow(owurl){
+h=screen.height; 
+w=screen.width;
+ls = 'scrollbars   =   0,top=0,left=0,width= '+String(w)+ ',height= '+String(h);
+var tmp=window.open(owurl,"",ls)
+tmp.moveTo(0,0)
+tmp.resizeTo(screen.width+20,screen.height)
+tmp.focus()
+tmp.location=owurl
+}
+</SCRIPT>{/if}</span>
+  </li>
+  <li>
+<span class="td_01">产权信息：</span>
+<span class="td_1">{$fcznx}
+</span>
+<span class="td_01">工程进度：</span>
+{h5:content action="progressinfo" xglp="$id" catid="28" num="1" order="inputtime DESC" cache="86400"}
+{if $data}
+{loop $data $r}
+<span class="td_2" title="{$r['description']}"><A href="{$r[url]}" target="_blank">{str_cut($r['description'],30,'...')}</A></span>
+{/loop}
+{/if}
+{/h5}
+  </li>
+  <li>
+<span class="td_01">参考价格：</span>
+<span class="td_02">{if !empty($price) && $price!="一房一价"}{if $priceunit=="0" }{$price}元/平方米{elseif  $priceunit=="2"}{price_short($price)}/套{/if} {else}一房一价{/if}</span>
+<span class="td_3">
+[<a href="{HOUSE_PATH}{$id}/jiage.html#zs" target="_blank">房价走势</a>] 
+[<a href="{HOUSE_PATH}{$id}/jiage.html#mx" target="_blank">楼盘订阅</a>] 
+[<a href="{APP_PATH}tools/fdjsq.html" target="_blank">房贷计算器</a>]
+[<a href="{HOUSE_PATH}baojia.html" target="_blank">{$default_city}房价</a>]
+</span>
+  </li>
+  </ul>
+</div>
+<div class="lines">
+<div class="a1">售楼处热线</div>
+<div class="a2">{$tel}</div>
+<div class="a5">(提及{$site_title}，将获得更多便利服务)</div>
+</div>
+<div class="hlist_f">
+  <ul>
+  <li>
+<span class="td_01">开盘时间：</span>
+<span class="td_1" title="{$opentime}">{if !empty($opentimetips)}{$opentimetips}{elseif !empty($opentime)&& $opentime!="0000-00-00"}{$opentime}{else}待定{/if}
+</span>
+<span class="td_01">交房时间：</span>
+<span class="td_2" title="{$jfdate}">{if !empty($jfdatetips)}{$jfdatetips}{elseif !empty($jfdate)&& $jfdate!="0000-00-00"}{$jfdate}{else}待定{/if}</span>
+  </li>
+  <li>
+<span class="td_01">建筑面积：</span>
+<span class="td_1">{if !empty($jzmj)}{$jzmj}㎡{else}待定{/if}
+</span>
+<span class="td_01">公　  &nbsp;摊：</span>
+<span class="td_2">{if !empty($gt)}{$gt}{else}待定{/if}</span>
+  </li>
+  <li>
+<span class="td_01">容 积 率：</span>
+<span class="td_7">{if !empty($far)}{$far}{else}待定{/if}
+</span>
+<span class="td_01">绿 化 率：</span>
+<span class="td_3">{if !empty($lhl)}{$lhl}%{else}待定{/if}</span>
+  </li>
+  <li>
+<span class="td_01">开 发 商：</span>
+<span class="td_1"><a href="{HOUSE_PATH}company-{$developer}.html" target="_blank">
+{getcompany_name($developer,12)}</a>&nbsp;
+</span>
+<span class="td_01">代 理 商：</span>
+<span class="td_2"><a href="{HOUSE_PATH}company-{$agency}.html" target="_blank">
+{getcompany_name($agency,12)}</a></span>
+  </li>
+  <li>
+<span class="td_01">物业公司：</span>
+<span class="td_1"><a href="{HOUSE_PATH}company-{$property}.html" target="_blank">
+{getcompany_name($property,12)}</a>&nbsp;
+</span>
+<span class="td_01">物 业 费：</span>
+<span class="td_2" title="{$wyf}">{if !empty($wyf)}{$wyf}{else}待定{/if}</span>
+  </li>
+  <li>
+<span class="td_01">售 楼 处：</span>
+<span class="td_0" title="{$office}">{$office}</span>
+  </li>
+<li>
+<span class="td_01">楼盘地址：</span>
+<span class="td_4">{menu_links('3360',$region,1)} <font title="{$address}">{str_cut($address,36,'..')}</font>
+</span>
+<span class="td_5 smb_reg2">
+<a href="{HOUSE_PATH}{$id}/peitao.html" target="_blank">
+查看地图
+</a>
+</span>
+  </li>
+  <li>
+<div id="box"> 
+<span class="td_01">周围交通：</span>
+<span class="td_4">{str_cut($jiaotong,120,'..')}{if strlen($jiaotong)>121}<input id="button" style="border-style:none;" type="button" onclick="displayBox1(this)" value="全部信息">{/if}</span>
+</div>
+<div id="box1" style="display:none;"><span class="td_4">
+	<strong>周围交通：</strong>
+	{$jiaotong} <input id="button" style="border-style:none; border：0 none; float:right; margin-right:20px;" type="button" onclick="displayBox1(this)" value="隐藏"> </span>
+</div>
+   </li>
+  </ul>
+</div>
+</div>
+<div class="sales_end"></div>
+</div>
+<!--基本信息 end-->
+<div class="hr10"></div>
+<!--最新销售动态 begin-->
+<div class="main_r_k">
+<div class="sales_title">
+<span class="link_span">
+<!-- Baidu Button BEGIN -->
+    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+        <span class="bds_more" style="padding-top:2px;">分享到：</span>
+        <a class="bds_qzone"></a>
+        <a class="bds_tsina"></a>
+        <a class="bds_tqq"></a>
+        <a class="bds_renren"></a>
+    </div>
+<script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+</script>
+<!-- Baidu Button END -->
+</span>
+<div class="a1 link5"><a href="{HOUSE_PATH}{$id}/dongtai.html" target="_blank">最新销售动态</a></div>
+<b class="a2"><a href="{HOUSE_PATH}{$id}/dongtai.html" target="_blank">{$title}最新销售动态</a></b>
+</div>
+{h5:content action="salesinfo" xglp="$id" catid="6" morecatid="26,49,28,29" num="1" order="inputtime DESC" cache="86400"}<!-- 最新销售动态 -->
+<div class="salesaa">
+  {if $data}
+  <ul>
+  {loop $data $r}
+  <div class="a1">
+{str_cut($r['description'],220,'...')}<span class="linka">[<a href="{HOUSE_PATH}{$id}/dongtai.html" target="_blank">详情</a>]</span>
+<span class="font">---{date('Y年m月d日',$r[inputtime])}</span>
+  </div>
+  {/loop}
+  
+  </ul>
+{/if}</div>
+     {/h5}
+<div class="sales_end"></div>
+</div>
+<!--最新销售动态 end-->
+<div class="hr10"></div>
+<!--看房联盟团购 begin-->
+<div class="main_r_k">
+<div class="sales_title1"><div class="a1 link5"><a href="{TUAN_PATH}" target="_blank">问房团</a></div></div>
+<div class="sales">
+<div class="hlist_e" style="width:500px;" >
+  <ul style="width:500px;">
+  
+<form method="post" action="{APP_PATH}index.php?s=formguide/index/show&formid=17&siteid=1" name="myform" id="myform">
+  <li><span class="td_1">目前已有 <font class="reda" id="tuang"></font> 位网友参与该楼盘团购。</span></li>
+  <li>
+<span class="td_1"  style="width:240px;">姓 名：<input id="name" name="info[name]" maxlength="20" type="text" class="inputText" style="width:150px;"/> <font style="color:#f00;">*</font></span>
+<span class="td_2"  style="width:240px;">电话：<input id="tel" name="info[tel]" type="text" maxlength="11" class="inputText" style="width:150px;" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" /> <font style="color:#f00;">*</font></span>
+<input type='hidden' name='info[relation]' id='relation' value="{$id}"/>
+<input type='hidden' name='info[subject]' id='subject' value="{$title}"/>
+<input type='hidden' name='info[price]' id='price' value="{$price}"/>
+<input type='hidden' name='info[region]' id='region' value="{menu_linkinfo('3360',$region)}" />
+<input type='hidden' name='info[regionid]' id='regionid' value="{$region}" />
+  </li>
+  <li><span class="td_1" style="width:240px;">性 别：
+ <label><input type="radio" name="info[sex]" id="sex_1" value="1" checked /></label>男
+ <label><input type="radio" name="info[sex]" id="sex_2" value="2" /></label>女</span>
+<span class="td_2" style="width:240px;">QQ号：<input id="qq" name="info[qq]" type="text" maxlength='12' class="inputText" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" style="width:150px;" /></span>
+  </li>
+  <li>
+<span class="td_3"><input type="submit" name="dosubmit" id="dosubmit" value="提&nbsp;交" class="smb_btn3" /></span>
+<span class="td_4"><font style="color:#f00;">*</font>全部为必填项</span>
+   </li>
+   </form>
+  </ul>
+</div>
+</div>
+<div class="sales_end"></div>
+</div>
+<!--看房联盟团购 end-->
+</div>
+</div>
+<!--户型图上方-->
+<div class="hr10"></div>
+<!--户型图上方-->
+<div class="cArea">
+<!--户型图 begin-->
+{h5:content action="huxingtype" relation="$id" catid="13" num="10" order="inputtime DESC" cache="86400"}
+{if $data}
+<div class="content">
+<div class="titleA">
+<span class="link_span">
+{loop $data $k $r}
+{h5:content action="pictypecount" relation="$id" catid="13" typeid="$r[typeid]" cache="172800" return="info"}
+<a href="{HOUSE_PATH}{$id}/hxlist-{$r[typeid]}.html" target="_blank">{get_typename_bytypeid($siteid,$r[typeid])}({$info}张)</a>
+{/h5}
+{if $n< count($data)}
+ | 
+{/if}
+{/loop} <a href="{HOUSE_PATH}{$id}/huxing.html" target="_blank">更多>></a>
+</span>
+{h5:content action="pictypecount" relation="$id" catid="13" cache="172800" return="huxinginfo"}
+  <div class="a1 link5"><a href="{HOUSE_PATH}{$id}/huxing.html" target="_blank">户型图</a></div>
+  <b class="a2"><a href="{HOUSE_PATH}{$id}/huxing.html" target="_blank">{$title}户型图({$huxinginfo}张)</a></b>
+{/h5}
+</div>
+<div class="content_k">
+{h5:content action="huxinginfo" relation="$id" catid="13" num="5" order="inputtime DESC" cache="86400"}<!-- 户型图列表 -->
+{loop $data $rs}
+{loop string2array($rs['pictureurls']) $pic_k $v}
+{php $xx++}
+{php if($xx>5) break;}
+<div class="tpstyle">
+  <ul>
+<li class="bk">
+<a href="{HOUSE_PATH}hxlist-{$id}-{$rs[typeid]}-{$rs[id]}.html#{$n}" target="_blank" title="{$title}{$v[alt]}">
+<img src="{thumb($v[url], 156, 156, 0)}" alt="{$title}{$v[alt]}" width="156" height="156"  /></a>
+</li>
+<li>
+<a href="{HOUSE_PATH}hxlist-{$id}-{$rs[typeid]}-{$rs[id]}.html" target="_blank" title="{$title}{$v[alt]}">{$v[alt]}</a></li>
+  </ul>
+</div>
+{/loop}
+{/loop}
+{/h5}
+<div style="clear:both;font-size:1px;"></div>
+</div>
+<div class="content_end"></div>
+</div>
+<div class="hr10"></div>
+{/if}
+{/h5}
+<!--户型图 end-->
+<!--楼盘相册 begin-->
+{h5:content action="huxingtype" relation="$id" catid="8" num="10" order="inputtime DESC" cache="86400"}<!--相册 -->
+{if $data}
+<div class="content">
+<div class="titleA">
+<span class="link_span">
+{loop $data $r}
+{h5:content action="pictypecount" relation="$id" catid="8" typeid="$r[typeid]" cache="172800" return="info"}
+<a href="{HOUSE_PATH}{$id}/xclist-{$r[typeid]}.html" target="_blank">{get_typename_bytypeid($siteid,$r[typeid])}({$info}张)</a>
+{/h5}
+{if $n< count($data)}
+ | 
+{/if}
+{/loop} <a href="{HOUSE_PATH}{$id}/xiangce.html" target="_blank">更多>></a>
+</span>
+{h5:content action="pictypecount" relation="$id" catid="8" cache="172800" return="xiangceinfo"}
+<div class="a1 link5"><a href="{HOUSE_PATH}{$id}/xiangce.html" target="_blank">楼盘相册</a></div>
+    <b class="a2">
+<a href="{HOUSE_PATH}{$id}/xiangce.html" target="_blank">
+{$title}楼盘相册({$xiangceinfo}张)
+</a>
+</b>
+{/h5}
+</div>
+<div class="content_k">
+{h5:content action="huxinginfo" relation="$id" catid="8" num="5" order="inputtime DESC" cache="86400"}<!-- 相册列表 -->
+{loop $data $rs}
+{loop string2array($rs['pictureurls']) $pic_k $v}
+{php $yy++}
+{php if($yy>5) break;}
+<div class="tpstyle">
+<ul>
+<li class="bk">
+<a href="{HOUSE_PATH}xclist-{$id}-{$rs[typeid]}-{$rs[id]}.html#{$n}" target="_blank" title="{$title}{$v[alt]}">
+<img src="{thumb($v[url], 156, 156, 0)}" alt="{$title}{$v[alt]}" width="156" height="156"  /></a>
+</li>
+<li>
+<a href="{HOUSE_PATH}xclist-{$id}-{$rs[typeid]}-{$rs[id]}.html" target="_blank" title="{$title}{$v[alt]}">{$v[alt]}</a><br />
+<span class="font"></span>
+</li>
+</ul>
+</div>
+{/loop}
+{/loop}
+{/h5}
+<div style="clear:both;font-size:1px;"></div></div>
+<div class="content_end"></div>
+</div>
+<div class="hr10"></div>
+{/if}
+{/h5}
+<!--楼盘相册 end--></div>
+<div class="cArea">
+<div class="cen_boxA">
+ <!--交通配套 begin-->
+<div class="cen_boxwrap">
+<div class="titleB">
+<span class="link_span">[<a href="{HOUSE_PATH}{$id}/xclist-14.html" target="_blank">交通图</a>]</span>
+<div class="a1 link5">
+<a href="{HOUSE_PATH}{$id}/peitao.html" target="_blank">地图配套</a>
+</div>
+<b class="a2">
+<a href="{HOUSE_PATH}{$id}/peitao.html" target="_blank">{$title}交通.周边配套</a></b>
+</div>
+<div class="cen_boxA_k">
+<div class="draffic">
+<?php
+list($lngX, $latY,$zoom) = explode('|', $map);
+?>
+{php $api_key = getbox_val('13','map')}
+<script src="{APP_PATH}statics/default/sea/js/sea.js"  type="text/javascript"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak={$api_key}"></script>
+<script type="text/javascript">
+seajs.use(["jquery","snail-baiduaround"],function($,snail){
+	snail.setURL('{HOUSE_PATH}');
+	snail.drawMap(parseFloat("{$lngX}"),parseFloat("{$latY}"),"{$title}","map");
+	snail.getMaps();
+	$('#mapicon p').click(function(){
+		snail.setKEY($(this).text());
+		if($(this).attr('name') == 'house'){
+			snail.setH(true);
+		}else{
+			snail.setH(false);
+		}
+		snail.getMaps();
+	})
+	})
+</script>
+						<div class="mapicon cf" id="mapicon">
+							<p class="lp" name="house">楼盘</p>
+							<p class="gj" name="">公交</p>
+							<p class="cy" name="">餐饮</p>
+							<p class="yh" name="">银行</p>
+							<p class="xxx" name="">学校</p>
+							<p class="yy" name="">医院</p>
+							<p class="jyz" name="">加油站</p>
+							<a href="{APP_PATH}map/xinfangmap.php#l1={$latY}&l2={$lngX}&l3={$zoom}&keyword={$title}" class="seeB" target="_blank">在大地图上查看</a>
+						</div>
+						<div class="border mapindex" id="map" style="float:left;width:630px;height:252px;margin-left:10px;">
+						</div>
+					</div>
+<div class="surround">
+<div class="surround_title link5">
+<a href="{HOUSE_PATH}{$id}/peitao.html" target="_blank">周边配套</a>
+</div>
+<ul><li>
+<?php
+$order = array("\r\n", "\n", "\r","<br>");
+$zbpt = str_replace($order,'</li><li>',$zbpt);
+?>{$zbpt}</li></ul>
+</div>
+<div style="clear:both;font-size:1px;"></div></div>
+<div class="cen_boxA_end"></div>
+</div>
+ <!--交通配套 end-->
+ <div class="hr10"></div>
+   
+<div class="cen_boxwrap">
+<!--业主论坛 begin-->
+<div class="cen_box_l">
+<div class="titleD">
+<div class="a1 link5">
+<a href="{$bbs}" target="_blank">业主论坛</a>
+</div>
+<b class="a2"><a href="{$bbs}" target="_blank" title="{$title}">{$title}业主论坛</a></b>
+</div>
+<div class="cen_boxB_k">
+<ul>
+{template "ssi","ssi_11"}
+</ul>	
+<div class="a1 linka">		
+<li>进入<a href="{$bbs}" target="_blank">{$title}业主论坛</a>>></li>	
+</div>
+<div style="clear:both;font-size:1px;"></div>
+</div>
+<div class="cen_boxB_end"></div>
+</div>
+<!--业主论坛 end-->
+<!--相关资讯 begin-->
+<div class="cen_box_r">
+<div class="titleD">
+<div class="a1 link5">
+<a href="{HOUSE_PATH}{$id}/zixun.html" target="_blank">相关资讯</a></div>
+<b class="a2"><a href="{HOUSE_PATH}{$id}/zixun.html" target="_blank" title="{$title}">{$title}相关资讯</a></b>
+</div>
+<div class="cen_boxB_k">
+<ul>
+{h5:content action="newsinfo" xglp="$id" catid="6" num="8" order="inputtime DESC" cache="86400"}
+{loop $data $k $r}
+<li>
+<a href="{$r[url]}" target="_blank">{$r[title]}</a>
+</li>
+{/loop}
+{/h5}
+</ul>
+<div class="a1 linka">查看全部<a href="{HOUSE_PATH}{$id}/zixun.html" target="_blank">{$title}相关资讯</a>>></div>
+<div style="clear:both;font-size:1px;"></div>
+</div>
+<div class="cen_boxB_end"></div>
+</div>
+<!--相关资讯 end-->
+</div>
+ <!--价格走势和明细 end-->
+ <div class="hr10"></div>
+<!--div class="banner_b">--ad--</div-->
+<!--价格走势表下方的广告-->
+<!--价格走势表下方的广告-->
+  <!--价格走势和明细 begin-->
+<div class="cen_boxwrap">
+<div class="titleC">
+<span class="link_span">
+<a href="{HOUSE_PATH}{$id}/jiage.html" target="_blank">更多>></a>
+</span>
+<div class="a1 link5">
+<a href="{HOUSE_PATH}{$id}/jiage.html" target="_blank">价格走势和明细</a>
+</div>
+<b class="a2">
+<a href="{HOUSE_PATH}{$id}/jiage.html" target="_blank">{$title}价格走势和明细</a>
+</b>
+</div>
+<div class="cen_boxA_k"><div class="price">
+{h5:content action="jiageinfo" relation="$id" catid="11" num="10" order="addtime ASC" cache="86400"}<!-- 价格明细 -->
+ {if $data}
+<div class="price_l" id="my_chart">		
+<script type="text/javascript" src="{APP_PATH}statics/default/img/house/flash/swfobject.js"></script> 	
+<script type="text/javascript">
+var so = new SWFObject("{APP_PATH}statics/default/img/house/flash/chart.swf", "ofc", "330", "160", "9", "#FFFFFF");
+so.addVariable("variables","true");
+so.addVariable("title",",{font-size: 20;}");		
+so.addVariable("y_label_size","15");
+so.addVariable("y_ticks","5,10,5");
+so.addVariable("bg_colour","#ffffff");//背景
+so.addVariable("x_axis_colour","#cccccc");//y_border
+so.addVariable("x_grid_colour","#f0f0f0");//x_value_border
+so.addVariable("y_axis_colour","#cccccc");//y_border
+so.addVariable("y_grid_colour","#f0f0f0");//x_value_border
+<?php
+$priceA = Array();
+$date = Array();
+foreach ($data as $key=>$value)
+{
+	$priceA[]= $value[price];
+	$date[] = $value[addtime];
+}
+$ids = implode(',',$priceA);
+$dates = implode(',',$date);
+?>
+so.addVariable("area_hollow","2,3,0,#ff0000,,10");	
+so.addVariable("values","<?php echo $ids;?>");
+so.addVariable("x_labels","<?php echo $dates;?>");
+so.addVariable("x_axis_steps","1");
+so.addVariable("y_max","<?php echo max($priceA);?>"); 
+so.addParam("allowScriptAccess", "always" );//"sameDomain");
+so.write("my_chart");
+</script>	
+</div>
+{/if}
+{/h5}
+{h5:content action="jiageinfo" relation="$id" catid="11" num="10" order="addtime DESC" cache="86400"}<!-- 价格明细 -->
+ {if $data}
+<div class="price_r">
+<ul>
+<li>
+<span class="td_1"><b>记录时间</b></span>
+<span class="td_2"><b>参考均价</b></span>
+<span class="td_3"><b>涨跌</b></span>
+</li>
+{loop $data $r}
+<li>
+<span class="td_1">{$r[addtime]}</span>
+<span class="td_2">{$r[price]}</span>
+<span class="td_3"><font style="color:#000;">{get_trend($r[trend])}</font></span>
+</li>
+{/loop}
+</ul>
+</div>
+{/if}
+{/h5}
+</div>
+<div style="clear:both;font-size:1px;"></div>
+</div>
+<div class="cen_boxA_end"></div>
+</div>
+ <!--价格走势和明细 end-->
+<div class="hr10"></div>
+<!--在售房源 begin--> <!--在售房源 end-->
+ <div class="hr10"></div>
+</div>
+<!--left end-->
+<div class="rightA">
+      <!--周边楼盘+同价位楼盘 begin-->
+     <div class="PartEs">
+            <div class="PartEsc1">
+        <ul>
+          <li class="SearchD" id="i1" onmouseover="Search4(1)">周边楼盘</li>
+		{if !empty($price) && $price!="一房一价"}
+          <li class="SearchC" id="i2" onmouseover="Search4(2)">同价位楼盘</li>
+		  {/if}
+        </ul>
+      </div>
+     
+      <DIV id=j1>
+ {php $where="`region`='$region' and id<>'$id' and status=99"}
+{h5:content action="lists" catid="$catid" where="$where" num="10" order="id desc" cache="86400"} 
+  <DIV class="rig_contA px1">
+            <UL class="hlist_b">
+             <LI class="title">
+<SPAN class="td_4">楼盘名称</SPAN>
+<SPAN class="td_5">价格(元/㎡)</SPAN>
+<SPAN class="td_6">对比</SPAN>
+<SPAN class="td_7">论坛</SPAN>
+</LI>
+{loop $data $r}
+  <LI>
+<SPAN class="td_4">
+<A title="{$r[title]}"  href="{HOUSE_PATH}{$r[id]}/" target="_blank">{$r[title]}</A>
+</SPAN>
+<SPAN class="td_5 link6">{if !empty($r[price]) && $r[price]!="一房一价"}{$r[price]}{else}一房一价{/if}</SPAN>
+<SPAN class="td_6"><a href="javascript:void(0)" onclick="addCompareItem({$r[id]}, '{$r[title]}')">对比</a></SPAN>
+<SPAN class="td_7"><a href="{if !empty($r[bbs])}{$r[bbs]}{else}http://www.bluebbs.com/{/if}" target="_blank">论坛</a></SPAN>
+ </LI>
+ {/loop} 
+            </UL>
+      </DIV>
+ {/h5}
+      </DIV>
+      <DIV class="search_undis"  id=j2>
+ {php $where=" (`price`='$price' or `range`='$range') and id<>'$id' and price<>'' and status=99"}
+{h5:content action="lists" catid="$catid" where="$where" num="10" order="id desc" cache="86400"}
+  <DIV class="rig_contA px1">
+            <UL class="hlist_b">
+             <LI class="title">
+<SPAN class="td_4">楼盘名称</SPAN>
+<SPAN class="td_5">价格(元/㎡)</SPAN>
+<SPAN class="td_6">对比</SPAN>
+<SPAN class="td_7">论坛</SPAN>
+ </LI>
+{loop $data $r}
+ <LI>
+<SPAN class="td_4">
+<A title="{$r[title]}"  href="{HOUSE_PATH}{$r[id]}/" target="_blank">{$r[title]}</A>
+</SPAN>
+<SPAN class="td_5 link6">{if !empty($r[price]) && $r[price]!="一房一价"}{$r[price]}{else}一房一价{/if}</SPAN>
+<SPAN class="td_6"><a href="javascript:void(0)" onclick="addCompareItem({$r[id]}, '{$r[title]}')">对比</a></SPAN>
+<SPAN class="td_7"><a href="{if !empty($r[bbs])}{$r[bbs]}{else}http://www.bluebbs.com/{/if}" target="_blank">论坛</a></SPAN>
+ </LI>
+ {/loop}   
+            </UL>
+      </DIV>
+ {/h5}
+      </DIV> 
+     <div class="rig_endA"></div>
+     </div>
+     <!--周边楼盘+同价位楼盘 end-->
+     <div class="hr10"></div>
+     <!--开发商旗下其它楼盘 begin-->
+      <div class="rig_wrapA">
+     <div class="title_rigA link5">开发商旗下其它楼盘 </div>
+ {php $where="`developer`='$developer' and id<>'$id'"}
+{h5:content action="house_developer" catid="$catid" where="$where" num="5" order="id desc" cache="86400"}
+     <DIV class="rig_contA px1">
+            <UL class="hlist_b">
+{loop $data $r}
+ {php $menu_info = menu_info('3360',$r[region])}
+              <LI>
+<SPAN class="td_1">
+[<a href="{HOUSE_PATH}list-r{$menu_info[1]}.html" target="_blank">{$menu_info[0]}</a>]
+<a href="{HOUSE_PATH}{$r[id]}/" target="_blank">
+{$r[title]}</a>
+</SPAN>
+<SPAN class="td_2">{if !empty($r[price]) && $r[price]!="一房一价"}{$r[price]}{else}一房一价{/if}</SPAN>
+<SPAN class="td_3"><a href="javascript:void(0)" onclick="addCompareItem({$r[id]}, '{$r[title]}')">对比</a></SPAN>
+   </LI>
+ {/loop}            
+            </UL>
+      </DIV>
+ {/h5}
+     <div class="rig_endA"></div>
+     </div>
+     <!--开发商旗下其它楼盘 end-->
+     <div class="hr10"></div>
+       <!--div class="banner_c">--ad--</div-->
+  <!--开发商旗下楼盘-->
+<!--开发商旗下楼盘-->
+     <!--问问 begin-->
+     <div class="rig_wrapA">
+     <div class="title_rigA link5">
+<span class="link_span"><a href="{HOUSE_PATH}{$id}/wenfang-p1.html" target="_blank">更多>></a></span><a href="{HOUSE_PATH}wenfang-p1.html" target="_blank">问房</a></div>
+     <div class="rig_b">
+     <ul style="height:160px;">
+<form name="askform" action="{HOUSE_PATH}lp_post" method="post" onsubmit="return postquest('ask', this);">
+ <li>我要提问(小编会在24小时内回答)</li>
+ <p>姓名：<INPUT type="text" id="askname" name="info[name]" maxlength="8" style="width:120px"></p><p>电话：<INPUT type="text" id="asktel" name="info[tel]" maxlength="15" style="width:120px"></p>
+ <li>
+<textarea id="askcon" name="info[question]" cols="" style="width:180px; height:50px; border: 1px solid #AECFE9;line-height:20px;"></textarea>
+{php $menu_info = menu_info('3360',$region)}
+<input type='hidden' name='info[relation]' id='relation' value="{$id}"/>
+<input type='hidden' name='info[regionid]' id='regionid' value="{$menu_info[1]}" />
+<input type='hidden' name='info[region]' id='region' value="{$menu_info[0]}" />
+<input type='hidden' name='info[subject]' id='subject' value="{$title}"/>
+ </li>
+ <li>
+<input type="submit" name="dosubmit" value="提&nbsp;交" class="smb_btn1" />&nbsp;&nbsp;<a href="{HOUSE_PATH}{$id}/wenfang-p1.html" target="_blank">查看所有回复</a></li>
+</form>
+     </ul>
+     </div>
+<div id="txtBoxCon">
+ {php $where = "isreply=1 and xglp=$id"}
+ {h5:content action="lists" catid="15" where="$where" num="4" order="id desc" page="$page" moreinfo="1" cache="86400"}
+  {loop $data $r}
+     <div class="rig_b_a" id="item0">
+ <ul>
+ <li class="aa1 linka">问：
+ <a href="{HOUSE_PATH}{$id}/wenfang-p1.html" target="_blank">{$r[question]}</a>
+ </li>
+ <li class="aa2">答：
+  <a href="{HOUSE_PATH}{$id}/wenfang-p1.html" target="_blank">{$r[content]}</a>
+ </li>
+ </ul>
+     </div>
+ {/loop}
+ {/h5}
+</div>
+   
+     <div class="rig_endA"></div>
+     </div>
+     <!--问问 end-->
+     <div class="hr10"></div>
+     <!--热点楼盘+最新楼盘 begin-->
+     <div class="PartEs">
+            <div class="PartEsc1">
+        <ul>
+          <li class="SearchD" id="c1" onmouseover="Search1(1)">热点楼盘</li>
+          <li class="SearchC" id="c2" onmouseover="Search1(2)">最新楼盘</li>
+        </ul>
+      </div>
+     
+      <DIV id=d1>
+{h5:content action="hits" catid="$catid" num="10" order="views DESC" cache="86400"}
+  <DIV class="rig_contA px1">
+            <UL class="hlist_b">
+             <LI class="title"><SPAN class="td_4">楼盘名称</SPAN><SPAN class="td_06">区域</SPAN><SPAN class="td_5">价格(元/㎡)</SPAN><SPAN class="td_7">点击(次)</SPAN></LI>			
+ {loop $data $v}
+ {php $menu_info = menu_info('3360',$v[region])}
+               <LI>
+<SPAN class="td_4">
+<A title="{$v[title]}" rel="nofollow" href="{HOUSE_PATH}{$v[id]}/" target="_blank">{$v[title]}</A>
+</SPAN>
+<SPAN class="td_06"><a   href="{HOUSE_PATH}list-r{$menu_info[1]}.html" target="_blank">{$menu_info[0]}</a></SPAN>
+<span class="td_5 link6">{if !empty($v[price]) && $v[price]!="一房一价"}{$v[price]}{else}一房一价{/if}</span>
+<SPAN class="td_07">{$v[views]}</SPAN>
+<!---- 1  ---->
+</LI>{/loop}
+</UL>
+      </DIV>
+{/h5}
+      </DIV>
+      <DIV class="search_undis"  id=d2>
+{h5:content action="lists" catid="$catid" where="`hot` like '%5%'" num="10" order="id desc" cache="86400"}
+  <DIV class="rig_contA px1">
+            <UL class="hlist_b">
+             <LI class="title"><SPAN class="td_4">楼盘名称</SPAN><SPAN class="td_06">区域</SPAN><SPAN class="td_5">价格(元/㎡)</SPAN><SPAN class="td_7">论坛</SPAN></LI>
+ {loop $data $r}
+		{php $menu_info = menu_info('3360',$r[region])}
+               <LI>
+<SPAN class="td_4">
+<A title="{$r[title]}"  rel="nofollow" href="{HOUSE_PATH}{$r[id]}/" target="_blank">{$r[title]}</A>
+</SPAN>
+<SPAN class="td_06"><a href="{HOUSE_PATH}list-r{$menu_info[1]}.html" target="_blank">{$menu_info[0]}</a></SPAN>
+<span class="td_5 link6">{if !empty($r[price]) && $r[price]!="一房一价"}{$r[price]}{else}一房一价{/if}</span>
+<SPAN class="td_007"><a href="{$r[bbs]}" target="_blank">论坛</a></SPAN>				
+ </LI>{/loop}
+  
+              </UL>
+      </DIV>
+{/h5}
+      </DIV> 
+     <div class="rig_endA"></div>
+     </div>
+     <!--热点楼盘+最新楼盘 end-->
+     <div class="hr10"></div>
+   
+     <!--购房工具 begin-->
+     <div class="rig_wrapA">
+     <div class="title_rigA link5">购房工具</div>
+     <div class="rig_a">
+     <ul>
+	 <li><a href="{HOUSE_PATH}one.html" title="点击5次 找到好房" target="_blank">一分钟找房</a></li>
+     <li><a href="{APP_PATH}tools/gfnlpg.html" target="_blank">购房能力评估</a></li>
+	 <li><a href="{APP_PATH}tools/fdjsq.html" target="_blank">房贷计算器</a></li>    
+     <li><a href="{APP_PATH}tools/tqhkjsq.html" target="_blank">提前还贷计算</a></li>     
+     <li><a href="{APP_PATH}tools/sfjsq.html" target="_blank">税费计算器</a></li>
+     <li><a href="{APP_PATH}tools/gjjdkjsq.html" target="_blank">公积金贷款计算</a></li>
+     </ul>
+     </div>
+     <div class="rig_endA"></div>
+     </div>
+     <!--购房工具 end-->
+     <div class="hr10"></div>
+     
+</div>
+</div>
+<!--楼盘导航栏目 begin-->
+{template "content","show_house_top2"}
+ <!--楼盘导航栏目 end-->
+<div class="hr10"></div>
+</div>
+<!--cArea-end-->
+<!--lp_duibi start-->
+<div class="clzt1" id="clzt1" title="点击展开" onclick="float_display('clzt1','none');float_display('clzt2','');">&nbsp;</div>
+<div class="comparison" id="clzt2" style="display:none;position:absolute;z-index:200; right:0px;">
+  <div class="comp_title font2">
+  <span>
+<a href="javascript:void(0)" onclick="float_display('clzt2','none');"><img src="{APP_PATH}statics/default/img/house/close.gif" /></a>
+  </span>
+  楼盘对比栏
+  </div>
+  <div class="comp_lr"  id="withitem">
+  <div class="cllist1" id="itemlist">
+  <ul>
+  <li><!--addinto--></li>	
+  </ul>
+  </div>
+ <div class="a1">		
+<label id="dui_remove"><input type="submit" value="清空" class="smb_btn2" onclick="removeAllItem();" /></label>
+<label id="dui_togo"><input type="submit" value="对比" class="smb_btn4" onclick="toComparePage();" /></label>		
+</div>
+  </div>
+  <iframe  id="topframe" style='position:absolute; visibility:inherit; top:0px; border:0px; left:0px;width:150px;z-index:-1; filter: Alpha(Opacity=0);'></iframe>
+  <div class="comp_end"></div>
+</div>
+</div>
+<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>
+<script language="Javascript" src="{APP_PATH}statics/default/js/house/house_zhuye.js"></script>
+{template "content","footer"}
+<script>
+var Float= new Object();
+Float.Browser = {
+ua: window.navigator.userAgent.toLowerCase(),
+ie: /msie/.test(window.navigator.userAgent.toLowerCase()),
+moz: /gecko/.test(window.navigator.userAgent.toLowerCase())
+};
+/************************Cookie*******************************/
+var CompCookie = {
+setCookie : function(name, value, expires, path, domain, secure)
+{
+document.cookie = name + "=" + escape(value) +
+((expires) ? "; expires=" + expires.toGMTString() : "") +
+((path) ? "; path=" + path : "; path=/") +
+((domain) ? "; domain=" + domain : "") +
+((secure) ? "; secure" : "");		
+},
+getCookie : function(name)
+{
+var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+if (arr != null)
+{
+return unescape(arr[2]);
+}
+return null;
+},
+clearCookie : function(name, path, domain)
+{
+if (CompCookie.getCookie(name))
+{
+ document.cookie = name + "=" +
+((path) ? "; path=" + path : "; path=/") +
+((domain) ? "; domain=" + domain : "") +
+";expires=Fri, 02-Jan-1970 00:00:00 GMT";
+}
+}
+};
+function float_$(id)
+{
+return (typeof id == "object")?id:document.getElementById(id);
+}
+function float_display(id,display)
+{
+float_$(id).style.display = display;
+setTopFrame();
+}
+//跳转至对比页面
+function toComparePage()
+{
+var compCookie = CompCookie.getCookie("house_duibi");
+if(compCookie)
+{
+var comps = compCookie.split("|");
+var cmpstr = new Array();
+var tempi = 0; 
+for(var i=0;i<comps.length;i++)
+{
+cmpstr.push(comps[i].split(",")[1]);
+tempi = tempi + 1;
+}
+if(tempi < 2){
+alert('抱歉，至少选择2个以上的楼盘进行比较！');
+return false;
+}
+window.open('{HOUSE_PATH}lp_duibi/'+cmpstr.join("_"));
+        //why clear
+        //CompCookie.clearCookie("wz_Houseapp_compare");
+}else
+    {
+       // window.open('index.php');
+   alert('抱歉，至少选择2个以上的楼盘进行比较！');
+    }
+    initCompareBar();
+}
+var g_comp_cookie = -1;
+//初始化页面片
+function initCompareBar()
+{
+    var compCookie = CompCookie.getCookie("house_duibi");
+    if (g_comp_cookie == compCookie)
+    {
+        return false;
+    }else
+    {
+        g_comp_cookie = compCookie;
+    }
+     if(compCookie)
+{ 
+//float_$("noitem").style.display="none";
+//float_$("withitem").style.display="block";
+float_$("itemlist").innerHTML = '';		
+float_$("dui_remove").innerHTML = '<input type="submit" value="清空" class="smb_btn2" onclick="removeAllItem();" />';	
+float_$("dui_togo").innerHTML = '<input type="submit" value="对比" class="smb_btn4" onclick="toComparePage();" />';	
+var cookieArr = compCookie.split("|");
+var itemStr = "";
+itemStr+='<ul>';
+for(var i=0;i<cookieArr.length;i++)
+{
+var serial_info = cookieArr[i].split(",");
+itemStr+= '<li>';   		
+itemStr+= '<span class="td_1" title="' + serial_info[0] + '">' + serial_info[0] + '</span>';
+itemStr+= '<span class="td_2 linke"><a class="remove" href="javascript:removeCompareItem('+serial_info[1]+');">删除</a></span></li>';
+ }
+itemStr+='</ul>';
+float_$("itemlist").innerHTML = itemStr;
+}else
+{	
+float_$("itemlist").innerHTML = "";
+float_$("itemlist").innerHTML = '<font style="line-height:25px; color:#ccc; overflow:hidden;">请先选择楼盘加入到对比栏<br />最多可同时对比4个楼盘</font>';
+float_$("dui_remove").innerHTML = '<input type="submit" value="清空" class="smb_btn2" disabled="disabled" />';	
+float_$("dui_togo").innerHTML = '<input type="submit" value="对比" class="smb_btn4" disabled="disabled" />';	
+}
+setTopFrame();
+}
+//setup topframe
+function setTopFrame()
+{
+    if(Float.Browser.moz)
+{
+        float_$("topframe").style.top = "10px";
+    }
+    float_$("topframe").style.height=(float_$("clzt2").offsetHeight-(Float.Browser.moz?28:0))+"px";
+}
+//cookie设置
+function addCompareItem(id,value)
+{
+float_$("clzt1").style.display="none";
+float_$("clzt2").style.display="";
+var compare = CompCookie.getCookie("house_duibi");
+if(compare)
+{
+var newComArr = new Array();
+var comArr = compare.split("|");
+ 		if(comArr.length>=4)
+{
+alert("您好,为了保证对比查看效果您最多只能选择4个楼盘参加比较");
+return;
+}
+for(var i=0;i<comArr.length;i++)
+{
+if(comArr[i].split(",")[1] == id)
+{
+alert("对不起，您已经添加\""+comArr[i].split(",")[0]+"\"");
+return;
+}else
+            {
+                newComArr.push(comArr[i]);
+            }
+}
+newComArr.push(value+","+id);
+CompCookie.setCookie("house_duibi",newComArr.join("|"));
+initCompareBar();
+}else{
+CompCookie.setCookie("house_duibi",value+","+id);		
+ 	}
+initCompareBar();
+}
+//删除对比项
+function removeCompareItem(id)
+{
+    initCompareBar();
+var compare = CompCookie.getCookie("house_duibi");
+if(compare)
+{
+var newComArr = new Array();
+var comArr = compare.split("|");
+for(var i=0;i<comArr.length;i++)
+{
+if(comArr[i].split(",")[1]!=id)
+{
+newComArr.push(comArr[i]);
+}
+}
+CompCookie.setCookie("house_duibi",newComArr.join("|"));
+initCompareBar();
+}
+}
+//删除所有项
+function removeAllItem()
+{
+CompCookie.clearCookie("house_duibi");
+initCompareBar();
+}
+window.onscroll=function()
+{
+var nav_box=document.getElementById('index_nav_box');
+var nav=document.getElementById('index_nav');
+var thetop=document.documentElement.scrollTop+document.body.scrollTop;
+var to_top=getTop(nav_box);
+if(thetop>=to_top)
+{
+if(nav.className=='fixed_top')
+return false;nav.className='fixed_top';
+}
+else
+{
+if(nav.className=='')
+return false;nav.className='';
+}
+}
+function getTop(el)
+{
+var offset=el.offsetTop;
+if(el.offsetParent!=null)
+{
+offset+=getTop(el.offsetParent);
+}
+return offset;
+}
+//最小高度，一级导航有关
+var MIN_TOP = 220;
+//浮动自身的宽度
+var CLZT_WIDTH1 = 29;
+var CLZT_WIDTH2 = 224;
+function scrolldiv()
+{
+    var clzt1 = float_$("clzt1");
+    var clzt2 = float_$("clzt2");
+    var scr_top = document.documentElement.scrollTop || document.body.scrollTop;
+    var client_h = document.documentElement.clientHeight||document.body.clientHeight;
+    var top = scr_top + (client_h/2 - 95);
+    //当前高度
+    var cur_top = parseInt(clzt1.style.top);
+    if (top - cur_top > 4 || top - cur_top < -4)
+    {
+        top = Math.ceil(0.2 * (top - cur_top)) + cur_top;
+    }
+    if (top < MIN_TOP)
+    {
+        top = MIN_TOP;
+    }
+    //clzt1.style.top = top + 90 +"px";
+    //clzt2.style.top = top + 90 +"px";
+clzt1.style.top = top + 0 + "px";
+    clzt2.style.top = top + 0 + "px";
+}
+//底部滚动条
+function scroll_bot()
+{
+    var clzt1 = float_$("clzt1");
+    var clzt2 = float_$("clzt2");
+    var scr_left = document.documentElement.scrollLeft || document.body.scrollLeft;
+    var client_w = document.documentElement.clientWidth||document.body.clientWidth;
+    var left1 = scr_left + client_w - CLZT_WIDTH1;
+    if (left1 > 0)
+    {
+        //clzt1.style.left = left1 + 90 + "px";
+clzt1.style.right = 0 + "px";
+    }
+    var left2 = scr_left + client_w - CLZT_WIDTH2;
+    if (left2 > 0)
+    {
+        //clzt2.style.left = left2 + 90 + "px";
+clzt2.style.right = 0 + "px";
+    }
+}
+//固定位置
+function fixed_div()
+{
+    var clzt1 = float_$("clzt1");
+    var clzt2 = float_$("clzt2");
+var top = document.documentElement.clientHeight||document.body.clientHeight;
+    var scr_top = document.documentElement.scrollTop || document.body.scrollTop;
+clzt1.style.position="fixed";
+clzt1.style.right=0;
+    top = (top/2-95);
+    if (scr_top + top < MIN_TOP)
+    {
+        top = MIN_TOP - scr_top;
+    }
+clzt1.style.top = top + 90+"px";
+    clzt2.style.position="fixed";
+clzt2.style.right=0;
+clzt2.style.top = top + 90+"px";
+}
+//相应鼠标滚轮
+function mousewhell_cancel(tar) {clearInterval(tar);};
+function mousewhell_go() {
+    //setTimeout(scrolldiv,10);
+var _detector = setInterval(scrolldiv,10);
+setTimeout('mousewhell_cancel(' + _detector + ')',1000);
+};
+//初始化相关设置
+function init_comp_bar()
+{
+    if (document.attachEvent&&window.ActiveXObject&&!window.XMLHttpRequest)
+    {
+        window.attachEvent("onload",scrolldiv);
+        document.attachEvent("onmousewheel",mousewhell_go);
+        window.attachEvent("onresize",function(){ scrolldiv(),scroll_bot()});
+        window.attachEvent("onscroll",function(){ scrolldiv(),scroll_bot()});
+    };
+    if (document.attachEvent&&window.ActiveXObject&&window.XMLHttpRequest)
+    {
+    window.attachEvent("onload",fixed_div);
+    window.attachEvent("onresize",fixed_div);
+    window.attachEvent("onscroll",fixed_div);
+    };
+    if (document.addEventListener)
+    {
+        window.addEventListener("load",fixed_div,true);
+        window.addEventListener("resize",fixed_div,true);
+        window.addEventListener("scroll",fixed_div,true);
+    };
+    //定时更新cookie内容
+    setInterval(initCompareBar,2000);
+}
+//初始化对比篮内容
+initCompareBar();
+//初始化位置
+init_comp_bar();
+</script>
+<!--lp_duibi end-->
+<!-- 返回顶部 -->
+<!--a href="#"><div class="rTop" id="rTop"></div></a>
+<script>
+ window.onscroll=function(){
+  if(document.body.scrollTop||document.documentElement.scrollTop>0){
+   document.getElementById('rTop').style.display="block"
+   }else{
+    document.getElementById('rTop').style.display="none"
+    }
+  
+  
+  }
+</script-->
+<script type="text/javascript" language="javascript">
+	//验证楼盘印象
+function checkformyx() {
+    if (formyx.impression.value.length < 1) {
+        alert("您好像还没填写印象哦 ：)")
+        formyx.impression.focus();
+        return false;
+    }
+}
+</script>
+{php $menu_info = menu_info('3360',$region)}
+{php $userid = param::get_cookie('_userid')}

@@ -1,0 +1,169 @@
+{template "content","head_house_show"}
+ <div class="wrap mB10 crumb">您的位置：<a href="{APP_PATH}" title="">首页</a> > <a href="{HOUSE_PATH}" title="新房">新房</a> > <a href="{$url}" title="{$title}">{$title}</a> > <a href="{HOUSE_PATH}{$id}/xiangce.html" title="楼盘相册">楼盘相册</a><span id="weizi"></span></div>
+<div class="wrap clear wrap_shadow LP_Gallery_List">
+    <div class="shadow fix">
+    	<div class="fix commHd">
+        	<span class="fr JS_jia"><div id="bdshare" class="bdshare_b" style="line-height: 12px;">
+            
+             <a class="shareCount"></a></div></span>
+        	<h3 class="fl fw_B fs_14">{$title}[{$xszt}]</h3>
+            <div class="fl fs_14 fw_B LP_hotline">售楼热线:<em class="en c_orangered fw_B">{$tel}</em></div>
+            <div class="fl LP_swm">
+                	<a href="javascript:showfceng('erweima',1);" ><img src="{APP_PATH}statics/house5-style1/newhouse/img/erweima.png" /></a>
+                    <div class="LP_swm_panel">
+                    	<b></b>
+                    	<div class="swm"><img src="{APP_PATH}caches/caches_content/caches_house/mobile_houseqrcode/{$siteid}/{$id}.png" alt="{$title}" width="171" height="171"/></div>
+                    </div>
+            </div>
+            <a href="javascript:callphones('4882430623961921590');" title="免费通话" class="forCALL"><b></b>免费通话</a><a href="javascript:showfceng('dxfsc',1);" title="发送到手机" class="forMAIL"><b></b>发送到手机</a><a title="收藏本楼盘" href="#" class="collect"><b></b>收藏</a> 
+        </div>
+        
+        
+       <div id="gallery" class="mod-gallery">
+            <div class="gallery-overlay" data-gallery="overlay" style="display: none;"></div>
+            <div class="gallery-content" data-gallery="content" style="visibility: visible;">
+                <div class="gallery-toolbar">
+                    <span style="float: right">
+
+                    </span>
+                    <span style="float: left">
+                        <a data-gallery="view-origin" href="http://upload.cmstop.net/2012/1009/1349779152919.jpg" hidefocus="true" target="_blank" class="mod-btn">
+                            <i class="btn-left"></i><span><i class="btn-icon icon-origin"></i>查看原图</span><i class="btn-right"></i>
+                        </a>
+                        <a data-gallery="auto-play" href="javascript:void(0);" hidefocus="true" class="mod-btn">
+                            <i class="btn-left"></i><span><i class="btn-icon icon-slide"></i>幻灯播放</span><i class="btn-right"></i>
+                        </a>
+                        <a data-gallery="auto-stop" href="javascript:void(0);" hidefocus="true" class="mod-btn" style="display: none;">
+                            <i class="btn-left"></i><span><i class="btn-icon icon-stop"></i>手动播放</span><i class="btn-right"></i>
+                        </a>
+                        <a class="mod-btn" target="_blank" href="http://app.cmstop.net/?app=comment&amp;controller=review&amp;action=index&amp;topicid=131"><i class="btn-left"></i><span><i class="btn-icon icon-comment"></i>我要评论(<em class="comments">0</em>)</span><i class="btn-right"></i></a>                        <a class="mod-btn" hidefocus="true" onclick="javascript:digg.set(92,'supports')"><i class="btn-left"></i><span><i class="btn-icon icon-vote"></i><b id="supports">0</b></span><i class="btn-right"></i></a>
+                    </span>
+                </div>
+                <div class="gallery-photo">
+                    <div class="gallery-photo-items" data-gallery="photo-items" style="min-height: 600px;">
+{php $lid = intval($_GET['lid']);}
+{php $pid = intval($_GET['pid']);}
+{h5:content action="huxinginfo" relation="$id" typeid="$lid" catid="8" num="5" order="inputtime DESC" cache="86400"}<!-- 户型图浏览 -->
+{php $i=0;}
+{loop $data $rs}
+	{loop string2array($rs['pictureurls']) $pic_k $r}
+					<img src="{$r[url]}" data-gallery="{$i}" style="left: 0px; {if $i==0}display: inline;{else}display: none;{/if}">
+	{$i++}
+	{/loop}
+{/loop}
+{/h5}
+					</div>
+                    <div class="gallery-photo-prev" data-gallery="photo-prev" style="width: 450px; height: 600px;">
+                        <a title="点击浏览上一张图片，支持'←'翻页" href="javascript:void(0);" hidefocus="true" style="display: inline; opacity: 0;">上一页</a>
+                    </div>
+                    <div class="gallery-photo-next" data-gallery="photo-next" style="width: 450px; height: 600px;">
+                        <a title="点击浏览下一张图片，支持'→'翻页" href="javascript:void(0);" hidefocus="true" style="display: none;">下一页</a>
+                    </div>
+                    <div class="gallery-loading" data-gallery="loading" style="display: none;"><span></span></div>
+                    <div class="gallery-end" data-gallery="end" style="display: none; left: 200px; top: -560px;">
+                        <a class="end-close" data-gallery="end-close"></a>
+                        <div class="end-intro">
+						{h5:content action="huxingthumb" relation="$id" typeid="$lid" catid="8" order="id DESC" cache="172800" return="huxingthumb"}
+                            <div class="thumb">
+                                <a href="javascript:void(0);"><img src="{thumb($huxingthumb[thumb], 120, 90, 0)}" alt="" width="120" height="90"></a>
+                            </div>
+						{/h5}
+                            <div class="texts">
+                                <h4> {$title}</h4>
+                                <div class="buttons">
+                                    <a class="mod-btn" data-gallery="replay"><i class="btn-left"></i><span><i class="btn-icon icon-replay"></i>重新播放</span><i class="btn-right"></i></a>
+                                    <a class="mod-btn" href="http://app.cmstop.net/?app=comment&amp;controller=review&amp;action=index&amp;topicid=131"><i class="btn-left"></i><span><i class="btn-icon icon-comment"></i>我要评论</span><i class="btn-right"></i></a>                                </div>
+                            </div>
+                        </div>
+                        <div class="end-related">
+                            <ul class="piclist">
+						{h5:content action="hits" catid="14" num="4" order="views DESC" cache="10800"}
+							{loop $data $v}
+								<li class="v-pic"><a title="{$v[title]}" href="{$v[url]}/" target="_blank" ><img src="{thumb($v[thumb],120,90,0)}" class="thumb" width="120px" height="90px"/></a><span class="title"><a title="{$v[title]}" href="{$v[url]}/" target="_blank" >{str_cut($v[title],16,'')}</a></span></li>
+							{/loop}
+						{/h5}
+                                                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-photo-description">
+                    <p data-gallery="photo-description"></p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="gallery-footer" data-gallery="footer" style="visibility: visible;">
+                <div class="clearfix">
+                    <div class="gallery-thumb" data-gallery="slider">
+                        <span class="gallery-thumb-prev">
+                            <a href="javascript:void(0);" hidefocus="true" data-slider="items-left" class="disable"></a>
+                        </span>
+                        <span class="gallery-thumb-next">
+                            <a href="javascript:void(0);" hidefocus="true" data-slider="items-right" class="disable"></a>
+                        </span>
+                        <div class="gallery-thumbs" data-slider="control">
+                            <div class="gallery-thumb-list">
+                                <ul class="gallery-thumb-items" data-slider="items" style="display: block; width: 456px;">
+								{h5:content action="huxinginfo" relation="$id" typeid="$lid" catid="8" num="5" order="inputtime DESC" cache="86400"}<!-- 户型图浏览 -->
+								{php $i=0;}
+								{php $j=1;}
+								{loop $data $rs}
+								{loop string2array($rs['pictureurls']) $pic_k $r}
+								<li data-slider-index="{$i}" class="" style="width: 104px;"><i></i><a hidefocus="true" href="javascript:void(0);" style="width: 100px; height: 75px;"><span><b>{$j}</b>/<b>n</b></span>
+								<img src="{thumb($r[url], 100, 75, 0)}" alt="" style="width: 100px; height: 75px;"></a></li>
+									{$i++}
+									{$j++}
+								{/loop}
+							{/loop}
+							{/h5}</ul>
+                            </div>
+                            <div class="gallery-thumb-bar mod-bar" data-slider="bar">
+                                <span class="bar-left"></span>
+                                <span class="bar-right"></span>
+                                <div class="bar-body">
+                                    <div class="bar-content">
+                                        <a class="bar-btn" href="javascript:void(0);" hidefocus="true" data-slider="btn" style="width: 874px;">
+                                            <b class="bar-btn-left"></b>
+                                            <b class="bar-btn-right"></b>
+                                            <span class="bar-btn-body">
+                                                <span>
+                                                    <b class="bar-btn-content"></b>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--div style="height:10px;"></div-->
+     
+    </div>
+</div>
+<link rel="stylesheet" type="text/css" href="{APP_PATH}statics/house5-style1/newhouse/css/black.css" />
+<script type="text/javascript" src="{APP_PATH}statics/house5-style1/newhouse/js/house5.gallery.js"></script>
+<script type="text/javascript">
+$(function() {
+var photos = [];
+{h5:content action="huxinginfo" relation="$id" typeid="$lid" catid="8" num="5" order="inputtime DESC" cache="86400"}
+{loop $data $rs}
+{loop string2array($rs['pictureurls']) $pic_k $r}
+photos.push({ big: '{$r[url]}', thumb: '{thumb($r[url], 100, 75, 0)}', note: "{$r[alt]}" });
+{/loop}
+{/loop}
+{/h5}
+$('#gallery').gallery({
+    photos: photos,
+    maxWidth: 900,
+    minHeight: 600,
+    preload: 1,
+    scrollIntoView: true,
+    hashPageParam: 'h5',
+    thumbWidth: 100,
+    thumbHeight: 75
+});
+})
+</script>
+{template "content","footer_house_show"}

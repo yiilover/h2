@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<link rel="icon" href="{APP_PATH}favicon.ico" type="image/icon" />
+<link rel="shortcut icon" href="{APP_PATH}favicon.ico" type="image/x-icon" />
+<meta property="og:title" content="{$title}"/>
+<meta property="og:type" content="video"/>
+<meta property="og:image" content="{$thumb}"/>
+<meta property="og:url" content="{$url}"/>
+<link href="{APP_PATH}statics/house5-style1/video/css/play.css" rel="stylesheet" type="text/css">
+<link href="{APP_PATH}statics/house5-style1/index/css/reset.css"  rel="stylesheet" type="text/css"/>
+<link href="{APP_PATH}statics/house5-style1/news/css/news.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="{APP_PATH}statics/house5-style1/pic/js/jquery.js"></script>
+<script type="text/javascript" src="{APP_PATH}statics/house5-style1/pic/js/jquery.cookie.js"></script>
+<script src="{APP_PATH}statics/house5-style1/sea/js/sea.js"  type="text/javascript"></script>
+</head>
+<body>
+	<div id="main">
+		<div id="header">
+    {template "ssi","ssi_8"}
+	<div class="mt5 cf">
+	</div>
+</div>
+</div>
+<div class="crumb w960">
+    <a href="{APP_PATH}" target="_blank">首页</a>
+	&gt {catpos($catid)}
+    {$title}
+</div>
+<div class="playBg"><!--playBg-->
+	<div class="playPanel w960">
+        <div class="playAD" id="playAD">
+            <span class="playAD_L"><script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=16"></script></span>
+    		<span class="playAD_R"><script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=24"></script></span>
+        </div>
+    	<div class="playFlash">
+    	   <div id="video" style="position:relative;z-index: 100;width:600px;height:400px;float: left;"><div id="a1"></div></div>
+<!--
+上面一行是播放器所在的容器名称，如果只调用flash播放器，可以只用<div id="a1"></div>
+-->
+        </div>
+    </div>
+</div><!--playBg end-->
+<div class="playLand"><!--playLand-->
+<div class="hr_10"></div>
+<div class="w960"><!--w960-->
+	<div class="playL"><!--playL-->
+    	<div class="infoPlay b"><!--infoPlay-->
+        	<div class="title" id="infoPlay">
+            	<label class="curr">视频信息<span class="sptit"></span></label>
+                <!--<label class="last">楼盘信息<span class="lptit"></span></label>-->
+            </div>
+            <div class="content" id="infoPlayC"><!--content-->
+            	<div class="sp">
+                	<p>{$content}
+</p>
+                </div>
+                
+            </div><!--content end-->
+        </div><!--infoPlay end-->
+        <div class="hr_10"></div>
+    	<div class="contact b"><!--contact-->
+        	<h2 class="xgsp">相关视频</h2>
+        	<ul>
+			{h5:content action="relation" id="$id" catid="$catid" num="4" keywords="$rs[keywords]" cache="3600"}
+                               {if $data}{loop $data $r} 
+                	<li>
+                        <a href="{$r[url]}" target="_blank" title="{$r[title]}" class="img">
+                            <img src="{$r[thumb]}" alt="{$r[title]}" />
+                            <i></i>
+                            <code>&nbsp;</code>
+                        </a>
+                        <p><a href="{$r[url]}" target="_blank">{$r[title]}</a></p>
+                    </li>
+						{/loop} {/if}
+					 {/h5}
+            </ul>
+        </div><!--contact end-->
+        <div class="hr_10"></div>
+        <a name="fbpl"></a>
+        <div class="b" style="padding:10px;background:#fff">
+        	<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1754522"></script>
+<!-- UY END -->
+        </div><!--discuss end-->
+    </div><!--playL end-->
+    <div class="playR"><!--playR-->
+    	<div class="caiding b"><!--caiding-->
+        	<div class="content">
+            	
+            </div>
+        	<div class="sharebotton">
+                <!-- Baidu Button BEGIN -->
+                <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+                    <span class="bds_more">分享到：</span>
+                    <a class="bds_qzone"></a>
+                    <a class="bds_tsina"></a>
+                    <a class="bds_tqq"></a>
+                    <a class="bds_renren"></a>
+                    <a class="bds_baidu"></a>
+                    <a class="bds_kaixin001"></a>
+                    <a class="bds_tqf"></a>
+                    <a class="bds_sohu"></a>
+                </div>
+            <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=2190946" ></script>
+            <script type="text/javascript" id="bdshell_js"></script>
+            <script type="text/javascript">
+                document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+            </script>
+            <!-- Baidu Button END -->
+            </div>
+            <div class="clear"></div>
+        </div><!--caiding end-->
+        <div class="hr_10"></div>
+    	<div class="myLabel b"><!--myLabel-->
+        	<div class="title"><h3>本视频标签</h3></div>
+            <div class="content">
+			{loop $keywords $keyword}
+<a href="{APP_PATH}index.php?s=search/index/init/siteid/1/typeid/3/&q={$keyword}" target="_blank">{$keyword}</a>	
+{/loop}
+            </div>
+        </div><!--myLabel end-->
+        <div class="hr_10"></div>
+    	<div class="hotTV b"><!--hotTV-->
+            <div class="title"><a href="{catlink(10)}" target="_blank">更多&gt;&gt;</a><h3>热门视频</h3></div>
+            <ul>
+			 {h5:content action="hits" catid="10" num="8" order="views DESC"}
+				{loop $data $v}
+                	<li>
+                        <a href="{$v[url]}" target="_blank" title="{$v[title]}" class="img">
+                            <img src="{$v[thumb]}" alt="{$v[title]}" />
+                        </a>
+                        <p><a href="{$v[url]}" target="_blank">{$v[title]}</a></p>
+                    </li>
+				{/loop}
+				{/h5}
+            </ul>
+            <div class="clear"></div>
+        </div><!--hotTV end-->
+    </div><!--playR end-->
+</div><!--w960 end-->
+<div class="hr_10"></div>
+<div class="hr_10"></div>
+{template "content","footer"}
+<div class="hr_10"></div>
+<script src="{APP_PATH}statics/house5_player/js/swfobject.js"></script>
+{php $video_id = $id}
+<script language="javascript" src="{APP_PATH}index.php?s=content/index/showvideo/action/js/id/{$video_id}"></script>
+<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>
+</body>
+</html>

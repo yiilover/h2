@@ -1,0 +1,209 @@
+{template "content","header_rss"}
+<style type="text/css">
+.header,.main,.footer{width:940px;margin:0 auto; overflow:auto}
+.footer{width:100%; background-color:#f4f9ff; margin-top:30px; border-top:1px solid #dbe7ed;}
+
+.footer .info{width:940px; margin:0 auto; border-top:1px solid #dbe7ed;}
+
+.footer .info{color:#666; line-height:24px;text-align:center;  margin-top:15px; }
+
+.footer .info .info_link{width:940px; margin:0 auto; border-top:1px solid #FFF; }
+
+.footer .info a{color:#666;}
+</style>
+
+<div class="main">
+
+	<div class="col-left navlist">
+
+		<div class="box memu">
+
+			<h6 class="title-2 f14 text-c">频道列表</h6>
+
+			<div class="content blue">
+
+				<ul style="display:block">
+			
+{h5:content action="category" catid="6" num="25" siteid="$siteid" order="listorder ASC"}{loop $data $r}
+<li><a href="rss-c{$r[catid]}-s1.html" >{$r[catname]}</a></li> 
+{/loop} {/h5} 
+
+				</ul>
+
+
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="col-right rsslist">
+
+	{if $catid}
+
+	<?php
+
+	if(!in_array($catid, array(16,24,26,27,49,28,29,30,31,32,33,34,36,67,66,80)))
+
+	{
+
+		die;
+
+	}
+
+	?>
+
+	{loop $subcats $n $r}
+
+		{php $i++}
+
+		<div class="box" {if $i%2!=0}style="width: 728px;margin-right:10px"{/if}>
+
+			<h5 class="title-1" ><span class="xml"><a rel="{APP_PATH}{urlencode('index.php?s=content/rss&rssid=')}{$r[catid]}" href="{APP_PATH}index.php?s=content/rss&rssid={$r[catid]}" class="xmlbut" target="_blank">xml</a>
+
+			<div class="rss cu" onclick="RssTab('rss_{$n}')" id="rss_{$n}"><dl><dt>订阅到</dt></dl></div>
+
+			</span><a href="rss-s1.html">RSS订阅中心</a>&nbsp;&gt;&gt;&nbsp;	{catnamelink($r[catid],'','1')}</h5>
+
+			<ul class="content list f14 lh24">
+
+			{h5:content action="lists" catid="$r[catid]" num="20" order="id DESC" return="info"}
+
+				{loop $info $v}
+
+					<li>·<a href="{if strpos($v[url],'http')===false}{$siteurl}{/if}{$v[url]}">{$v[title]}</a></li>					
+
+		{if $n%5==0}<span style="display:block; height:1px; border-bottom:1px dashed #CCCCCC; font-size:1px; margin-top:5px; margin-bottom:5px; overflow-y:hidden;"></span>{/if}
+
+				{/loop}
+
+			{/h5}	
+
+			</ul>
+
+		</div>
+
+	{/loop}
+
+	{else}
+
+	<?php
+
+	$subcats = Array ( '',16,24,26,27,49,28,29,30,31,32,33,34,36,67,66,80);
+
+	for ($i=1;$i<count($subcats);$i++){
+
+	?>
+
+		<div class="box" {if $i%2!=0}style="margin-right:10px"{/if}>
+
+			<h5 class="title-1" ><span class="xml"><a rel="{APP_PATH}{urlencode('index.php?s=content/rss&rssid=')}{$subcats[$i]}" href="{APP_PATH}index.php?s=content/rss&rssid={$subcats[$i]}" class="xmlbut" target="_blank">xml</a>
+
+			<div class="rss cu" onclick="RssTab('rss_{$n}')" id="rss_{$n}"><dl><dt>订阅到</dt></dl></div>
+
+			</span>{catnamelink($subcats[$i],'','1')}</h5>
+
+			<ul class="content list f14 lh24">
+
+			{h5:content action="lists" catid="$subcats[$i]" num="5" order="id DESC" return="info"}
+
+				{loop $info $v}
+
+					<li>·<a href="{if strpos($v[url],'http')===false}{$siteurl}{/if}{$v[url]}">{str_cut($v[title],'40')}</a></li>
+
+				{/loop}
+
+			{/h5}	
+
+			</ul>
+
+		</div>
+
+		{if $i%2==0}<div class="bk10"></div>{/if}
+
+	<?}?>
+
+	{/if}
+
+	</div>
+
+	<div class="clear"></div>
+
+</div>
+
+</div>
+
+
+
+{template "content","footer"}
+
+<script type="text/javascript">
+
+
+
+$(function() {
+
+var memu = $('.navlist .memu .content div');
+
+memu.toggle(
+
+  function () {
+
+	$(this).addClass('on');
+
+    $(this).next().show();
+
+  },
+
+  function () {
+
+	$(this).removeClass('on');
+
+    $(this).next().hide();
+
+  }
+
+);	
+
+});
+
+var ppwin='<dl><dt>订阅到</dt><dd><a href="http://reader.youdao.com/b.do?keyfros=163&url={feedurl}" title="有道" target="_blank"><img src="http://img1.cache.netease.com/cnews/css09/rss100121/icon_subshot02_youdao.gif" width="50" height="14" alt="有道" /></a></dd><dd><a href="http://fusion.google.com/add?feedurl={feedurl}" title="google" target="_blank"><img src="http://img1.cache.netease.com/cnews/css09/rss100121/icon_subshot02_google.gif" width="50" height="14" alt="google" /></a></dd><dd><a href="http://add.my.yahoo.com/rss?url={feedurl}" title="yahoo" target="_blank"><img src="http://img1.cache.netease.com/cnews/css09/rss100121/icon_subshot02_yahoo.gif" width="50" height="14" alt="yahoo" /></a></dd><dd><a href="http://www.xianguo.com/subscribe.php?url={feedurl}" title="鲜果" target="_blank"><img src="http://img1.cache.netease.com/cnews/css09/rss100121/icon_subshot02_xianguo.gif" width="50" height="14" alt="鲜果" /></a></dd><dd><a href="http://www.zhuaxia.com/add_channel.php?url={feedurl}" title="抓虾" target="_blank"><img src="http://img1.cache.netease.com/cnews/css09/rss100121/icon_subshot02_zhuaxia.gif" width="50" height="14" alt="抓虾" /></a></dd><dd><a href="http://mail.qq.com/cgi-bin/feed?u={feedurl}" title="qq" target="_blank"><img src="http://img1.cache.netease.com/cnews/css09/rss100121/icon_subshot02_qq.gif" width="50" height="14" alt="qq" /></a></dd><dd><a href="http://my.msn.com/addtomymsn.armx?id=rss&ut={feedurl}" title="msn" target="_blank"><img src="http://img1.cache.netease.com/cnews/css09/rss100121/msn.jpg" width="44" height="14" alt="msn" /></a></dd></dl>';
+
+function RssTab(id){
+
+	var RssObj=$('span.xml .rss[id='+id+']');
+
+	var RssObjdl=$('span.xml .rss dl');
+
+	for(var i=0,len=RssObj.length;i<len;i++){
+
+		var rp_ppwin=ppwin.replace(/{feedurl}/g,RssObj.siblings().attr('href'));
+
+		RssObjdl.replaceWith(rp_ppwin);
+
+		RssObj.hover(
+
+		  function () {
+
+			$(this).addClass("cur");
+
+		  },
+
+		  function () {
+
+			$(this).removeClass("cur");
+
+		  }
+
+		);
+
+	}
+
+
+
+}
+
+
+
+</script>

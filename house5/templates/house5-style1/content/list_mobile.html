@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="keywords" content="威海房产资讯,威海房地产门户,房产资讯,手机问房网" />
+<meta name="description" content="手机问房网资讯频道,致力于为房地产业界、租房、购房人群提供各类服务与咨讯。包括即时房产头条、楼市政策、市场动态、楼盘展示、写字楼、商铺、地产圈等房产相关内容！" />
+<title>手机问房网触屏版-导购</title>
+<link href="{APP_PATH}css/mobile/css.css" rel="stylesheet" type="text/css"/>
+<link href="{APP_PATH}css/mobile/scroll.css" rel="stylesheet" type="text/css"  />
+<script language="Javascript" src="{CSS_PATH}static/js/jquery.js"></script>
+<script language="javascript" src="{APP_PATH}css/mobile/zixun.js"></script>
+<script type="text/javascript" src="{APP_PATH}css/mobile/jquery.ba-hashchange.js"></script>
+</head>
+<body>
+<a id="filter"></a>
+<div class="wrap">
+  <ul class="nav">
+  <div style="width:320px">
+    <li style="width:16%"><a href="{APP_PATH}mobile.html">首页</a></li>
+    <li style="width:16%"><a href="http://house.venfang.com/">新房</a></li>
+    <li style="width:20%"><a href="http://esf.venfang.com/sale/">二手房</a></li>
+    <li class="navcur" style="width:16%">资讯</li>
+    <div class="clear"></div>
+    </div>
+  </ul>
+  <div class="content">
+   <div class="clu" >
+   <form action="http://house.venfang.com/search.php" method="get" accept-charset="gbk" onsubmit="document.charset='gbk';">
+      <div class="searchbox">
+        <div class="info-search flol ">
+        <input name="type" type="hidden" value="2">
+          <div class="info-searhinputbox" >
+            <input name="keyword" type="text" class="info-searhinput"  value="" maxlength="32" autocomplete="off">
+          </div>
+        </div>
+        <div class="xqsearchbtnbox">
+          <input class="xqsearchbtn" type="submit" value="搜索" />
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      </form>
+      <ul class="subnav">
+        <li class="zixun-tt"><a href="#tt" class="ablack">头条</a></li>
+        <li class="zixun-dg"><a href="#dg" class="awhite">导购</a></li>
+        <li class="zixun-sc"><a href="#sc" class="ablack">市场</a></li>
+        <li class="zixun-ph"><a href="#ph" class="ablack">排行榜</a></li>
+      </ul>
+      <div class="boxpadleft8">
+      {h5:content  action="position" posid="2" moreposid="2,35,36" order="listorder DESC" num="10" page="$page" cache="1800"}
+      <div id="tt" class="none zixun-list zixun-list-tt">
+      	   <div id="totalpage_tt" class="none">{$pages}</div>
+	       <div class="list-tt">
+				{loop $data $r}
+	        <?php if($r[copyfrom] && strpos($r[copyfrom],'|')!==false)
+				{
+					$arr = explode('|',$r[copyfrom]);
+					$r[copyfrom] = $arr[0];
+				}?>
+				<a href="http://news.venfang.com/showinfo-{$r[catid]}-{$r[id]}.html" class="ablack">
+					<div class="houselist arrbox">
+						<div class="f16" style="margin-bottom:4px">{$r[title]}</div>
+						<div class="f14 fgray" style="margin-bottom:4px">{str_cut(strip_tags($r[description]), 40)}</div>
+						<div class="f14 fgray"><span class="flol">来源：{$r[copyfrom]}</span><span class="flor">{date('Y-m-d H:i',$r[inputtime])}</span>
+							<div class="clear"></div>
+						</div>
+			        </div>
+		        </a>
+				{/loop}
+	      </div>
+	      <div class='more-tt'>
+	      		<div class="fblu draginner" align="center" style="margin-top:8px;cursor:pointer;" onClick="loadmore('tt',2,4)">点击查看更多内容</div>
+	      </div>
+      </div>
+      {/h5}
+	  {h5:content action="lists" catid="28" thumb="1" num="10" order="id DESC" page="$page" cache="1800"}
+      <div id="dg" class="none zixun-list zixun-list-dg">
+      	   <div id="totalpage_dg" class="none">{$pages}</div>
+	       <div class="list-dg">
+	        {loop $data $r}
+				<a href="http://news.venfang.com/showinfo-{$r[catid]}-{$r[id]}.html" class="ablack">
+					<div class="houselist">
+				        <table width="100%" border="0" cellspacing="0">
+				          <tbody>
+				          <tr>
+				            <td width="80px" valign="middle"><div class="house-pic"><img src="{thumb($r[thumb], 120, 80, 0)}"></div></td>
+				            <td width="100%" valign="middle" class="arrbox f16"><div style="margin-bottom:4px">{$r[title]}</div>
+				            <div class="f14 fgray">{str_cut(strip_tags($r[description]), 40)}</div></td>
+				          </tr>
+				        </tbody>
+			        </table>
+			      </div>
+		        </a>
+			{/loop}
+			
+	      </div>
+	      <div class='more-dg'>
+	      		<div class="fblu draginner" align="center" style="margin-top:8px;cursor:pointer;" onClick="loadmore('dg',2,12190)">点击查看更多内容</div>
+		  </div>
+      </div>
+      {/h5}
+	  {h5:content action="lists" catid="30" num="10" order="id DESC" moreinfo="1" page="$page" cache="1800"}
+      <div id="sc" class="none zixun-list zixun-list-sc">
+      	  <div id="totalpage_sc" class="none">{$pages}</div>
+	      <div class="list-sc">
+				{loop $data $r}
+	        <?php if($r[copyfrom] && strpos($r[copyfrom],'|')!==false)
+				{
+					$arr = explode('|',$r[copyfrom]);
+					$r[copyfrom] = $arr[0];
+				}?>
+				<a href="http://news.venfang.com/showinfo-{$r[catid]}-{$r[id]}.html" class="ablack">
+					<div class="houselist arrbox">
+						<div class="f16" style="margin-bottom:4px">{$r[title]}</div>
+						<div class="f14 fgray" style="margin-bottom:4px">{str_cut(strip_tags($r[description]), 40)}</div>
+						<div class="f14 fgray"><span class="flol">来源：{$r[copyfrom]}</span><span class="flor">{date('Y-m-d H:i',$r[inputtime])}</span>
+							<div class="clear"></div>
+						</div>
+			        </div>
+		        </a>
+				{/loop}
+	      </div>
+	      <div class='more-sc'>
+	      		<div class="fblu draginner" align="center" style="margin-top:8px;cursor:pointer;" onClick="loadmore('sc',2,32)">点击查看更多内容</div>
+		  </div>
+      </div>
+      {/h5}
+      {h5:content action="hits" catid="6" num="10" order="yesterdayviews DESC" page="$page" cache="1800"}
+      <div id="ph" class="none zixun-list zixun-list-ph">
+	      <div class="list-ph">
+	      	{loop $data $r}
+			<?php if($r[copyfrom] && strpos($r[copyfrom],'|')!==false)
+				{
+					$arr = explode('|',$r[copyfrom]);
+					$r[copyfrom] = $arr[0];
+				}?>
+				<a href="http://news.venfang.com/showinfo-{$r[catid]}-{$r[id]}.html" class="ablack">
+				<div class="houselist arrbox">
+		          <table width="100%" border="0" cellspacing="0">
+			            <tbody><tr>
+			              <td width="24" valign="top">
+			              
+			              	{if $n<4}<div class="phbnumbg flol">0{$n}{elseif $n>=4 && $n<10}<div class="phbnumbg-gray flol">0{$n}{else}<div class="phbnumbg-gray flol">{$n}{/if}</div>
+			              
+			              </td>
+			              <td><div class="f16" style="margin-bottom:4px">{$r[title]}</div>
+			                <div class="f14 fgray" style="padding-right:6px"><span class="flol">来源：{$r[copyfrom]}</span><span class="flor">点击：{$r[views]}</span>
+			                  <div class="clear"></div>
+			                </div></td>
+			            </tr>
+			          </tbody>
+		          </table>
+	        	</div>
+	        	</a>
+			{/loop}
+	      </div>
+	  </div>
+	  {/h5}
+	  </div>
+    </div>
+	
+
+<div class="foot">
+   <div id="top" class="backtop f16"><a href="#filter"><img src="{APP_PATH}css/mobile/images/backtop.png" >返回顶部</a></div>
+   <div class="copy f12">Copyright &copy; 2012 VenFang.com 问房网 版权所有<BR><BR> 鲁ICP备11018261号-3</div>
+</div>
+<script type="text/javascript">
+	window.scrollTo(0, 1);
+</script>
+
+  </div>
+</div>
+<script type="">
+$(function(){
+  $(window).hashchange( function(){
+    var hash = location.hash;
+	if(hash){
+		changetype(hash.replace( /^#/, '' ) || 'blank');
+	}else{
+		changetype('dg');
+	}
+  })
+  $(window).hashchange();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+DROP TABLE IF EXISTS `v9_reviews_data_1`;
+CREATE TABLE IF NOT EXISTS `v9_reviews_data_1` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `reviewsid` char(30) NOT NULL default '',
+  `siteid` smallint(5) NOT NULL default '0',
+  `userid` int(10) unsigned default '0',
+  `username` varchar(20) default NULL,
+  `creat_at` int(10) default NULL,
+  `ip` varchar(15) default NULL,
+  `status` tinyint(1) default '0',
+  `content` text,
+  `direction` tinyint(1) default '0',
+  `support` mediumint(8) unsigned default '0',
+  `star1` tinyint(1) unsigned default '0',
+  `star2` tinyint(1) unsigned default '0',
+  `star3` tinyint(1) unsigned default '0',
+  `star4` tinyint(1) unsigned default '0',
+  `star5` tinyint(1) unsigned default '0',
+  `star6` tinyint(1) unsigned default '0',
+  `startype` tinyint(1) unsigned NOT NULL default '1',
+  `starnum` tinyint(1) unsigned NOT NULL default '4',
+  PRIMARY KEY  (`id`),
+  KEY `reviewsid` (`reviewsid`),
+  KEY `direction` (`direction`),
+  KEY `siteid` (`siteid`),
+  KEY `support` (`support`)
+) TYPE=MyISAM;

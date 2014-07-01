@@ -1,0 +1,109 @@
+{template 'search', 'header'}
+	<div id="wrap">
+	<div class="cArea">
+	
+		<!--通用头部 begin -->
+		<div class="headerheight">
+{template 'ssi', 'ssi_8'}
+	<!--logo+搜索 begin -->
+<div class="logo_search">
+<div class="logo"><a href="{APP_PATH}"><img src="{APP_PATH}statics/default/img/logo.png"/></a></div>
+<div class="search"><script src="{APP_PATH}index.php?s=content/index/topsearch" type="text/javascript"></script></div>
+</div>
+<!--logo+搜索 end -->	
+		</div>
+		<!--通用头部 end -->
+	</div>
+	<div class="cArea">
+		<!--nav begin -->
+		<div class="nav">
+			<div class="a1">
+				<ul>
+	<li  {if $_GET[hot]=='n'|| empty($_GET[hot])}class="j_k"{else}class="b_k"{/if}><a href="?s=search/index/init&typeid={$typeid}&q={$q}&siteid={$siteid}&hot=n&t=c&time=all">按时间排序</a></li>
+<!-- 
+		<li>|</li>
+	<li {if $_GET[hot]=='y'}class="j_k"{else}class="b_k"{/if}><a href="?s=search/index/init&typeid=1&q={$q}&siteid=1&hot=y&t=c&time=all">相关度排序</a></li> -->
+				</ul>
+			</div>
+			<div class="a2">
+				<ul>
+					<li>搜索范围：</li>
+					<li {if $_GET[t]=='t'|| empty($_GET[t])}class="j_ka"{else}class="b_ka"{/if}><a href="?s=search/index/init&typeid={$typeid}&q={$q}&siteid={$siteid}&hot=n&t=t&time=all">标题</a></li>
+					<!-- <li>|</li>
+					<li {if $_GET[t]=='c'}class="j_ka"{else}class="b_ka"{/if}><a href="?s=search/index/init&typeid=1&q={$q}&siteid=1&hot=n&t=c&time=all">全文</a></li> -->
+				</ul>
+			</div>
+			<form>
+			<input type="hidden" name="typeid" value="{$typeid}" id="typeid"/>
+			<input type="hidden" name="q" value="{$q}" id="q"/>
+			</form>
+			<div class="a3">
+			共搜索到“<h1><b><font style=" color:#FFFF00">{$q}</font></b></h1>”相关信息{$totalnums} 条，用时{sprintf("%01.2f", $execute_time)}秒</div>
+		</div>
+		<!--nav end -->
+	</div>
+	<div class="cArea">
+		<div class="content">
+			<!--左边 begin -->
+			<div class="leftwidth">
+				
+				<div class="leftsidebar">
+					<span>按时间搜索</span>
+					<ul>
+                            <li {if $time=='all' || empty($time)}class="weights"{/if}><a href="?s=search/index/init&typeid={$typeid}&q={urlencode($search_q)}&siteid={$siteid}&time=all">不限</a></li>
+                            <li {if $time=='day'}class="weights"{/if}><a href="?s=search/index/init&typeid={$typeid}&q={urlencode($search_q)}&siteid={$siteid}&time=day">一天内</a></li>
+                            <li {if $time=='week'}class="weights"{/if}><a href="?s=search/index/init&typeid={$typeid}&q={urlencode($search_q)}&siteid={$siteid}&time=week">一周内</a></li>
+                            <li {if $time=='month'}class="weights"{/if}><a href="?s=search/index/init&typeid={$typeid}&q={urlencode($search_q)}&siteid={$siteid}&time=month">一月内</a></li>
+                            <li {if $time=='year'}class="weights"{/if}><a href="?s=search/index/init&typeid={$typeid}&q={urlencode($search_q)}&siteid={$siteid}&time=year">一年内</a></li>
+                        </ul>
+                    <div class="a2">&nbsp;</div>
+				</div>
+				<div class="leftsidebar">
+					<span>搜索历史记录</span>
+					<ul id='history_ul'>
+                        </ul>
+                    </div>
+                </div>
+                <div class="rightwidth">
+					<div class="c">
+						<ul>
+							<li class="wrapp">
+						{loop $data $i $r}
+						<li class="wrap">
+							<div>
+								{if $r['thumb']}<a href="{$r[url]}" target="_blank"><img src="{$r[thumb]}" width="60" height="60" /></a>{/if}
+								<h5><a href="{$r[url]}" target="_blank">{$r[title]}</a>{if $r['posids']}<img src="{IMG_PATH}icon/small_elite.gif">{/if}</h5>
+								<p>{$r[description]}</p>
+							</div>
+							<div class="adds">发布时间：{format::date($r[inputtime], 1)}</div>
+						</li>
+						{/loop}
+						{if empty($data)}未找到结果{/if}
+                    </ul>
+					</div>
+					<div class="title_news">
+                     <div class="g1">
+						<div class="pages cl">
+        					<div class="pg">{$pages}</div></div></div>
+					<div class="g2"><a href="#top">返回顶部</a></div>
+  				</div>
+					{if $setting['relationenble']}
+					<div class="relevant_s">
+					<ul>
+					{loop $relation $k $v}
+					<li><a href="?s=search/index/init&typeid={$typeid}&siteid={$siteid}&q={$v['keyword']}">{$v['keyword']}</a></li> 
+					{/loop}
+					</ul>
+					</div>
+					{/if}
+                </div>
+				<div class="clear"></div>
+            </div>
+      </div>
+	  </div>
+<script type="text/javascript" src="{JS_PATH}search_history.js"></script>
+{if $setting['suggestenable']}
+<script type="text/javascript" src="{JS_PATH}jquery.suggest.js"></script>
+<script type="text/javascript" src="{JS_PATH}search_suggest.js"></script>
+{/if}
+{template 'content', 'footer'}

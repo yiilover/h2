@@ -1,0 +1,628 @@
+{template "content","head_house"}
+<script type="text/javascript" src="{APP_PATH}statics/default/js/house/jquery.sgallery.js"></script>
+<style type="text/css" >
+.photo_prev a{cursor:url({APP_PATH}statics/default/img/house/prev.cur), auto;}
+.photo_next a{cursor:url({APP_PATH}statics/default/img/house/next.cur), auto;}
+/* 内容 */
+#Article{ overflow:hidden}
+#Article,.photo-channel .relevance{ border:1px solid #C3D4E7;zoom:1; padding:0 20px}
+#Article h1{color:#000;font:800 26px/30px "宋体",arial;margin-bottom:6px; text-align:center; padding:16px 0 8px; border-bottom:1px solid #e5e5e5}
+#Article h1 span{ font-size:12px; font-weight:normal; line-height:20px; color:#999}
+#Article .content{ font-size:14px}
+#Article .content p{font-size:14px;line-height:23px;text-align:justify;word-wrap:break-word; padding:8px 0}
+#Article .related{ border-top:dashed 1px #ccc; margin-top:15px}
+#Article .related h5{padding-bottom:4px}
+#Article .related{ padding:10px 0 0}
+#Article .related a{ color:#0b3b8c}
+.Article-Tool{ border:1px solid #c3d4e7; position:relative; top:-1px; text-align:right; padding-top:10px; vertical-align:middle; height:15px; background-color:#f4f8fd}
+.Article-Tool a{width:16px;height:16px;line-height:16px;background: url({APP_PATH}statics/default/img/house/icon.png) no-repeat; margin-left:6px;}
+.Article-Tool a:hover{text-decoration: none}
+.Article-Tool a.t,.Article-Tool a.t6{background-position: left -336px; width:auto; padding-left:16px; color:#8896b1}
+.Article-Tool a.t1{background-position: left -115px; padding:5px;}
+.Article-Tool a.t2{background-position: left -159px; padding:5px;}
+.Article-Tool a.t3{background-position: left -205px; padding:5px;}
+.Article-Tool a.t4{background-position: left -250px; padding:5px;}
+.Article-Tool a.t5{background-position: left -294px; padding:5px;}
+.Article-Tool a.t6{background-position: left -421px;padding:4px 0 0 18px;}
+/*关键字提示*/
+.point{border:1px solid #ffbf7a; background:#fffced;  position: absolute; z-index:1000; width:auto;}
+.point .arro{position:absolute; top:-9px;*top:-13px; left:97px; width:18px; height:9px;background: url({APP_PATH}statics/default/img/house/key_float.png) no-repeat;}
+.point .contents{padding:8px 10px; text-indent:0;margin-right:10px;font-weight:normal;}
+.point a.close span{display:none}
+.point a.close{background: url({APP_PATH}statics/default/img/house/cross.png) no-repeat left 3px; display:block; width:16px; height:16px;position: absolute; right:4px; top:4px;*top:0px;_top:0px;outline:none;}
+.point a.close:hover{background-position: left -46px}
+.point span.o1,
+	.point span.o2,
+	.point span.o3,
+	.point span.o4{position:absolute;width:3px;height:3px;background: url({APP_PATH}statics/default/img/house/fillet.png) no-repeat; line-height:0; font-size:0}
+	.point span.o1{background-position: left top; top:-1px;*top:-5px; left:-1px;}
+	.point span.o2{background-position: right top; top:-1px;*top:-5px; right:-1px}
+	.point span.o3{background-position: left -3px; bottom:-1px;*bottom:3px; left:-1px}
+	.point span.o4{background-position: right -3px; bottom:-1px;*bottom:3px; right:-1px;}
+/*图片内容*/
+.photo-channel #Article .tool{ position:relative; padding-top:12px}
+.photo-channel #Article .tool .auto,.photo-channel .tool .up,.photo-channel .tool .next{background: url({APP_PATH}statics/default/img/house/up-next.png) no-repeat; height:27px; width:31px;margin-right:10px; overflow:hidden; line-height:27px; padding:8px 0;}
+.photo-channel #Article .tool .auto span,.photo-channel .tool .up span,.photo-channel .tool .next span{ visibility:hidden}
+.photo-channel #Article .tool .auto{background-position: -39px top;}
+.photo-channel #Article .tool .next{background-position: -78px top;}
+.photo-channel #Article .Article-Tool{ position:absolute; right:0; border:none; background:none; font-size:12px; font-weight:normal; line-height:26px;}
+.photo-channel #Article .tool .stat{ color:#999;}
+.photo-channel #Article .big-pic{ text-align:center; padding:10px 0; border:1px solid #ededed; background-color:#fafcfe; position: relative}
+.photo-channel #Article .big-pic #big-pic{display:table-cell;vertical-align:middle;*display:block; overflow:hidden;*font-size:480px; width:896px; height:650px}
+.photo-channel #Article .big-pic .max{ position:absolute; bottom:0px; right:0px;background: #FFF url({APP_PATH}statics/default/img/house/max.png) no-repeat 5px center; z-index:101; padding:5px 5px 5px 20px}
+.photo_prev{position:absolute;left:0;top:0;width:50%;height:100%;z-index:100}
+.photo_next{ position:absolute; right:0; top:0; width:50%; height:100%; z-index:100}
+.photo_prev a,.photo_next a{background-image: url({APP_PATH}statics/default/img/house/blank.gif);display:block; width:100%; height:100%; outline:none;}
+#Article .list-pic{ padding:22px 0 16px; height:100px}
+#Article .cont{overflow:hidden; float: left; width:616px; height:80px}
+#Article .cont li{ float:left; width:123px; text-align:center; display:block; overflow:hidden}
+#Article .cont li .img-wrap{width:100px; height:75px; margin:0 auto;}
+#Article .cont li .img-wrap a{*font-size:55px;width:100px; height:75px;outline: medium none;}
+#Article .cont li.on .img-wrap{ border:2px solid #ffb017}
+#Article .list-pic .pre,#Article .list-pic .next{float:left; display:block; position:relative;background: url({APP_PATH}statics/default/img/house/pic_bg.png) no-repeat;width:110px;height:86px; text-align:center}
+#Article .list-pic .pre{ left:-8px;top:-3px; margin-right:14px}
+#Article .list-pic .next{ right:-8px; float:right;top:-3px}
+#Article .list-pic .pre .img-wrap,#Article .list-pic .next .img-wrap{width:102px; height:72px;border:none; padding:4px 0 8px}
+#Article .list-pic .pre .img-wrap a,#Article .list-pic .next .img-wrap a{*font-size:53px;width:98px; height:72px; padding:0px 5px 0 4px;*padding:0px 5px 5px 0px }
+#Article .list-pic .pre .img-wrap a:hover,#Article .list-pic .next .img-wrap a:hover{ background:none}
+#Article .list-pic .next{ right:-8px; float:right;bottom:-2px}
+#Article .pre-bnt,#Article .next-bnt{margin-top:3px;cursor: hand;!important;cursor: pointer}
+#Article .pre-bnt,#Article .next-bnt,#Article .pre-bnt span,#Article .next-bnt span{background: url({APP_PATH}statics/default/img/house/big-btn.png) no-repeat; display:block; width:17px; height:69px; float:left;}
+#Article .pre-bnt:hover, #Article .next-bnt:hover,#Article .pre-bnt-on,#Article .next-bnt-on{background-position: 0 -78px;}
+#Article .pre-bnt span{background-position: -30px top;}
+#Article .pre-bnt:hover span,#Article .pre-bnt-on span{background-position: -30px -78px;}
+#Article .next-bnt span{background-position: -55px top;}
+#Article .next-bnt:hover span,#Article .next-bnt-on span{background-position: -55px -78px;}
+/* endSelect */
+#endSelect{top:290px;left:333px;position:absolute;width:230px;height:71px;border:1px solid #8a8a8a;display:none;z-index:200;}
+#endSelect .bg{height:100%;width:100%;background:#000;filter:Alpha(Opacity=50);opacity:0.5;}
+#endSelect .E_Cont{position:absolute;top:10px;left:26px;color:#fff;font-size:14px;}
+#endSelect .E_Cont p{padding:4px 0;zoom:1;overflow:hidden;}
+#rePlayBut,#nextPicsBut,#endSelect #endSelClose{background:url({APP_PATH}statics/default/img/house/big-btn.png) no-repeat}
+#rePlayBut{float:left;width:69px;height:23px;background-position: 0px -167px;}
+#nextPicsBut{float:left;width:97px;height:23px;background-position: -100px -167px;margin-left:10px;}
+#endSelect #endSelClose{background-position: 0px -217px;position:absolute;top:3px;right:3px;cursor:pointer;width:11px;height:11px;overflow:hidden;z-index:2;}
+.photo-channel #Article .text{width:900px; float:left;text-align:left;height:21px;line-height:21px; overflow:hidden; padding:0 0 0 30px; font-weight:bold;font-size:14px;}
+.photo-channel .relevance{ padding:5px 10px 10px}
+.photo-channel .relevance h5,.comment h4{background: url({APP_PATH}statics/default/img/house/icon.png) no-repeat left -375px; padding-left:16px;}
+.photo-channel .relevance .photo-list{ padding:0; overflow:auto; padding-top:10px}
+.photo-channel .relevance .photo-list li{ float:left; width:153px; padding:0}
+.photo-channel .relevance .photo-list li .img-wrap{width:110px;height:86px;margin:0 auto;background: url({APP_PATH}statics/default/img/house/pic_bg.png) no-repeat; border:none; margin-bottom:6px}
+.photo-channel .relevance .photo-list li .img-wrap a{*font-size:59px;width:104px; height:86px; padding:1px 5px 5px 1px }
+.photo-channel .relevance .photo-list li .img-wrap a:hover{ background:none}
+</style>
+<div class="cArea">
+<!--当前位置 begin-->
+<div class="column">
+<div class="a1 linka">
+<a href="{HOUSE_PATH}" target="_blank">新房</a> > {menu_links('3360',$region,0)} <h3 style="display:inline"><a href="{$url}">{$title}</a> </h3> >
+图片浏览</div>
+<div class="a2 linka">
+<a href="javascript:void(0)" onclick="addCompareItem({$id}, '{$title}')">比较</a> 
+<a href="javascript:void(0)" onclick="addBookmark('{$title} - {$SEO['site_title']}',  location.href)">收藏</a> 
+<a href="javascript:void(0)" onclick="copysiteurl('{$title}', location.href)">复制</a> 
+<a href="javascript:void(0);" onclick="print();">打印</a>  │  
+<span>最后更新:{date('Y年m月d日',strtotime($updatetime))}</span>
+</div>
+</div>
+<!--当前位置 end-->
+<div class="hr10"></div>
+<!--楼盘名称 begin-->
+<div class="tab_a">
+<div class="tab_a_l">
+<div class="a1"><h1>{$title}</h1></div>
+{if $xszt=="在售"}
+<div class="a2 state_zs">
+{/if}
+{if $xszt=="即将上市"}
+<div class="a2 state_jjss">
+{/if}
+{if $xszt=="尾盘"}
+<div class="a2 state_wp">
+{/if}
+{if $xszt=="售完"}
+<div class="a2 state_sw">
+{/if}
+{$xszt}
+</div>
+{get_typename($type,1)}
+{get_relationlp($id,$catid)}
+</div>
+<div class="tab_a_r">
+<span class="reda" id="hits"></span> 人关注 
+<span class="reda">10</span> 人报名团购 
+[<span class="linka"><a href="{HOUSE_PATH}{$id}/#tg">我要团购</a>] 
+</span>
+</div>
+</div>
+<!--楼盘名称 end-->
+<div class="hr15"></div>
+<!--浮动导航begin-->
+<div id="index_nav_box">
+<div class="qlink" id="index_nav">
+<!--楼盘顶部导航栏目 begin-->
+{template "content","show_house_top1"}
+<!--楼盘顶部导航栏目 end-->
+<div class="hr10"></div>
+</div>
+</div>
+<!--浮动导航end-->
+</div>
+<!--当前位置 cArea--><div class="cArea">
+<div class="PartFs">
+<!--- nav --->
+<div class="PartFsc">            
+ <ul>
+ <span><a href="{HOUSE_PATH}{$id}/xiangce.html" title="{$title}相册" target="_blank">{$title}相册</a></span>
+<?php
+ 	$lid = intval($_GET['lid']);
+	$pid = intval($_GET['pid']);
+?>
+{h5:content action="huxingtype" relation="$id" catid="8" num="10" order="inputtime DESC" cache="86400"}<!-- 相册 -->
+ {if $data}
+ {if !empty($lid)}
+<li class="SearchG" id='k1'>
+{else}
+<li class="SearchH" id='k1'>
+{/if}
+ <a href="{HOUSE_PATH}{$id}/xiangce.html"><font style="color:#333;">全部</font></a>
+</li>
+{loop $data $r}
+{h5:content action="pictypecount" relation="$id" catid="8" typeid="$r[typeid]" cache="172800" return="info"}
+{if !empty($lid) && $lid==$r[typeid]}
+<li class="SearchH">
+{else}
+<li class="SearchG">
+{/if}
+<a href="{HOUSE_PATH}{$id}/xclist-{$r[typeid]}.html"><font style="color:#333;">{get_typename_bytypeid($siteid,$r[typeid])}({$info})</font></a>
+</li>
+{/loop}
+{/if}
+{/h5}
+<li class="SearchG1"></li>
+</ul>
+ </div>
+<!--- nav --->
+<div class="main photo-channel">
+<div id="Article">
+<div class="tool">
+		<a name="pic"></a>
+        <a class="up" href="javascript:;" title="上一张" onclick="showpic('pre')"><span>上一张</span></a><a class="next" href="javascript:;" onclick="showpic('next')" title="下一张"><span>下一张</span></a><span class="stat" id="picnum"></span>
+        <div class="Article-Tool"><span id='favorite'><a href="javascript:;" onclick="add_favorite('{$title}');" class="t6">收藏</a></span>&nbsp;&nbsp;分享到：
+		<img src="http://open.t.qq.com/images/resource/weiboicon16.png" style="padding-bottom:3px;" onclick="postToWb();" class="cu" title="分享到腾讯微博"/><script type="text/javascript">
+	function postToWb(){
+		var _t = encodeURI(document.title);
+		var _url = encodeURIComponent(document.location);
+		var _appkey = encodeURI("100632311");
+		var _pic = encodeURI('{$thumb}');
+		var _site = '';
+		var _u = 'http://v.t.qq.com/share/share.php?url='+_url+'&appkey='+_appkey+'&site='+_site+'&pic='+_pic+'&title='+_t;
+		window.open( _u,'', 'width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no' );
+	}
+</script>
+          <script type="text/javascript">document.write('<a href="http://v.t.sina.com.cn/share/share.php?url='+encodeURIComponent(location.href)+'&appkey=1266317589&ralateUid=2738718557&title='+encodeURIComponent(document.title)+'" title="分享到新浪微博" class="t1" target="_blank">&nbsp;</a>');</script>
+		  <script type="text/javascript">document.write('<a href="http://www.douban.com/recommend/?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent('{new_addslashes($title)}')+'" title="分享到豆瓣" class="t2" target="_blank">&nbsp;</a>');</script>
+		  <script type="text/javascript">document.write('<a href="http://share.renren.com/share/buttonshare.do?link='+encodeURIComponent(location.href)+'&title='+encodeURIComponent('{new_addslashes($title)}')+'" title="分享到人人" class="t3" target="_blank">&nbsp;</a>');</script>
+		  <script type="text/javascript">document.write('<a href="http://www.kaixin001.com/repaste/share.php?rtitle='+encodeURIComponent('{new_addslashes($title)}')+'&rurl='+encodeURIComponent(location.href)+'&rcontent=" title="分享到开心网" class="t4" target="_blank">&nbsp;</a>');</script>
+		  <script type="text/javascript">document.write('<a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+encodeURIComponent(location.href)+'" title="分享到QQ空间" class="t5" target="_blank">&nbsp;</a>');</script></div>
+</div>
+    <div class="big-pic">
+	<div class="text" id="picinfo"></div>
+		<div id="big-pic"></div>
+    	<div class="photo_prev"><a id="photoPrev" title="&lt;上一页" class="btn_pphoto" target="_self" hidefocus="true" href="javascript:;" onclick="showpic('pre');"></a></div>
+        <div class="photo_next"><a id="photoNext" title="下一页&gt;"class="btn_nphoto" target="_self" hidefocus="true" href="javascript:;" onclick="showpic('next')"></a></div>
+        <a href="javascript:;" class="max" onclick="showpic('big');">查看原图</a>
+        
+        <div id="endSelect" style="display: none;">
+			<div id="endSelClose" onclick="$('#endSelect').hide();"></div>
+			<div class="bg"></div>
+			<div class="E_Cont">
+				<p>您已经浏览完所有图片</p>
+				<p><a id="rePlayBut" href="javascript:void(0)" onclick="showpic('next', 1);"></a><a id="nextPicsBut" href="{$next_page[url]}"></a></p>	
+			</div>
+		</div>
+        
+    </div>
+    <div class="list-pic">
+{h5:content action="huxinginfoprevious" relation="$id" typeid="$lid" id="$pid" catid="8" order="id DESC" cache="172800" return="previous_page"}
+        <div class="pre picbig">
+{if !empty($previous_page)}
+        	<div class="img-wrap"><a href="{HOUSE_PATH}xclist-{$id}-{$lid}-{$previous_page[id]}.html"><img src="{thumb($previous_page[thumb], 100, 137, 0)}" title="{$previous_page[title]}"></a></div><a href="{HOUSE_PATH}xclist-{$id}-{$lid}-{$previous_page[id]}.html">&lt;上一组</a>
+{else}
+{php
+$previous_page = array('title'=>L('first_page'), 'thumb'=>IMG_PATH.'nopic_small.gif', 'url'=>'javascript:alert(\''.L('first_page').'\');');}
+		<div class="img-wrap"><a href="{$previous_page[url]}"><img src="{thumb($previous_page[thumb], 100, 137, 0)}" title="{$previous_page[title]}"></a></div><a href="{$previous_page[url]}">&lt;上一组</a>
+{/if}
+        </div>
+{/h5}
+        <a href="javascript:;" onclick="showpic('pre')" class="pre-bnt"><span></span></a>
+		<div class="cont" style="position:relative">
+			<ul class="cont picbig" id="pictureurls"  style="position:absolute">
+{h5:content action="huxinginfo" relation="$id" typeid="$lid" id="$pid" catid="8" order="inputtime DESC" cache="86400"}<!-- 相册浏览 -->
+{loop $data $rs}
+	{loop string2array($rs['pictureurls']) $pic_k $r}
+			 <li><div class="img-wrap"><a href="javascript:;" hidefocus="true"><img src="{thumb($r[url], 100, 137, 0)}" alt="{$r[alt]}" rel="{$r[url]}"/></a></div></li>
+	{/loop}
+{/loop}
+{/h5}
+			</ul>
+		</div>
+        <a href="javascript:;" onclick="showpic('next')" class="next-bnt"><span></span></a>
+{h5:content action="huxinginfonext" relation="$id" typeid="$lid" id="$pid" catid="8" order="id DESC" cache="172800" return="next_page"}
+        <div class="next picbig">
+{if !empty($next_page)}
+        	<div class="img-wrap"><a href="{HOUSE_PATH}xclist-{$id}-{$lid}-{$next_page[id]}.html"><img src="{thumb($next_page[thumb], 100, 137, 0)}" title="{$next_page[title]}"></a></div><a href="{HOUSE_PATH}xclist-{$id}-{$lid}-{$next_page[id]}.html">下一组&gt;</a>
+{else}
+{php
+$next_page = array('title'=>L('last_page'), 'thumb'=>IMG_PATH.'nopic_small.gif', 'url'=>'javascript:alert(\''.L('last_page').'\');');}
+<div class="img-wrap"><a href="{$next_page[url]}" title="{$next_page[title]}"><img src="{thumb($next_page[thumb], 100, 137, 0)}"></a></div><a href="{$next_page[url]}">下一组&gt;</a>
+       {/if}
+        </div>
+{/h5}
+    </div>
+</div>
+</div>
+<div class="display_com_end"></div>
+<div class="hr10"></div>
+</div>
+</div>
+<!--楼盘导航栏目 begin-->
+{template "content","show_house_top2"}
+ <!--楼盘导航栏目 end-->
+
+<div class="hr10"></div>
+<script type="text/javascript" src="{APP_PATH}statics/default/js/house/show_picture.js"></script>
+<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>
+</div>
+</div>
+{template "content","footer"}
+<!--cArea-end-->
+<!--lp_duibi start-->
+<div class="clzt1" id="clzt1" title="点击展开" onclick="float_display('clzt1','none');float_display('clzt2','');">&nbsp;</div>
+<div class="comparison" id="clzt2" style="display:none;position:absolute;z-index:200; right:0px;">
+  <div class="comp_title font2">
+  <span>
+<a href="javascript:void(0)" onclick="float_display('clzt2','none');"><img src="{APP_PATH}statics/default/img/house/close.gif" /></a>
+  </span>
+  楼盘对比栏
+  </div>
+  <div class="comp_lr"  id="withitem">
+  <div class="cllist1" id="itemlist">
+  <ul>
+  <li><!--addinto--></li>	
+  </ul>
+  </div>
+ <div class="a1">		
+<label id="dui_remove"><input type="submit" value="清空" class="smb_btn2" onclick="removeAllItem();" /></label>
+<label id="dui_togo"><input type="submit" value="对比" class="smb_btn4" onclick="toComparePage();" /></label>		
+</div>
+  </div>
+  <iframe  id="topframe" style='position:absolute; visibility:inherit; top:0px; border:0px; left:0px;width:150px;z-index:-1; filter: Alpha(Opacity=0);'></iframe>
+  <div class="comp_end"></div>
+</div>
+<script>
+var Float= new Object();
+Float.Browser = {
+ua: window.navigator.userAgent.toLowerCase(),
+ie: /msie/.test(window.navigator.userAgent.toLowerCase()),
+moz: /gecko/.test(window.navigator.userAgent.toLowerCase())
+};
+/************************Cookie*******************************/
+var CompCookie = {
+setCookie : function(name, value, expires, path, domain, secure)
+{
+document.cookie = name + "=" + escape(value) +
+((expires) ? "; expires=" + expires.toGMTString() : "") +
+((path) ? "; path=" + path : "; path=/") +
+((domain) ? "; domain=" + domain : "") +
+((secure) ? "; secure" : "");		
+},
+getCookie : function(name)
+{
+var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+if (arr != null)
+{
+return unescape(arr[2]);
+}
+return null;
+},
+clearCookie : function(name, path, domain)
+{
+if (CompCookie.getCookie(name))
+{
+ document.cookie = name + "=" +
+((path) ? "; path=" + path : "; path=/") +
+((domain) ? "; domain=" + domain : "") +
+";expires=Fri, 02-Jan-1970 00:00:00 GMT";
+}
+}
+};
+function float_$(id)
+{
+return (typeof id == "object")?id:document.getElementById(id);
+}
+function float_display(id,display)
+{
+float_$(id).style.display = display;
+setTopFrame();
+}
+//跳转至对比页面
+function toComparePage()
+{
+var compCookie = CompCookie.getCookie("house_duibi");
+if(compCookie)
+{
+var comps = compCookie.split("|");
+var cmpstr = new Array();
+var tempi = 0; 
+for(var i=0;i<comps.length;i++)
+{
+cmpstr.push(comps[i].split(",")[1]);
+tempi = tempi + 1;
+}
+if(tempi < 2){
+alert('抱歉，至少选择2个以上的楼盘进行比较！');
+return false;
+}
+window.open('{HOUSE_PATH}lp_duibi/'+cmpstr.join("_"));
+        //why clear
+        //CompCookie.clearCookie("wz_Houseapp_compare");
+}else
+    {
+       // window.open('index.php');
+   alert('抱歉，至少选择2个以上的楼盘进行比较！');
+    }
+    initCompareBar();
+}
+var g_comp_cookie = -1;
+//初始化页面片
+function initCompareBar()
+{
+    var compCookie = CompCookie.getCookie("house_duibi");
+    if (g_comp_cookie == compCookie)
+    {
+        return false;
+    }else
+    {
+        g_comp_cookie = compCookie;
+    }
+     if(compCookie)
+{ 
+//float_$("noitem").style.display="none";
+//float_$("withitem").style.display="block";
+float_$("itemlist").innerHTML = '';		
+float_$("dui_remove").innerHTML = '<input type="submit" value="清空" class="smb_btn2" onclick="removeAllItem();" />';	
+float_$("dui_togo").innerHTML = '<input type="submit" value="对比" class="smb_btn4" onclick="toComparePage();" />';	
+var cookieArr = compCookie.split("|");
+var itemStr = "";
+itemStr+='<ul>';
+for(var i=0;i<cookieArr.length;i++)
+{
+var serial_info = cookieArr[i].split(",");
+itemStr+= '<li>';   		
+itemStr+= '<span class="td_1" title="' + serial_info[0] + '">' + serial_info[0] + '</span>';
+itemStr+= '<span class="td_2 linke"><a class="remove" href="javascript:removeCompareItem('+serial_info[1]+');">删除</a></span></li>';
+ }
+itemStr+='</ul>';
+float_$("itemlist").innerHTML = itemStr;
+}else
+{	
+float_$("itemlist").innerHTML = "";
+float_$("itemlist").innerHTML = '<font style="line-height:25px; color:#ccc; overflow:hidden;">请先选择楼盘加入到对比栏<br />最多可同时对比4个楼盘</font>';
+float_$("dui_remove").innerHTML = '<input type="submit" value="清空" class="smb_btn2" disabled="disabled" />';	
+float_$("dui_togo").innerHTML = '<input type="submit" value="对比" class="smb_btn4" disabled="disabled" />';	
+}
+setTopFrame();
+}
+//setup topframe
+function setTopFrame()
+{
+    if(Float.Browser.moz)
+{
+        float_$("topframe").style.top = "10px";
+    }
+    float_$("topframe").style.height=(float_$("clzt2").offsetHeight-(Float.Browser.moz?28:0))+"px";
+}
+//cookie设置
+function addCompareItem(id,value)
+{
+float_$("clzt1").style.display="none";
+float_$("clzt2").style.display="";
+var compare = CompCookie.getCookie("house_duibi");
+if(compare)
+{
+var newComArr = new Array();
+var comArr = compare.split("|");
+ 		if(comArr.length>=4)
+{
+alert("您好,为了保证对比查看效果您最多只能选择4个楼盘参加比较");
+return;
+}
+for(var i=0;i<comArr.length;i++)
+{
+if(comArr[i].split(",")[1] == id)
+{
+alert("对不起，您已经添加\""+comArr[i].split(",")[0]+"\"");
+return;
+}else
+            {
+                newComArr.push(comArr[i]);
+            }
+}
+newComArr.push(value+","+id);
+CompCookie.setCookie("house_duibi",newComArr.join("|"));
+initCompareBar();
+}else{
+CompCookie.setCookie("house_duibi",value+","+id);		
+ 	}
+initCompareBar();
+}
+//删除对比项
+function removeCompareItem(id)
+{
+    initCompareBar();
+var compare = CompCookie.getCookie("house_duibi");
+if(compare)
+{
+var newComArr = new Array();
+var comArr = compare.split("|");
+for(var i=0;i<comArr.length;i++)
+{
+if(comArr[i].split(",")[1]!=id)
+{
+newComArr.push(comArr[i]);
+}
+}
+CompCookie.setCookie("house_duibi",newComArr.join("|"));
+initCompareBar();
+}
+}
+//删除所有项
+function removeAllItem()
+{
+CompCookie.clearCookie("house_duibi");
+initCompareBar();
+}
+window.onscroll=function()
+{
+var nav_box=document.getElementById('index_nav_box');
+var nav=document.getElementById('index_nav');
+var thetop=document.documentElement.scrollTop+document.body.scrollTop;
+var to_top=getTop(nav_box);
+if(thetop>=to_top)
+{
+if(nav.className=='fixed_top')
+return false;nav.className='fixed_top';
+}
+else
+{
+if(nav.className=='')
+return false;nav.className='';
+}
+}
+function getTop(el)
+{
+var offset=el.offsetTop;
+if(el.offsetParent!=null)
+{
+offset+=getTop(el.offsetParent);
+}
+return offset;
+}
+//最小高度，一级导航有关
+var MIN_TOP = 220;
+//浮动自身的宽度
+var CLZT_WIDTH1 = 29;
+var CLZT_WIDTH2 = 224;
+function scrolldiv()
+{
+    var clzt1 = float_$("clzt1");
+    var clzt2 = float_$("clzt2");
+    var scr_top = document.documentElement.scrollTop || document.body.scrollTop;
+    var client_h = document.documentElement.clientHeight||document.body.clientHeight;
+    var top = scr_top + (client_h/2 - 95);
+    //当前高度
+    var cur_top = parseInt(clzt1.style.top);
+    if (top - cur_top > 4 || top - cur_top < -4)
+    {
+        top = Math.ceil(0.2 * (top - cur_top)) + cur_top;
+    }
+    if (top < MIN_TOP)
+    {
+        top = MIN_TOP;
+    }
+    //clzt1.style.top = top + 90 +"px";
+    //clzt2.style.top = top + 90 +"px";
+clzt1.style.top = top + 0 + "px";
+    clzt2.style.top = top + 0 + "px";
+}
+//底部滚动条
+function scroll_bot()
+{
+    var clzt1 = float_$("clzt1");
+    var clzt2 = float_$("clzt2");
+    var scr_left = document.documentElement.scrollLeft || document.body.scrollLeft;
+    var client_w = document.documentElement.clientWidth||document.body.clientWidth;
+    var left1 = scr_left + client_w - CLZT_WIDTH1;
+    if (left1 > 0)
+    {
+        //clzt1.style.left = left1 + 90 + "px";
+clzt1.style.right = 0 + "px";
+    }
+    var left2 = scr_left + client_w - CLZT_WIDTH2;
+    if (left2 > 0)
+    {
+        //clzt2.style.left = left2 + 90 + "px";
+clzt2.style.right = 0 + "px";
+    }
+}
+//固定位置
+function fixed_div()
+{
+    var clzt1 = float_$("clzt1");
+    var clzt2 = float_$("clzt2");
+var top = document.documentElement.clientHeight||document.body.clientHeight;
+    var scr_top = document.documentElement.scrollTop || document.body.scrollTop;
+clzt1.style.position="fixed";
+clzt1.style.right=0;
+    top = (top/2-95);
+    if (scr_top + top < MIN_TOP)
+    {
+        top = MIN_TOP - scr_top;
+    }
+clzt1.style.top = top + 90+"px";
+    clzt2.style.position="fixed";
+clzt2.style.right=0;
+clzt2.style.top = top + 90+"px";
+}
+//相应鼠标滚轮
+function mousewhell_cancel(tar) {clearInterval(tar);};
+function mousewhell_go() {
+    //setTimeout(scrolldiv,10);
+var _detector = setInterval(scrolldiv,10);
+setTimeout('mousewhell_cancel(' + _detector + ')',1000);
+};
+//初始化相关设置
+function init_comp_bar()
+{
+    if (document.attachEvent&&window.ActiveXObject&&!window.XMLHttpRequest)
+    {
+        window.attachEvent("onload",scrolldiv);
+        document.attachEvent("onmousewheel",mousewhell_go);
+        window.attachEvent("onresize",function(){ scrolldiv(),scroll_bot()});
+        window.attachEvent("onscroll",function(){ scrolldiv(),scroll_bot()});
+    };
+    if (document.attachEvent&&window.ActiveXObject&&window.XMLHttpRequest)
+    {
+    window.attachEvent("onload",fixed_div);
+    window.attachEvent("onresize",fixed_div);
+    window.attachEvent("onscroll",fixed_div);
+    };
+    if (document.addEventListener)
+    {
+        window.addEventListener("load",fixed_div,true);
+        window.addEventListener("resize",fixed_div,true);
+        window.addEventListener("scroll",fixed_div,true);
+    };
+    //定时更新cookie内容
+    setInterval(initCompareBar,2000);
+}
+//初始化对比篮内容
+initCompareBar();
+//初始化位置
+init_comp_bar();
+</script>
+<!--lp_duibi end-->
+<!-- 返回顶部 -->
+<!--a href="#"><div class="rTop" id="rTop"></div></a>
+<script>
+ window.onscroll=function(){
+  if(document.body.scrollTop||document.documentElement.scrollTop>0){
+   document.getElementById('rTop').style.display="block"
+   }else{
+    document.getElementById('rTop').style.display="none"
+    }
+  
+  
+  }
+</script-->

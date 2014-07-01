@@ -1,0 +1,115 @@
+{template "content","head_house_show"}
+ <div class="wrap mB10 crumb">您的位置：<a href="{APP_PATH}" title="">首页</a> > <a href="{HOUSE_PATH}" title="新房">新房</a> > <a href="{$url}" title="{$title}">{$title}</a> > <a href="{HOUSE_PATH}{$id}/jiage.html" title="价格明细">价格明细</a><span id="weizi"></span></div>
+
+
+<div class="wrap clear wrap_shadow LP_Gallery">
+    <div class="shadow fix">
+    	<div class="fix commHd">
+        	<span class="fr JS_jia"><div id="bdshare" class="bdshare_b" style="line-height: 12px;">
+            
+             <a class="shareCount"></a></div></span>
+        	<h3 class="fl fw_B fs_14">{$title}[{$xszt}]</h3>
+            <div class="fl fs_14 fw_B LP_hotline">售楼热线:<em class="en c_orangered fw_B">{$tel}</em></div>
+            <div class="fl LP_swm">
+                	<a href="javascript:showfceng('erweima',1);" ><img src="{APP_PATH}statics/house5-style1/newhouse/img/erweima.png" /></a>
+                    <div class="LP_swm_panel">
+                    	<b></b>
+                    	<div class="swm"><img src="{APP_PATH}caches/caches_content/caches_house/mobile_houseqrcode/{$siteid}/{$id}.png" alt="{$title}" width="171" height="171"/></div>
+                    </div>
+            </div>
+            <a href="javascript:callphones('4882430623961921590');" title="免费通话" class="forCALL"><b></b>免费通话</a><a href="javascript:showfceng('dxfsc',1);" title="发送到手机" class="forMAIL"><b></b>发送到手机</a><a title="收藏本楼盘" href="#" class="collect"><b></b>收藏</a> 
+        </div>
+        
+        <div class="fl commLeft">
+        <div class="fix Gallery_Handle">
+            <!-- <a href="#" class="fl update_pic">上传楼盘图片</a> -->
+        </div>
+        <!--div style="height:10px;"></div-->
+{php $type_arr = explode(',',$type);}
+{php $i=1;}
+{loop $type_arr $key $v}
+{if $v}
+{h5:content action="jiageinfo" relation="$id" catid="11" type="$v" num="10" order="addtime ASC" cache="86400"}<!-- 价格明细 -->
+ {if $data}
+ {php $typename = getbox_val('13','type',$v);}
+ <div class="txt">
+ <div class="hd fw_B fs_14">
+ <h3 class="fw_B fs_14">{$typename}</h3>
+</div>
+</div>
+<div class="price_map" id="my_chart{$i}">
+<script type="text/javascript" src="{APP_PATH}statics/house5-style1/img/house/flash/swfobject.js"></script> 	
+<script type="text/javascript">
+var so = new SWFObject("{APP_PATH}statics/default/img/house/flash/chart.swf", "ofc", "680", "220", "9", "#FFFFFF");
+so.addVariable("variables","true");
+so.addVariable("title",",{font-size: 20;}");
+so.addVariable("y_label_size","15");
+so.addVariable("y_ticks","5,10,5");
+so.addVariable("bg_colour","#ffffff");//背景
+so.addVariable("x_axis_colour","#cccccc");//y_border
+so.addVariable("x_grid_colour","#f0f0f0");//x_value_border
+so.addVariable("y_axis_colour","#cccccc");//y_border
+so.addVariable("y_grid_colour","#f0f0f0");//x_value_border
+<?php
+$priceA = Array();
+$date = Array();
+foreach ($data as $key=>$value)
+{
+	$priceA[]= $value[price];
+	$date[] = $value[addtime];
+}
+$ids = implode(',',$priceA);
+$dates = implode(',',$date);
+?>
+so.addVariable("area_hollow","2,3,0,#ff0000,,10");	
+so.addVariable("values","<?php echo $ids;?>");
+so.addVariable("x_labels","<?php echo $dates;?>");
+so.addVariable("x_axis_steps","1");
+so.addVariable("y_max","<?php echo max($priceA);?>"); 
+so.addParam("allowScriptAccess", "always" );//"sameDomain");
+so.write("my_chart{$i}");
+</script>
+</script>		
+</div>
+{/if}
+ {if $data}
+<div class="price_tab">
+<table width="100%" border="0" cellpadding="1" cellspacing="1" bgcolor="#CADBF1">
+  <b><tr>
+<td width="33%" bgcolor="#FFFFFF">记录时间</td>
+<td width="20%" bgcolor="#FFFFFF">房屋类型</td>
+<td width="33%" bgcolor="#FFFFFF">参考均价</td>
+<td width="14%" bgcolor="#FFFFFF">涨跌</td>
+  </tr></b>
+{loop $data $r}
+  <tr>
+<td bgcolor="#FFFFFF">{$r[addtime]}</td>
+<td bgcolor="#FFFFFF">{getbox_val('13','type',$r[type])}</td>
+<td bgcolor="#FFFFFF">{$r[price]}</td>
+<td bgcolor="#FFFFFF"><font style="color:#000;">{get_trend($r[trend])}</font></td>
+  </tr>
+{/loop}
+  
+</table>
+</div>
+{/if}
+{/h5}
+{php $i++}
+{/if}
+{/loop}
+<div class="fix page">
+</div>
+</div>
+<div class="fl commRight">		
+          <div class="fw_B fs_14 title" style="margin:15px 0 10px;">{$title}楼盘关注</div>
+          <div class="ct_had"><span class="fl">已有<b class="en c_orangered" id="tuangou"></b>人参团</span><a href="javascript:showfceng('tgbmc',1);" class="fl">立即参团</a></div>
+         <div class="fw_B fs_14 title">热点楼盘推荐</div>
+		  {h5:content action="hits" catid="14" num="9" order="views DESC" cache="10800"}
+		{loop $data $v}
+			{php $menu_info = menu_info('3360',$v[region])}
+		            <div class="lp_faq_rank_tr"> <span class="lp_faq_t1"><a title="{$v[title]}" href="{$v[url]}/" target="_blank" >{str_cut($v[title],16,'')}</a></span><span class="lp_faq_t2">{$menu_info[0]}</span><span class="lp_faq_t3 c_orangered">{$v[views]}</span> </div>
+				{/loop}
+			{/h5}
+    </div>
+</div>
+{template "content","footer_house_show"}

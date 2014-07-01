@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=GBK">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>手机问房网触屏版-图片</title>
+<link href="http://www.venfang.com/css/mobile/css.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+#img img { background: #E1E1E1; border: 1px solid #CCCCCC; padding: 2px; height: 280px; width: 280px; margin-top: 8px; }
+</style>
+</head>
+<body>
+<?php
+
+ 	$lid = intval($_GET['lid']);
+
+	$pid = intval($_GET['pid']);
+
+?>
+{h5:content action="huxinginfo" relation="$id" typeid="$lid" id="$pid" catid="13" num="1" order="inputtime DESC" cache="86400"}<!-- 户型图浏览 -->	
+{loop $data $rs}
+
+	{loop string2array($rs['pictureurls']) $pic_k $r}
+{php $xx++}
+{php if($xx>1) break;}
+<div class="backbox">
+   <div id="back" class="back" style="margin-bottom:2px;margin-top:-2px;z-index:2" onclick="history.back(-1)"><a><img src="http://www.venfang.com/css/mobile/images/btnback.png" width="70" ></a></div>
+   <div class="nxqbacktit">{$r[alt]}</div>
+   <div class="clear"></div>
+ </div>
+<div id="img">
+<div align="center"><a href="{HOUSE_PATH}{$id}/huxing.html"><img src="{thumb($r[url], 400, 350, 0)}" /></a></div>
+</div>
+{/loop}
+
+{/loop}
+
+{/h5}
+<div align="center" style="line-height:34px"><a href="{HOUSE_PATH}{$id}/huxing.html">查看全部户型图</a></div>
+<div style="margin-bottom:50px"></div>
+
+</body>
+</html>

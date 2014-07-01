@@ -1,0 +1,39 @@
+.pss_css{width:645px;height:54px;position:relative;}
+.pss_css form{margin:0;padding:0;display:none;}
+.pss_css .N{display:none;}
+.pss_css .B{display:block;}
+.pss_css .t{height:23px;}
+.pps_css .t:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.pss_css .t .ta{margin-right:5px;color:#333333;display:block;float:left;text-align:center;font-size:12px;width:52px;height:23px;line-height:23px;text-decoration:none;}
+.pss_css .t .ta:hover{background:url('./static/style/pss_tab.gif') no-repeat;color:white;}
+.pss_css .t .on{background:url('./static/style/pss_tab.gif') no-repeat;color:white;}
+.pss_css .s{background:url('./static/style/pss_bg.gif') repeat-x;height:34px;}
+.pps_css .s:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.pss_css .s .p{float:left;padding:4px 0 4px 4px;}
+.pss_css .s .p .sf{font-size:12px;background:white;float:left;height:26px;line-height:26px;cursor:pointer;}
+.pss_css .s .p .sf span{float:left;margin-left:5px;color:#999999;font-size:14px;}
+.pss_css .s .p .sf img{float:right;margin:2px 2px 0 0;}
+.pss_css .s .p .sf img.k{float:left;margin:3px 2px 0 2px;}
+.pss_css .s .p .sf1{width:88px;margin-right:4px;}
+.pss_css .s .p .sf2{width:88px;margin-right:4px;}
+.pss_css .s .p .sf3{width:108px;margin-right:4px;}
+.pss_css .s .p .sf4{width:248px;}
+.pss_css .s .p .sf5{width:452px;}
+.pss_css .s .p .sf6{width:544px;}
+.pss_css .s .p .sf4 input,.pss_css .s .p .sf5 input,.pss_css .s .p .sf6 input{border:0;height:24px;font-size:14px;color:#999999;line-height:24px;padding:0;margin:0;}
+.pss_css .s .p .sf5 input{width:400px;}
+.pss_css .s .p .sf6 input{width:500px;}
+.pss_css .i{float:right;cursor:pointer;}
+.pss_css .c{z-index:1000;background:white;padding-bottom:5px;border:1px #3086cf solid;position:absolute;top:56px;font-size:12px;}
+.pss_css .c a{display:block;float:left;width:50px;color:#333333;padding-left:4px;text-align:left;margin:3px 3px 3px 5px;height:20px;line-height:20px;text-decoration:none;}
+.pss_css .c a:hover{background:#1e91d4;color:white;}
+.pss_css .qx{left:2px;width:150px;}
+.pss_css .xw{left:2px;width:90px;}
+.pss_css .wy{left:93px;width:90px;}
+.pss_css .jg{left:186px;width:110px;}
+.pss_css .jg a{width:80px;}
+.pss_css .lx{left:320px;width:230px;}
+.pss_css .lx a{width:210px;}
+.pss_css .adv{position:absolute;left:657px;top:24px;width:70px;line-height:17px;}
+
+

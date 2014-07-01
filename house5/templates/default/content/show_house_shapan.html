@@ -1,0 +1,129 @@
+{template "content","head_house"}
+<script type="text/javascript" src="{APP_PATH}statics/default/newhouse/js/showDialog.js"></script>
+<link href="{APP_PATH}statics/default/newhouse/css/showDialog.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{APP_PATH}statics/default/newhouse/css/show_style.css" />
+<div class="cArea">
+<!--当前位置 begin-->
+<div class="column">
+<div class="a1 linka">
+<a href="{HOUSE_PATH}" target="_blank">新房</a> > {menu_links('3360',$region,0)} <h3 style="display:inline"><a href="{$url}">{$title}</a> </h3> >
+电子沙盘图</div>
+<div class="a2 linka">
+<a href="javascript:void(0)" onclick="addCompareItem({$id}, '{$title}')">比较</a> 
+<a href="javascript:void(0)" onclick="addBookmark('{$title} - {$SEO['site_title']}',  location.href)">收藏</a> 
+<a href="javascript:void(0)" onclick="copysiteurl('{$title}', location.href)">复制</a> 
+<a href="javascript:void(0);" onclick="print();">打印</a>  │  
+<span>最后更新:{date('Y年m月d日',strtotime($updatetime))}</span>
+</div>
+</div>
+<!--当前位置 end-->
+<div class="hr10"></div>
+<!--楼盘名称 begin-->
+<div class="tab_a">
+<div class="tab_a_l">
+<div class="a1"><h1>{$title}</h1></div>
+{if $xszt=="在售"}
+{php $saling=1}
+<div class="a2 state_zs">
+{/if}
+{if $xszt=="即将上市"}
+{php $saling=2}
+<div class="a2 state_jjss">
+{/if}
+{if $xszt=="尾盘"}
+{php $saling=3}
+<div class="a2 state_wp">
+{/if}
+{if $xszt=="售完"}
+{php $saling=4}
+<div class="a2 state_sw">
+{/if}
+{$xszt}
+</div>
+{get_typename($type,1)}
+{get_relationlp($id,$catid)}
+</div>
+<div class="tab_a_r">
+<span class="reda" id="hits"></span> 人关注 
+<span class="reda">10</span> 人报名团购 
+[<span class="linka"><a href="{HOUSE_PATH}{$id}/#tg">我要团购</a>] 
+</span>
+</div>
+</div>
+<!--楼盘名称 end-->
+<div class="hr15"></div>
+<!--浮动导航begin-->
+<div id="index_nav_box">
+<div class="qlink" id="index_nav">
+<!--楼盘顶部导航栏目 begin-->
+{template "content","show_house_top1"}
+<!--楼盘顶部导航栏目 end-->
+<div class="hr10"></div>
+</div>
+</div>
+<!--浮动导航end-->
+</div>
+<!--当前位置 cArea--><div class="cArea">
+<div class="PartFs">
+
+        <div class="main2_1"><span>{$title} 网络沙盘 在售房源一览</span><img src="{APP_PATH}statics/default/newhouse/img/tuli.gif" class="tuli" alt="沙盘图例"></div>
+        <div class="main2_2">
+            
+			<div class="loubiao">
+                <img src="{$shapan}" border="0" onmouseover="mouseout(0);" usemap="#rdMap">
+                <map name="rdMap" id="rdMap">
+			{h5:content action="buildinfo" catid="19" relation="$id" order="id DESC" cache="10800"}
+			{php $i=0;}
+			{loop $data $v}
+			{php list($v[top], $v[left]) = explode('|', $v[shapan]);}
+			
+                <div class="biao {if $v[xszt]=='1'}biaozs{elseif $v[xszt]==2}biaows{else}biaosw{/if}" id="wai{$i}" style="left: {$v[left]}; top: {$v[top]}; z-index: 999;"><div class="biao-1" onmouseover="showceng({$i});" onclick="showWindow('【{$title}】 {$v[title]} 房源详细信息一览','/index.php?s=content/index/buildinfo/bid/{$v[id]}','900');">
+				{php $v['xszt'] = getbox_val('29','xszt',$v['xszt']);}
+				{$v[title]}{$v['xszt']}</div><div id="ceng{$i}" class="biao-2 snone" onmouseover="clearTime(0);" style="z-index: 999; display: none;"><p>楼栋：{$v[title]}</p><p>单元：{$v[unit]}个单元</p><p>层数：{$v[floor]}层</p><p>户数：{$v[hushu]}</p><p><a href="javascript:;" onclick="showWindow('【{$title}】 {$v[title]} 房源详细信息一览','/index.php?s=content/index/buildinfo/bid/{$v[id]}','900');" title="">&gt;&gt;查看楼栋详情</a></p></div></div>
+			{php $i++;}
+			{/loop}
+			{/h5}
+			    </map>                
+            </div>
+		</div>
+    </div>
+</div>
+<script type="text/javascript">
+    var n = 8;
+    var upid = -1;
+    var thistime = null;
+    function mouseout(d) {
+        thistime = setTimeout(function () {
+            mouseover();
+        }, 500);
+    };
+    function clearTime(d) {
+        if (thistime != null) {
+            clearTimeout(thistime);
+            thistime = null;
+        };
+        $("#ceng" + d).css("display", "block");
+    };
+    function mouseover() {
+        for (var i = 0; i < n; i++) {
+            if (thistime != null) {
+                $("#ceng" + i).css("display", "none");
+            };
+        };
+    };
+    function showceng(d) {
+        if (thistime != null) {
+            clearTimeout(thistime);
+            thistime = null;
+        };
+
+        if (upid > -1 && upid != d) {
+            $("#ceng" + upid).css("display", "none");
+            $("#wai" + upid).css("zIndex", "99");
+        };
+        $("#ceng" + d).css("display", "block");
+        $("#wai" + d).css("zIndex", "999");
+        upid = d;
+    };
+</script>
+{template "content","footer"}

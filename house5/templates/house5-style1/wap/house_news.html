@@ -1,0 +1,162 @@
+{template "wap","header"}
+<link type="text/css" rel="stylesheet" href="/statics/house5-style1/3g/css/3g_details.css" />
+<link type="text/css" rel="stylesheet" href="/statics/house5-style1/3g/css/3g_common.css" />
+<link type="text/css" rel="stylesheet" href="/statics/house5-style1/3g/css/3g_news.css" />
+<script>
+window.addEventListener("load",function() {
+  setTimeout(function(){
+    window.scrollTo(0, 1);
+  }, 0);
+}); 
+</script>
+</head>
+<body>
+<header class="header">
+		<a href="{WAP_SITEURL}" class="logo">{$WAP['sitename']}</a>
+    <a href="{WAP_SITEURL}detail/{$id}/" class="bn_back bn_back2" >返回</a>
+    <a href="#" class="bn_search">搜索</a>
+    <a href="#" class="bn_nav">导航</a>
+    <i></i>
+</header>
+	<script>
+	/*点击搜索和导航触发的事件*/
+	$(".bn_search").bind("click", function(){
+		var getifclass = $(this).attr("class").indexOf("bn_search_on");
+		if(getifclass > -1)
+		{
+			$(".h_so").css("display", "none");
+			$(".bn_search").removeClass("bn_search_on");
+		}
+		else
+		{
+			$(".h_so").css("display", "block");
+			$(".bn_search").addClass("bn_search_on");
+			$(".h_nav").css("height", "0px");
+			$(".bn_nav").removeClass("bn_nav_on");
+			$('#ico_del').css('display', 'none');
+		}
+			
+	});
+	$(".bn_nav").bind("click", function(){
+		$(".bn_search").removeClass("bn_search_on");
+		var getifclass = $(this).attr("class").indexOf("bn_nav_on");
+		if(getifclass > -1)
+		{
+			$(".h_nav").css("height", "0px");
+			$(".bn_nav").removeClass("bn_nav_on");
+		}
+		else
+		{
+			$(".h_so").css("display", "none");
+			$(".bn_search").removeClass("bn_search_on");
+			$(".h_nav").css("height", "43px");
+			$(".bn_nav").addClass("bn_nav_on");
+		}
+	});
+	function changeCity()
+	{
+		var stylecss = $(".sel_city").attr("style").indexOf("0px");
+		if(stylecss > -1)
+		{
+			$(".sel_city").attr("style", "");
+			$(".sel_city").css("height", "auto");
+		}
+		else
+		{
+			$(".sel_city").css("height", "0px");
+			$(".sel_city").css("overflow", "hidden");
+		}
+		
+	}
+	</script>
+<script type="text/javascript" src="/statics/house5-style1/3g/js/3g_swipe.min.js"></script>
+<div class="h_so" style="display:none">
+	<div class="m_con">
+		<form id="search_form" name="f" action="{WAP_SITEURL}list.html" method="get">
+	    	<input type="search" name='k' id="kw" class="input_keys" id="kw"  value="请输入楼盘……"  onfocus="if(this.value=='请输入楼盘……'){this.value='';}$('#ico_del').css('display', 'block');" onblur="if(this.value=='')this.value='请输入楼盘……';" autocomplete="off">
+	        <span class="ico_clear" onclick="$('#search_form input').val('')"><i id="ico_del" style="display:none"></i></span>
+	        <div class="search_bn" onClick="$('form').submit()"><i></i></div>
+    	</form>
+    </div>
+</div>
+<nav class="h_nav" id="slidermnav" style="height: 0px; overflow:hidden;">
+	<ul>
+    	<li style="display:block">
+        <p class="m_con nav_1">
+        <a href="{WAP_SITEURL}" style="width:18%">首页<em></em></a><a href="{WAP_SITEURL}list.html" style="width:28%">楼盘检索<em></em></a><a href="{WAP_SITEURL}top/" style="width:26%">楼盘榜<em></em></a><a href="{WAP_SITEURL}map/" style="width:28%">找房楼盘</a><i onclick='slidermnav.next();return false;'></i>
+        </p>	
+        </li>
+        <li style="display:none">
+        <p class="m_con nav_2">
+        <a href="{WAP_SITEURL}news/" style="width:33%">新房导购<em></em></a><a href="{WAP_SITEURL}calcul/" style="width:34%">房贷计算<em></em></a><i onclick='slidermnav.prev();return false;'></i>
+        </p>	
+      </li>
+    </ul>
+</nav>
+<script>
+	var slidermnav = new Swipe(document.getElementById('slidermnav'));
+</script><nav class="lp_nav">
+	<a href="{WAP_SITEURL}detail/{$id}/">参数<i></i></a><a href="{WAP_SITEURL}news/{$id}/" class="sel_on">资讯<i></i></a><a href="{WAP_SITEURL}huxing/{$id}/">户型<i></i></a><a href="{WAP_SITEURL}device/{$id}/">配套<i></i></a><a href="{WAP_SITEURL}pic/{$id}/">图片<i></i></a><a href="{WAP_SITEURL}comment/{$id}/">点评</a>
+</nav>
+{h5:content action="newsinfo" xglp="$id" catid="6" num="15" order="inputtime DESC" cache="86400"}<!-- 相关资讯 -->
+	<h2 class="f_h2 sf_h2" id="dtmao" name="dtmao">楼盘动态</h2>
+	<section class="new_list">
+	
+		<div id="dt">
+		{loop $data $k $r}
+		<a class="sta" href="{WAP_SITEURL}show/{$r[catid]}/{$r[id]}"><i></i><label style="width:110px;">{date('Y-m-d ',$r[inputtime])}{if $n==1}<em></em>{/if}</label><span>{str_cut($r['title'],42,'')}</span></a>
+	{/loop}
+	        	    </div>
+	</section>
+	{if count($data)>5}
+		<div class="bn_most">
+		<div class="s2">
+	    <a class="top" href="#">顶部</a>
+	    <a class="most" href="#"><span class="num" id="dtgd">更多动态 <em>(5/{count($data)})</em></span></a>
+	    <i class="h"></i>
+	    <b></b><sub></sub>
+	    </div>
+	</div>
+	{/if}
+{/h5}
+	<script text="javascript">
+$("#dt  a:gt(4)").hide();
+$("#dtgd").parent().toggle(
+		function () {
+			$("#dtgd").attr('class', 'num up');
+			re=/(\d+)\/(\d+)/i;
+			var arr = re.exec($("#dtgd em").text());
+			if(arr[2] > 5)
+			{
+				before = arr[2];
+			}
+			else
+			{
+				before = arr[1];
+			}
+			var content = "全部收起 <em>(" + before + "/" + arr[2] + ")</em>";
+			$("#dtgd").html(content);
+			$("#dt a:gt(4)").fadeIn(100);
+		},
+		function () {
+			$("#dtgd").attr('class', 'num');
+			re=/(\d+)\/(\d+)/i;
+			var arr = re.exec($("#dtgd em").text());
+			if(arr[1] > 5)
+			{
+				before = 5;
+			}
+			else
+			{
+				before = arr[2];
+			}
+			var content = "更多动态 <em>(" + before + "/" + arr[2] + ")</em>";
+			$("#dtgd").html(content);
+			$("#dt a:gt(4)").fadeOut(100);
+			location.href = "#dtmao";
+		}
+	);
+</script>
+
+<a href="tel:{$tel}" class="bot_tel"><i></i><span><strong>咨询电话：</strong>{$tel}</span></a>
+{template "wap","footer"}

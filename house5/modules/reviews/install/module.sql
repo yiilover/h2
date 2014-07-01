@@ -1,0 +1,1 @@
+INSERT INTO `v9_module` (`module`, `name`, `url`, `iscore`, `version`, `description`, `setting`, `listorder`, `disabled`, `installdate`, `updatedate`) VALUES ('reviews', 'µ„∆¿', 'reviews/', 0, '1.0', 'µ„∆¿', '', 0, 0, '2010-10-30', '2010-10-30');

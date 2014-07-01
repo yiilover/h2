@@ -1,0 +1,224 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>提前还款计算器-购房工具 - House5</title>
+<meta name="keywords" content="提前还款计算器,提前还款计算,按揭提前还款计算,购房工具" /> 
+<meta name="description" content="提前还款计算器，提供最新的提前还款计算公式，可用于等额本金提前还款计算、公积金提前还款计算器、按揭提前还款计算等，是买房时的购房工具。" />
+	<link rel="shortcut icon" href="http://www.house5.cn/favicon.ico" />
+		<link href="/statics/default/css/tools/tools_style.css" rel="stylesheet" type="text/css" />
+		<script language="javascript" type="text/javascript" src="/statics/default/js/tools/calculate2.js"></script>
+		<script language="javascript" type="text/javascript" src="/statics/default/js/tools/dkll.js"></script>
+	</head>
+<body>
+<div id="wrap">
+
+
+<div class="cArea">
+			<!--通用头部 begin -->
+		
+			<!--通用头部 end-->
+			<!--logo+搜索 begin -->
+			<div class="logo_search">
+				<div class="logo"><img src="/statics/default/img/logo.png" /></div>
+				<div class="search">
+					<script src="/index.php?s=content/index/topsearch" type="text/javascript"></script>
+				</div>
+			</div>
+			<!--logo+搜索 end -->
+		</div>
+		<div class="hr15"></div>
+
+
+
+<form name="tqhdjsq">
+<div class="cArea">
+<div class="left">
+<div class="left_wrap">
+<div class="left_title">
+
+<div id="cal1"><span ><a href="fdjsq.html">房贷计算器</a><em></em></span><span class="atv"><a href="tqhkjsq.html">提前还货计算器</a><em></em></span><span ><a href="sfjsq.html">税费计算器</a><em></em></span><span ><a href="gfnlpg.html">购房能力评估</a><em></em></span><span ><a href="gjjdkjsq.html">个人住房公积金贷款计算器</a><em></em></span></div></div>
+<div class="left_cont">
+<div class="results">
+<div class="hlist_c">
+<ul>
+<li><span class="td_1">还款类型：</span><span class="td_3"><select name="tqhklx" id="tqhklx">
+<option value="0">商业贷款</option><option value="1">公积金贷款</option>
+</select></span></li>
+<li><span class="td_1">原贷款金额：</span><span class="td_3"><input name="dkzws" type="text"  class="waptextarea1"   />&nbsp;万元</span></li>
+<li><span class="td_1">原贷款年限：</span><span class="td_3">
+ <select size="1" name="yhkqs" style="">
+<option value="24">2年(24期)</option>
+<option value="36">3年(36期)</option>
+<option value="48">4年(48期)</option>
+<option value="60">5年(60期)</option>
+<option value="72">6年(72期)</option>
+<option value="84">7年(84期)</option>
+<option value="96">8年(96期)</option>
+<option value="108">9年(108期)</option>
+<option value="120">10年(120期)</option>
+<option value="132">11年(132期)</option>
+<option value="144">12年(144期)</option>
+<option value="156">13年(156期)</option>
+<option value="168">14年(168期)</option>
+<option value="180">15年(180期)</option>
+<option value="240" selected>20年(240期)</option>
+<option value="300">25年(300期)</option>
+<option value="360">30年(360期)</option>
+</select>
+</span></li>
+<li><span class="td_1">贷款利率：</span><span class="td_3"><select id="lilv" name="dklv_class" style="">
+<script>
+var words;
+for(i=1;i<=12;i++)
+{
+
+
+if (i==2){s=' selected';}else{s='';}
+if(i!=3){
+html='<option value='+i+' '+s+'>'+lilv_array[i][3]+'</option>';
+document.write(html);}
+}
+</script>
+</select></span></li>
+<li><span class="td_4"></span></li>
+<li class="hr5"></li>
+<li><span class="td_001">第一次还款时间：</span>
+<span class="td_3">
+  <select name="yhksjn" style=""></select>&nbsp;年
+<select name="yhksjy" style="">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+</select>&nbsp;月</span></li>
+<li><span class="td_4"></span></li>
+<li class="hr5"></li>
+<li><span class="td_001">预计提前还款时间：</span><span class="td_3"><select name="tqhksjn" style=""></select>&nbsp;年
+<select name="tqhksjy" style="">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+</select>&nbsp;月
+
+<script language="javascript">
+d = new Date();
+for(var i = parseInt(2012 - 7); i <= parseInt(2012 + 30); i++ ){
+document.tqhdjsq.tqhksjn.options.add(new Option(i, i));
+}
+for(var i = parseInt(2012 - 12); i <= parseInt(2012); i++ ){
+document.tqhdjsq.yhksjn.options.add(new Option(i, i));
+}
+document.tqhdjsq.yhksjn.value = 2012;
+document.tqhdjsq.tqhksjn.value = 2012;
+document.tqhdjsq.yhksjy.value = parseInt(d.getMonth()) + 1;
+document.tqhdjsq.tqhksjy.value = parseInt(d.getMonth()) + 1;
+</script></span></li>
+<li><span class="td_4"></span></li>
+<li class="hr5"></li>
+<li><span class="td_1">提前还款方式：</span><span class="td_3"><input name="tqhkfs" checked type="radio" value="" /> 一次提前还清</span></li>
+<li><span class="td_1">&nbsp;</span><span class="td_3">
+  <input name="tqhkfs" type="radio" value="" />部分提前还款&nbsp;</span>
+<span class="td_3"><input name="tqhkws" type="text" class="waptextarea2"/>&nbsp;万元</span></li>
+<li><span class="td_4"></span></li>
+<li class="hr5"></li>
+<li><span class="td_01">处理方式：</span><span class="td_3">
+  <input name="clfs" type="radio" checked value="" /> 缩短还款期限,月还款额基本不变</span></li>
+<li><span class="td_01">&nbsp;</span><span class="td_3">
+  <input name="clfs" type="radio" value="" /> 减少月还款额,还款期限不变</span></li>
+<li><span class="td_1">&nbsp;</span><span class="td_3 linkd"><input type="button" onclick="javascript:play();" value="开始计算" class="smb_btn" /></span><span class="td_3 linkd">&nbsp;<a href="javascript:document.tqhdjsq.reset();">重新填写</a></span></li>
+</ul>
+</div>
+</div>
+<div class="view">
+<div class="title_view linkb">查看结果</div>
+<div class="view_cont">
+<div class="hlist_b">
+<ul>
+<li><span class="td_1">原月还款额：</span><span class="td_2"><input name="ykhke" type="text" class="input" readonly="true" /></span><span class="td_3">元</span></li>
+<li><span class="td_1">该月一次还款额：</span><span class="td_2"><input name="gyyihke" type="text" class="input" readonly="true" /></span><span class="td_3">元</span></li>
+<li><span class="td_1">原最后还款期：</span><span class="td_2"><input name="yzhhkq" type="text" class="input" readonly="true"  /></span><span class="td_3"></span></li>
+<li><span class="td_1">下月起月还款额：</span><span class="td_2"><input name="xyqyhke" type="text" class="input" readonly="true"  /></span><span class="td_3">元</span></li>
+<li><span class="td_1">已还款总额：</span><span class="td_2"><input name="yhkze" type="text" class="input" readonly="true" /></span><span class="td_3">元</span></li>
+<li><span class="td_1">节省利息支出：</span><span class="td_2"><input name="jslxzc" type="text" class="input" readonly="true"  /></span><span class="td_3">元</span></li>
+<li><span class="td_1">已还利息额：</span><span class="td_2"><input name="yhlxe" type="text" class="input" readonly="true" /></span><span class="td_3">元</span></li>
+<li><span class="td_1">新的最后还款期：</span><span class="td_2"><input name="xdzhhkq" type="text" class="input" readonly="true"  /></span><span class="td_3"></span></li>
+<li></li>
+<li><span class="td_04">以上结果仅供参考!</span></li>
+
+</ul>
+</div>
+</div>
+<div class="view_end"></div>
+</div>
+</div>
+<div class="left_end"></div>
+</div>
+</div>
+
+<div class="right">
+							<div class="rig_wrap">
+								<div class="title_rig linka"><a href="#">商业贷款利率</a></div>
+								<div class="rig_cont px7">
+									<ul class="hlist_a">
+										<li class="title"><span class="td_1">年限</span><span class="td_2">1-5年</span><span class="td_3">5-10年</span></li>
+										<script>
+											for(i=1;i<=12;i++)
+											{
+											
+											if (i!=3){
+											html='<li><span class="td_1">'+lilv_array[i][3]+'</span><span class="td_2">'+(Math.round(lilv_array[i][1][5]*10000))/100+'%</span><span class="td_3">'+(Math.round(lilv_array[i][1][10]*10000))/100+'%</span></li>';
+											document.write(html);}
+											}
+										</script>
+									</ul>
+								</div>
+								<div class="rig_end"></div>
+							</div>
+							<div class="hr10"></div>
+							<div class="rig_wrap">
+								<div class="title_rig linka"><a href="#">公积金贷款利率</a></div>
+								<div class="rig_cont px7">
+									<ul class="hlist_a">
+										<li class="title"><span class="td_1">年限</span><span class="td_2">1-5年</span><span class="td_3">5-10年</span></li>
+										<script>
+										for(i=1;i<=12;i++)
+										{
+											if(i==2||i==5||i==8||i==12){
+											if (i!=3){
+											html='<li><span class="td_1">'+lilv_array[i][3].replace('后基准','')+'</span><span class="td_2">'+(Math.round(lilv_array[i][2][5]*10000))/100+'%</span><span class="td_3">'+(Math.round(lilv_array[i][2][10]*10000))/100+'%</span></li>';
+											document.write(html);}
+											}
+										}
+										</script>
+									</ul>
+								</div>
+								<div class="rig_end"></div>
+							</div>
+							<div class="hr10"></div>
+						</div>
+
+
+</div>
+</form>
+</div>
+</body>
+</html>

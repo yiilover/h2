@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>手机问房网触屏版-图片</title>
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<link href="http://www.venfang.com/css/mobile/css.css" rel="stylesheet" type="text/css"/>
+<link href="http://www.venfang.com/css/mobile/styles.css" type="text/css" rel="stylesheet" />
+<link href="http://www.venfang.com/css/mobile/photoswipe.css" type="text/css" rel="stylesheet" />
+<script language="Javascript" src="{CSS_PATH}static/js/jquery.js"></script>
+<script type="text/javascript" src="http://www.venfang.com/css/mobile/klassmin.js"></script>
+<script type="text/javascript" src="http://www.venfang.com/css/mobile/swipe305min.js"></script>
+<style type="text/css">
+#PhotoSwipeTarget {
+width: 100%;
+height:100%;
+position:absolute
+z-index: 1; }
+
+#PhotoSwipeTarget img{
+}
+</style>
+<?php
+
+ 	$lid = intval($_GET['lid']);
+
+	$pid = intval($_GET['pid']);
+
+?>
+{h5:content action="huxinginfo" relation="$id" typeid="$lid" id="$pid" catid="8" order="inputtime DESC" cache="86400"}
+<script type="text/javascript">
+	(function(window, Util, PhotoSwipe){
+			Util.Events.domReady(function(e){
+				var instance, indicators;
+				
+				<?php
+foreach ($data as $rs)
+{
+	foreach (string2array($rs['pictureurls']) as $pic_k=>$r)
+
+	{
+
+		$img_array[] = "{url: '".thumb($r[url], 400, 350, 0)."', caption: '".$r[alt]."'}";
+	}
+}
+$imgs = implode(',',$img_array);
+?>
+			instance = PhotoSwipe.attach(
+				[
+					<?php echo $imgs;?>
+				
+				],
+					{
+						target: window.document.querySelectorAll('#PhotoSwipeTarget')[0],
+						preventHide: true,
+						captionAndToolbarHide: true,
+						//captionAndToolbarAutoHideDelay:0,
+						captionAndToolbarShowEmptyCaptions:false,
+						getImageSource: function(obj){
+							return obj.url;
+						},
+						getImageCaption: function(obj){
+							return obj.caption;
+						}
+					}
+				);
+				
+				
+			//	indicators = window.document.querySelectorAll('#Indicators span');
+				
+				// onDisplayImage - set the current indicator
+			//	instance.addEventHandler(PhotoSwipe.EventTypes.onDisplayImage, function(e){
+					
+			//		var i, len;
+			//		for (i=0, len=indicators.length; i<len; i++){
+			//			indicators[i].setAttribute('class', '');
+			//		}
+			//		indicators[e.index].setAttribute('class', 'current');
+					
+			//	});
+				
+				instance.show(0);
+				
+			});
+			
+		}(window, window.Code.Util, window.Code.PhotoSwipe));
+
+
+</script>
+</head>
+<body>
+<div class="wrap">
+<div class="backbox">
+   <div id="back" class="back" style="margin-bottom:2px;margin-top:-2px;z-index:2" onclick="history.back(-1)"><a><img src="http://www.venfang.com/css/mobile/images/btnback.png" width="70" ></a></div>
+   <div class="nxqbacktit"><span id="photoCount" style="font-size:20px;margin-left:50px;"></span></div>
+   <div class="clear"></div>
+ </div>
+<div id="MainContent">
+	
+	<div id="PhotoSwipeTarget"></div>
+	<div id="Indicators" class="none">
+{loop $data $rs}
+
+{loop string2array($rs['pictureurls']) $pic_k $v}
+	
+		<span></span>
+	{/loop}
+
+{/loop}
+	
+	
+	</div>
+</div>
+</div>
+ 
+{/h5}
+
+
+
+<script type="text/javascript">
+$('.wrap').css("height",window.innerHeight+100);  
+window.scrollTo(0, 1);
+$(".wrap").css("height",window.innerHeight);
+$("#MainContent").css("height",window.innerHeight-36);
+document.addEventListener('touchmove', function (e) { e.preventDefault(); });
+</script>
+</body>
+</html>

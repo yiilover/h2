@@ -1,0 +1,58 @@
+@charset "utf-8";
+/**
+* Description: Base style 
+* Developers: zhaoyongchang <yongchang@leju.sina.com.cn>
+**/
+/*RESET
+-------------------------------------------------------------- */
+.d_map{ width:100%;   position:relative; min-height: 268px;}
+.map_list_dh{ padding:4px; background:#6e8fce; border-top:1px solid #91b1ed; border-bottom:1px solid #3259a3; height:32px}
+.map_list_dh .map_qh{ top:49px; right:4px}
+.map_t{display:block; width:200px; height:28px; position:fixed; top:52px; left:8px; line-height:28px; font-size:12px; color:#fff; text-overflow:ellipsis; white-space:nowrap; overflow:hidden; text-shadow:1px 1px 0px #183876;}
+
+.map_qh{ display:block; width:88px; height:28px; position:fixed; top:52px; right:8px; background-color:rgba(29,69,139,0.9); padding:2px; border-radius:3px; -webkit-box-shadow: 0px 0px 3px #08173d inset;}
+.map_qh a{ display:block; width:42px; height:26px; float:left; clear:none; border-radius:3px; font-size:12px; color:#fff; text-align:center; line-height:26px; margin:1px}
+.map_qh .sel_on{ background:#fff; color:#333; -webkit-box-shadow: 0px 0px 3px #999 inset;}
+
+.map_bd{ display:block; position:fixed; top:50px; left:6px; width:38px; height:38px; background:url(../images//wap/map_bd.png) center no-repeat; background-size:30px 30px}
+
+.map_top{position:fixed; width:100%; top:0; left:0; z-index:1000}
+
+.map_dq {display:block; position:fixed; top:200px; left:200px; width:45px; height:45px; background:url(../images//wap/ico_dq.png) center no-repeat; background-size:45px 45px}
+
+.map_lp{ position:absolute; top:100px; left:20px; background:#fff; border:1px solid #999}
+.lp_con{ width:240px; position:relative; display:block}
+.lp_con .lpic{ display:block; position:absolute; width:80px; height:80px; -webkit-box-shadow:0px 0px 3px #000 inset; background-size:80px 80px; top:0px; left:0px; z-index:1}
+.lp_con .ltxt{ display:block; margin:0 0 0 80px; overflow:hidden; padding:0px 9px 0 9px; line-height:20px}
+.lp_con .ltxt label{ display:block; height:20px; line-height:20px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; text-shadow:1px 1px 0px #fff}
+.lp_con .ltxt .h1{ font-size:14px; font-weight:bold; color:#333}
+.lp_con .ltxt .jg{ font-size:12px; color:#cc3b3a; font-weight:bold}
+.lp_con .ltxt .wz{ font-size:12px; color:#666}
+.lp_con .ltxt .wz b{ font-weight:normal; color:#cacaca; padding:0 5px;}
+
+
+
+
+.ss_list{}
+.ss_list a {display:block; height:80px; border-top:1px solid #fff; position:relative; background:-webkit-gradient(linear, left top, left bottom, color-stop(0, #fff),  color-stop(1, #ececec));}
+.ss_list a .lpic{ display:block; position:absolute; width:90px; height:80px; -webkit-box-shadow:0px 0px 3px #000 inset; background-size:90px 80px; top:0; left:0; z-index:1}
+.ss_list a sub{ display:block; width:32px; height:20px; background:#cf504f; border-radius:2px; text-align:center; color:#fff; font-size:12px; line-height:20px; text-shadow:1px 1px 0px #a22827; position:absolute; top:7px; left:58px; z-index:2}
+.ss_list a sub em{ display:block; position:absolute; width:5px; height:9px; right:-5px; top:4px; background:url(../images//wap/ico_sj.png); background-size:5px 9px}
+.ss_list a .ltxt{ display:block; margin:0 0 0 90px; height:74px; overflow:hidden; border-bottom:1px solid #d9d9d9; border-left:1px solid #fff; padding:5px 9px 0 9px; line-height:24px; background:url(../images//wap/arr_1s.png) right center no-repeat; background-size:17px 12px}
+.ss_list a .ltxt label{ display:block; height:24px; line-height:24px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; text-shadow:1px 1px 0px #fff;}
+.ss_list a .ltxt .h1{ font-size:16px; font-weight:bold; color:#333}
+.ss_list a .ltxt .jg{ font-size:14px; color:#cc3b3a; font-weight:bold}
+.ss_list a .ltxt .wz{ font-size:12px; color:#666}
+.ss_list a .ltxt .wz b{ font-weight:normal; color:#cacaca; padding:0 5px;}
+
+
+.list_page { height:36px; padding:5px 0; background:#213e74; color:#fff; text-align:center; font-size:16px; line-height:36px; position:relative; text-shadow:1px 1px 0px #000}
+.list_page em{ display:block; width:100%; position:absolute; top:0; height:4px; background:url(../images//wap/yy_y.png) 0 -4px repeat-x; overflow:hidden; z-index:10}
+.list_page a{ display:block; width:34px; height:34px; border:1px solid #274479;  background:#112446; border-radius:5px; position:absolute; line-height:200px; overflow:hidden}
+.list_page a i{ display:block; width:13px; height:11px; position:absolute; top:12px; left:11px; background:url(../images//wap/pic_arr3.png) no-repeat; background-size:26px 11px;}
+.list_page .l_bn{ left:10px; top:5px}
+.list_page .l_bn i{ background-position:0 0}
+.list_page .r_bn{ right:10px; top:5px}
+.list_page .r_bn i{ background-position:-13px 0}
+
+.t_blue{ color:#4574c6}

@@ -1,0 +1,208 @@
+{template "wap","header"}
+<link type="text/css" rel="stylesheet" href="/statics/default/3g/css/3g_common.css" />
+<link type="text/css" rel="stylesheet" href="/statics/default/3g/css/3g_mapfj.css" />
+<script>
+window.addEventListener("load",function() {
+  setTimeout(function(){
+    window.scrollTo(0, 1);
+  }, 0);
+}); 
+</script>
+</head>
+
+<body>
+<script type="text/javascript">
+	function d_maph(){	
+	var bg = document.getElementById("d_map");
+	bg.style.height =  document.documentElement.scrollHeight + 100 + "px" 
+	}
+</script>
+<div class="map_top">
+<header class="header">
+	<a href="{WAP_SITEURL}" class="logo">{$WAP['sitename']}</a>
+    <a href="{WAP_SITEURL}" class="bn_back bn_back2" >返回</a>
+    <a href="#" class="bn_search">搜索</a>
+    <a href="#" class="bn_nav">导航</a>
+    <i></i>
+</header>
+	<script>
+	/*点击搜索和导航触发的事件*/
+	$(".bn_search").bind("click", function(){
+		var getifclass = $(this).attr("class").indexOf("bn_search_on");
+		if(getifclass > -1)
+		{
+			$(".h_so").css("display", "none");
+			$(".bn_search").removeClass("bn_search_on");
+		}
+		else
+		{
+			$(".h_so").css("display", "block");
+			$(".bn_search").addClass("bn_search_on");
+			$(".h_nav").css("height", "0px");
+			$(".bn_nav").removeClass("bn_nav_on");
+			$('#ico_del').css('display', 'none');
+		}
+			
+	});
+	$(".bn_nav").bind("click", function(){
+		$(".bn_search").removeClass("bn_search_on");
+		var getifclass = $(this).attr("class").indexOf("bn_nav_on");
+		if(getifclass > -1)
+		{
+			$(".h_nav").css("height", "0px");
+			$(".bn_nav").removeClass("bn_nav_on");
+		}
+		else
+		{
+			$(".h_so").css("display", "none");
+			$(".bn_search").removeClass("bn_search_on");
+			$(".h_nav").css("height", "43px");
+			$(".bn_nav").addClass("bn_nav_on");
+		}
+	});
+	function changeCity()
+	{
+		var stylecss = $(".sel_city").attr("style").indexOf("0px");
+		if(stylecss > -1)
+		{
+			$(".sel_city").attr("style", "");
+			$(".sel_city").css("height", "auto");
+		}
+		else
+		{
+			$(".sel_city").css("height", "0px");
+			$(".sel_city").css("overflow", "hidden");
+		}
+		
+	}
+	</script>
+<script type="text/javascript" src="/statics/default/3g/js/3g_swipe.min.js"></script>
+<div class="h_so" style="display:none">
+	<div class="m_con">
+		<form id="search_form" name="f" action="{WAP_SITEURL}list.html" method="get">
+	    	<input type="search" name='k' id="kw" class="input_keys" id="kw"  value="请输入楼盘……"  onfocus="if(this.value=='请输入楼盘……'){this.value='';}$('#ico_del').css('display', 'block');" onblur="if(this.value=='')this.value='请输入楼盘……';" autocomplete="off">
+	        <span class="ico_clear" onclick="$('#search_form input').val('')"><i id="ico_del" style="display:none"></i></span>
+	        <div class="search_bn" onClick="$('form').submit()"><i></i></div>
+    	</form>
+    </div>
+</div>
+<nav class="h_nav" id="slidermnav" style="height: 0px; overflow:hidden;">
+	<ul>
+    	<li style="display:block">
+        <p class="m_con nav_1">
+        <a href="{WAP_SITEURL}" style="width:18%">首页<em></em></a><a href="{WAP_SITEURL}list.html" style="width:28%">楼盘检索<em></em></a><a href="{WAP_SITEURL}top/" style="width:26%">楼盘榜<em></em></a><a href="{WAP_SITEURL}map/" style="width:28%">找房楼盘</a><i onclick='slidermnav.next();return false;'></i>
+        </p>	
+        </li>
+        <li style="display:none">
+        <p class="m_con nav_2">
+        <a href="{WAP_SITEURL}news/" style="width:33%">新房导购<em></em></a><a href="{WAP_SITEURL}calcul/" style="width:34%">房贷计算<em></em></a><i onclick='slidermnav.prev();return false;'></i>
+        </p>	
+      </li>
+    </ul>
+</nav>
+<script>
+	var slidermnav = new Swipe(document.getElementById('slidermnav'));
+</script><div class="map_yy_t"></div>
+</div>
+<script src="http://api.map.baidu.com/api?v=1.4" type="text/javascript"></script>
+<div class="d_map" id="d_map">
+
+<script type="text/javascript">
+  function loadScript() 
+  {  
+    var script = document.createElement("script");  
+    script.src = "http://api.map.baidu.com/api?v=1.4&callback=initialize";  document.body.appendChild(script);
+  } 
+  window.onload = loadScript;
+
+  function initialize() 
+  { 
+    if (navigator.geolocation)
+    {
+      navigator.geolocation.getCurrentPosition(showPosition);
+
+    }  
+    else
+    {
+      x.innerHTML="Geolocation is not supported by this browser.";
+    }
+  }
+  var xposition;
+  var yposition;
+  var point;
+  var map = new BMap.Map('d_map');
+  var str_id = '';
+
+  function showPosition(position)
+  {
+    map = new BMap.Map('d_map');
+    xposition = position.coords.longitude;
+    yposition = position.coords.latitude;
+    point = new BMap.Point(xposition, yposition);
+    var myIcon = new BMap.Icon("/statics/default/3g/images/wap/ico_dq.png", new BMap.Size(38, 38), {imageSize:new BMap.Size(38, 38)});
+    marker = new BMap.Marker(point, {icon:myIcon});
+    map.centerAndZoom(point, 14);
+    map.addOverlay(marker);
+    
+
+    var gc = new BMap.Geocoder();//地址解析类  
+    gc.getLocation(point, function(rs){
+        var addComp = rs.addressComponents;  
+        
+        $.ajax({
+          url: "/api.php?op=nearhouse",
+          type:"POST",
+          data: {"city" : "" , "xposition" : point.lat, "yposition" : point.lng, "district" : addComp.district},
+          success: function(msg){
+            var de_house = eval("["+msg+"]");
+            var aroundhouse = eval("["+de_house+"]");
+            str_id = xposition + ',' + yposition + ',' + addComp.district + addComp.street + addComp.streetNumber;
+            for(i=0; i<aroundhouse.length; i++)
+            {
+              var otherpt = aroundhouse[i];
+              var otherpoint = new BMap.Point(otherpt[0], otherpt[1]);
+              str_id = str_id + ',' + otherpt[7];
+              addMarker(otherpoint, otherpt[2], otherpt[3], otherpt[4], otherpt[5], otherpt[6], otherpt[7]);
+            }
+            if(str_id != '')
+            {
+              $("#allid").val(str_id);
+            }
+          }
+        });
+    }); 
+  }
+  function addMarker(point, value2, value3, value4, value5, value6, value7)
+  {
+      var marker = new BMap.Marker(point);
+      map.addOverlay(marker);
+      var city_pub = "weihai"
+      //创建信息窗口
+      var value = "<a href='{WAP_SITEURL}detail/"+value7+"/' class='lp_con'><label class='lpic' style='background:url("+value6+")'></label><p class='ltxt'><label class='h1'>"+value2+"</label><label class='jg'>"+value3+"</label><label class='wz'>"+value4+"</label> <label class='wz'><span class='t_blue'>"+value5+"</span></label> </p> </a>";
+      var infoWindow = new BMap.InfoWindow(value);
+      marker.addEventListener("click", function(){this.openInfoWindow(infoWindow);});
+  }
+  
+</script>
+</div>
+<script type="text/javascript" src="/statics/default/3g/js/3g_swipe.min.js"></script>
+<script>
+
+// slider
+var slider = new Swipe(document.getElementById('slider'), {
+      callback: function(e, pos) {
+        
+        var i = bullets.length;
+        while (i--) {
+          bullets[i].className = ' ';
+        }
+        bullets[pos].className = 'on';
+      }
+    });
+</script>
+<div class="map_qh">
+	<form id="form1" name="form1" action="{WAP_SITEURL}maplist/" method="post"><input id = "allid" name="allid" type="hidden" value=""><a href="#" onClick="javascript:$('#form1').submit();">列表</a></form><a href="#" class="sel_on">地图</a>
+</div>
+<div class="map_bd" onClick="map.panTo(point);"></div>
+<script type="text/javascript">d_maph();</script>
+</body>

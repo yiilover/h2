@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link rel="shortcut icon" href="favicon.ico" />
+	<link href="{APP_PATH}statics/default/css/home/home_style.css" rel="stylesheet" type="text/css" />
+	<base target="_blank" />
+	<script language="Javascript" src="{APP_PATH}statics/default/js/news/default.js"></script>
+	    <script type="text/javascript">//输入框文字消失
+ 		function OnFocusFun(element,elementvalue)
+		{
+			if(element.value==elementvalue)
+			{
+				element.value="";
+				
+			}
+		}
+ 		function OnBlurFun(element,elementvalue)
+		{
+			if(element.value==""||element.value.replace(/\s/g,"")=="")
+			{
+				element.value=elementvalue;
+			
+			}
+		} 
+    </script> 
+</head>
+
+<body>
+<div id="wrap">
+	<div class="cArea">
+		{template "ssi","ssi_8"}
+		<!-- 广告位：全站顶部通栏1 -->
+<script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=25"></script>
+				<div class="logowap">
+			<!--logo begin -->
+			<div class="logo"><img src="{APP_PATH}statics/default/img/logo.png" /></div>
+			<!--logo end -->
+			<!--搜索+AD begin-->
+			<div class="container">	
+			<div class="search">
+				<div class="PartAs">
+					<div class="PartAsc1 SearchD">家居资讯
+					</div>
+					
+				 													<a href="javascript:;" onclick="setmodel(1, $(this));" style="outline:medium none;" hidefocus="true"  class="on" ></a>										<a href="javascript:;" onclick="setmodel(91, $(this));" style="outline:medium none;" hidefocus="true" ></a>										<a href="javascript:;" onclick="setmodel(205, $(this));" style="outline:medium none;" hidefocus="true" ></a>										<a href="javascript:;" onclick="setmodel(267, $(this));" style="outline:medium none;" hidefocus="true" ></a>										<a href="javascript:;" onclick="setmodel(316, $(this));" style="outline:medium none;" hidefocus="true" ></a>									     
+				
+					
+						<div class="searchwap">
+						 <form action="{APP_PATH}index.php" method="get" target="_blank">
+				<input type="hidden" name="s" value="search/index/init"/>
+				<input type="hidden" name="typeid" value="1" id="typeid"/>
+				<input type="hidden" name="siteid" value="1" id="siteid"/>
+						<input type="text" class="input1" value="输入关键字" onfocus="OnFocusFun(this,'输入关键字')" onblur="OnBlurFun(this,'输入关键字')" name="q"/><input name="submit" type="submit" class="smb_btn" value=""/>
+						
+						  </form>
+   		
+						</div>
+					
+ 
+		  </div></div>
+			<div class="rightsideBar"><script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=51"></script></div>
+		</div>
+			<!--搜索+AD end-->
+        </div>
+		<div class="hr10"></div>	
+		<!--nav begin-->
+		<div class="nav">
+			<ul class="link1">
+				<li class="link002"><a href="{catlink(53)}" target="_blank">家居首页</a></li>
+				
+				{h5:content action="category" catid="53" num="25" siteid="$siteid" order="listorder ASC"}{loop $data $r}
+<li class="aa"><a href={$r[url]}>{$r[catname]}</a></li> 
+{/loop} {/h5} 
+			</ul>
+		</div>	
+		<div class="hr10"></div>
+		<!--nav end-->	
+	</div>
+	
+	<div class="cArea">
+		<!--聚焦图片 begin-->
+		<div class="left">
+			<div class="focus">
+
+{h5:content  action="position" posid="8"  order="listorder DESC" thumb="1" num="5"}
+{if $data}
+<script src="{APP_PATH}statics/default/js/news/house5flash_1.js" type="text/javascript"></script>
+<div id="flashcontent01"></div>
+<script type="text/javascript">	
+var speed = 4000;		
+<?php
+$pics = Array();
+$mylinks = Array();
+$titles = Array();
+foreach ($data as $key=>$value)
+{
+	$pics[]= thumb($value[thumb],300,225);
+	$mylinks[] = $value[url];
+	$titles[] = str_cut($value[title],36);
+}
+$pics = implode('|',$pics);
+$mylinks = implode('|',$mylinks);
+$titles = implode('|',$titles);
+?>
+var pics="<?php echo $pics;?>";	
+var mylinks="<?php echo $mylinks;?>";
+var texts="<?php echo $titles;?>";			
+var sohuFlash2 = new sohuFlash("{APP_PATH}statics/default/img/news/house50414a.swf","flashcontent01","300","400","8","#ffffff");
+
+
+
+sohuFlash2.addParam("quality", "medium");
+
+sohuFlash2.addParam("wmode", "opaque");						sohuFlash2.addVariable("speed",speed);
+sohuFlash2.addVariable("p",pics);	
+sohuFlash2.addVariable("l",mylinks);
+sohuFlash2.addVariable("icon",texts);
+sohuFlash2.write("flashcontent01");
+</script>
+{/if}
+{/h5}
+
+			
+			
+			</div>
+		</div>
+		<!--聚焦图片 end-->
+		<!--家装热点 begin-->
+		<div class="center">
+			<div class="centitle linkb"><a href="{catlink(53)}">家装热点</a></div>
+			<div class="hotnews">
+				{h5:content  action="position" posid="10" catid="58" order="listorder DESC" num="1"}
+				{loop $data $v}
+						<div class="a1 linkg">
+								 
+					  <a href="{$v[url]}" title="{$v[title]}"{title_style($v[style])}>{$v[title]}</a>
+																				
+						</div>
+					{/loop}
+				{/h5}
+					{h5:content  action="lists" catid="59" posids="0" order="id DESC" num="5"}
+						<ul class="linke">
+							{loop $data $v}
+						<li>·<a href="{$v[url]}" title="{$v[title]}"{title_style($v[style])}>{$v[title]}</a></li>
+						{/loop}
+
+							</ul>
+					{/h5}
+			</div>
+			
+			<div class="hotnews">
+		{h5:content  action="position" posid="10" catid="55" order="listorder DESC" num="1"}
+		{loop $data $v}
+				<div class="a1 linkg">
+						 
+			  <a href="{$v[url]}" title="{$v[title]}"{title_style($v[style])}>{$v[title]}</a>
+			   			                                 				
+				</div>
+			{/loop}
+		{/h5}
+				{h5:content  action="lists" catid="55" posids="0" order="id DESC" num="5"}
+						<ul class="linke">
+							{loop $data $v}
+						<li>·<a href="{$v[url]}" title="{$v[title]}"{title_style($v[style])}>{$v[title]}</a></li>
+						{/loop}
+
+							</ul>
+					{/h5}
+			</div>
+		</div>
+		<!--家装热点 end-->
+		<!--促销活动 begin-->
+
+			<div class="rigwap">
+				<div class="rigtitlea linkc"><span class="linkd"><a href="http://news.venfang.com/jiaju/cuxiao/">更多&gt;&gt;</a></span><a href="{catlink(57)}">{catname(57)}</a></div>
+				<div class="rignewsa">
+{h5:content  action="lists" catid="57" order="id DESC" num="8"}
+<ul>
+{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+
+    </ul>
+{/h5}
+				</div>
+				<div class="rigtitlea linkc"><span class="linkd"><a href="{catlink(58)}">更多&gt;&gt;</a></span><a href="{catlink(58)}">{catname(58)}</a></div>
+				<div class="rignewsa">
+{h5:content  action="lists" catid="58" order="id DESC" num="7"}
+<ul>
+{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+    </ul>
+{/h5}
+				</div>
+			</div>
+			<div class="hr10"></div>
+
+		<!--促销活动 end-->
+	</div>
+	<div class="cArea">
+	<div class="wraptitle ">
+		<span class="linkj"><a href="{BBS_PATH}">家居论坛</a></span>
+	</div>
+	<div class="content">
+	<div class="left">
+		<!--装修日记 begin-->
+		<div class="hr10"></div>
+		<div class="lefttitle linkb"><span class="linkd"><a href="{catlink(59)}">更多&gt;&gt;</a></span>{catname(59)}</div>
+	{h5:content  action="position" posid="10" catid="59" thumb="1" order="listorder DESC" num="2"}
+		{loop $data $v}			
+				<div class="PartTabt{$n}">
+			<div class="PartTabtl2"><a href="{$v[url]}" target="_blank" title="{$v[title]}" target="_blank"><img src= "{thumb($v[thumb],104,79)}" width="104" height="79" alt="{$v[title]}"/></a></div>
+			<div class="PartTabtr3"><a href="{$v[url]}" target="_blank">{str_cut($v[title],26)}</a></div>
+			<div class="PartTabtr2 linkf">{str_cut($v[description],80)}<a href="{$v[url]}">[详细]</a></div>
+			{if $n=="1"}<div class="xline"></div>{/if}
+		</div>
+    	{/loop}
+  {/h5}
+				
+		<div class="leftnews">
+{h5:content  action="lists" catid="59" posids="0" order="id DESC" num="2"}
+<ul>
+	{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+
+    </ul>
+{/h5}
+		</div>
+		<!--装友日记 end-->
+	</div>
+	<div class="centera">
+		<!--论坛热点 begin-->
+		<div class="hr10"></div>
+		<div class="centitle linkb"><span class="linkd"><a href="{BBS_PATH}">更多&gt;&gt;</a></span>论坛热点</div>
+		<div class="cases">
+		{h5:content  action="position" posid="10" catid="114" thumb="1" order="listorder DESC" num="3"}
+               <ul>
+				{loop $data $v}
+				 <li>
+                   <a href="{$v[url]}"><img src="{thumb($v[thumb],106,79)}" width="106" height="79" alt="{$v[title]}" /></a><br />
+                   <span class="linkf"><a href="{$v[url]}" title="{$v[title]}">{$v[title]}</a></span>
+                 {/loop}
+
+					</ul>
+				{/h5}
+		</div>
+		<div class="hotnews">
+			{h5:content  action="position" posid="10" catid="114" thumb="1" order="listorder DESC" num="4"}
+			<ul class="linke">
+			{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+					</ul>
+				{/h5}
+		</div>
+		<!--论坛热点 end-->
+	</div>
+	<div class="right">
+	<div class="rigwapa">
+		<div class="hr10"></div>
+		<!--热帖排行 begin-->
+		<div class="rigtitle linkc"><span class="linkd"><a href="{catlink(55)}">更多&gt;&gt;</a></span><a href="{catlink(55)}">{catname(55)}</a></div>
+		<div class="rignewsb">
+			{h5:content  action="position" posid="10" catid="55" thumb="1" order="listorder DESC" num="10"}
+			<ul>
+			{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+					</ul>
+				{/h5}
+												</ul>
+		</div>
+		<!--热帖排行 end-->
+		</div>
+	</div>
+	</div>
+	<div class="hr10"></div>
+	</div>
+	<div class="cArea">
+		<!--家居图库 begin-->
+		<div class="wraptitle ">
+			<span class="linkj"><a href="#">家居图库</a></span>
+		</div>
+		<div class="content">
+			<div class="tucu">
+	{h5:content  action="lists" catid="53" posids="0" thumb="1" order="id DESC" num="12"}
+				<ul>
+{loop $data $v}
+<li><a href="{$v[url]}" target="_blank" title="{$v[title]}"><img src="{thumb($v[thumb],141,106)}" width="141" height="106" alt="{$v[title]}"/></a><br /><span><a href="{$v[url]}" target="_blank"   style="" >{$v[title]}</a></span></li>
+{/loop}
+
+    </ul>
+{/h5}
+			</div>
+		</div>
+		<!--家居图库 end-->
+		<div class="hr10"></div>
+	</div>
+</div>
+</div>
+	{template "content","footer"}

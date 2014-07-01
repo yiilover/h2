@@ -1,0 +1,1120 @@
+BODY {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+OL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+UL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H1 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H4 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H5 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H6 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+P {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TH {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+FORM {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+FIELDSET {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+LEGEND {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+INPUT {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TEXTAREA {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+SELECT {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+BODY {
+	FONT: 12px "ËÎÌå","Arial Narrow",HELVETICA; BACKGROUND: #fff; -webkit-text-size-adjust: 100%
+}
+A {
+	TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+EM {
+	FONT-STYLE: normal
+}
+LI {
+	LIST-STYLE-TYPE: none
+}
+IMG {
+	BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: middle; BORDER-LEFT-WIDTH: 0px
+}
+TABLE {
+	BORDER-SPACING: 0; BORDER-COLLAPSE: collapse
+}
+P {
+	WORD-WRAP: break-word
+}
+.undis {
+	DISPLAY: none
+}
+.dis {
+	DISPLAY: block
+}
+.ind {
+	TEXT-INDENT: 2em
+}
+.Q-red A {
+	COLOR: #bd0a01
+}
+A.Q-red {
+	COLOR: #bd0a01
+}
+.Q-black A {
+	COLOR: #000
+}
+A.Q-black {
+	COLOR: #000
+}
+.layout:after {
+	DISPLAY: table; CLEAR: both; CONTENT: ""
+}
+.hd:after {
+	DISPLAY: table; CLEAR: both; CONTENT: ""
+}
+.bd:after {
+	DISPLAY: table; CLEAR: both; CONTENT: ""
+}
+.ft:after {
+	DISPLAY: table; CLEAR: both; CONTENT: ""
+}
+.cf:after {
+	DISPLAY: table; CLEAR: both; CONTENT: ""
+}
+.Q-tList:after {
+	DISPLAY: table; CLEAR: both; CONTENT: ""
+}
+.Q-tList UL:after {
+	DISPLAY: table; CLEAR: both; CONTENT: ""
+}
+.Q-tList OL:after {
+	DISPLAY: table; CLEAR: both; CONTENT: ""
+}
+.Q-pList:after {
+	DISPLAY: table; CLEAR: both; CONTENT: ""
+}
+.Q-pList UL:after {
+	DISPLAY: table; CLEAR: both; CONTENT: ""
+}
+.Q-tpList:after {
+	DISPLAY: table; CLEAR: both; CONTENT: ""
+}
+.Q-tpList UL:after {
+	DISPLAY: table; CLEAR: both; CONTENT: ""
+}
+.Q-tpWrap:after {
+	DISPLAY: table; CLEAR: both; CONTENT: ""
+}
+.layout {
+	ZOOM: 1
+}
+.hd {
+	ZOOM: 1
+}
+.bd {
+	ZOOM: 1
+}
+.ft {
+	ZOOM: 1
+}
+.cf {
+	ZOOM: 1
+}
+.Q-tList {
+	ZOOM: 1
+}
+.Q-tList UL {
+	ZOOM: 1
+}
+.Q-tList OL {
+	ZOOM: 1
+}
+.Q-pList {
+	ZOOM: 1
+}
+.Q-pList UL {
+	ZOOM: 1
+}
+.Q-tpList {
+	ZOOM: 1
+}
+.Q-tpList UL {
+	ZOOM: 1
+}
+.Q-tpWrap {
+	ZOOM: 1
+}
+
+@media Screen    
+{
+.fl {
+	DISPLAY: inline; FLOAT: left
+}
+.layout .fl {
+	DISPLAY: inline; FLOAT: left
+}
+.chief {
+	DISPLAY: inline; FLOAT: left
+}
+.fr {
+	DISPLAY: inline; FLOAT: right
+}
+.layout .fr {
+	DISPLAY: inline; FLOAT: right
+}
+.extra {
+	DISPLAY: inline; FLOAT: right
+}
+.layout {
+	MARGIN: 0px auto; WIDTH: 960px
+}
+.Q-g4 .chief {
+	WIDTH: 780px
+}
+.Q-g4 .extra {
+	WIDTH: 170px
+}
+.Q-g8 .chief {
+	WIDTH: 637px
+}
+.Q-g8 .main {
+	WIDTH: 313px
+}
+.Q-g8 .extra {
+	WIDTH: 313px
+}
+.Q-g8 .sub {
+	WIDTH: 314px
+}
+.Q-g12 .chief {
+	WIDTH: 475px
+}
+.Q-g12 .extra {
+	WIDTH: 475px
+}
+.Q-g14 .chief {
+	WIDTH: 570px
+}
+.Q-g14 .extra {
+	WIDTH: 380px
+}
+.Q-g16 .chief {
+	WIDTH: 640px
+}
+.Q-g16 .main {
+	WIDTH: 380px
+}
+.Q-g16 .sub {
+	WIDTH: 250px
+}
+.Q-g16 .extra {
+	WIDTH: 310px
+}
+.Q-g17a .chief {
+	WIDTH: 700px
+}
+.Q-g17b .chief {
+	WIDTH: 700px
+}
+.Q-g17c .chief {
+	WIDTH: 700px
+}
+.Q-g17a .main {
+	WIDTH: 380px
+}
+.Q-g17a .sub {
+	WIDTH: 310px
+}
+.Q-g17a .extra {
+	WIDTH: 250px
+}
+.Q-g17b .extra {
+	WIDTH: 250px
+}
+.Q-g17c .extra {
+	WIDTH: 250px
+}
+.Q-g17b .main {
+	WIDTH: 345px
+}
+.Q-g17b .sub {
+	WIDTH: 345px
+}
+.Q-g17c .main {
+	WIDTH: 440px
+}
+.Q-g17c .sub {
+	WIDTH: 250px
+}
+.Q-g24 .chief {
+	WIDTH: 960px
+}
+.hd H2 {
+	DISPLAY: inline; FLOAT: left
+}
+.hd H3 {
+	DISPLAY: inline; FLOAT: left
+}
+.f12 {
+	FONT-SIZE: 12px
+}
+.f14 {
+	FONT-SIZE: 14px
+}
+.f16 {
+	FONT-SIZE: 16px
+}
+.f18 {
+	FONT-SIZE: 18px
+}
+.f20 {
+	FONT-SIZE: 20px
+}
+.l16 {
+	LINE-HEIGHT: 16px
+}
+.l17 {
+	LINE-HEIGHT: 17px
+}
+.l18 {
+	LINE-HEIGHT: 18px
+}
+.l19 {
+	LINE-HEIGHT: 19px
+}
+.l20 {
+	LINE-HEIGHT: 20px
+}
+.l21 {
+	LINE-HEIGHT: 21px
+}
+.l22 {
+	LINE-HEIGHT: 22px
+}
+.l23 {
+	LINE-HEIGHT: 23px
+}
+.l24 {
+	LINE-HEIGHT: 24px
+}
+.l25 {
+	LINE-HEIGHT: 25px
+}
+.l26 {
+	LINE-HEIGHT: 26px
+}
+.l27 {
+	LINE-HEIGHT: 27px
+}
+.l28 {
+	LINE-HEIGHT: 28px
+}
+.l29 {
+	LINE-HEIGHT: 29px
+}
+.l30 {
+	LINE-HEIGHT: 30px
+}
+.Q-hot {
+	MARGIN: 0px 10px
+}
+.Q-tList {
+	MARGIN: 0px 10px
+}
+.Q-hot H2 {
+	TEXT-ALIGN: center; FONT: 18px/28px simhei
+}
+.Q-hot H2.l30 {
+	FONT-SIZE: 20px
+}
+.Q-tList SPAN {
+	FLOAT: right
+}
+.Q-tpList LI SPAN {
+	FLOAT: right
+}
+.Q-pList LI {
+	TEXT-ALIGN: center; DISPLAY: inline; FLOAT: left
+}
+.Q-pList A {
+	DISPLAY: block
+}
+.Q-pList P A {
+	DISPLAY: inline
+}
+.Q-tpList EM {
+	FONT-WEIGHT: bold
+}
+.Q-tpList .pic {
+	TEXT-ALIGN: center; DISPLAY: inline; FLOAT: left; OVERFLOW: hidden; MARGIN-RIGHT: 10px
+}
+.Q-tpList .pic IMG {
+	BORDER-BOTTOM: #cbcbcb 1px solid; BORDER-LEFT: #cbcbcb 1px solid; DISPLAY: block; BORDER-TOP: #cbcbcb 1px solid; BORDER-RIGHT: #cbcbcb 1px solid
+}
+.Q-vBg {
+	POSITION: relative; TEXT-ALIGN: right; FILTER: progid:DXImageTransform.Microsoft.gradient( Q-gradientType = 0, startColorstr = '#80000000', endColorstr = '#80000000'); MARGIN-TOP: -21px; WIDTH: 100%; FONT: 12px/21px "ËÎÌå","Arial Narrow",HELVETICA; HEIGHT: 21px; CURSOR: pointer
+}
+.Q-vBg B {
+	POSITION: absolute; WIDTH: 21px; DISPLAY: block; HEIGHT: 21px; CURSOR: pointer; TOP: 0px; LEFT: 0px
+}
+.Q-vBg SPAN {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; COLOR: #fff; CURSOR: pointer; PADDING-TOP: 0px
+}
+.Q-line {
+	BORDER-BOTTOM: #ccc 1px dashed; FONT: 0px/0 Arial; HEIGHT: 0px; CLEAR: both; OVERFLOW: hidden
+}
+.Q-iDot LI {
+	BACKGROUND: url(../../img/tuan/i.png) no-repeat
+}
+.Q-iDotBlue LI {
+	BACKGROUND: url(../../img/tuan/i.png) no-repeat
+}
+.Q-iDotGray LI {
+	BACKGROUND: url(../../img/tuan/i.png) no-repeat
+}
+.Q-iTqq LI {
+	BACKGROUND: url(../../img/tuan/i.png) no-repeat
+}
+.Q-iVideo LI {
+	BACKGROUND: url(../../img/tuan/i.png) no-repeat
+}
+.Q-iVideoBlue LI {
+	BACKGROUND: url(../../img/tuan/i.png) no-repeat
+}
+.Q-iVideoDeep LI {
+	BACKGROUND: url(../../img/tuan/i.png) no-repeat
+}
+.Q-iVideoGreen LI {
+	BACKGROUND: url(../../img/tuan/i.png) no-repeat
+}
+.Q-iDotBlue LI {
+	BACKGROUND-POSITION: 0px -30px
+}
+.Q-iTqq LI {
+	BACKGROUND-POSITION: 0px -60px
+}
+.Q-iVideo LI {
+	BACKGROUND-POSITION: 0px -90px
+}
+.Q-iVideoBlue LI {
+	BACKGROUND-POSITION: 0px -120px
+}
+.Q-iVideoDeep LI {
+	BACKGROUND-POSITION: 0px -210px
+}
+.Q-iDotGray LI {
+	BACKGROUND-POSITION: 0px -180px
+}
+.Q-iVideoGreen LI {
+	BACKGROUND-POSITION: 0px -240px
+}
+.mt10 {
+	MARGIN-TOP: 10px
+}
+.mb10 {
+	MARGIN-BOTTOM: 10px
+}
+    }
+.layout {
+	MARGIN: 0px auto; WIDTH: 1000px
+}
+H1 {
+	FONT-SIZE: 14px; FONT-WEIGHT: normal
+}
+H2 {
+	FONT-SIZE: 14px; FONT-WEIGHT: normal
+}
+H3 {
+	FONT-SIZE: 14px; FONT-WEIGHT: normal
+}
+H4 {
+	FONT-SIZE: 14px; FONT-WEIGHT: normal
+}
+A {
+	COLOR: #333
+}
+A:hover {
+	COLOR: #bd0a01
+}
+A:active {
+	COLOR: #bd0a01
+}
+BODY {
+	LINE-HEIGHT: 22px; COLOR: #222
+}
+.bold {
+	FONT-WEIGHT: bold
+}
+.normal {
+	FONT-WEIGHT: normal
+}
+.center {
+	TEXT-ALIGN: center
+}
+.idt0 {
+	TEXT-INDENT: -9999px
+}
+.mt5 {
+	MARGIN-TOP: 5px
+}
+.mt10 {
+	MARGIN-TOP: 10px
+}
+.mt20 {
+	MARGIN-TOP: 20px
+}
+.mb10 {
+	MARGIN-BOTTOM: 10px
+}
+.mb15 {
+	MARGIN-BOTTOM: 15px
+}
+.mb20 {
+	MARGIN-BOTTOM: 20px
+}
+.hide {
+	DISPLAY: none
+}
+.icons {
+	BACKGROUND: url(../../img/tuan/icons.png) no-repeat
+}
+
+.loginicons {
+	BACKGROUND: url(../../img/tuan/login_ib_input.png) no-repeat 0px 0px;
+	margin: 0px 10px 0px 0px;
+width: 130px;
+height: 36px;
+line-height: 100px;
+overflow: hidden;
+float: left;
+}
+.login_ljzc {
+background: url("../../img/tuan/login_ib_input.png") no-repeat 0px -84px;
+width: 100px;
+height: 27px;
+line-height: 100px;
+padding-left:50px;
+overflow: hidden;
+float: left;
+}
+.login_other {
+	margin: 10px 0px 0px; padding: 0px 0px 0px 30px;
+}
+.login_other a {
+	background: url("../../img/tuan/login_ib_other.png") no-repeat 0px 0px; margin: 0px 0px 8px; width: 100px; height: 16px; line-height: 18px; overflow: hidden; padding-left: 20px; float: left; display: block;
+}
+.login_other a.lo_sina {
+	width: 115px;
+}
+
+.login_other a.lo_qq {
+	background-position: 0px -32px;
+}
+.page {
+	BACKGROUND: url(../../img/tuan/pageBg.png) repeat-x center top
+}
+.wrap {
+	MARGIN: 0px auto; WIDTH: 1000px
+}
+.miniNav {
+	LINE-HEIGHT: 30px; HEIGHT: 32px; COLOR: #bbb
+}
+.miniNav A {
+	COLOR: #5b5b5b
+}
+.miniNav A:hover {
+	COLOR: #2d374b; TEXT-DECORATION: none
+}
+.miniNav .loginBtn {
+	TEXT-ALIGN: center; LINE-HEIGHT: 20px; WIDTH: 59px; DISPLAY: inline-block; HEIGHT: 20px; COLOR: #6994c1
+}
+.miniNav .loginBtn:hover {
+	BACKGROUND-POSITION: -60px 0px; COLOR: #fff
+}
+.header {
+	HEIGHT: 90px
+}
+.header .telBox {
+	MARGIN-TOP: 20px; PADDING-LEFT: 55px; WIDTH: 215px; BACKGROUND-POSITION: -690px 5px
+}
+.header .telBox H2 {
+	FONT: bold 22px/30px "Î¢ÈíÑÅºÚ"; COLOR: #505050
+}
+.header .telBox P {
+	FONT: bold 18px/22px "Î¢ÈíÑÅºÚ"; COLOR: #ee5f00
+}
+.header .telBox P SPAN {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; COLOR: #888; PADDING-TOP: 0px
+}
+.header .selCity {
+	BORDER-BOTTOM: #c2c2c2 1px solid; TEXT-ALIGN: center; BORDER-LEFT: #c2c2c2 1px solid; LINE-HEIGHT: 21px; MARGIN: 34px 0px 0px 13px; WIDTH: 53px; HEIGHT: 21px; BORDER-TOP: #c2c2c2 1px solid; BORDER-RIGHT: #c2c2c2 1px solid
+}
+.header .selCity EM {
+	LINE-HEIGHT: 0; WIDTH: 5px; DISPLAY: inline-block; BACKGROUND-POSITION: -560px -140px; HEIGHT: 3px; MARGIN-LEFT: 3px; FONT-SIZE: 0px; VERTICAL-ALIGN: middle
+}
+.mainNav {
+	HEIGHT: 6px; OVERFLOW: hidden
+}
+.mainWrap .main {
+	WIDTH: 745px; FLOAT: left
+}
+.mainWrap .side {
+	WIDTH: 240px; FLOAT: right
+}
+.hotBox {
+	BORDER-BOTTOM: #d4d4d4 1px solid; BORDER-LEFT: #d4d4d4 1px solid; BORDER-TOP: #d4d4d4 1px solid; BORDER-RIGHT: #d4d4d4 1px solid
+}
+.linkBox {
+	BORDER-BOTTOM: #d4d4d4 1px solid; BORDER-LEFT: #d4d4d4 1px solid; BORDER-TOP: #d4d4d4 1px solid; BORDER-RIGHT: #d4d4d4 1px solid
+}
+.mainTop .con {
+	BORDER-BOTTOM: #d4d4d4 1px solid; BORDER-LEFT: #d4d4d4 1px solid; BORDER-TOP: #d4d4d4 1px solid; BORDER-RIGHT: #d4d4d4 1px solid
+}
+.mainSo .con {
+	BORDER-BOTTOM: #d4d4d4 1px solid; BORDER-LEFT: #d4d4d4 1px solid; BORDER-TOP: #d4d4d4 1px solid; BORDER-RIGHT: #d4d4d4 1px solid
+}
+.rankBox .rank {
+	BORDER-BOTTOM: #d4d4d4 1px solid; BORDER-LEFT: #d4d4d4 1px solid; BORDER-TOP: #d4d4d4 1px solid; BORDER-RIGHT: #d4d4d4 1px solid
+}
+.mainList .con {
+	BORDER-BOTTOM: #d4d4d4 1px solid; BORDER-LEFT: #d4d4d4 1px solid; BORDER-TOP: #d4d4d4 1px solid; BORDER-RIGHT: #d4d4d4 1px solid
+}
+.mainMap .con {
+	BORDER-BOTTOM: #d4d4d4 1px solid; BORDER-LEFT: #d4d4d4 1px solid; BORDER-TOP: #d4d4d4 1px solid; BORDER-RIGHT: #d4d4d4 1px solid
+}
+.mainWb .con {
+	BORDER-BOTTOM: #d4d4d4 1px solid; BORDER-LEFT: #d4d4d4 1px solid; BORDER-TOP: #d4d4d4 1px solid; BORDER-RIGHT: #d4d4d4 1px solid
+}
+.hisFocus {
+	BORDER-BOTTOM: #d4d4d4 1px solid; BORDER-LEFT: #d4d4d4 1px solid; BORDER-TOP: #d4d4d4 1px solid; BORDER-RIGHT: #d4d4d4 1px solid
+}
+.mainTop .shareBox .ico-qqspace {
+	BACKGROUND: url(../../img/tuan/route_pic_css_sprite_1.png) no-repeat
+}
+.mainTop .shareBox .ico-qqwb {
+	BACKGROUND: url(../../img/tuan/route_pic_css_sprite_1.png) no-repeat
+}
+.mainTop .shareBox .ico-qqpengyou {
+	BACKGROUND: url(../../img/tuan/route_pic_css_sprite_1.png) no-repeat
+}
+.mainTop .shareBox .ico-qqmail {
+	BACKGROUND: url(../../img/tuan/route_pic_css_sprite_1.png) no-repeat
+}
+.mainTop .txtBox .btnBm {
+	BACKGROUND: url(../../img/tuan/route_pic_css_sprite_1.png) no-repeat
+}
+.mainTop .txtBox .btnBmed {
+	BACKGROUND: url(../../img/tuan/route_pic_css_sprite_1.png) no-repeat
+}
+.mainList .con .list .scoreBox .score A {
+	BACKGROUND: url(../../img/tuan/route_pic_css_sprite_1.png) no-repeat
+}
+.mainList .t1.tit SPAN {
+	BACKGROUND: url(../../img/tuan/route_pic_css_sprite_1.png) no-repeat
+}
+.mainMap .t2.tit SPAN {
+	BACKGROUND: url(../../img/tuan/route_pic_css_sprite_1.png) no-repeat
+}
+.mainWb .t3.tit SPAN {
+	BACKGROUND: url(../../img/tuan/route_pic_css_sprite_1.png) no-repeat
+}
+.mainWb .ico {
+	BACKGROUND: url(../../img/tuan/route_pic_css_sprite_1.png) no-repeat
+}
+.mainTop .tit {
+	POSITION: relative; PADDING-BOTTOM: 0px; LINE-HEIGHT: 50px; PADDING-LEFT: 0px; PADDING-RIGHT: 6px; BACKGROUND-POSITION: 0px -170px; HEIGHT: 50px; FONT-SIZE: 14px; PADDING-TOP: 0px
+}
+.mainSo .tit {
+	POSITION: relative; PADDING-BOTTOM: 0px; LINE-HEIGHT: 50px; PADDING-LEFT: 0px; PADDING-RIGHT: 6px; BACKGROUND-POSITION: 0px -170px; HEIGHT: 50px; FONT-SIZE: 14px; PADDING-TOP: 0px
+}
+.mainTop .tit H2 {
+	FONT: 20px/22px "Î¢ÈíÑÅºÚ"; COLOR: #333
+}
+.mainSo .tit H2 {
+	FONT: 20px/22px "Î¢ÈíÑÅºÚ"; COLOR: #333
+}
+.mainTop .con {
+	BORDER-TOP: #8e9fe1 2px solid
+}
+.mainTop .item {
+	PADDING-BOTTOM: 20px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px; PADDING-TOP: 20px
+}
+.mainTop .itemBg {
+	BACKGROUND: #f8f8f8
+}
+.mainTop .txtBox {
+	LINE-HEIGHT: 24px; WIDTH: 300px; COLOR: #505050; FONT-SIZE: 14px
+}
+.mainTop .picBox {
+	WIDTH: 370px
+}
+.mainTop .txtBox .bd {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 7px
+}
+.mainTop .txtBox .line {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; COLOR: #989898; PADDING-TOP: 0px
+}
+.mainTop .detail .line {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; COLOR: #989898; PADDING-TOP: 0px
+}
+.mainTop .titleBox {
+	MARGIN-BOTTOM: 10px
+}
+.mainTop .titleBox H3 {
+	FONT: bold 22px/32px "Î¢ÈíÑÅºÚ"; COLOR: #333
+}
+.mainTop .titleBox H3 A {
+	FONT: bold 22px/32px "Î¢ÈíÑÅºÚ"; COLOR: #333
+}
+.mainTop .titleBox .day {
+	COLOR: #1e3e9f
+}
+.mainTop .shareBox {
+	MARGIN-TOP: 10px
+}
+.mainTop .shareBox SPAN {
+	DISPLAY: inline-block
+}
+.mainTop .shareBox .ico-title {
+	
+}
+.mainTop .shareBox .ico-qqspace {
+	WIDTH: 30px; BACKGROUND-POSITION: -174px 0px; HEIGHT: 16px; CURSOR: pointer
+}
+.mainTop .shareBox .ico-qqwb {
+	WIDTH: 30px; BACKGROUND-POSITION: -174px -38px; HEIGHT: 16px; CURSOR: pointer
+}
+.mainTop .shareBox .ico-qqpengyou {
+	WIDTH: 30px; BACKGROUND-POSITION: -174px -79px; HEIGHT: 16px; CURSOR: pointer
+}
+.mainTop .shareBox .ico-qqmail {
+	WIDTH: 30px; BACKGROUND-POSITION: -174px -115px; HEIGHT: 16px; CURSOR: pointer
+}
+.mainTop .txtBox H3 A {
+	FONT: bold 20px/30px "Î¢ÈíÑÅºÚ"; COLOR: #333
+}
+.mainTop .txtBox P {
+	FONT: bold 15px/22px "Î¢ÈíÑÅºÚ"; COLOR: #333
+}
+.mainTop .txtBox .num {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT: bold 14px/31px Arial; COLOR: #ee5f00; PADDING-TOP: 0px
+}
+.mainTop .txtBox .list {
+	PADDING-BOTTOM: 15px; LINE-HEIGHT: 28px; MARGIN-TOP: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #222; BORDER-TOP: #c8c8c8 1px dotted; PADDING-TOP: 15px
+}
+.mainTop .txtBox .list LI SPAN {
+	COLOR: #666
+}
+.mainTop .txtBox .list LI SPAN.bold {
+	COLOR: #ee5f00
+}
+.mainTop .txtBox .btn {
+	TEXT-ALIGN: center; LINE-HEIGHT: 33px; MARGIN: 0px auto; WIDTH: 106px; DISPLAY: block; FLOAT: left; HEIGHT: 33px; FONT-WEIGHT: bold
+}
+.mainTop .txtBox .btnBm {
+	TEXT-ALIGN: left; TEXT-INDENT: -999em; WIDTH: 108px; BACKGROUND-POSITION: 0px 0px; HEIGHT: 35px
+}
+.mainTop .txtBox .btnBmed {
+	TEXT-ALIGN: left; TEXT-INDENT: -999em; WIDTH: 108px; BACKGROUND-POSITION: -1px -50px; HEIGHT: 35px
+}
+.mainTop .txtBox .btnRes {
+	MARGIN: 5px 0px 0px 20px; FONT: 16px/26px "Î¢ÈíÑÅºÚ"; BACKGROUND-POSITION: -230px -30px; COLOR: #808080; CURSOR: auto
+}
+.mainTop .txtBox .btnTxt {
+	COLOR: #ee5f00
+}
+.mainTop .lineList {
+	MARGIN-TOP: 14px; WIDTH: 100%; BACKGROUND-POSITION: 0px -240px
+}
+.mainTop .lineList .iconDot {
+	POSITION: relative; MARGIN: 0px auto; WIDTH: 17px; DISPLAY: block; BACKGROUND-POSITION: -600px 0px; HEIGHT: 17px
+}
+.mainTop .lineList .detail {
+	BORDER-BOTTOM: #adb9e8 3px solid; POSITION: absolute; BORDER-LEFT: #adb9e8 3px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 17px; WIDTH: 309px; PADDING-RIGHT: 17px; DISPLAY: none; BACKGROUND: #fff; HEIGHT: 152px; BORDER-TOP: #adb9e8 3px solid; BORDER-RIGHT: #adb9e8 3px solid; PADDING-TOP: 16px; TOP: -183px; LEFT: -166px
+}
+.mainTop .lineList .detail EM {
+	POSITION: absolute; WIDTH: 11px; DISPLAY: block; BACKGROUND-POSITION: -560px -120px; HEIGHT: 7px; MARGIN-LEFT: -5px; TOP: 171px; LEFT: 50%
+}
+.mainTop .lineList .txtBox2 {
+	LINE-HEIGHT: 24px; PADDING-LEFT: 153px
+}
+.mainTop .lineList .num {
+	PADDING-RIGHT: 3px; FONT: bold 14px/31px Arial; COLOR: #ee5f00
+}
+.mainTop .lineList .tese {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 12px
+}
+.mainTop .lineList .current .detail {
+	DISPLAY: block
+}
+.mainTop .lineList .current .iconDot {
+	BACKGROUND-POSITION: -600px -20px
+}
+.mainList {
+	BORDER-TOP-STYLE: none
+}
+.mainList .t1.tit {
+	LINE-HEIGHT: 36px; TEXT-INDENT: -999px; WIDTH: 100%; BACKGROUND: url(../../img/tuan/t1.jpg) #3856b6 no-repeat 20px 0px; HEIGHT: 36px
+}
+.mainList .con .list {
+	BORDER-BOTTOM: #c7c7c7 1px dashed; MARGIN: 0px auto; WIDTH: 700px; HEIGHT: 205px
+}
+.mainList .con .nobr.list {
+	BORDER-BOTTOM-STYLE: none; MARGIN: 0px auto; BORDER-LEFT-STYLE: none; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none
+}
+.mainList .con .list .picBox {
+	MARGIN-TOP: 25px
+}
+.mainList .con .list .txtBox {
+	MARGIN: 25px 0px 0px 20px
+}
+.mainList .con .list .txtBox .title {
+	FONT: 16px/26px "Î¢ÈíÑÅºÚ"; COLOR: #3856b6; MARGIN-RIGHT: 10px
+}
+.mainList .con .list .txtBox .txtlist P {
+	WIDTH: 272px; HEIGHT: 25px; OVERFLOW: hidden
+}
+.mainList .con .list .txtBox .txtlist P SPAN {
+	MARGIN: 0px 5px; FONT: 18px/25px "Arial"; COLOR: #ee5f00
+}
+.mainList .con .list .scoreBox {
+	MARGIN-TOP: 25px; WIDTH: 200px
+}
+.mainList .con .list .scoreBox .score {
+	COLOR: #a5a5a5
+}
+.mainList .con .list .scoreBox .score SPAN {
+	MARGIN: 0px 5px; FONT: 18px/25px "Î¢ÈíÑÅºÚ"; COLOR: #ee5f00
+}
+.mainList .con .list .scoreBox .score A {
+	TEXT-INDENT: -999em; WIDTH: 38px; DISPLAY: block; BACKGROUND-POSITION: -1px -303px; HEIGHT: 21px
+}
+.mainList .con .list .scoreBox .score .btn {
+	MARGIN-TOP: 2px
+}
+.mainList .con .list .scoreBox .impress {
+	MARGIN-TOP: 10px
+}
+.mainList .con .list .scoreBox .impress .tag {
+	MARGIN-TOP: 5px; WIDTH: 177px
+}
+.mainList .con .list .scoreBox .impress .tag .lt {
+	TEXT-ALIGN: center; LINE-HEIGHT: 29px; BACKGROUND-COLOR: #f2f2f2; WIDTH: 88px; MARGIN-BOTTOM: 1px; HEIGHT: 29px; COLOR: #8b2323; FONT-WEIGHT: bold
+}
+.mainList .con .list .scoreBox .impress .tag .rt {
+	TEXT-ALIGN: center; LINE-HEIGHT: 29px; BACKGROUND-COLOR: #eaeaea; WIDTH: 88px; HEIGHT: 29px; COLOR: #8b2323; FONT-WEIGHT: bold
+}
+.mainList .con .list .scoreBox .impress .tag .lb {
+	TEXT-ALIGN: center; LINE-HEIGHT: 29px; BACKGROUND-COLOR: #eaeaea; WIDTH: 88px; MARGIN-BOTTOM: 1px; HEIGHT: 29px; COLOR: #8b5e23; FONT-WEIGHT: bold
+}
+.mainList .con .list .scoreBox .impress .tag .rb {
+	TEXT-ALIGN: center; LINE-HEIGHT: 29px; BACKGROUND-COLOR: #f2f2f2; WIDTH: 88px; HEIGHT: 29px; COLOR: #8b5e23; FONT-WEIGHT: bold
+}
+.mainList .con .list .scoreBox .comments {
+	MARGIN-TOP: 10px
+}
+.mainList .con .list .scoreBox .comments A.good {
+	COLOR: #004876
+}
+.mainList .con .list .scoreBox .comments A.bad {
+	COLOR: #247700
+}
+.mainMap {
+	BORDER-TOP-STYLE: none
+}
+.mainMap .t2.tit {
+	LINE-HEIGHT: 36px; TEXT-INDENT: -999px; WIDTH: 100%; BACKGROUND: url(../../img/tuan/t2.jpg) #3856b6 no-repeat 20px 0px; HEIGHT: 36px
+}
+.mainMap .con {
+	HEIGHT: 498px
+}
+.mainWb {
+	POSITION: relative; BORDER-TOP-STYLE: none
+}
+.mainWb .t3.tit {
+	LINE-HEIGHT: 36px; TEXT-INDENT: -999px; WIDTH: 100%; BACKGROUND: url(../../img/tuan/t3.jpg) #3856b6 no-repeat 20px 0px; HEIGHT: 36px
+}
+.mainWb .ico {
+	POSITION: absolute; WIDTH: 11px; BACKGROUND: url(../../img/tuan/t4.jpg) no-repeat; HEIGHT: 6px; TOP: 36px; LEFT: 50px
+}
+.mainWb .con {
+	HEIGHT: 960px
+}
+.mainWb .more {
+	POSITION: absolute; COLOR: #fff; RIGHT: 15px; TOP: 7px
+}
+.side .userBox {
+	BORDER-BOTTOM: #d4daf0 1px solid; BORDER-LEFT: #d4daf0 1px solid; BORDER-TOP: #d4daf0 1px solid; BORDER-RIGHT: #d4daf0 1px solid
+}
+.side .userBox .hd {
+	BORDER-BOTTOM: #becaee 1px dotted; TEXT-ALIGN: center; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #edf2fa; HEIGHT: 65px; COLOR: #afafaf; PADDING-TOP: 14px
+}
+.side .userBox .hd A {
+	COLOR: #505050
+}
+.side .userBox .login {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 10px; LINE-HEIGHT: 23px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; HEIGHT: auto; COLOR: #505050; PADDING-TOP: 5px
+}
+.side .userBox .login SUP {
+	FONT-FAMILY: Arial; COLOR: #ee5f00; FONT-WEIGHT: bold
+}
+.side .userBox .login .num {
+	COLOR: #6d7ebc
+}
+.side .userBox .login .date {
+	COLOR: #888
+}
+.side .userBox .tuanList {
+	PADDING-BOTTOM: 5px; MARGIN-TOP: 5px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: #becaee 1px dotted; PADDING-TOP: 5px
+}
+.side .userBox .myList {
+	PADDING-BOTTOM: 5px
+}
+.side .userBox .loginOut {
+	CURSOR: pointer
+}
+.side .userBox .userLogin {
+	TEXT-INDENT: -9999px; MARGIN: 0px auto 5px; WIDTH: 153px; DISPLAY: block; BACKGROUND-POSITION: -180px -70px; HEIGHT: 37px; CURSOR: pointer
+}
+.side .userBox .bd {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; COLOR: #888; PADDING-TOP: 5px
+}
+.side .userBox .bd H3 {
+	PADDING-BOTTOM: 5px
+}
+.side .userBox .bd A {
+	COLOR: #222
+}
+.side .userBox .bd .num {
+	FONT-FAMILY: Arial; COLOR: #ee5f00; FONT-WEIGHT: bold
+}
+.side .userBox .bd UL {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 5px
+}
+.actinfo .title {
+	BORDER-BOTTOM: #bcc3d2 1px solid; PADDING-BOTTOM: 5px; FONT: bold 16px/26px "Î¢ÈíÑÅºÚ"; COLOR: #505050
+}
+.actinfo .con {
+	COLOR: #505050; PADDING-TOP: 5px
+}
+.actinfo .con H3 {
+	MARGIN-TOP: 20px; FONT: bold 12px/24px "ËÎÌå"
+}
+.state .title {
+	BORDER-BOTTOM: #bcc3d2 1px solid; PADDING-BOTTOM: 5px; FONT: bold 16px/26px "Î¢ÈíÑÅºÚ"; COLOR: #505050
+}
+.state .con {
+	COLOR: #868686; PADDING-TOP: 5px
+}
+.state .con P {
+	MARGIN-TOP: 10px; TEXT-INDENT: 24px
+}
+.mapLayer .ft .btn {
+	BORDER-BOTTOM-STYLE: none; TEXT-ALIGN: center; LINE-HEIGHT: 20px; BORDER-LEFT-STYLE: none; WIDTH: 53px; DISPLAY: inline-block; BORDER-TOP-STYLE: none; HEIGHT: 20px; COLOR: #fff; BORDER-RIGHT-STYLE: none; CURSOR: pointer; TEXT-DECORATION: none
+}
+.mapLayer .ft .scBtn {
+	BACKGROUND-POSITION: -190px 0px
+}
+.mapLayer .ft .ztBtn {
+	BACKGROUND-POSITION: -130px 0px
+}
+.mapLayer {
+	PADDING-BOTTOM: 15px; PADDING-LEFT: 15px; WIDTH: 436px; PADDING-RIGHT: 15px; HEIGHT: 262px; PADDING-TOP: 15px
+}
+.mapLayer .hd {
+	PADDING-BOTTOM: 14px
+}
+.mapLayer .hd EM {
+	MARGIN: 4px 0px 0px 15px; WIDTH: 40px; DISPLAY: inline-block; BACKGROUND-POSITION: -600px -70px; FLOAT: left; HEIGHT: 15px
+}
+.mapLayer .hd .shou_ing {
+	BACKGROUND-POSITION: -600px -70px
+}
+.mapLayer .hd .shou_wait {
+	BACKGROUND-POSITION: -600px -120px
+}
+.mapLayer .hd .shou_end {
+	BACKGROUND-POSITION: -650px -70px
+}
+.mapLayer .hd .btnClose {
+	WIDTH: 16px; DISPLAY: inline-block; BACKGROUND-POSITION: -620px -50px; HEIGHT: 17px; CURSOR: pointer
+}
+.mapLayer .bd {
+	POSITION: relative; PADDING-BOTTOM: 5px; LINE-HEIGHT: 28px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; COLOR: #505050; BORDER-TOP: #e6e8ed 1px solid; PADDING-TOP: 5px
+}
+.mapLayer .picBox {
+	POSITION: absolute; WIDTH: 126px; HEIGHT: 120px; COLOR: #b2bee5; RIGHT: 0px; TOP: 13px
+}
+.mapLayer .picBox IMG {
+	BORDER-BOTTOM: #dddddd 1px solid; BORDER-LEFT: #dddddd 1px solid; PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BORDER-TOP: #dddddd 1px solid; BORDER-RIGHT: #dddddd 1px solid; PADDING-TOP: 2px
+}
+.mapLayer A {
+	COLOR: #5a73c8
+}
+.mapLayer .ft {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; COLOR: #b2bee5; PADDING-TOP: 10px
+}
+.bmResMod {
+	Z-INDEX: 9999; BORDER-BOTTOM: #c4c4c4 1px solid; POSITION: fixed; BORDER-LEFT: #c4c4c4 1px solid; PADDING-BOTTOM: 20px; MARGIN: -237px 0px 0px -370px; PADDING-LEFT: 20px; WIDTH: 700px; PADDING-RIGHT: 20px; BACKGROUND: #fff; HEIGHT: 195px; BORDER-TOP: #c4c4c4 1px solid; BORDER-RIGHT: #c4c4c4 1px solid; PADDING-TOP: 20px; TOP: 50%; LEFT: 50%; _position: absolute
+}
+.bmResMod .resList {
+	DISPLAY: block
+}
+.bmResMod .hd {
+	HEIGHT: 220px
+}
+.bmResMod .hd .btnClose {
+	WIDTH: 16px; DISPLAY: inline-block; BACKGROUND-POSITION: -620px -50px; HEIGHT: 17px; CURSOR: pointer
+}
+.bmResMod .hd H2 {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: block; FONT: 28px/40px "Î¢ÈíÑÅºÚ","ºÚÌå"; FLOAT: none; COLOR: #ee5f00; PADDING-TOP: 20px
+}
+.bmResMod .hd H3 {
+	DISPLAY: block; FONT: 17px/32px "Î¢ÈíÑÅºÚ","ºÚÌå"; FLOAT: none; COLOR: #222
+}
+.bmResMod .hd H3 A:hover {
+	COLOR: #30499c; TEXT-DECORATION: none
+}
+.bmResMod .hd H3 EM {
+	COLOR: #30499c
+}
+.bmResMod .hd .btnBox {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 20px
+}
+.bmResMod .hd .btn {
+	BORDER-BOTTOM: #d8d8d8 1px solid; TEXT-ALIGN: center; BORDER-LEFT: #d8d8d8 1px solid; LINE-HEIGHT: 29px; WIDTH: 96px; DISPLAY: inline-block; HEIGHT: 29px; COLOR: #222; BORDER-TOP: #d8d8d8 1px solid; BORDER-RIGHT: #d8d8d8 1px solid
+}
+.bmResMod .bd {
+	WIDTH: 700px; OVERFLOW: hidden
+}
+.bmResMod .hd .btn:hover {
+	TEXT-DECORATION: none
+}
+.bmResMod .bd {
+	BORDER-TOP: #c7c7c7 1px dotted; PADDING-TOP: 10px
+}
+.bmResMod .bd H3 {
+	FONT: 16px/30px "Î¢ÈíÑÅºÚ","ºÚÌå"; COLOR: #222
+}
+.bmResMod .bd H3 A {
+	COLOR: #6e84d0
+}
+.bmResMod .bd .resList {
+	WIDTH: 728px
+}
+.bmResMod .bd .resList .item {
+	MARGIN: 9px 12px 9px 0px
+}
+.resgInfo {
+	Z-INDEX: 9999; BORDER-BOTTOM: #c4c4c4 1px solid; POSITION: relative; BORDER-LEFT: #c4c4c4 1px solid; PADDING-BOTTOM: 20px; MARGIN: -200px 0px 0px -265px; PADDING-LEFT: 25px; WIDTH: 477px; PADDING-RIGHT: 25px; BACKGROUND: #fff; HEIGHT: 355px; BORDER-TOP: #c4c4c4 1px solid; BORDER-RIGHT: #c4c4c4 1px solid; PADDING-TOP: 20px; TOP: 50%; LEFT: 50%; _position: absolute
+}
+.resgInfo .hd H2 {
+	FONT: 22px/30px "Î¢ÈíÑÅºÚ","ºÚÌå"; COLOR: #8d98ba
+}
+.resgInfo .hd H2 SPAN {
+	COLOR: #222; FONT-SIZE: 12px
+}
+.resgInfo .hd H2 EM {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; COLOR: #ee5f00; PADDING-TOP: 0px
+}
+.resgInfo .hd .btnClose {
+	WIDTH: 16px; DISPLAY: inline-block; BACKGROUND-POSITION: -620px -50px; HEIGHT: 17px; CURSOR: pointer
+}
+.resgInfo .bd {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 40px; PADDING-LEFT: 80px; PADDING-RIGHT: 0px; BORDER-TOP: #f0f0f0 1px solid; PADDING-TOP: 18px
+}
+.resgInfo .bd DIV {
+	LINE-HEIGHT: 40px; HEIGHT: 40px
+}
+.resgInfo .bd A {
+	COLOR: #758bd8
+}
+.resgInfo .bd .name {
+	TEXT-ALIGN: right; WIDTH: 70px; DISPLAY: inline-block
+}
+.resgInfo .bd .name EM {
+	PADDING-RIGHT: 4px; COLOR: #ee5f00
+}
+.resgInfo .bd .txt {
+	BORDER-BOTTOM: #adb8c0 1px solid; BORDER-LEFT: #adb8c0 1px solid; LINE-HEIGHT: 27px; WIDTH: 201px; BACKGROUND-POSITION: 0px -210px; HEIGHT: 27px; BORDER-TOP: #adb8c0 1px solid; BORDER-RIGHT: #adb8c0 1px solid
+}
+.resgInfo .bd .yzmBox {
+	PADDING-TOP: 5px
+}
+.resgInfo .bd .yzmBox .name {
+	LINE-HEIGHT: 27px
+}
+.resgInfo .bd .txtYzm {
+	WIDTH: 119px; MARGIN-RIGHT: 6px
+}
+.resgInfo .bd .picYzm {
+	MARGIN-TOP: 0px
+}
+.resgInfo .bd .submit {
+	BORDER-BOTTOM-STYLE: none; TEXT-INDENT: -9999px; BORDER-LEFT-STYLE: none; WIDTH: 107px; BACKGROUND-POSITION: -210px -205px; BORDER-TOP-STYLE: none; HEIGHT: 35px; BORDER-RIGHT-STYLE: none; CURSOR: pointer
+}
+
+/**************µ¯³ö²ã*******************/
+.Boxheader,.Boxfooter,.Boxbody{ position:relative;}
+
+.headerR,.FooterR,.BodyR{ float:left;width:20px; }
+.headerL,.FooterL,.BodyL{ float:left;}
+
+.headerR{background:url(../../img/tuan/lightbox-header.png) no-repeat right 0; height:46px;}
+.headerL{background:url(../../img/tuan/lightbox-header.png) no-repeat left 0; height:46px;padding:0 0 0 20px;}
+
+.FooterR{background:url(../../img/tuan/lightbox-footer.png) no-repeat right 0;height:59px;}
+.FooterL{background:url(../../img/tuan/lightbox-footer.png) no-repeat left 0;height:39px;padding:10px 0 10px 20px;}
+
+
+
+.BodyL{background:url(../../img/tuan/lightbox-body.png) repeat-y left 0;padding:10px 0 10px 20px;}
+.BodyR{background:url(../../img/tuan/lightbox-body.png) repeat-y right 0;}
+
+.BoxMask{ height:100%; width:100%;left:0; top:0; background:#000;opacity:0.25;filter:alpha(opacity=25);}
+
+.Boxfooter{height:59px; }
+.Boxbody{overflow:hidden;}
+.Boxheader{ height:46px;cursor:move; }
+.Boxfooter .btn{ display:inline-block; float:right; margin:10px 10px 0 0;}
+.boxcover {
+position:absolute; left:0; top:0; width:100%; height:100%;
+background:#000; opacity:0.7; *filter:alpha(opacity=70);
+}

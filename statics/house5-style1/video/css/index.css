@@ -1,0 +1,127 @@
+@import url("base.css");
+@import url("comm.css");
+
+/*fi_movie*/
+.fi_movie{ height:340px; position:relative}
+.fi_movie .fi_list a{ position:absolute; display:none}
+.fi_movie .fi_list img{ width:960px; height:340px}
+.fi_movie .fi_tab{ height:13px; position:absolute; right:280px; bottom:9px; z-index:2; text-align:right;}
+.fi_movie .fi_tab a{ width:30px; height:13px; background:#ccc; margin-left:12px; display:inline-block}
+.fi_movie .fi_tab a.curr,.fi_movie .fi_tab a:hover{ background:#cc0000}
+.fi_movie .fi_note{ position:absolute; right:0px; width:265px; height:340px}
+.fi_movie .fi_note_bg{ position:absolute; z-index:2; width:265px; height:340px; background:#000; filter:alpha(opacity=50); -moz-opacity:0.5; -khtml-opacity:0.5; opacity:0.5}
+.fi_movie .fi_txt{ position:relative; z-index:3; margin:50px 0 0 20px; width:221px}
+.fi_movie .fi_note h2 a{ font-size:16px; color:#fff}
+.fi_movie .fi_note h2 a:hover{ text-decoration:underline}
+.fi_movie .fi_note h3{ font-size:12px; color:#cbcbcb; font-weight:normal; margin:10px 0; line-height:24px}
+.fi_movie a.fi_play{ position:absolute; right:155px; bottom:50px; z-index:4; background:url(../img/index.png) 0 -30px; width:87px; height:27px; display:block; text-indent:-9999px; overflow:hidden}
+.fi_movie .loading{ background:url(../img/lunbo_loading.gif); position:absolute; z-index:5; width:16px; height:16px; top:162px; left:362px}
+
+/*一楼*/
+.tongR{ float:right;}
+.blockyi{ width:682px; height:408px; float:left; border:solid #d9d9d9; border-width:2px 1px 1px 1px}
+.blockyi .title{ height:45px;}
+.blockyi .title a{ float:right; color:#cc0000; margin:14px 20px 0 0;}
+.blockyi .play{ width:244px; height:183px; background:#ccc; float:left; margin:0 15px 10px 23px; display:inline}
+.blockyi .news{ float:left; width:385px;}
+.blockyi .news h1{ margin-bottom:10px}
+.blockyi .news h1 a{color:#cc0000;font:16px "\5FAE\8F6F\96C5\9ED1";}
+.blockyi .news h1 a:hover{ text-decoration:underline;}
+.blockyi .news span{ display:inline-block; line-height:20px; margin-bottom:10px}
+.blockyi .news span a{ color:#333}
+.blockyi .news span a:hover{ color:#cc0000; text-decoration:underline}
+.blockyi .news .xline{ width:100%; height:1px; background:url(../img/index.png) 0 -300px repeat-x; overflow:hidden;}
+.blockyi .news p{ margin-top:10px; line-height:20px; color:#666}
+.blockyi .news p a{ color:#cc0000}
+.blockyi .news p a:hover{ text-decoration:underline}
+
+/*通用h2样式*/
+.blockyi h2,.blockL h2,.special h2,.mediaAd h2,.yqljAd h2{color:red;font:18px/60px "微软雅黑","黑体",Arial;height:22px; float:left; margin:-10px 0 0 26px;}
+h2.ttkfAlt{}
+h2.ztcAlt{ background-position:0 -126px;}
+h2.mdmAlt{ background-position:0 -156px;}
+h2.ppzAlt{ background-position:0 -180px;}
+h2.hdzt{ background-position:0 -210px;}
+h2.hzmtAlt{ background-position:0 -240px;}
+h2.yqljAlt{ background-position:0 -313px;}
+/*通用视频列表*/
+.videoList li{ width:143px; float:left; margin-left:21px; display:inline;}
+.videoList li a.img{ width:141px; height:105px; position:relative; border:1px #ccc solid; display:block;}
+.videoList li a.img img{ width:139px; height:103px; margin:1px}
+.videoList li a.img:hover{ border-color:#cc0000;}
+.videoList li a.img i{ width:139px; height:22px; display:block; background:#000; position:absolute; left:1px; bottom:1px; filter:alpha(opacity=50); -moz-opacity:0.5; -khtml-opacity:0.5; opacity:0.5;}
+.videoList li a.img code{width:134px; line-height:22px; color:#f1f1f1; text-align:right; background:url(../img/index.png) -68px -153px no-repeat; position:absolute; left:1px; bottom:1px}
+.videoList li p a{ color:#333;}
+.videoList li p a:hover{ color:#cc0000; text-decoration:underline}
+.videoList li p{ line-height:18px; height:36px; overflow:hidden}
+/*通用 直通车 面对面 品牌展*/
+.blockL{ width:682px; height:280px; float:left; border:1px solid #d9d9d9}
+.blockL .title{ height:45px;}
+.blockL .title a{ float:right; color:#cc0000; margin:14px 20px 0 0}
+.blockL .otherVideo{ float:left; margin:7px 0 0 30px; display:inline}
+.blockL .otherVideo li{ float:left; background:url(../img/index.png) -76px -124px no-repeat; width:302px; padding-left:18px}
+.blockL .otherVideo li a{ color:#666; line-height:24px}
+.blockL .otherVideo li a:hover{ color:#cc0000; text-decoration:underline}
+/*活动专题*/
+.special{width:958px; height:202px; margin:0 auto; position:relative}
+.special .left_btn,.special .right_btn{ position:absolute; top:90px; background:url(../img/index.png); width:13px; height:19px; cursor:pointer}
+.special .left_btn{ background-position:0 -270px; left:18px}
+.special .right_btn{ background-position:-15px -270px; right:18px}
+.special .content{ margin:45px 0 0 41px; height:140px; width:876px; overflow:hidden; position:relative}
+.special .content ul{ width:2000px; height:140px; position:absolute}
+.special .content li{ width:143px; float:left; color:#333; margin-right:40px; display:inline}
+.special .content li a{ width:141px; height:105px; border:1px solid #cfcfcf; display:block; margin-bottom:4px}
+.special .content li a img{ width:139px; height:103px; margin:1px}
+/*合作媒体*/
+.mediaAd{ width:958px; overflow:hidden; margin:0 auto; display:block;}
+.mediaAd .content{ margin:11px 0 0 26px;} 
+.mediaAd .content a{ width:119px; height:39px; float:left; border:1px #ccc solid; margin-top:5px; margin-right:10px; background:url(../img/hezuo.jpg);}
+.mediaAd .content .hzmt1{ background-position:0px 0px;}
+.mediaAd .content .hzmt2{ background-position:0px -38px;}
+.mediaAd .content .hzmt3{ background-position:0px -76px;}
+.mediaAd .content .hzmt4{ background-position:0px -114px;}
+.mediaAd .content .hzmt5{ background-position:0px -152px;}
+.mediaAd .content .hzmt6{ background-position:0px -190px;}
+.mediaAd .content .hzmt7{ background-position:0px -228px;}
+/*友情链接*/
+.yqljAd{ width:958px;overflow:hidden; margin:0 auto; display:block;}
+.yqljAd .content{ margin:11px 0 0 26px;}
+.yqljAd .content a{float:left;margin-right:15px; margin-top:10px;color:#333;}
+.yqljAd .content a:hover {color:#cc0000; text-decoration:underline}
+
+/*焦点图*/
+/*slider*/
+#slider{width:100%;background-color:#000; padding-top:0px;}
+.slider_box{width:960px; margin:0 auto;height: 338px;overflow: hidden;position: relative;}
+.silder_tip{width: 92px;height: 92px;overflow: hidden;position: absolute;top: 0;right: 0;z-index:1; text-indent:-999px;background:url(../img/tip-tt.gif) no-repeat;}
+#movie_tip{background-position: -93px 0;}
+.silder_con{height:270px;overflow: hidden;position: absolute;}
+.silder_panel{width:960px;height:270px;overflow: hidden;float: left;position: relative;background: #111;}
+.silder_panel img{width: 690px;height: 270px;display: block;overflow: hidden;}
+.silder_intro{width: 210px;height: 270px;line-height: 20px;overflow: hidden;color: #999;padding: 0 40px 0 0;}
+.silder_intro h3{padding:10px 0;height:50px;color:#7acf39;line-height: 30px;overflow: hidden;}
+.silder_intro h3 strong{font-family: "宋体";font-size: 24px;height:30px;overflow: hidden;font-weight: normal;display: block;}
+.silder_intro h3 strong a{ color: #fff; font-weight:bold;}
+.silder_intro ul{height: 60px;overflow: hidden;}	
+.silder_intro li{height: 20px;overflow: hidden;color:#787878;}
+.silder_intro li a{color:#787878; margin:0 6px;}
+.silder_intro span{ margin: 0 10px 0 0;}
+.silder_intro p{height:72px;overflow: hidden;color:#787878; margin-top:10px; line-height:18px;}
+.silder_play{display: block;width:136px;height:30px;overflow: hidden;text-indent: -999px;position: absolute;bottom: 13px;right: 45px;background: url(../img/silder-play.png) 0 -30px no-repeat;}	
+.silder_play:hover{ background-position: 0 0;}
+.silder_nav{width:960px;height:58px;margin: 0 auto;bottom: 0;position: absolute;overflow: hidden;}
+.silder_nav li{float: left;padding:0px;border:1px solid #fff; margin:2px;}
+.silder_nav li.current{border:3px solid #7acf39; margin:0 4px;}
+.silder_nav li,.silder_nav img{display: block;width:112px;height:48px;overflow: hidden;}
+.slider_box a.prev,.slider_box a.next{display: block;width:45px;height:100px;overflow:hidden;text-indent: -999px;position: absolute;cursor: pointer;margin: 85px 0 0 0;background: url(../img/silder_btn.gif) no-repeat;}	
+.slider_box a.prev{left:0;background-position: left 0;}
+.slider_box a.next{right:0;background-position: right 0;}
+.silderBox{height:8px; line-height:8px;}
+
+/*通用*/
+.navbox_{width:960px;margin:0 auto; overflow:hidden;zoom:1}
+.navbox{width:960px;margin:0 auto; overflow:hidden;zoom:1; margin-top:8px;}
+.f_l{ float:left;}
+.f_r{ float:right;}
+.margintop{margin-top:8px;}
+.paddingtop{padding-top:8px;}

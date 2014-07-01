@@ -1,0 +1,52 @@
+html, body, div, span,object, iframe, h1, h2, h3, h4, h5, h6, p,a, em, img, strong, sub, sup, dl, dt, dd, ol, ul, li, form, label, embed,input,textarea,pre{margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}
+body{font: 12px/2em Arial,Helvetica, SimSun,sans-serif;color:#333;background:#fff;}
+:focus {outline: 0;}
+ol, ul {list-style: none;}
+table {border-collapse: collapse;border-spacing: 0;}
+.cf:before,
+.cf:after {content: " ";display: table;}
+.cf:after{clear: both;}
+.cf{*zoom: 1;}
+a{color:#333;text-decoration:none;}
+a:hover{color:#f00;text-decoration:underline;}
+.fl{float:left;}
+.fr{float:right;}
+.mt5{margin-top:5px;}
+.mb5{margin-bottom: 5px;}
+.mb10{margin-bottom:10px;}
+.mt10{margin-top:10px;}
+.mt2{margin-top:2px;}
+.border{border:1px #ddd solid;border-radius: 3px;}
+.hide{display:none;}
+.block{display:block;}
+.red,a.red{color:#C71202;}
+.blue,a.blue{color:blue;}
+.black{color: #000;}
+.blue{color:#2E59AF;}
+.gray6{color:#666;}
+.gray9{color:#999;}
+.green{color:#0A0;}
+.f12{font-size:12px;}
+.f14{font-size:14px;}
+.f16{font-size:16px;}
+#main{width:960px;margin:0 auto;}
+input[type="text"],textarea,input[type="password"]{box-shadow: 0 1px 3px #ddd inset;}
+input[type="text"]:focus,textarea:focus,input[type="password"]:focus{box-shadow: 0 1px 3px #ccc inset;}
+textarea{overflow: auto;}
+#topBar{height: 36px;background: url(../img/topbar.png) repeat-x 0 0;border: 1px #e3dfdb solid;border-top:0;border-bottom: 0;line-height: 36px;margin:2px 0 0 0}
+#topBar .fl{padding: 0 0 0 12px;color: #666;width: 420px;_height: 26px;_line-height: 26px;_padding: 4px 0 4px 12px;}
+a.username{color: #1d569c;}
+#topBar input{vertical-align: middle;border:1px #ddd solid;margin: 0 4px 0 0;width: 80px;height: 24px;line-height: 24px;padding: 0 2px;}
+#topBar button{width: 58px;height: 22px;background: url(../img/login.png) no-repeat 0 0;border:0;vertical-align: middle;margin: 0 4px 0 0;cursor: pointer;}
+#topBar .fl a{margin: 0 4px;_display:inline-block;_margin: 0 4px -8px 4px;}
+#topBar .fr{width: 520px;color: #1d569c;font-size: 14px;text-align: right}
+#topBar .fr span{background: url(../img/smobile.png) no-repeat 0 50%;padding: 0 0 0 20px;}
+#topBar a.send{display: inline-block;height: 36px;border: 1px #e3dfdb solid;border-top:0;border-bottom: 0;color: #f00;padding: 0 16px;margin: 0 0 0 9px;}
+#topBar a.send:hover{background: url(../img/topbtn.png) repeat-x 0 0;text-decoration: none;}
+#topBar .panl{float: right;width: 104px;text-align: center;position: relative;z-index: 59;padding: 0 12px 0 0;}
+#topBar .panl i{width: 0;height: 0;line-height: 0;overflow: hidden;display: inline-block;border:4px #fff solid;border-bottom: 0;border-top: 4px #999 solid;position: absolute;right: 20px;top: 16px;}
+#topBar .panl div{display: none;position: absolute;top: 35px;right:-1px;width:116px;_width:119px;background: #fff;border:1px #e3dfdb solid;border-top:0;text-align: left;}
+#topBar .panl div a{display:block;width: 100%;line-height: 24px;font-size:14px;text-align: center;border-top: 1px #eee solid}
+#topBar .panl div a:hover{background: #f6f6f6}
+#footer{border-top: #DDD 1px solid;padding: 10px 0;margin: 10px 0;line-height: 26px;text-align: center;}
+#footer a{color: #353535;padding: 0 5px;}

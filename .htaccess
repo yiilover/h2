@@ -1,0 +1,154 @@
+# 将 RewriteEngine 模式打开
+
+        RewriteEngine On
+
+	RewriteBase /
+	
+	# Rewrite 系统规则请勿修改
+	# Rewrite 新房规则
+
+	RewriteCond %{HTTP_HOST} ^[a-z0-9\-]+\.house5\.cn$
+	RewriteCond %{HTTP_HOST} !^(www|house|bbs|3g|tuan|esf)\.house5\.cn$	[NC]
+	RewriteRule ^/?$ /%{HTTP_HOST}	[C]
+	RewriteRule ^/([0-9a-z\-]+?)\.house5\.cn index.php?s=content/index/loupan&t=zhuye&catid=14&domain=$1 [L]
+	
+	RewriteCond %{HTTP_HOST} ^[a-z0-9\-]+\.house5\.cn$
+	RewriteCond %{HTTP_HOST} !^(www|house|bbs|3g|tuan|esf)\.house5\.cn$	[NC]
+	RewriteRule (xinxi|huxing|jiage|xiangce|dongtai|peitao|shapan|tuan|zixun|dianping|wenfang-p([0-9]+))\.html?$ /%{HTTP_HOST}$1 [C]
+	RewriteRule ^/([0-9a-z\-]+?)\.house5\.cn(.*)$ index.php?s=content/index/loupan&t=$2&catid=14&domain=$1 [L]
+
+	RewriteRule  ^house/([0-9]+)/?$ index.php?s=content/index/loupan&t=zhuye&catid=14&id=$1 [L]
+	#RewriteRule  ^house/map/?$ map [L]
+	RewriteRule  ^house/([0-9]+)/index.html?$ index.php?s=content/index/loupan&t=zhuye&catid=14&id=$1 [L]
+	RewriteRule  ^house/([0-9]+)/(xinxi|huxing|jiage|xiangce|dongtai|peitao|shapan|tuan|zixun|dianping).html?$ index.php?s=content/index/loupan&t=$2&catid=14&id=$1  [L]
+	RewriteRule  ^house/([0-9]+)/wenfang-p([0-9]+).html?$ index.php?s=content/index/loupan&t=wenfang&catid=14&id=$1&page=$2 [L]
+	RewriteRule  ^house/([0-9]+)/hxlist-([0-9]+).html?$ index.php?s=content/index/loupan&t=huxing&lid=$2&catid=14&id=$1 [L]
+	RewriteRule  ^house/hxlist-([0-9]+)-([0-9]+).html?$ index.php?s=content/index/loupan&t=showpic&lid=$2&catid=14&id=$1 [L]
+	RewriteRule  ^house/hxlist-([0-9]+)-([0-9]+)-([0-9]+).html?$ index.php?s=content/index/loupan&t=showpic&lid=$2&pid=$3&catid=14&id=$1 [L]
+	RewriteRule  ^house/([0-9]+)/xclist-([0-9]+).html?$ index.php?s=content/index/loupan&t=xiangce&lid=$2&catid=14&id=$1 [L]
+	RewriteRule  ^house/xclist-([0-9]+)-([0-9]+).html?$ index.php?s=content/index/loupan&t=showphoto&lid=$2&catid=14&id=$1 [L]
+	RewriteRule  ^house/xclist-([0-9]+)-([0-9]+)-([0-9]+).html?$ index.php?s=content/index/loupan&t=showphoto&lid=$2&pid=$3&catid=14&id=$1 [L]
+	RewriteRule  ^house/ybjlist.html	index.php?s=content/index/ybj_lists&catid=8&housecatid=14&typeid=16 [L]
+	RewriteRule  ^house/ybjlist-(r|p)([0-9]+).html$	index.php?s=content/index/ybj_lists&$1=$2&catid=8&housecatid=14&typeid=16 [L]
+	RewriteRule  ^house/ybjlist-(r|p)([0-9]+)-(r|p)([0-9]+).html$	index.php?s=content/index/ybj_lists&$1=$2&$3=$4&catid=8&housecatid=14&typeid=16 [L]
+	RewriteRule  ^house/xclist.html	index.php?s=content/index/lists&catid=8&housecatid=14 [L]
+	RewriteRule  ^house/hxlist.html	index.php?s=content/index/lists&catid=13&housecatid=14 [L]
+	RewriteRule  ^house/hxlist-(r|p)([0-9]+).html$	index.php?s=content/index/lists&$1=$2&catid=13&housecatid=14 [L]
+	RewriteRule  ^house/hxlist-(r|p)([0-9]+)-(r|p)([0-9]+).html?$	index.php?s=content/index/lists&$1=$2&$3=$4&catid=13&housecatid=14 [L]
+	RewriteRule  ^house/xclist-(r|p)([0-9]+).html$	index.php?s=content/index/lists&$1=$2&catid=8&housecatid=14 [L]
+	RewriteRule  ^house/xclist-(r|p)([0-9]+)-(r|p)([0-9]+).html$	index.php?s=content/index/lists&$1=$2&$3=$4&catid=8&housecatid=14 [L]
+	RewriteRule  ^house/lp_duibi/(.+)?$ index.php?s=content/index/lp_duibi&houseid=$1&catid=14 [L]
+	RewriteRule  ^house/lp_post/?$ index.php?s=content/index/lp_post&catid=15 [L]
+	RewriteCond  %{QUERY_STRING}  keyword=(.*)
+	RewriteRule  ^house/list.html(.*)  index.php?s=content/index/lists&catid=14&keyword=%1 [L]
+	RewriteRule  ^house/list-k([^/-]+)-g([0-9]+).html?$	index.php?s=content/index/lists&g=$2&k=$1&catid=14 [L]
+	RewriteRule  ^house/list-k([^/-]+)-g([0-9]+)-d([0-9]+).html?$	index.php?s=content/index/lists&g=$2&k=$1&catid=14&d=$3 [L]
+	RewriteRule ^house/?$ index.php?s=content/index/house_index&catid=14 [L]
+	RewriteRule  ^house/list.html$	index.php?s=content/index/lists&catid=14 [L]
+	RewriteRule  ^house/list-(r|b|t|p|f|l|o|h|n|g)([0-9]+).html?$	index.php?s=content/index/lists&$1=$2&catid=14 [L]
+	RewriteRule  ^house/list-(.*).html?$	index.php?s=content/index/lists&param=$1&catid=14 [L]
+	RewriteRule  ^house/company-([0-9]+).html	index.php?s=content/index/loupan&t=company&catid=12&id=$1&housecatid=14 [L]
+	RewriteCond  %{QUERY_STRING}  keyword=(.*)
+	RewriteRule  ^house/wenfang-p1.php(.*)  index.php?s=content/index/lists&catid=15&housecatid=14&keyword=%1 [L]
+	RewriteCond  %{QUERY_STRING}  keyword=(.*)
+	RewriteRule  ^house/wenfang-r([0-9]+).php(.*)  index.php?s=content/index/lists&catid=15&housecatid=14&r=$1&keyword=%1 [L]
+	RewriteRule  ^house/wenfang-(r|p)([0-9]+).html$	index.php?s=content/index/lists&$1=$2&catid=15&housecatid=14 [L]
+	RewriteRule  ^house/wenfang-(r|p)([0-9]+)-(r|p)([0-9]+).html$	index.php?s=content/index/lists&$1=$2&$3=$4&catid=15&housecatid=14 [L]
+	RewriteRule  ^house/wenfang-r([0-9]+)-k([^/-]+).html?$	index.php?s=content/index/lists&r=$1&k=$2&catid=15&housecatid=14 [L]
+	RewriteRule  ^house/wenfang-r([0-9]+)-k([^/-]+)-p([0-9]+).html?$	index.php?s=content/index/lists&r=$1&k=$2&p=$3&catid=15&housecatid=14 [L]
+	RewriteRule  ^house/wenfang-k([^/]+)-p([0-9]+).html?$	index.php?s=content/index/lists&k=$1&p=$2&catid=15&housecatid=14 [L]
+	RewriteCond  %{QUERY_STRING}  keyword=(.*)
+	RewriteRule  ^house/qqqun-p1.html(.*)  index.php?s=content/index/qqqun_lists&catid=14&keyword=%1 [L]
+	RewriteCond  %{QUERY_STRING}  keyword=(.*)
+	RewriteRule  ^house/qqqun-r([0-9]+).html(.*)  index.php?s=content/index/qqqun_lists&catid=14&r=$1&keyword=%1 [L]
+	RewriteRule  ^house/qqqun-(r|p)([0-9]+).html$	index.php?s=content/index/qqqun_lists&$1=$2&catid=14 [L]
+	RewriteRule  ^house/qqqun-(r|p)([0-9]+)-(r|p)([0-9]+).html$	index.php?s=content/index/qqqun_lists&$1=$2&$3=$4&catid=14 [L]
+	RewriteRule  ^house/qqqun-r([0-9]+)-k([^/-]+).html?$	index.php?s=content/index/qqqun_lists&r=$1&k=$2&catid=14 [L]
+	RewriteRule  ^house/qqqun-r([0-9]+)-k([^/-]+)-p([0-9]+).html?$	index.php?s=content/index/qqqun_lists&r=$1&k=$2&p=$3&catid=14 [L]
+	RewriteRule  ^house/qqqun-k([^/]+)-p([0-9]+).html?$	index.php?s=content/index/qqqun_lists&k=$1&p=$2&catid=14 [L]
+	RewriteRule  ^house/fangyuan-([0-9]+).html$	index.php?s=content/index/loupan&t=fangyuan&id=$1&catid=14&fcatid=107 [L]
+	RewriteRule  ^house/fangyuan-([0-9]+)-([0-9]+).html$	index.php?s=content/index/loupan&t=fangyuan&id=$1&catid=14&fcatid=107&page=$2 [L]
+	RewriteRule  ^house/fangyuan/([0-9]+).html?$ index.php?s=content/index/show&catid=107&id=$1&housecatid=14
+	RewriteRule  ^house/zimu-([a-z]).html  index.php?s=content/index/zimulists&catid=14&ename=$1 [L]
+	RewriteRule  ^house/zimu.html  index.php?s=content/index/zimulists&catid=14 [L]
+	RewriteRule  ^house/baojia.html  index.php?s=content/index/baojialists&catid=14 [L]
+	#网站后台登录伪静态
+	RewriteRule ^admin?$ index.php?s=admin/index/login [L]
+	#会员中心登录
+	RewriteRule ^my?$ index.php?s=member/index/login [L]
+	RewriteCond  %{QUERY_STRING}  forward=(.*)
+	RewriteRule  ^login.html(.*)  index.php?s=member/index/login&forward=%1
+	#RewriteCond %{HTTP_HOST} ^my.house5.cn$
+	RewriteRule ^login.html$ index.php?s=member/index/login [L]
+	RewriteCond  %{QUERY_STRING}  forward=(.*)
+	RewriteRule  ^register.html(.*)  index.php?s=member/index/register&siteid=1&forward=%1
+	RewriteRule ^register.html$ index.php?s=member/index/register&siteid=1 [L]
+	RewriteRule ^forget_password.html$ index.php?s=member/index/public_forget_password&siteid=1 [L]
+	#看房团伪静态规则
+	RewriteRule  ^tuan/?$  index.php?s=content/index/lists&catid=108&housecatid=14
+	RewriteRule  ^tuan/route_([0-9]+).html?$ index.php?s=content/index/show&catid=108&id=$1&housecatid=14
+	#手机门户规则
+	RewriteRule  ^3g/?$		index.php?s=wap/index
+	RewriteCond  %{QUERY_STRING}  k=(.*)
+	RewriteRule  ^3g/list.html(.*)  index.php?s=wap/index/lists&catid=14&keyword=%1 [L]
+	RewriteRule  ^3g/list.html$	index.php?s=wap/index/lists&catid=14 [L]	
+	RewriteRule  ^3g/list-(r|t|p|l|o|h|n|g)([0-9]+).html?$	index.php?s=wap/index/lists&$1=$2&catid=14 [L]
+	RewriteRule  ^3g/list-(.*).html?$	index.php?s=wap/index/lists&param=$1&catid=14 [L]
+	RewriteRule  ^3g/(detail|huxing|pic|device|news|comment|cal)/([0-9]+)/?$ index.php?s=wap/index/loupan&t=$1&catid=14&id=$2  [L]
+	RewriteRule  ^3g/(calcul|top|news|map|maplist)/?$ index.php?s=wap/index/tools&t=$1&catid=14  [L]
+	RewriteRule  ^3g/calcul/(dk|pg|tq|sf)/?$ index.php?s=wap/index/tools&t=$1&catid=14  [L]
+	RewriteRule  ^3g/show/([0-9]+)/([0-9]+)/?$	index.php?s=wap/index/show&catid=$1&id=$2
+	RewriteRule  ^3g/device/([0-9]+)/map/?$ index.php?s=wap/index/loupan&t=device&catid=14&id=$1&f=1  [L]
+	RewriteRule  ^3g/(huxing|pic)/([0-9]+)/([0-9]+)/?$	index.php?s=wap/index/loupan&t=$1&lid=$3&catid=14&id=$2 [L]
+	RewriteRule  ^3g/(huxing|pic)/([0-9]+)/([0-9]+)/([0-9]+)/?$	index.php?s=wap/index/loupan&t=$1&lid=$3&pid=$4&catid=14&id=$2 [L]
+	#新闻规则
+	RewriteRule  ^list.html$	index.php?s=content/index/lists&catid=48 [L]
+	RewriteRule  ^list-([0-9]+).html$	index.php?s=content/index/lists&catid=48&page=$1 [L]
+	RewriteRule  ^piclist.html$	index.php?s=content/index/lists&catid=62 [L]
+	RewriteRule  ^piclist-([0-9]+).html$	index.php?s=content/index/lists&catid=62&page=$1 [L]
+	RewriteRule  ^news/special-([0-9]+)-([0-9]+).html$	index.php?s=special/index/types&typeids=$1&page=$2 [L]
+	RewriteRule  ^news/rss-s1.html$	index.php?s=content/rss [L]
+	RewriteRule  ^news/rss-c([0-9]+)-s1.html$	index.php?s=content/rss&catid=$1 [L]
+	RewriteRule  ^news/keyword-([0-9]+)-([^/-]+).html$	index.php?s=content/tag&catid=$1&tag=$2 [L]
+	RewriteRule  ^news/keyword-([0-9]+)-([^/-]+)-p([0-9]+).html$	index.php?s=content/tag&catid=$1&tag=$2&page=$3 [L]
+	RewriteRule  ^news/list-(tt|dg|sc)-p([0-9]+).html$	index.php?s=content/index/lists&catid=48&classes=$1&page=$2&datatype=1 [L]
+	RewriteRule  ^search?$ index.php?s=search [L]
+	RewriteRule  ^search-([^/-]+).html$	index.php?s=content/index/search&keyword=$1&datatype=1 [L]
+	RewriteRule  ^search-([^/-]+)-p([0-9]+).html$	index.php?s=content/index/search&keyword=$1&page=$2&datatype=1 [L]
+	RewriteRule  ^sitemap.html?$	index.php?s=content/index/sitemap [L]
+        #二手房规则
+	RewriteRule  ^esf/list.html$	index.php?s=content/index/lists&catid=112 [L]
+	RewriteRule  ^esf/list-(r|b|t|p|f|l|o|h|n|g|c|y|e|m|u)([0-9_]+).html?$	index.php?s=content/index/lists&$1=$2&catid=112 [L]	
+	RewriteRule  ^esf/list-k(.*).html?$	index.php?s=content/index/lists&k=$1&catid=112 [L]
+	RewriteRule  ^esf/list-search		index.php?s=content/index/esf_search	[L]
+	RewriteRule  ^esf/chushou.html		index.php?s=content/index/esf	[L]
+	RewriteRule  ^esf/chuzu.html		index.php?s=content/index/esf_rent	[L]
+	RewriteRule  ^esf/rent-list-search	index.php?s=content/index/esf_search&t=rent [L]
+	RewriteRule  ^esf/list-(.*).html?$	index.php?s=content/index/lists&param=$1&catid=112 [L]
+	RewriteRule  ^esf/rent-list.html$	index.php?s=content/index/lists&catid=113 [L]
+	RewriteRule  ^esf/rent-list-(r|b|t|p|f|l|o|h|n|g|c|y|e|m|u)([0-9_]+).html?$	index.php?s=content/index/lists&$1=$2&catid=113 [L]
+	RewriteRule  ^esf/rent-list-k(.*).html?$	index.php?s=content/index/lists&k=$1&catid=113 [L]
+	RewriteRule  ^esf/rent-list-(.*).html?$		index.php?s=content/index/lists&param=$1&catid=113 [L]
+	RewriteRule  ^esf/show-([0-9]+).html?$ index.php?s=content/index/esfshow/catid/112/id/$1 [L]
+	RewriteRule  ^esf/rent-show-([0-9]+).html?$ index.php?s=content/index/esf_rent_show/catid/113/id/$1 [L]
+	RewriteRule  ^esf(/)?$ index.php?s=content/index/esf_index&catid=112 [L]
+	RewriteRule  ^esf/xiaoqu-list.html$	index.php?s=content/index/lists&catid=110 [L]
+	RewriteRule  ^esf/xiaoqu-(show|price|info|map)-([0-9]+).html?$ index.php?s=content/index/community/t/$1/catid/110/id/$2 [L]
+
+	RewriteRule  ^esf/jingjiren/?$	index.php?s=content/index/jjr_list [L]
+	RewriteRule  ^esf/jingjiren-(r|n|g)([0-9]+)/?$	index.php?s=content/index/jjr_list/$1/$2 [L]
+	RewriteRule  ^esf/jingjiren-K([^/-]+)/?$	index.php?s=content/index/jjr_list/k/$1 [L]
+	RewriteRule  ^esf/jingjiren-([0-9]+)/?$		index.php?s=content/index/jjr_show/id/$1 [L]
+	RewriteRule  ^esf/jingjiren-(esf|rent|about)-([0-9]+)/?$	index.php?s=content/index/jjr_$1/id/$2 [L]
+	RewriteRule  ^esf/jingjiren-(esf|rent)-([0-9]+)-(a|c|g|p|t|n)([0-9]+)/?$	index.php?s=content/index/jjr_$1/id/$2/$3/$4 [L]
+	RewriteRule  ^esf/mendian-([0-9]+)/?$		index.php?s=content/index/mendian/id/$1 [L]
+	RewriteRule  ^esf/mendian-(esf|rent|jingjiren)-([0-9]+)/?$	index.php?s=content/index/mendian_$1/id/$2 [L]
+	RewriteRule  ^esf/mendian-(esf|rent|jingjiren)-([0-9]+)-(r|p|n|g|c|t|e)([0-9A-Z_]+)/?$	index.php?s=content/index/mendian_$1/id/$2&$3=$4[L]
+	RewriteRule  ^esf/mendian-(esf|rent)-([0-9]+)-K([^/-]+)/?$	index.php?s=content/index/mendian_$1/id/$2&k=$3 [L]
+	RewriteRule  ^esf/mendian-(esf|rent)-([0-9]+)-(.*)/?$	index.php?s=content/index/mendian_$1/id/$2&param=$3 [L]
+	RewriteRule  ^esf/xiaoqu-list-(r|b|n|g|c|e)([0-9A-Z_]+).html?$	index.php?s=content/index/lists&$1=$2&catid=110 [L]
+	RewriteRule  ^esf/xiaoqu-list-k([^/-]+).html?$	index.php?s=content/index/lists&k=$1&catid=110 [L]
+	RewriteRule  ^esf/xiaoqu-list-(.*).html?$	index.php?s=content/index/lists&param=$1&catid=110 [L]
+
+	RewriteRule  ^esf/map.html?$	map/esfmap.php [L]
+	RewriteRule  ^esf/rent-map.html?$	map/rentmap.php [L]

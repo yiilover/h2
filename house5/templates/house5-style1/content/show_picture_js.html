@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 7 ]> <html lang="zh-CN" class="ie6 ielt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="zh-CN" class="ie7 ielt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="zh-CN" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="zh-CN"><!--<![endif]-->
+<head>
+<link rel="stylesheet" type="text/css" href="{APP_PATH}statics/house5-style1/pic/css/white.css" />
+<script type="text/javascript">
+var _IMG_URL = '{APP_PATH}statics/house5-style1/';
+</script>
+<script type="text/javascript" src="{APP_PATH}statics/house5-style1/pic/js/jquery.js"></script>
+<script type="text/javascript" src="{APP_PATH}statics/house5-style1/pic/js/repos.js"></script>
+<script type="text/javascript">fet.setAlias({IMG_URL: "{APP_PATH}statics/house5-style1/"})</script>
+<script type="text/javascript" src="{APP_PATH}statics/house5-style1/pic/js/house5.gallery.js"></script>
+</head>
+<body>
+<div style="text-align:center;">
+    <div class="addon-gallery mod-gallery" id="gallery">
+        <div class="gallery-overlay" data-gallery="overlay" style="display: none;"></div>
+        <div class="gallery-content" data-gallery="content" style="visibility: visible;">
+            <div class="gallery-toolbar">
+            <span style="float:right">
+                <a href="{$url}" target="_blank">查看完整组图</a>
+            </span>
+            </div>
+            <div class="gallery-photo">
+                <div class="gallery-photo-items" data-gallery="photo-items" style="min-height: 360px;">
+				{php $i=0;}
+				{loop $pictureurls $pic_k $r}
+					<img src="{$r[url]}" data-gallery="{$i}" style="left: 23px; {if $i==0}display: inline;{else}display: none;{/if}">
+				{$i++}
+				{/loop}</div>
+                <div class="gallery-photo-prev" data-gallery="photo-prev" style="width: 293px; height: 360px;">
+                    <a title="点击浏览上一张图片，支持'←'翻页" href="javascript:void(0);" hidefocus="true" style="display: none;">上一页</a>
+                </div>
+                <div class="gallery-photo-next" data-gallery="photo-next" style="width: 293px; height: 360px;">
+                    <a title="点击浏览下一张图片，支持'→'翻页" href="javascript:void(0);" hidefocus="true" style="display: none;">下一页</a>
+                </div>
+                <div class="gallery-loading" data-gallery="loading" style="display: none;"><span></span></div>
+            </div>
+            <div class="gallery-photo-description">
+                <p data-gallery="photo-description"></p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="gallery-footer" data-gallery="footer" style="visibility: visible;">
+            <div class="clearfix">
+                <div class="gallery-thumb" data-gallery="slider">
+                <span class="gallery-thumb-prev">
+                    <a href="javascript:void(0);" hidefocus="true" data-slider="items-left" class="disable"></a>
+                </span>
+                <span class="gallery-thumb-next">
+                    <a href="javascript:void(0);" hidefocus="true" data-slider="items-right" class="disable"></a>
+                </span>
+                    <div class="gallery-thumbs" data-slider="control">
+                        <div class="gallery-thumb-list">
+                            <ul class="gallery-thumb-items" data-slider="items" style="display: block; width: 470px;">
+							{php $i=0;}
+							{php $j=1;}
+								{loop $pictureurls $pic_k $r}
+							<li data-slider-index="{$i}" class="" style="width: 84px;"><i></i><a hidefocus="true" href="javascript:void(0);" style="width: 80px; height: 60px;"><span><b>{$j}</b>/<b>n</b></span><img src="{thumb($r[url], 80, 60, 0)}" alt="" style="width: 80px; height: 60px;"></a></li>
+							{$j++}
+								{/loop}
+							</ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  <script type="text/javascript">
+   fet('lib.gallery.white', function() {
+		var photos = [];
+		{loop $pictureurls $pic_k $r}
+		photos.push({big: '{$r[url]}', thumb: '{thumb($r[url], 100, 75, 0)}', note: "{$r[alt]}" });
+		{/loop}
+	   $('#gallery').gallery({
+		photos: photos,
+		maxWidth: parseInt(540) || 0,
+		minHeight: parseInt(360) || 0,
+		preload: 1,
+		scrollIntoView: false,
+		hashPageParam: 'h5',
+		thumbWidth: parseInt(80) || 80,
+		thumbHeight: parseInt(60) || 60
+	});
+	});
+   </script>
+    </div>
+</div>
+</body>
+</html>

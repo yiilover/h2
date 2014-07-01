@@ -1,0 +1,510 @@
+{template "content","head_house"}
+<div class="cArea">
+<!--当前位置 begin-->
+<div class="column">
+<div class="a1 linka">
+<a href="{HOUSE_PATH}" target="_blank">首页</a> > 
+<a href="{HOUSE_PATH}list.html" target="_blank">新房</a> > 楼盘对比</div>
+</div>
+<!--当前位置 end-->
+<div class="hr10"></div>
+<div class="display_com">
+  <div class="display_com_title">
+<div class="a1 link5"><a href="#">楼盘对比</a></div>
+<div class="a2"><b>快速导航：</b>
+<a href="#jiben">基本信息</a>  
+<a href="#jiaotong">交通配套</a>  
+<a href="#huxing">户型</a>  
+<a href="#jiage">价格明细</a>
+</div>
+  </div>
+  <div id="middleLeft">
+<table width="960" border="0" cellpadding="0" cellspacing="0" class="parameter" id="paramTable">
+  
+  <tr>
+    <td width="160">
+<div class="title001">楼盘名称：</div>		
+</td>
+{loop $allinfo $k $r}
+    <td width="200"  id="delID{$k}"  name="delID">
+<span class="linkk"><a href="{HOUSE_PATH}{$r[id]}" target="_blank">{$r[title]}</a></span> 
+<span class="linka">[<a href="javascript:void(0)" onclick="deltr('delID{$k}', 'paramTable')">移除</a>]</span>
+<h5 style="padding:0 3px"><a href="{HOUSE_PATH}{$r[id]}/xinxi.html" target="_blank">详细信息</a>|<a href="{HOUSE_PATH}{$r[id]}/huxing.html" target="_blank">户型图</a>|<a href="{HOUSE_PATH}{$r[id]}/dongtai.html" target="_blank">楼盘动态</a>|<a href="{HOUSE_PATH}{$r[id]}/dianping.html" target="_blank">楼盘点评</a></h5>
+</td>
+{/loop}
+   
+  </tr>
+  <tr>
+    <td><div class="title001">效果图：</div></td>
+	{loop $allinfo $k $r}
+    <td><div class="paramContent"><a href="{HOUSE_PATH}xclist-{$r[id]}-13.html" target="_blank"><img src="{$r[thumb]}" width="140" height="105" alt="{$r[title]}" title="{$r[title]}"/></a>		</div></td>
+    {/loop}
+    
+  </tr>
+  <tr>
+    <td><div class="title001">状态：</div></td>
+	{loop $allinfo $k $r}
+    <td>
+{$r[xszt]}
+</td>
+{/loop}
+    
+  </tr>
+  <tr>
+    <td><div class="title001"><a name="jiben">楼盘地址：</a></div></td>
+{loop $allinfo $k $r}
+<td>
+<div class="paramContent2 linka">{menu_links('3360',$r[region],1)}{$r[address]}</div>
+</td>
+{/loop} 
+  </tr>
+  <tr>
+    <td><div class="title001">楼盘均价：</div></td>
+{loop $allinfo $k $r}
+<td class="reda">{if !empty($r[price]) && $r[price]!="一房一价"} {$r[price]}元/平方米{else}一房一价{/if}</td>
+{/loop}
+  </tr>
+  <tr>
+    <td><div class="title001">物业费：</div></td>
+	{loop $allinfo $k $r}
+    <td>{if !empty($r[wyf])}{$r[wyf]}{else}待定{/if}</td>
+	{/loop}
+    
+  </tr>
+  <tr>
+    <td><div class="title001">开盘时间：</div></td>
+	{loop $allinfo $k $r}
+    <td>{if !empty($r[opentime]) && $r[opentime]!="0000-00-00"}{$r[opentime]}{else}待定{/if}</td>
+	{/loop}  
+  </tr>
+  <tr>
+    <td><div class="title001">交房时间：</div></td>
+    {loop $allinfo $k $r}
+    <td>{if !empty($r[jfdate]) && $r[jfdate]!="0000-00-00"}{$r[jfdate]}{else}待定{/if}</td>
+    {/loop}
+  </tr>
+  <tr>
+    <td><div class="title001">物业类别：</div></td>
+{loop $allinfo $k $r}
+ <td>
+{get_typename($r[type],1)}</td>
+{/loop}
+  </tr>
+  <tr>
+    <td><div class="title001">建筑类别：</div></td>
+{loop $allinfo $k $r}
+ 
+    <td>
+{$r[type2]}</td>
+{/loop}
+  </tr>
+  <tr>
+    <td><div class="title001">装修状况：</div></td>
+ {loop $allinfo $k $r}
+    <td>
+{$r[fix]}</td>
+{/loop}
+  </tr>
+  <tr>
+    <td><div class="title001">绿化率：</div></td>
+	{loop $allinfo $k $r}
+    <td>{if !empty($r[lhl])}{$r[lhl]}%{else}待定{/if}</td>
+    {/loop}
+  </tr>
+  <tr>
+    <td><div class="title001">容积率：</div></td>
+	{loop $allinfo $k $r}
+    <td>{if !empty($r[far])}{$r[far]}{else}待定{/if}</td>
+    {/loop}
+  </tr>
+  <tr>
+    <td><div class="title001">开发商：</div></td>
+	{loop $allinfo $k $r}
+    <td><a href="{HOUSE_PATH}company-{$r[developer]}.html" target="_blank">{getcompany_name($r[developer],12)}</a></td>
+	{/loop}
+  </tr>
+  <tr>
+    <td><div class="title001">物业公司：</div></td>
+    {loop $allinfo $k $r}
+    <td><a href="{HOUSE_PATH}company-{$r[property]}.html" target="_blank">{getcompany_name($r[property],12)}</a></td>
+	{/loop}
+  </tr>
+  <tr>
+    <td><div class="title001">售楼地址：</div></td>
+    {loop $allinfo $k $r}
+    <td>{$r[office]}</td>
+	{/loop}
+  </tr>
+  <tr>
+    <td><div class="title001">售楼电话：</div></td>
+   {loop $allinfo $k $r}
+    <td>{$r[tel]}</td>
+	{/loop}
+  </tr>
+  <tr>
+    <td><div class="title001"><a name="jiaotong">交通配套：</a></div></td>
+	{loop $allinfo $k $r}
+    <td>
+<div class="paramContent"></div>
+<div class="paramContent1">{$r[jiaotong]}</div>
+<div class="paramContent2 linka"><a href="{HOUSE_PATH}{$r[id]}/peitao.html" target="_blank">更多楼盘交通配套 >></a></div>
+</td>
+{/loop}
+  
+  </tr>
+<tr>
+    <td width="160"><div class="title001"><a name="jiage">价格明细：</a></div></td>
+	{loop $allinfo $k $r}
+    <td width="200">
+<div class="paramContent3">
+       {h5:content action="jiageinfo" relation="$r[id]" catid="11" num="3" order="addtime DESC" cache="3600"}<!-- 价格明细 -->
+	    {if $data}
+			{loop $data $rs}
+				 ·均价{$rs[price]}元/平米<br>
+			 {/loop}  
+	   {/if}
+	{/h5}
+      <div class="paramContent2 linka"><a href="{HOUSE_PATH}{$r[id]}/jiage.html" target="_blank">更多该楼盘价格明细 >></a>&nbsp;&nbsp;</div>
+</td>
+    {/loop}
+ 
+    </tr>
+</table>
+  </div>
+  
+  <div class="hr10"></div>
+</div>
+</div>
+<!--页尾 begin-->
+<div class="hr10"></div>
+</div>
+</div>
+<!--cArea-end-->
+{template "content","footer"}
+<!--cache_news-->
+<!--cache_news-->
+<!--lp_duibi start-->
+<div class="clzt1" id="clzt1" title="点击展开" onclick="float_display('clzt1','none');float_display('clzt2','');">&nbsp;</div>
+<div class="comparison" id="clzt2" style="display:none;position:absolute;z-index:200; right:0px;">
+  <div class="comp_title font2">
+  <span>
+<a href="javascript:void(0)" onclick="float_display('clzt2','none');"><img src="/static/style/house/close.gif" /></a>
+  </span>
+  楼盘对比栏
+  </div>
+  <div class="comp_lr"  id="withitem">
+  <div class="cllist1" id="itemlist">
+  <ul>
+  <li><!--addinto--></li>	
+  </ul>
+  </div>
+ <div class="a1">		
+<label id="dui_remove"><input type="submit" value="清空" class="smb_btn2" onclick="removeAllItem();" /></label>
+<label id="dui_togo"><input type="submit" value="对比" class="smb_btn4" onclick="toComparePage();" /></label>		
+</div>
+  </div>
+  <iframe  id="topframe" style='position:absolute; visibility:inherit; top:0px; border:0px; left:0px;width:150px;z-index:-1; filter: Alpha(Opacity=0);'></iframe>
+  <div class="comp_end"></div>
+</div>
+<script>
+var Float= new Object();
+Float.Browser = {
+ua: window.navigator.userAgent.toLowerCase(),
+ie: /msie/.test(window.navigator.userAgent.toLowerCase()),
+moz: /gecko/.test(window.navigator.userAgent.toLowerCase())
+};
+/************************Cookie*******************************/
+var CompCookie = {
+setCookie : function(name, value, expires, path, domain, secure)
+{
+document.cookie = name + "=" + escape(value) +
+((expires) ? "; expires=" + expires.toGMTString() : "") +
+((path) ? "; path=" + path : "; path=/") +
+((domain) ? "; domain=" + domain : "") +
+((secure) ? "; secure" : "");		
+},
+getCookie : function(name)
+{
+var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+if (arr != null)
+{
+return unescape(arr[2]);
+}
+return null;
+},
+clearCookie : function(name, path, domain)
+{
+if (CompCookie.getCookie(name))
+{
+ document.cookie = name + "=" +
+((path) ? "; path=" + path : "; path=/") +
+((domain) ? "; domain=" + domain : "") +
+";expires=Fri, 02-Jan-1970 00:00:00 GMT";
+}
+}
+};
+function float_$(id)
+{
+return (typeof id == "object")?id:document.getElementById(id);
+}
+function float_display(id,display)
+{
+float_$(id).style.display = display;
+setTopFrame();
+}
+//跳转至对比页面
+function toComparePage()
+{
+var compCookie = CompCookie.getCookie("house_duibi");
+if(compCookie)
+{
+var comps = compCookie.split("|");
+var cmpstr = new Array();
+var tempi = 0; 
+for(var i=0;i<comps.length;i++)
+{
+cmpstr.push(comps[i].split(",")[1]);
+tempi = tempi + 1;
+}
+if(tempi < 2){
+alert('抱歉，至少选择2个以上的楼盘进行比较！');
+return false;
+}
+window.open('{HOUSE_PATH}lp_duibi/'+cmpstr.join("_"));
+        //why clear
+        //CompCookie.clearCookie("wz_Houseapp_compare");
+}else
+    {
+       // window.open('index.php');
+   alert('抱歉，至少选择2个以上的楼盘进行比较！');
+    }
+    initCompareBar();
+}
+var g_comp_cookie = -1;
+//初始化页面片
+function initCompareBar()
+{
+    var compCookie = CompCookie.getCookie("house_duibi");
+    if (g_comp_cookie == compCookie)
+    {
+        return false;
+    }else
+    {
+        g_comp_cookie = compCookie;
+    }
+     if(compCookie)
+{ 
+//float_$("noitem").style.display="none";
+//float_$("withitem").style.display="block";
+float_$("itemlist").innerHTML = '';		
+float_$("dui_remove").innerHTML = '<input type="submit" value="清空" class="smb_btn2" onclick="removeAllItem();" />';	
+float_$("dui_togo").innerHTML = '<input type="submit" value="对比" class="smb_btn4" onclick="toComparePage();" />';	
+var cookieArr = compCookie.split("|");
+var itemStr = "";
+itemStr+='<ul>';
+for(var i=0;i<cookieArr.length;i++)
+{
+var serial_info = cookieArr[i].split(",");
+itemStr+= '<li>';   		
+itemStr+= '<span class="td_1" title="' + serial_info[0] + '">' + serial_info[0] + '</span>';
+itemStr+= '<span class="td_2 linke"><a class="remove" href="javascript:removeCompareItem('+serial_info[1]+');">删除</a></span></li>';
+ }
+itemStr+='</ul>';
+float_$("itemlist").innerHTML = itemStr;
+}else
+{	
+float_$("itemlist").innerHTML = "";
+float_$("itemlist").innerHTML = '<font style="line-height:25px; color:#ccc; overflow:hidden;">请先选择楼盘加入到对比栏<br />最多可同时对比4个楼盘</font>';
+float_$("dui_remove").innerHTML = '<input type="submit" value="清空" class="smb_btn2" disabled="disabled" />';	
+float_$("dui_togo").innerHTML = '<input type="submit" value="对比" class="smb_btn4" disabled="disabled" />';	
+}
+setTopFrame();
+}
+//setup topframe
+function setTopFrame()
+{
+    if(Float.Browser.moz)
+{
+        float_$("topframe").style.top = "10px";
+    }
+    float_$("topframe").style.height=(float_$("clzt2").offsetHeight-(Float.Browser.moz?28:0))+"px";
+}
+//cookie设置
+function addCompareItem(id,value)
+{
+float_$("clzt1").style.display="none";
+float_$("clzt2").style.display="";
+var compare = CompCookie.getCookie("house_duibi");
+if(compare)
+{
+var newComArr = new Array();
+var comArr = compare.split("|");
+ 		if(comArr.length>=4)
+{
+alert("您好,为了保证对比查看效果您最多只能选择4个楼盘参加比较");
+return;
+}
+for(var i=0;i<comArr.length;i++)
+{
+if(comArr[i].split(",")[1] == id)
+{
+alert("对不起，您已经添加\""+comArr[i].split(",")[0]+"\"");
+return;
+}else
+            {
+                newComArr.push(comArr[i]);
+            }
+}
+newComArr.push(value+","+id);
+CompCookie.setCookie("house_duibi",newComArr.join("|"));
+initCompareBar();
+}else{
+CompCookie.setCookie("house_duibi",value+","+id);		
+ 	}
+initCompareBar();
+}
+//删除对比项
+function removeCompareItem(id)
+{
+    initCompareBar();
+var compare = CompCookie.getCookie("house_duibi");
+if(compare)
+{
+var newComArr = new Array();
+var comArr = compare.split("|");
+for(var i=0;i<comArr.length;i++)
+{
+if(comArr[i].split(",")[1]!=id)
+{
+newComArr.push(comArr[i]);
+}
+}
+CompCookie.setCookie("house_duibi",newComArr.join("|"));
+initCompareBar();
+}
+}
+//删除所有项
+function removeAllItem()
+{
+CompCookie.clearCookie("house_duibi");
+initCompareBar();
+}
+//最小高度，一级导航有关
+var MIN_TOP = 220;
+//浮动自身的宽度
+var CLZT_WIDTH1 = 29;
+var CLZT_WIDTH2 = 224;
+function scrolldiv()
+{
+    var clzt1 = float_$("clzt1");
+    var clzt2 = float_$("clzt2");
+    var scr_top = document.documentElement.scrollTop || document.body.scrollTop;
+    var client_h = document.documentElement.clientHeight||document.body.clientHeight;
+    var top = scr_top + (client_h/2 - 95);
+    //当前高度
+    var cur_top = parseInt(clzt1.style.top);
+    if (top - cur_top > 4 || top - cur_top < -4)
+    {
+        top = Math.ceil(0.2 * (top - cur_top)) + cur_top;
+    }
+    if (top < MIN_TOP)
+    {
+        top = MIN_TOP;
+    }
+    //clzt1.style.top = top + 90 +"px";
+    //clzt2.style.top = top + 90 +"px";
+clzt1.style.top = top + 0 + "px";
+    clzt2.style.top = top + 0 + "px";
+}
+//底部滚动条
+function scroll_bot()
+{
+    var clzt1 = float_$("clzt1");
+    var clzt2 = float_$("clzt2");
+    var scr_left = document.documentElement.scrollLeft || document.body.scrollLeft;
+    var client_w = document.documentElement.clientWidth||document.body.clientWidth;
+    var left1 = scr_left + client_w - CLZT_WIDTH1;
+    if (left1 > 0)
+    {
+        //clzt1.style.left = left1 + 90 + "px";
+clzt1.style.right = 0 + "px";
+    }
+    var left2 = scr_left + client_w - CLZT_WIDTH2;
+    if (left2 > 0)
+    {
+        //clzt2.style.left = left2 + 90 + "px";
+clzt2.style.right = 0 + "px";
+    }
+}
+//固定位置
+function fixed_div()
+{
+    var clzt1 = float_$("clzt1");
+    var clzt2 = float_$("clzt2");
+var top = document.documentElement.clientHeight||document.body.clientHeight;
+    var scr_top = document.documentElement.scrollTop || document.body.scrollTop;
+clzt1.style.position="fixed";
+clzt1.style.right=0;
+    top = (top/2-95);
+    if (scr_top + top < MIN_TOP)
+    {
+        top = MIN_TOP - scr_top;
+    }
+clzt1.style.top = top + 90+"px";
+    clzt2.style.position="fixed";
+clzt2.style.right=0;
+clzt2.style.top = top + 90+"px";
+}
+//相应鼠标滚轮
+function mousewhell_cancel(tar) {clearInterval(tar);};
+function mousewhell_go() {
+    //setTimeout(scrolldiv,10);
+var _detector = setInterval(scrolldiv,10);
+setTimeout('mousewhell_cancel(' + _detector + ')',1000);
+};
+//初始化相关设置
+function init_comp_bar()
+{
+    if (document.attachEvent&&window.ActiveXObject&&!window.XMLHttpRequest)
+    {
+        window.attachEvent("onload",scrolldiv);
+        document.attachEvent("onmousewheel",mousewhell_go);
+        window.attachEvent("onresize",function(){scrolldiv(),scroll_bot()});
+        window.attachEvent("onscroll",function(){scrolldiv(),scroll_bot()});
+    };
+    if (document.attachEvent&&window.ActiveXObject&&window.XMLHttpRequest)
+    {
+    window.attachEvent("onload",fixed_div);
+    window.attachEvent("onresize",fixed_div);
+    window.attachEvent("onscroll",fixed_div);
+    };
+    if (document.addEventListener)
+    {
+        window.addEventListener("load",fixed_div,true);
+        window.addEventListener("resize",fixed_div,true);
+        window.addEventListener("scroll",fixed_div,true);
+    };
+    //定时更新cookie内容
+    setInterval(initCompareBar,2000);
+}
+//初始化对比篮内容
+initCompareBar();
+//初始化位置
+init_comp_bar();
+</script>
+<!--lp_duibi end-->
+<!-- 返回顶部 -->
+<!--a href="#"><div class="rTop" id="rTop"></div></a>
+<script>
+ window.onscroll=function(){
+  if(document.body.scrollTop||document.documentElement.scrollTop>0){
+   document.getElementById('rTop').style.display="block"
+   }else{
+    document.getElementById('rTop').style.display="none"
+    }
+  
+  
+  }
+</script-->
+</body>
+</html>

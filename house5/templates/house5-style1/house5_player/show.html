@@ -1,0 +1,107 @@
+{h5:get sql="SELECT * FROM h5_player WHERE id = 1" num="1" return="appqy"}
+{/h5}
+
+{php $appqy = $appqy[0];}
+{php $ck_w =  substr($appqy['ck_size'],0,strpos($appqy['ck_size'], '|'));}
+{php $ck_h =  substr($appqy['ck_size'],strpos($appqy['ck_size'], '|')+1);}
+{if $width>0 && $height>0}
+{php $ck_w = $width;}
+{php $ck_h = $height;}
+{/if}
+{if $playoff}
+{php $appqy['video_default_status']=0;}
+{/if}
+{if $video_src!=''}
+
+<script type="text/javascript" src="{siteurl($siteid)}/statics/house5_player/js/offlights.js"></script>
+<style type="text/css">
+#video_ck { padding:0; margin:0}
+#a1{ padding:0; margin:0}
+</style>
+<div id="video_ck" style="position:relative;z-index: 100;"><div id="a1" style="z-index:-1"></div></div>
+
+<script type="text/javascript">
+var APP_PATH = "{APP_PATH}";
+</script>
+<script type="text/javascript" src="{siteurl($siteid)}/statics/house5_player/ckplayer/ckplayer.js" charset="utf-8"></script>
+<script type="text/javascript">
+	var flashvars={
+		f:'_vid_[$pat]',
+		a:'{$video_id}',
+		s:'1',
+		c:'0',
+		x:'{$appqy['ck_style']}',
+		i:'{$appqy['thumb_load']}',
+		d:'{$appqy['thumb_pause_ad']}',
+		u:'{$appqy['url_pause_ad']}',
+		l:'{$appqy['thumb_qz_ad']}',
+		r:'{$appqy['url_qz_ad']}',
+		t:'{$appqy['time_qz_ad']}',
+		y:'',
+		z:'{$appqy['beff_ad']}',
+		e:'{$appqy['video_type']}',
+		v:'{$appqy['ck_volume']}',
+		p:'{$appqy['video_default_status']}',
+		h:'{$appqy['ck_http_set']}',
+		q:'',
+		m:'0',
+		o:'',
+		w:'',
+		g:'',
+		j:'',
+		k:'',
+		n:'',
+		my_url:encodeURIComponent(window.location.href)};
+	var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
+	var attributes={id:'ckplayer_a1',name:'ckplayer_a1',menu:'false'};	
+	swfobject.embedSWF('{siteurl($siteid)}/statics/house5_player/ckplayer/ckplayer.swf', 'a1', '{$ck_w}', '{$ck_h}', '10.0.0','{siteurl($siteid)}/statics/house5_player/ckplayer/expressInstall.swf', flashvars, params, attributes);
+	{if $appqy['ck_http_set']==0}
+	var video={'{$video_src}':'video/mp4'};
+	var support=['iPad','iPhone','ios','android+false','msie10+false'];
+	CKobject.embedHTML5('video_ck','ckplayer_a1',{$ck_w},{$ck_h},video,flashvars,support);
+	{/if}
+ 	function aboutstr(str,f){
+		var about=false;
+		var strarray=new Array();
+		var farray=new Array();
+		farray=f.split(",");
+		if(str){
+			for(var i=0;i<farray.length;i++){
+				strarray=str.split(farray[i]);
+				if(strarray.length>1){
+					about=true;
+					break;
+				}
+			}
+		}
+		return about;
+	}
+
+	function ckmarqueeadv(){
+	return '{$appqy['text_ad']}'
+	}
+ 
+	function ckadjump(){
+		alert("你点击了跳过广告按钮，注册成为本站会员，可不用观看前置广告");
+	}
+	var box = new LightBox();
+	function closelights(){
+		box.Show();
+		CKobject._K_('video_ck').style.width='{$ck_w}px';
+		CKobject._K_('video_ck').style.height='{$ck_h}px';
+		swfobject.getObjectById('ckplayer_a1').width={$ck_w};
+		swfobject.getObjectById('ckplayer_a1').height={$ck_h};
+	}
+	function openlights(){
+		box.Close();
+		CKobject._K_('video_ck').style.width='{$ck_w}px';
+		CKobject._K_('video_ck').style.height='{$ck_h}px';
+		swfobject.getObjectById('ckplayer_a1').width={$ck_w};
+		swfobject.getObjectById('ckplayer_a1').height={$ck_h};
+	}
+	function ckmarqueeadv(){
+		return '{$appqy['text_ad']}';
+	}
+
+  </script>
+{/if}

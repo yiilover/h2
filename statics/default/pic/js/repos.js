@@ -1,0 +1,2 @@
+window.fet&&fet.register({"lib.jQuery":{assets:"{IMG_URL}pic/js/jquery.js",test:"window.jQuery"},"lib.gallery.white":{assets:"{IMG_URL}pic/css/white.css {IMG_URL}pic/js/house5.gallery.js",
+test:"jQuery.fn.gallery",depends:"lib.jQuery"}});

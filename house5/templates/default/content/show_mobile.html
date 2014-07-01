@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="format-detection" content="telephone=no" />
+<meta name="keywords" content="威海房产资讯,威海房地产门户,房产资讯,手机问房网" />
+<meta name="description" content="手机问房网资讯频道,致力于为房地产业界、租房、购房人群提供各类服务与咨讯。包括即时房产头条、楼市政策、市场动态、楼盘展示、写字楼、商铺、地产圈等房产相关内容！" />
+<title>{$title}</title>
+<link href="{APP_PATH}css/mobile/css.css" rel="stylesheet" type="text/css"/>
+<script language="Javascript" src="{CSS_PATH}static/js/jquery.js"></script>
+<script language="javascript" src="{APP_PATH}css/mobile/zixun.js"></script>
+<style type="text/css">
+p{ clear:both;} 
+p img{
+float:left;
+}
+</style>
+<script>
+$(document).ready(function() {
+    $('p img').each(function() {
+    var maxWidth = 285; // 图片最大宽度
+    var maxHeight = 500;    // 图片最大高度
+    var ratio = 0;  // 缩放比例
+    var width = $(this).width();    // 图片实际宽度
+    var height = $(this).height();  // 图片实际高度
+ 
+    // 检查图片是否超宽
+    if(width > maxWidth){
+        ratio = maxWidth / width;   // 计算缩放比例
+        $(this).css("width", maxWidth); // 设定实际显示宽度
+        height = height * ratio;    // 计算等比例缩放后的高度
+        $(this).css("height", height * ratio);  // 设定等比例缩放后的高度
+    }
+ 
+    // 检查图片是否超高
+    if(height > maxHeight){
+        ratio = maxHeight / height; // 计算缩放比例
+        $(this).css("height", maxHeight);   // 设定实际显示高度
+        width = width * ratio;    // 计算等比例缩放后的高度
+        $(this).css("width", width * ratio);    // 设定等比例缩放后的高度
+    }
+    });
+});
+</script>
+</head>
+<body>
+<a id="filter"></a>
+<div class="wrap">  
+	  <div class="backbox">
+	    <div class="back" style="margin-bottom:2px;margin-top:-2px;margin-left:8px" onclick="history.back(-1)"><a><img src="{APP_PATH}css/mobile/images/btnback.png" width="70" ></a></div>
+	    <div class="backtit" style="width: 130px;">详情</div>
+	    <div id="share" class="flor" style="margin-right:6px;margin-top:-1px">
+			<a class="btntopbar ablack" href="javascript://">分享</a>
+		</div>
+	    <div class="clear"></div>
+	  </div>
+  
+  <div class="content">
+  	
+	<div id="share_to" class="flyer rbox6" style="z-index:9000;display:none">	
+	<!-- Baidu Button BEGIN -->
+    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+        <div class="flyertit rt-box6">分享到</div>
+        <a class="bds_qzone"></a>
+        <a class="bds_tsina"></a>
+        <a class="bds_tqq"></a>
+        <a class="bds_renren"></a>
+        <a class="bds_kaixin001"></a>
+	</div>
+	<div class="btnBox" > <a id="cancel" class="btnblue awhite" href="javascript://" style="width:80px">&nbsp;&nbsp;取&nbsp;&nbsp;消&nbsp;&nbsp;</a></div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=657066" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?t=" + new Date().getHours();
+</script>
+
+<!-- Baidu Button END -->
+	</div>
+	 	<?php if(strpos($next_page[url],'http')!==false)
+				{
+					$next_page[url] = "http://news.venfang.com/showinfo-".$next_page[catid]."-".$next_page[id].".html";
+				}
+				else
+				{
+					$next_page[url] = "javascript:alert('最后一页');";
+				}
+			if(strpos($previous_page[url],'http')!==false)
+				{
+					$previous_page[url] = "http://news.venfang.com/showinfo-".$previous_page[catid]."-".$previous_page[id].".html";
+				}
+				else
+				{
+					$previous_page[url] = "javascript:alert('第一页');";
+				}
+			?>
+	 	  	<a href="{$previous_page[url]}"><div class="btnartpre flol" onclick="" style="cursor:pointer"></div></a>
+	   	
+	   	
+	     	<a href="{$next_page[url]}"><div class="btnartnex flor" onclick="" style="cursor:pointer"></div></a>
+	    
+      <div class="clear"></div>
+    
+    
+    <div class="page_cont">
+	    <div class=" boxpadleft8">
+	      <div class="xqtitbox">
+	        <div class="infocont-tit" >{$title}</div>
+	        <div class="clear"></div>
+	      </div>
+	      <div class=" f14 fgray" align="center" style="margin-top:6px">{$inputtime} 来源:{$copyfrom}</div>
+	      <div class="infocont">{$content}
+		  
+		  {h5:content action="relation" relation="$relation" id="$id" catid="$catid" num="5" keywords="$rs[keywords]" cache="3600"}
+		  {if $data}
+		  <p><strong>相关新闻：</strong></p>
+		  {loop $data $r} 
+		  <p><a href="http://news.venfang.com/showinfo-{$r[catid]}-{$r[id]}.html">{$r[title]}</a></p>
+		   {/loop}
+		   {/if}
+		   {/h5}
+		   </div>
+	    </div>
+	    
+	     {$pages}	    
+	    
+	    
+	    
+    </div>
+    
+    
+    
+    <div class="boxpadleft8" style="margin-top:8px">
+      
+      	<div class="art-swich" style="border-top: 1px solid #B3B3B3;">下一篇：<a href="{$next_page[url]}">{$next_page[title]}</a></div>
+      
+      
+      	<div class="art-swich">上一篇：<a href="{$previous_page[url]}">{$previous_page[title]}</a></div>
+      
+    </div>
+  </div>
+  <div id="favorite_msg" class="favorite none">正在加载...</div>
+</div>
+
+<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>
+
+<div class="foot">
+   <div id="top" class="backtop f16"><a href="#filter"><img src="{APP_PATH}css/mobile/images/backtop.png" >返回顶部</a></div>
+   <div class="copy f12">Copyright &copy; 2012 VenFang.com 问房网 版权所有<BR><BR> 鲁ICP备11018261号-3</div>
+</div>
+<script type="text/javascript">
+	window.scrollTo(0, 1);
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#share').click(function () {
+			addbg();
+			$('#share_to').css("display","block");
+		});
+		$('#cancel').click(function () {
+			removebg();
+			$('#share_to').css('display','none');
+		});
+		$('.load').click(function () {
+			var url = $(this).attr('url');
+			load(url);
+		})
+	})
+</script>
+</body>
+</html>

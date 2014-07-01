@@ -1,0 +1,45 @@
+{h5:comment action="get_comment" commentid="$commentid"}
+{php $comment = $data;}
+{/h5}
+<div id="infocommentarea">
+  {h5:comment action="lists" commentid="$commentid" siteid="$siteid" page="$_GET[page]" hot="$hot" num="5"}
+  {if !empty($data)}   
+  {loop $data $r}
+  <div class="comtItem clearfix">
+    <div class="userInfo">
+      <div class="name"> {if $r[userid]}{get_nickname($r[userid])}{else}{$r[username]}{/if} </div>
+      <div class="photo"> <img src="{get_memberavatar($r[userid],'',90)}" width="60" height="60" onerror="this.src='{APP_PATH}statics/images/member/nophoto.gif'"></div>
+      <div class="clear"></div>
+    </div>
+    <div class="comtInfo">
+      <div class="pubTime"><span class="mgr10">发表于</span><span class="">{format::date($r[creat_at], 1)}</span></div>
+      <div class="comtCont">
+        <p class="reply_c"> {$r[content]} </p>
+        <div class="action"> 
+         <img src="{APP_PATH}statics/css/images/ding.gif" width="16" height="19"><a href="javascript:void(0)" onclick="shuipfding({$r[id]}, '{$commentid}')"> 顶 </a>(<span id="support_{$r[id]}">{$r[support]}</span>)&nbsp;&nbsp; <img src="{APP_PATH}statics/css/images/cai.gif" width="16" height="19"><a href="javascript:void(0)" onclick="shuipfchai({$r[id]}, '{$commentid}')"> 踩 </a>(<span id="slsport_{$r[id]}">{$r[fandui]}</span>)<!--&nbsp;&nbsp; <img src="{APP_PATH}statics/css/images/huifu.gif" width="16" height="19"> <a href="javascript:doreply(148)">回复</a>&nbsp;&nbsp; </span>--> </div>
+        <div id="reply_148" class="replyform" style="display:none">
+          <input class="wInput" type="text" name="retxt148" id="retxt148">
+          <input class="wOk" type="button" value=" 回 复 " onClick="replsubmit(148);">
+          <input type="hidden" id="re148" name="re148" value="148">
+        </div>
+        <div class="retxt"> 
+          <div class="text"  style="display:none">
+            <p class="name"> <a class="mgr10" title="" target="_blank">sderfsds</a> <span class="gray9">2011-11-29 11:45:56</span> </p>
+            <p class="reretxt"> 回复试试？ </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+  {/loop}
+    <!--分页-->
+  {h5:comment action="get_comment" commentid="$commentid"}
+  <div class="epages" total="{$data[total]}" style="clear:both;border-top:1px solid #ccc; line-height:30px;padding:3px 0px 0px 5px;"> 
+  </div>
+  {/h5}
+</div>
+  {else}
+  <div class="epages" style="clear:both;border-top:1px solid #ccc; line-height:30px;padding:3px 0px 0px 5px;">暂时没有评论！</div>
+  {/if}
+  {/h5}

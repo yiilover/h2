@@ -1,0 +1,454 @@
+function init(){
+	if (document.all ? true : false){
+		document.onmousedown=function(){mousedown(event); };
+	}
+	else{
+		document.addEventListener("mousedown",function(evnt){mousedown(evnt);},false);
+	}
+	
+}
+var blank=true;
+function send(){
+	//return false;
+	if (window.event.keyCode == 13){blank=false;go();};
+}
+
+function mousedown(evnt)
+{
+	if(mousedownflag==0){
+		cC('qx','B','N');
+		cC('wy','B','N');
+		cC('jg','B','N');
+		cC('jgZ','B','N');
+		cC('xw','B','N');
+		cC('lt','B','N');
+		cC('jgX','B','N');
+		cC('lx_xf','B','N');
+	}
+}
+var mousedownflag=0;
+init();
+
+function $$(v){return document.getElementById(v);}
+var nowT=1;
+function cT(v,a,b){
+	for(i=1;i<=b;i++){
+		cC(v+i,'on','off');
+	}
+		nowT=a;
+		cI('t',a);
+		cC(v+a,'off','on');
+		cR('t'+a);
+	return false;
+}
+function cR(a){
+		switch (a){
+			case 't1':
+				cC('qxD','N','B');
+				cC('wyB','N','B');
+				cC('kwD','N','B');
+				cC('jgfwXD','N','B');
+				
+				
+				cC('jgfwD','B','N');
+				cC('jgfwZD','B','N');
+				cC('wyD','B','N');
+				cC('xwD','B','N');
+				cC('ltD','B','N');
+				cC('kwZD','B','N');
+				d_kw="请输入关键字";
+				$$('kw_f').value=d_kw;
+			break;
+			case 't2':
+				cC('qxD','N','B');
+				cC('wyD','N','B');
+				cC('kwD','N','B');
+				cC('jgfwD','N','B');
+				
+				
+				cC('jgfwXD','B','N');
+				cC('jgfwZD','B','N');
+				cC('wyB','B','N');
+				cC('xwD','B','N');
+				cC('ltD','B','N');
+				cC('kwZD','B','N');
+				
+				d_kw="输入房源特征, 如地点或小区名等";
+				$$('kw_f').value=d_kw;
+			break;
+			case 't3':
+				cC('qxD','N','B');
+				cC('wyD','N','B');
+				cC('kwD','N','B');
+				cC('jgfwZD','N','B');
+				
+				
+				cC('jgfwXD','B','N');
+				cC('jgfwD','B','N');
+				cC('wyB','B','N');
+				cC('xwD','B','N');
+				cC('ltD','B','N');
+				cC('kwZD','B','N');
+				
+				d_kw="输入房源特征, 如地点或小区名等";
+				$$('kw_f').value=d_kw;
+			break;
+			case 't4':
+				cC('qxD','B','N');
+				cC('wyD','B','N');
+				cC('wyB','B','N');
+				cC('kwD','B','N');
+				cC('jgfwZD','B','N');
+				cC('jgfwD','B','N');
+				cC('ltD','B','N');
+				
+				
+				cC('jgfwXD','B','N');
+				cC('xwD','N','B');
+				cC('kwZD','N','B');
+				cC('kwZD','sf6','sf5')
+				cI('xw_I','1');
+				d_kw="请输入关键字";
+				$$('kw_n').value=d_kw;
+				
+			break;
+			case 't5':
+				cC('qxD','B','N');
+				cC('wyD','B','N');
+				cC('wyB','B','N');
+				cC('kwD','B','N');
+				cC('jgfwZD','B','N');
+				cC('jgfwD','B','N');
+				cC('xwD','B','N');
+				
+				
+				cC('jgfwXD','B','N');
+				cC('kwZD','sf6','sf5')
+				cC('ltD','N','B');
+				cC('kwZD','N','B');
+				d_kw="请输入关键字";
+				$$('kw_n').value=d_kw;
+			break;
+			case 't6':
+				cC('qxD','B','N');
+				cC('wyD','B','N');
+				cC('wyB','B','N');
+				cC('kwD','B','N');
+				cC('jgfwZD','B','N');
+				cC('jgfwD','B','N');
+				cC('ltD','B','N');
+				
+				
+				
+				cC('jgfwXD','B','N');
+				cC('xwD','B','N');
+				cC('kwZD','N','B');
+				cC('kwZD','sf5','sf6')
+				cI('xw_I','91');
+				
+				d_kw="请输入关键字";
+				$$('kw_n').value=d_kw;
+			break;
+			case 't7':
+			
+				cC('wyD','B','N');
+				cC('kwD','B','N');
+				cC('jgfwZD','B','N');
+				cC('jgfwD','B','N');
+				cC('ltD','B','N');
+				cC('xwD','B','N');
+				cC('jgfwXD','B','N');
+				
+				
+				cC('kwZD','N','B');
+				cC('qxD','N','B');
+				cC('kwZD','sf6','sf5')
+				d_kw="请输入关键字(楼盘名)等";
+				$$('kw_n').value=d_kw;
+				
+			break;
+			case 't8':
+				var link='{HOUSE_PATH}map';
+				$$('f').action=link;
+				$$('f').submit();
+			break;
+			default:
+			
+			break;
+		}
+
+}
+function cC(v,a,b){$$(v).className=$$(v).className.replace(a,b);}
+function cW(v,a){$$(v).innerHTML=a;}
+function cI(v,a){$$(v).value=a;}
+function cTV(v,a){
+if(a=='on'){
+	if($$(v).value==d_kw){cI(v,'');}
+	}
+	else{
+		if($$(v).value==''){cI(v,d_kw);}
+	}
+}
+
+
+
+
+
+function go(){
+	var can=false;
+	switch ('t'+$$('t').value){
+		case 't1':
+			link2='{HOUSE_PATH}list.html';
+			
+			
+			
+			var link='{HOUSE_PATH}list';
+			if ($$('qx_I').value!='0'){
+				can=true;
+				switch ('t'+$$('qx_I').value){
+				{h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC" cache="86400"}
+					{loop $data $r}
+					{php $reg = explode('$$', $r);}
+						case "t{$n}":
+							link+='-r{$reg[0]}';
+						break;
+					{/loop}
+					{/h5}
+					}
+			
+			}
+			
+			
+			
+			if ($$('jgX_I').value!='0'){link+='-p'+$$('jgX_I').value;can=true;}
+			if ($$('wy_I').value!='0'){
+			
+			
+				can=true;
+				switch ('t'+$$('wy_I').value){
+					case "t1":
+						link+='-t1';
+					break;
+					case "t8":
+						link+='-t8';
+					break;
+					case "t7":
+						link+='-t7';
+					break;
+					case "t6":
+						link+='-t6';
+					break;
+					case "t5":
+						link+='-l5';
+					break;
+					}
+			
+			
+			}
+			link+='.html';
+			if ($$('kw_f').value!='' && $$('kw_f').value!=d_kw){link='{HOUSE_PATH}list.html?keyword='+$$('kw_f').value;can=true;}
+			
+			
+		break;
+		case 't2':
+			link2='{ESF_PATH}';
+			var link='{ESF_PATH}list';
+			switch ('t'+$$('qx_I').value){
+				{h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC" cache="86400"}
+					{loop $data $r}
+					{php $reg = explode('$$', $r);}
+						case "t{$n}":
+							link+='-r{$reg[0]}';
+						break;
+					{/loop}
+					{/h5}
+					}
+			if ($$('jg_I').value!='0'){link+='-p'+$$('jg_I').value;can=true;}
+			if ($$('wyZ_I').value!='0'){link2+='t'+$$('wyZ_I').value;can=true;}
+			link+='.html';
+			if ($$('kw_f').value!='' && $$('kw_f').value!=d_kw){link2+='?q='+$$('kw_f').value;can=true;}
+		break;
+		case 't3':
+			link2='{ESF_PATH}';
+			var link='{ESF_PATH}rent-list';
+			switch ('t'+$$('qx_I').value){
+				{h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC" cache="86400"}
+					{loop $data $r}
+					{php $reg = explode('$$', $r);}
+						case "t{$n}":
+							link+='-r{$reg[0]}';
+						break;
+					{/loop}
+					{/h5}
+					}
+			if ($$('jgZ_I').value!='0'){link+='-p'+$$('jgZ_I').value;can=true;}
+			if ($$('wyZ_I').value!='0'){link2+='t'+$$('wyZ_I').value;can=true;}
+			link+='.html';
+			if ($$('kw_f').value!='' && $$('kw_f').value!=d_kw){link2+='?q='+$$('kw_f').value;can=true;}
+		break;
+		case 't4':
+			link2='{APP_PATH}index.php?s=search';
+			var link='{APP_PATH}index.php?s=search/index/init/siteid/1';
+			link+='&typeid='+$$('xw_I').value;
+			if ($$('kw_n').value!='' && $$('kw_n').value!=d_kw){link+='&q='+$$('kw_n').value;can=true;}
+			
+		break;
+		case 't5':
+			link2='{BBS_PATH}search.php?mod=forum';
+			var link;
+			if ($$('kw_n').value!=''&&$$('kw_n').value!=d_kw){
+				can=true;
+				switch ('t'+$$('lt_I').value){
+					case 't1':
+						link='{BBS_PATH}search.php?mod=forum&srchtxt='+$$('kw_n').value+'&orderby=lastpost&ascdesc=desc&searchsubmit=yes';
+					break;
+					case 't2':
+						link='{BBS_PATH}home.php?mod=spacecp&ac=search&username='+$$('kw_n').value+'&searchsubmit=yes';
+					break;
+					case 't3':
+						link='{BBS_PATH}search.php?mod=portal&srchtxt='+$$('kw_n').value+'&orderby=lastpost&ascdesc=desc&searchsubmit=yes';
+					break;
+					case 't4':
+						link='{BBS_PATH}search.php?mod=blog&srchtxt='+$$('kw_n').value+'&orderby=lastpost&ascdesc=desc&searchsubmit=yes';
+					break;
+					case 't5':
+						link='{BBS_PATH}search.php?mod=album&srchtxt='+$$('kw_n').value+'&orderby=lastpost&ascdesc=desc&searchsubmit=yes';
+					break;
+					case 't6':
+						link='{BBS_PATH}search.php?mod=group&srchtxt='+$$('kw_n').value+'&orderby=lastpost&ascdesc=desc&searchsubmit=yes';
+					break;
+				
+				
+				}
+			}
+			else{
+				can=false;
+			}
+		break;
+		
+		case 't6':
+			link2='{APP_PATH}index.php?s=search';
+			var link='{APP_PATH}index.php?s=search/index/init/siteid/1';
+			link+='&typeid='+$$('xw_I').value;
+			if ($$('kw_n').value!='' && $$('kw_n').value!=d_kw){link+='&q='+$$('kw_n').value;can=true;}
+		break;
+		
+		case 't7':
+			link2='{HOUSE_PATH}wenfang-p1.html';
+			link='{HOUSE_PATH}wenfang';
+				can=true;
+				switch ('t'+$$('qx_I').value){
+					{h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC" cache="86400"}
+					{loop $data $r}
+					{php $reg = explode('$$', $r);}
+						case "t{$n}":
+							link+='-r{$reg[0]}';
+						break;
+					{/loop}
+					{/h5}
+					default:
+						link+='-p1.html'
+					can=false;
+					break;
+					}
+			if ($$('kw_n').value!='' && $$('kw_n').value!=d_kw){link+='?keyword='+$$('kw_n').value;can=true;}
+		break;
+	}
+	if(can)
+	{
+		if(blank){
+			$$('f').action=link;
+			$$('f').submit();
+		}else{
+			top.location.href=link;
+		}
+	}
+	else{
+		if(blank){
+			$$('f').action=link2;
+			$$('f').submit();
+		}else{
+			top.location.href=link2;
+		}
+	
+	}
+}
+
+var issend=true;
+function sendlx(){
+showS();
+} 
+function ajaxTo(str){
+	if(str.length>0){
+		if(str.indexOf('[{')==-1){str='[]';}
+		var data=eval("("+str+")");
+		var link;
+		$$('lx_xf').innerHTML="";
+		if(data.length>0){
+			cC('lx_xf','N','B');
+			for(i=0;i<data.length;i++){
+				switch ('t'+nowT){
+					case 't1':
+					link="{HOUSE_PATH}"+data[i].hl+"/";
+					break;
+					case 't2':
+					link="{ESF_PATH}xiaoqu-show-"+data[i].hl+".html";
+					break;
+					case 't3':
+					link="{ESF_PATH}xiaoqu-show-"+data[i].hl+".html";
+					break;
+				}
+				$$('lx_xf').innerHTML+="<a href=\""+link+"\" >"+data[i].ht+"</a>";
+			}
+		}
+		else
+		{
+			cC('lx_xf','B','N');
+		}
+	}else{
+		cC('lx_xf','B','N');
+	}
+}
+
+function getdata(){
+	if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete")
+	{
+		ajaxTo(xmlHttp.responseText);
+	} 
+}
+
+var xmlHttp
+function showS()
+{
+	issend=true;
+	str=$$('kw_f').value;
+	if (str.length==0){return;}
+	xmlHttp=GetXmlHttpObject()
+	if (xmlHttp==null){return false;} 
+	url='/api.php?op=topsuggest';
+	url=url+"&k="+str+"&t="+nowT+"&r="+Math.random()
+	xmlHttp.open("GET",url,true)
+	xmlHttp.send(null)
+	xmlHttp.onreadystatechange=getdata;
+}
+
+function stateChanged() 
+{ 
+}
+
+function GetXmlHttpObject()
+{
+	var xmlHttp=null;
+	try
+	{
+		xmlHttp=new XMLHttpRequest();
+	}
+	catch (e)
+	{
+		try
+		{xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+		catch (e)
+		{xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}
+	}
+	return xmlHttp;
+}

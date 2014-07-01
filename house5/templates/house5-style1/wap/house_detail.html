@@ -1,0 +1,214 @@
+{template "wap","header"}
+<link type="text/css" rel="stylesheet" href="/statics/house5-style1/3g/css/3g_details.css" />
+<link type="text/css" rel="stylesheet" href="/statics/house5-style1/3g/css/3g_common.css" />
+<script>
+window.addEventListener("load",function() {
+  setTimeout(function(){
+    window.scrollTo(0, 1);
+  }, 0);
+}); 
+</script>
+<script src="/statics/house5-style1/3g/js/wap_detail.js" type="text/javascript"></script>
+</head>
+<body>
+	<header class="header">
+		<a href="{WAP_SITEURL}" class="logo">{$WAP['sitename']}</a>
+    <a href="{WAP_SITEURL}" class="bn_back bn_back2" >返回</a>
+    <a href="#" class="bn_search">搜索</a>
+    <a href="#" class="bn_nav">导航</a>
+	    <i></i>
+	</header>
+
+		<script>
+	/*点击搜索和导航触发的事件*/
+	$(".bn_search").bind("click", function(){
+		var getifclass = $(this).attr("class").indexOf("bn_search_on");
+		if(getifclass > -1)
+		{
+			$(".h_so").css("display", "none");
+			$(".bn_search").removeClass("bn_search_on");
+		}
+		else
+		{
+			$(".h_so").css("display", "block");
+			$(".bn_search").addClass("bn_search_on");
+			$(".h_nav").css("height", "0px");
+			$(".bn_nav").removeClass("bn_nav_on");
+			$('#ico_del').css('display', 'none');
+		}
+			
+	});
+	$(".bn_nav").bind("click", function(){
+		$(".bn_search").removeClass("bn_search_on");
+		var getifclass = $(this).attr("class").indexOf("bn_nav_on");
+		if(getifclass > -1)
+		{
+			$(".h_nav").css("height", "0px");
+			$(".bn_nav").removeClass("bn_nav_on");
+		}
+		else
+		{
+			$(".h_so").css("display", "none");
+			$(".bn_search").removeClass("bn_search_on");
+			$(".h_nav").css("height", "43px");
+			$(".bn_nav").addClass("bn_nav_on");
+		}
+	});
+	function changeCity()
+	{
+		var stylecss = $(".sel_city").attr("style").indexOf("0px");
+		if(stylecss > -1)
+		{
+			$(".sel_city").attr("style", "");
+			$(".sel_city").css("height", "auto");
+		}
+		else
+		{
+			$(".sel_city").css("height", "0px");
+			$(".sel_city").css("overflow", "hidden");
+		}
+		
+	}
+	</script>
+<script type="text/javascript" src="/statics/house5-style1/3g/js/3g_swipe.min.js"></script>
+<div class="h_so" style="display:none">
+	<div class="m_con">
+		<form id="search_form" name="f" action="{WAP_SITEURL}list.html" method="get">
+	    	<input type="search" name='k' id="kw" class="input_keys" id="kw"  value="请输入楼盘……"  onfocus="if(this.value=='请输入楼盘……'){this.value='';}$('#ico_del').css('display', 'block');" onblur="if(this.value=='')this.value='请输入楼盘……';" autocomplete="off">
+	        <span class="ico_clear" onclick="$('#search_form input').val('')"><i id="ico_del" style="display:none"></i></span>
+	        <div class="search_bn" onClick="$('form').submit()"><i></i></div>
+    	</form>
+    </div>
+</div>
+<nav class="h_nav" id="slidermnav" style="height: 0px; overflow:hidden;">
+	<ul>
+    	<li style="display:block">
+        <p class="m_con nav_1">
+        <a href="{WAP_SITEURL}" style="width:18%">首页<em></em></a><a href="{WAP_SITEURL}list.html" style="width:28%">楼盘检索<em></em></a><a href="{WAP_SITEURL}top/" style="width:26%">楼盘榜<em></em></a><a href="{WAP_SITEURL}map/" style="width:28%">找房楼盘</a><i onclick='slidermnav.next();return false;'></i>
+        </p>	
+        </li>
+        <li style="display:none">
+        <p class="m_con nav_2">
+        <a href="{WAP_SITEURL}news/" style="width:33%">新房导购<em></em></a><a href="{WAP_SITEURL}calcul/" style="width:34%">房贷计算<em></em></a><i onclick='slidermnav.prev();return false;'></i>
+        </p>	
+      </li>
+    </ul>
+</nav>
+
+<script>
+	var slidermnav = new Swipe(document.getElementById('slidermnav'));
+</script>
+	<div class="main_body">
+		<div class="pic_con">
+	    	<a href="{WAP_SITEURL}pic/{$id}/"><img class="pic" src="{if !empty($thumb)}{thumb($thumb,140,40)}{else}{APP_PATH}statics/house5-style1/img/index/nopic.jpg{/if}"></a>
+	        <label><span id="hits"></span>人关注</label>
+	    </div>
+	    <label class="ico">{$xszt}</label>	    <div class="t_con">
+	    	<h1>{$title}</h1>
+	        <p class="jg">{if !empty($price) && $price!="一房一价"}{if $priceunit=="0" }起价{$price}元/平米{elseif  $priceunit=="2"}{price_short($price)}/套{/if} {else}一房一价{/if}</p>
+	        <p class="ms">{$fix} {$type2}</p>
+			{php $menu_info = menu_info('3360',$r[region])}
+	        <p class="wz">位置：{$menu_info[0]}</p>
+	        <p class="bn"><a href="{WAP_SITEURL}cal/{$id}/" class="bn_js"><i></i>贷款计算</a>
+	        <a href="{WAP_SITEURL}device/{$id}/map/" class="bn_map"><i></i>查看地图</a></p>
+	    </div>
+	    
+		<i class="yy_b"></i><i class="yy_t"></i><i class="yy_x"></i>
+	</div>
+
+<nav class="lp_nav"  id="infomao" name="infomao">
+	<a href="{WAP_SITEURL}detail/{$id}/" class="sel_on on_l">参数<i></i></a><a href="{WAP_SITEURL}news/{$id}/">资讯<i></i></a><a href="{WAP_SITEURL}huxing/{$id}/">户型<i></i></a><a href="{WAP_SITEURL}device/{$id}/">配套<i></i></a><a href="{WAP_SITEURL}pic/{$id}/">图片<i></i></a><a href="{WAP_SITEURL}comment/{$id}/">点评</a>
+</nav>
+<!--楼盘参数信息start-->
+<section class="lp_cs" >
+										<p class="str"><strong>开盘时间：</strong>{if !empty($opentimetips)}{$opentimetips}{elseif !empty($opentime)&& $opentime!="0000-00-00"}{$opentime}{else}待定{/if}</p>
+				  								<p><strong>楼盘说明：</strong>{$character} {$fix} {$type2}</p>
+	  			  								<p><strong>楼盘位置：</strong>{$address}</p>
+	  			  								{if $huxing}<p><strong>主力户型：</strong>{$huxing}</p>{/if}
+	  			  								{if $character}<p><strong>楼盘特色：</strong>{$character}</p>{/if}
+	  			  								{if $fcznx}<p><strong>产权年限：</strong>{$fcznx}</p>{/if}
+	  			  								<p><strong>绿化率：</strong>{if !empty($lhl)}{$lhl}%{else}待定{/if}</p>
+	  			  								{if $payment}<p><strong>付款方式：</strong>{$payment}</p>{/if}
+	  			  								<p><strong>开发商：</strong>{getcompany_name($developer,12)}</p>
+	  			  	  	</section>
+
+<div class="bn_most">
+	<div>
+    <a class="top" href="#">顶部</a>
+    <span class="most" ><span class="num"  id="info">更多参数 <em>(4/12)</span></span>
+    <i></i>
+    <b></b>
+    </div>
+</div>
+<!--楼盘参数信息end-->
+{h5:content action="salesinfo" xglp="$id" catid="6" morecatid="26,49,28,29" num="10" order="inputtime DESC" cache="86400"}<!-- 最新销售动态 -->
+ {if $data}
+<h2 class="tit_h2" id="quotmao" name="quotmao">楼盘动态<i class="h"></i></h2>
+<section class="new_list">
+	<div>
+{loop $data $k $r}
+			<a {if $n==1}class="sta" {/if}href="{WAP_SITEURL}show/{$r[catid]}/{$r[id]}/"><i></i><label>{date('Y-m-d',$r[inputtime])} {if $n==1}<em></em>{/if}</label><span>{$r['title']}</span></a>
+{/loop}    	                    
+</div>
+</section>
+{if count($data)>4}
+<div class="bn_most">
+	<div class="s2">
+    <a class="top" href="#">顶部</a>
+    <span class="most" ><span class="num"  id="quot">更多资讯 <em>(4/{count($data)})</span></span>
+    <i class="h"></i>
+    <b></b><sub></sub>
+    </div>
+</div>
+{/if}
+{/if}
+{/h5}
+{h5:content action="dianpinginfo" relation="$id" catid="99" num="1" order="id DESC" cache="172800" return="expertdp"}
+{php $expertreviews = $expertdp;}
+<h2 class="tit_h2">综合点评<i></i></h2>
+<section class="zhpl">
+	<p class="p1">{$expertreviews[zongjie]}</p>    <p class="p2"><label>优点</label>{$expertreviews[advantage]}</p>    <p class="p3"><label>缺点</label>{$expertreviews[disadvantage]}</p></section>
+{/h5}
+<h2 class="tit_h2">主力户型<i></i></h2>
+<section class="zlhx">
+	<p class="top_sel"><strong>户型图：</strong> 
+{h5:content action="huxingtype" relation="$id" catid="13" num="10" order="inputtime DESC" cache="86400"}<!-- 户型图 -->
+ {if $data}
+ {loop $data $r}
+{h5:content action="pictypecount" relation="$id" catid="13" typeid="$r[typeid]" cache="172800" return="info"}
+ <a href="{WAP_SITEURL}huxing/{$id}/{$r[typeid]}/">{get_typename_bytypeid($siteid,$r[typeid])}({$info})</a>|
+ {/h5}
+ {/loop}
+<a href="{WAP_SITEURL}huxing/{$id}/">全部户型</a></p>
+{/if}
+{/h5}
+			<div class="list">
+{h5:content action="huxinginfo" relation="$id" catid="13" num="5" order="inputtime DESC" cache="86400"}<!-- 户型图列表 -->
+		  {php $xx=0;}
+{loop $data $rs}
+{php $xx++}
+{loop string2array($rs['pictureurls']) $pic_k $v}
+{php if($n>1) continue;}
+{php if($xx>3) break;}
+          <a href="{WAP_SITEURL}huxing/{$id}/{$r[typeid]}/{$rs[id]}#{$n}" class="sta">{$v[alt]}</a>
+{/loop}
+{/loop}
+{/h5}
+			    				    		     	    </div>
+	  </section>
+ {h5:content action="pictypecount" relation="$id" catid="13" cache="172800" return="huxinginfo"}
+ {if $huxinginfo>10}
+<div class="bn_most2">
+    <a class="top" href="#">顶部</a>
+    <a class="most" href="{WAP_SITEURL}huxing/{$id}/"><span>更多户型</span></a>
+    <b></b>
+</div>
+{/if}
+{/h5}
+{if strpos($tel,'/') !== FALSE}
+{php $pos = strpos($tel,'/');}
+{php $tel = substr($tel, 0, $pos);}
+{/if}
+<a href="tel:{$tel}" class="bot_tel" title="{$tel}"  ><i></i><span><strong>咨询电话：</strong>{$tel}</span></a>
+<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>
+{template "wap","footer"}

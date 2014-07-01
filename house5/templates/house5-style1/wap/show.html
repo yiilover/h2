@@ -1,0 +1,133 @@
+{template "wap","header"}
+<link type="text/css" rel="stylesheet" href="/statics/house5-style1/3g/css/3g_details.css" />
+<link type="text/css" rel="stylesheet" href="/statics/house5-style1/3g/css/3g_common.css" />
+<link type="text/css" rel="stylesheet" href="/statics/house5-style1/3g/css/3g_news.css" />
+<script>
+window.addEventListener("load",function() {
+  setTimeout(function(){
+    window.scrollTo(0, 1);
+  }, 0);
+}); 
+</script>
+</head>
+<body>
+<a name="top" id="top"></a>
+<header class="header">
+	<a href="{WAP_SITEURL}" class="logo">{$WAP['sitename']}</a>
+    <a href="{WAP_SITEURL}" class="bn_back bn_back2" >返回</a>
+    <a href="#" class="bn_search">搜索</a>
+    <a href="#" class="bn_nav">导航</a>
+    <i></i>
+</header>
+	<script>
+	/*点击搜索和导航触发的事件*/
+	$(".bn_search").bind("click", function(){
+		var getifclass = $(this).attr("class").indexOf("bn_search_on");
+		if(getifclass > -1)
+		{
+			$(".h_so").css("display", "none");
+			$(".bn_search").removeClass("bn_search_on");
+		}
+		else
+		{
+			$(".h_so").css("display", "block");
+			$(".bn_search").addClass("bn_search_on");
+			$(".h_nav").css("height", "0px");
+			$(".bn_nav").removeClass("bn_nav_on");
+			$('#ico_del').css('display', 'none');
+			$.getScript("/statics/house5-style1/3g/js/3g_autocomplete.js",function(){
+				if(!!$("#kw").length){
+					$("#kw").suggest({
+						url:siteConfig.suggestionUrl,
+						params:{
+							kw:function(){return $("#kw").val()},
+							n:10
+						},
+						delay:300
+					});
+				}
+			});
+		}
+			
+	});
+	$(".bn_nav").bind("click", function(){
+		$(".bn_search").removeClass("bn_search_on");
+		var getifclass = $(this).attr("class").indexOf("bn_nav_on");
+		if(getifclass > -1)
+		{
+			$(".h_nav").css("height", "0px");
+			$(".bn_nav").removeClass("bn_nav_on");
+		}
+		else
+		{
+			$(".h_so").css("display", "none");
+			$(".bn_search").removeClass("bn_search_on");
+			$(".h_nav").css("height", "43px");
+			$(".bn_nav").addClass("bn_nav_on");
+		}
+	});
+	function changeCity()
+	{
+		var stylecss = $(".sel_city").attr("style").indexOf("0px");
+		if(stylecss > -1)
+		{
+			$(".sel_city").attr("style", "");
+			$(".sel_city").css("height", "auto");
+		}
+		else
+		{
+			$(".sel_city").css("height", "0px");
+			$(".sel_city").css("overflow", "hidden");
+		}
+		
+	}
+	</script>
+<script type="text/javascript" src="/statics/house5-style1/3g/js/3g_swipe.min.js"></script>
+<div class="h_so" style="display:none">
+	<div class="m_con">
+		<form id="search_form" name="f" action="{WAP_SITEURL}list.html" method="get">
+	    	<input type="search" name='k' id="kw" class="input_keys" id="kw"  value="请输入楼盘……"  onfocus="if(this.value=='请输入楼盘……'){this.value='';}$('#ico_del').css('display', 'block');" onblur="if(this.value=='')this.value='请输入楼盘……';" autocomplete="off">
+	        <span class="ico_clear" onclick="$('#search_form input').val('')"><i id="ico_del" style="display:none"></i></span>
+	        <div class="search_bn" onClick="$('form').submit()"><i></i></div>
+    	</form>
+    </div>
+</div>
+<nav class="h_nav" id="slidermnav" style="height: 0px; overflow:hidden;">
+	<ul>
+    	<li style="display:block">
+        <p class="m_con nav_1">
+         <a href="{WAP_SITEURL}" style="width:18%">首页<em></em></a><a href="{WAP_SITEURL}list.html" style="width:28%">楼盘检索<em></em></a><a href="{WAP_SITEURL}top/" style="width:26%">楼盘榜<em></em></a><a href="{WAP_SITEURL}map/" style="width:28%">找房楼盘</a><i onclick='slidermnav.next();return false;'></i>
+        </p>	
+        </li>
+        <li style="display:none">
+        <p class="m_con nav_2">
+       <a href="{WAP_SITEURL}news/" style="width:33%">新房导购<em></em></a><a href="{WAP_SITEURL}calcul/" style="width:34%">房贷计算<em></em></a><i onclick='slidermnav.prev();return false;'></i>
+        </p>	
+      </li>
+    </ul>
+</nav>
+<script>
+	var slidermnav = new Swipe(document.getElementById('slidermnav'));
+</script><h1 class="news_tit">{$title}</h1>
+<aside class="news_tit_s g_yc">{date('Y年m月d日 H:i',strtotime($inputtime))}<b>|</b> 新闻编辑：{$username} </aside>
+<div class="news_con">
+{if $pictureurl}{$pictureurl}<br>{$pages}{/if}
+
+{$content}
+
+<p>&emsp;&emsp;<span style="font-family: 楷体;">以上信息仅供参考，最终以开发商公布为准。引用或转载请注明出处。</span></p></div>
+	<h2 class="tit_h2">相关新闻<i class="h"></i></h2>
+	{h5:content action="relation" relation="$relation" id="$id" catid="$catid" num="6" keywords="$rs[keywords]" cache="3600"}
+     {if $data}
+	<section class="more_news">
+	{loop $data $r}
+	{if !$r[islink]}
+	<a href="{WAP_SITEURL}show/{$r[catid]}/{$r[id]}" class="sta">{$r[title]}</a>
+	{/if}
+			{/loop}
+	        	</section> 
+		{/if}
+          {/h5}
+<a href="#top" class="b_top">顶部</a>
+
+{template "wap","footer"}

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="gbk"/>
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+    <link href="{APP_PATH}favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+	<link href="{APP_PATH}statics/default/css/esf/reset.css"  rel="stylesheet" type="text/css"/>
+	<link href="{APP_PATH}statics/default/css/esf/esf.css"  rel="stylesheet" type="text/css"/>
+	<script src="{APP_PATH}statics/default/js/esf/sea.js"  type="text/javascript"></script>
+</head>
+<body>
+	<div id="main">
+		<div id="header">
+	{template "ssi","ssi_8"}
+<script type="text/javascript">
+seajs.use("topbarlogin")
+</script>	<h1>
+		<a href="{APP_PATH}"  title="{$site_title}" class="logo fl">
+			<img src="{APP_PATH}statics/default/img/logo.png" alt="{$SEO['site_title']}" width="150" height="50"/></a>
+		</h1>
+	<div id="Search">
+		<ul class="searchURL">
+			<li><a href="{HOUSE_PATH}"  target="_blank">新房</a></li>
+			<li class="on"><a href="{ESF_PATH}list.html"  target="_blank">二手房</a></li>
+			<li><a href="{ESF_PATH}rent-list.html"  target="_blank">出租房</a></li>
+			<li class="more"><a href="javascript:void(0)">更多<em></em></a>
+				<div>
+					<a href="{catlink(6)}"  target="_blank">资讯</a>
+					<a href="{BBS_PATH}"  target="_blank">论坛</a>
+				</div>
+			</li>
+		</ul>
+		<a href="{ESF_PATH}map.html"  class="mapS" target="_blank">地图找房</a>
+	<?php
+$param = $_GET['param'];
+	if(!empty($param)&&stristr($param,'-')!=false)
+	{
+		$param_arr = explode('-', $param);
+		foreach($param_arr as $_v) {
+				if($_v) 
+				{
+					if(preg_match ( '/([a-z])([0-9A-Z_]+)/', $_v, $matchs))
+					{
+						$$matchs[1] = trim($matchs[2]);
+					}
+				}
+			}
+		$parentid = $r;
+		$bid = $b;
+		$ename = $e;
+		$ord = $n;
+		$page = $g;
+	}
+	else
+	{
+ 	$parentid = intval($_GET['r']);
+	$bid = intval($_GET['b']);
+	$ename = trim($_GET['e']);
+	$ord = intval($_GET['n']);
+	$page = intval($_GET['g']);
+	$keyword = trim($_GET['keyword']);
+	$k = trim($_GET['k']);
+	}
+	
+	$where = "status=99";
+	if(!empty($keyword))
+	{
+		$keyword1 = iconv('gbk', 'utf-8', $keyword);//rewrite 只支持UTF-8编码的中文
+		$lst1.= "-k".htmlentities(urlencode($keyword1));
+		$where.=" and (`title` like '%$keyword%' or `address` like '%$keyword%' )";
+	}
+	if(!empty($k))
+	{
+		$keyword = iconv('utf-8','gbk' , $k);
+		$lst1.= "-k".htmlentities(urlencode($k));
+		$where.=" and (`title` like '%$keyword%' or `address` like '%$keyword%' )";
+	}
+ 	if(!empty($parentid))
+	{
+		$lst = "-r".$parentid;
+	}
+	if(!empty($bid))
+	{
+		$lst.= "-b".$bid;
+	}
+	if(!empty($parentid) && !empty($bid))
+	{
+		$where.=" and `region`=$bid";
+	}
+	elseif(!empty($parentid) && empty($bid))//区域顶级
+	{
+		$arrchildid = get_arrchildid('3360',$parentid);
+		$where.=" and `region` in ($arrchildid)";
+	}
+	if(!empty($ename) && preg_match('/^[a-zA-Z]+$/i',$ename))
+	{
+		$lst.= "-e".$ename;
+		$ename = strtolower($ename);
+		$where.=" and (`ename` like '$ename%' or `pinyin` like '$ename%' )";
+	}
+	$order = "id desc";
+	?>
+		<div id="qy">
+			<span>区域/地铁</span>
+			<div>
+				<a data-val="" href="javascript:void(0)">全部区县</a>
+				{h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC" cache="86400"}
+{loop $data $r}
+<?php
+ 	$reg = explode('$$', $r);//add by L 2012/3/22
+	?>
+	<a href="javascript:void(0)" data-val="-r{$reg[0]}">{$reg[1]}</a>											
+	{/loop}
+{/h5}
+												</div>
+		</div>
+		<div data-k = "平" id="wy" data-val="">
+			<span>面积</span>
+			<div>
+				<a data-val="" href="javascript:void(0)">全部</a>
+											<a href="javascript:void(0)" data-val="-c1">70平米以下</a>
+											<a href="javascript:void(0)" data-val="-c3">70-90平米</a>
+											<a href="javascript:void(0)" data-val="-c4">90-120平米</a>
+											<a href="javascript:void(0)" data-val="-c5">120-150平米</a>
+											<a href="javascript:void(0)" data-val="-c6">150-200平米</a>
+											<a href="javascript:void(0)" data-val="-c7">200-300平米</a>
+											<a href="javascript:void(0)" data-val="-c8">300平米以上</a>
+												</div>
+		</div>
+		<div data-k = "万" id="jg" data-val="">
+			<span>价格范围</span>
+			<div>
+				<a data-val="" href="javascript:void(0)">全部</a>
+											<a href="javascript:void(0)" data-val="-p1">50万以下</a>
+											<a href="javascript:void(0)" data-val="-p2">50-80万</a>
+											<a href="javascript:void(0)" data-val="-p3">80-100万</a>
+											<a href="javascript:void(0)" data-val="-p4">100-150万</a>
+											<a href="javascript:void(0)" data-val="-p5">150-200万</a>
+											<a href="javascript:void(0)" data-val="-p6">200-250万</a>
+											<a href="javascript:void(0)" data-val="-p7">250-300万</a>
+											<a href="javascript:void(0)" data-val="-p8">300-400万</a>
+												</div>
+		</div>
+		<div id="shx">
+			<span>户型</span>
+			<div>
+				<a data-val="" href="javascript:void(0)">全部</a>
+											<a href="javascript:void(0)" data-val="-t1">一室</a>
+											<a href="javascript:void(0)" data-val="-t2">二室</a>
+											<a href="javascript:void(0)" data-val="-t3">三室</a>
+											<a href="javascript:void(0)" data-val="-t4">四室</a>
+											<a href="javascript:void(0)" data-val="-t5">其它</a>
+												</div>
+		</div>
+		<input type="text" data-val="请输入关键字（楼盘名或地名）" value="请输入关键字（楼盘名或地名）">
+		<button> </button>
+	</div>
+	<div id="indexMenu"> 
+		<em class="r2"></em>
+		<div id="newMenu">
+	<a href="javascript:void(0)" class="fir">网站导航</a>
+	{template "ssi","ssi_12"}
+</div>
+<script type="text/javascript">
+seajs.use("jquery",function($){
+	var $newMenu=$("#newMenu")
+	$newMenu.hover(function(){
+		$newMenu.addClass("on")
+	},function(){
+		$newMenu.removeClass("on")
+	}).find("li").hover(function(){
+		$(this).addClass("on")
+	},function(){
+		$(this).removeClass("on")
+	})
+})
+</script>		<ul class="menuL">
+			<li >
+				<a href="{ESF_PATH}" >首页<em></em></a>
+			</li>
+			<li>
+				<a href="{ESF_PATH}list.html" >出售房源<em></em></a>
+			<li >
+				<a href="{ESF_PATH}rent-list.html" >出租房源<em></em></a>
+			</li>
+			<li>
+				<a href="{ESF_PATH}map.html"  target="_blank">地图找房<em></em></a>
+			</li>
+			<li class="s">
+				<a href="{ESF_PATH}xiaoqu-list.html" >小区找房<em></em></a>
+			</li>
+			<li >
+				<a href="{ESF_PATH}jingjiren" >经纪人<em></em></a>
+			</li>
+			<li>
+				<a href="{catlink(6)}"  target="_blank">资讯<em></em></a>
+			</li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	seajs.use(["jquery","hsearch"],function($){
+		$("#Search").hSearch("list","{APP_PATH}api.php?op=esfsuggest");
+		$("#jg,#wy").each(function(){
+			var $t=$(this);
+			var t=$t.attr("data-val");
+			if(t){
+				$t.data("val",$t.attr("data-val"));
+				var k=$t.attr("data-k");
+				t=t.substring(2).split("_");
+				if(t[0]==0)
+					$t.find("span").html(t[1]+k+"以下");
+				else if(t.length==1)
+					$t.find("span").html(t[0]+k+"以上");
+				else
+					$t.find("span").html(t.join("-")+k);
+			}
+		});
+	})
+</script>		<div class="bread">
+			您当前的位置：<a href="{APP_PATH}" >{$site_title}</a> &gt;
+			<a href="{APP_PATH}esf" >{$default_city}二手房</a> &gt;
+			小区找房
+		</div>
+		<div class="modB">
+			<div class="conl1">
+				<div class="cf" style="padding-top:9px;">
+					<span class="a_name">区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;域：</span>
+					<span>
+						<a href="xiaoqu-list{deal_str($lst,'r')}.html" {if empty($parentid)}  class="c" {/if}>不限</a>
+							{h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC" cache="86400"}
+							{loop $data $r}
+							<?php
+								$reg = explode('$$', $r);//add by L 2012/3/22
+								if(!empty($parentid) && $parentid==$reg[0] && empty($bid))
+								{
+									$lstaddr.= "<em>".$reg[1]."<a href=\"xiaoqu-list".deal_str($lst,'r').".html\"></a></em>";
+								}
+								?>
+								<a href="xiaoqu-list-r{$reg[0]}{deal_str($lst,'r')}.html" {if !empty($parentid) && $parentid==$reg[0]} class="c"{/if}>{$reg[1]}</a>
+								{/loop}
+							{/h5}
+																</span>
+				<!--板块区域-->
+					{if $parentid}
+{h5:content action="getlinkage" keyid="3360" parentid="$parentid" order="listorder ASC" cache="86400"}
+{if $data}
+												<!--以下是板块信息，点击区域后才出现的-->
+												<span class="i">
+				<a href="xiaoqu-list{deal_str($lst,'b')}.html" {if empty($bid)} class="c"{/if}>不限</a>
+				{loop $data $r}
+			<?php
+				$reg2 = explode('$$', $r);//add by L 2012/3/22
+				if(!empty($bid) && $bid==$reg2[0])
+				{
+					$lstaddr.= "<em>".$reg2[1]."<a href=\"xiaoqu-list".deal_str($lst,'r').".html\"></a></em>";
+				}
+				?>
+				               		<a href="xiaoqu-list{deal_str($lst,'b')}-b{$reg2[0]}.html" {if !empty($bid) && $bid==$reg2[0]} class="c"{/if}>{$reg2[1]}</a>
+									{/loop}
+               				</span>
+{/if}
+{/h5}
+{/if}
+									</div>
+				<!-- <div class="cf">
+					<span class="a_name">类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：</span>
+					<span>
+						<a href="xiaoqu-list.html"   class="c" >不限</a>
+																				<a href="xiaoqu-list-c12.html"  >高档住宅</a>
+														<a href="xiaoqu-list-c11.html"  >城市综合体</a>
+														<a href="xiaoqu-list-c10.html"  >商住公寓</a>
+														<a href="xiaoqu-list-c9.html"  >酒店式公寓</a>
+														<a href="xiaoqu-list-c8.html"  >花园洋房</a>
+														<a href="xiaoqu-list-c1.html"  >普通住宅</a>
+														<a href="xiaoqu-list-c2.html"  >公寓</a>
+														<a href="xiaoqu-list-c3.html"  >别墅</a>
+														<a href="xiaoqu-list-c4.html"  >经济适用房</a>
+														<a href="xiaoqu-list-c7.html"  >商铺</a>
+														<a href="xiaoqu-list-c6.html"  >写字楼</a>
+																		</span>
+				</div> -->
+				<div class="cf">
+					<span class="a_name">首&nbsp;&nbsp;字&nbsp;&nbsp;母：</span>
+					<span class="Letter">
+						<a href="xiaoqu-list.html"  {if empty($ename)}class="n c "{else}class="n"{/if}>不限</a>
+														<a href="xiaoqu-list-eA.html" {if $ename=='a'}class="n c "{/if}>A</a>
+														<a href="xiaoqu-list-eB.html" {if $ename=='b'}class="n c "{/if}>B</a>
+														<a href="xiaoqu-list-eC.html" {if $ename=='c'}class="n c "{/if}>C</a>
+														<a href="xiaoqu-list-eD.html" {if $ename=='d'}class="n c "{/if}>D</a>
+														<a href="xiaoqu-list-eE.html" {if $ename=='e'}class="n c "{/if}>E</a>
+														<a href="xiaoqu-list-eF.html" {if $ename=='f'}class="n c "{/if}>F</a>
+														<a href="xiaoqu-list-eG.html" {if $ename=='g'}class="n c "{/if}>G</a>
+														<a href="xiaoqu-list-eH.html" {if $ename=='h'}class="n c "{/if}>H</a>
+														<a href="xiaoqu-list-eI.html" {if $ename=='i'}class="n c "{/if}>I</a>
+														<a href="xiaoqu-list-eJ.html" {if $ename=='j'}class="n c "{/if}>J</a>
+														<a href="xiaoqu-list-eK.html" {if $ename=='k'}class="n c "{/if}>K</a>
+														<a href="xiaoqu-list-eL.html" {if $ename=='l'}class="n c "{/if}>L</a>
+														<a href="xiaoqu-list-eM.html" {if $ename=='m'}class="n c "{/if}>M</a>
+														<a href="xiaoqu-list-eN.html" {if $ename=='n'}class="n c "{/if}>N</a>
+														<a href="xiaoqu-list-eO.html" {if $ename=='o'}class="n c "{/if}>O</a>
+														<a href="xiaoqu-list-eP.html" {if $ename=='p'}class="n c "{/if}>P</a>
+														<a href="xiaoqu-list-eQ.html" {if $ename=='q'}class="n c "{/if}>Q</a>
+														<a href="xiaoqu-list-eR.html" {if $ename=='r'}class="n c "{/if}>R</a>
+														<a href="xiaoqu-list-eS.html" {if $ename=='s'}class="n c "{/if}>S</a>
+														<a href="xiaoqu-list-eT.html" {if $ename=='t'}class="n c "{/if}>T</a>
+														<a href="xiaoqu-list-eU.html" {if $ename=='u'}class="n c "{/if}>U</a>
+														<a href="xiaoqu-list-eV.html" {if $ename=='v'}class="n c "{/if}>V</a>
+														<a href="xiaoqu-list-eW.html" {if $ename=='w'}class="n c "{/if}>W</a>
+														<a href="xiaoqu-list-eX.html" {if $ename=='x'}class="n c "{/if}>X</a>
+														<a href="xiaoqu-list-eY.html" {if $ename=='y'}class="n c "{/if}>Y</a>
+														<a href="xiaoqu-list-eZ.html" {if $ename=='z'}class="n c "{/if}>Z</a>
+																		</span>
+				</div>
+			</div>
+		</div>
+		<div class="cf">
+			<div class="w720 fl">
+				<div class="Tle2">
+					<form action="{ESF_PATH}xiaoqu-list-search" method="post">
+						<input id="hname" type="text" name="keyword" data-val="请输入小区名字" value="{if $keyword}{$keyword}{else}请输入小区名字{/if}" class="txt" autocomplete="off">
+						<input id="kwsearch" type="submit" name="" class="btn" value="">
+					</form>
+					<!-- <div class="TelIcon fr">
+						<a class="A1" 
+						href="xiaoqu-list-s1.html" >均价</a>
+					</div> -->
+					<div class="s_list fr" id="s_list1">
+						<span>默认排序</span>
+						<ul>
+							<li>
+								<a href="xiaoqu-list-s0.html" >默认排序</a> 
+							</li>
+							<!-- 
+							<li>
+								<a href="xiaoqu-list-s1.html" >均价从高到低</a>
+							</li>
+							<li>
+								<a href="xiaoqu-list-s2.html" >均价从低到高</a>
+							</li> -->
+						</ul>
+					</div>
+					<span class="fr">共有 <span class="red" id="num"></span> 套符合要求的小区</span>
+				</div>
+				<!--list-->
+{h5:content action="lists" catid="$catid" where="$where" num="10" lst="$lst" order="$order" page="$page" moreinfo="1" cache="10800"}
+								<table class="FyList xqSearch" id="FyList">
+{loop $data $r}
+										<tr>
+						<td class="pic">
+							<a href="{ESF_PATH}xiaoqu-show-{$r[id]}.html"  title="{$r[title]}" target="_blank">
+								<img data-src="{if !empty($r[thumb])}{thumb($r[thumb],100,75)}{else}{APP_PATH}statics/default/img/esf/nopic_100x75.gif{/if}"  alt="{$r[title]}"></a>
+						</td>
+						<td class="info">
+							<h5>
+								<a href="{ESF_PATH}xiaoqu-show-{$r[id]}.html"   title="{$r[title]}" target="_blank">{$r[title]}</a>
+							</h5>
+							<p>{$r[address]}<a target="_blank" href="{ESF_PATH}xiaoqu-map-{$r[id]}.html" >查看地图</a>
+								<br>				
+								<a target="_blank" href="{ESF_PATH}xiaoqu-show-{$r[id]}.html" >小区概况</a>/<a target="_blank" href="{ESF_PATH}xiaoqu-price-{$r[id]}.html" >价格走势</a>
+							</p>
+						</td>
+						 <td class="area">
+							售价：{if $r[price]}<b>{$r[price]}</b>元/㎡	{else}待定{/if}						<br>	
+							同比上月：							{if $r[price_percent]>0}<b class="up">↑{$r[price_percent]}%</b>{elseif $r[price_percent]<0}<b class="down">↓{$r[price_percent]}%</b>{else}<b>持平</b>{/if}
+													</td>
+						<td class="area">
+							租金：{if $r[price_rent]}<b>{$r[price_rent]}</b>元/月{else}待定{/if}							<br>	
+							同比上月：					{if $r[price_rent_percent]>0}<b class="up">↑{$r[price_rent_percent]}%</b>{elseif $r[price_rent_percent]<0}<b class="down">↓{$r[price_rent_percent]}%</b>{else}<b>持平</b>{/if}
+														<br>
+						</td> 
+						<td class="price">
+						{h5:content action="esfcount" relation="$r[id]" catid="112" cache="3600" return="esfcount"}
+							<a class="shou" href="sell/{$r[id]}.html"  target="_blank">{$esfcount}套</a>
+						{/h5}
+						{h5:content action="esfcount" relation="$r[id]" catid="113" cache="3600" return="rentcount"}
+							<a class="zu" href="rent/{$r[id]}.html"  target="_blank">{$rentcount}套</a>
+						{/h5}
+						</td>
+					</tr>	{/loop}
+		</table>
+	{/h5}
+				<div class="pagination" >
+					{$housepages}
+				</div>
+							</div>
+			<div class="w230 fr">
+				<div class="modC">
+	<h4 class="modBT"><sub></sub>
+		我的浏览记录
+	</h4>
+		<?php
+ if(isset($recentlyXiaoqu))
+ {
+	$prowhere1 = implode(',',$recentlyXiaoqu);
+}
+ ?>
+{if $prowhere1}
+    {php $sql = "id in($prowhere1) ORDER BY listorder DESC,inputtime DESC";}
+    {h5:content action="lists" catid="110" where="$sql" num="10" cache="3600"}
+	<ul class="t3List">
+	{loop $data $r}
+	{php $menu_info = menu_info('3360',$r[region])}
+				<li>
+			<span class="lettsub7"><a href="{ESF_PATH}xiaoqu-show-{$r[id]}.html" title="{$r[title]}" target="_blank">{$r[title]}</a></span>
+			<span class="w2">{$menu_info[0]}</span>
+			<span class="w3">{if $r[price]}{$r[price]}元/㎡{else}待定{/if}</span>
+		</li>
+		{/loop}
+		{/h5}
+			</ul>
+	{/if}
+	</div>				<div class="modC">
+					<h4 class="modBT"><sub></sub>
+						您最近浏览过的二手房
+					</h4><?php
+ if(isset($recentlyEsf))
+ {
+	$prowhere = implode(',',$recentlyEsf);
+}
+ ?>
+{if $prowhere}
+    {php $sql = "id in($prowhere) ORDER BY listorder DESC,inputtime DESC";}
+    {h5:content action="lists" catid="112" where="$sql" num="10" cache="3600"}
+	<ul class="t3List">
+	{loop $data $r}
+		{php $relationxq = get_relationxq($r[id],112,110)}
+				<li>
+			<span class="lettsub7"><a href="{ESF_PATH}show-{$r[id]}.html" title="{$r[title]}" target="_blank">{$relationxq[title]}</a></span>
+			<span class="w2">{$r[total_area]}㎡</span>
+			<span class="w3">{$r[price]}万元</span>
+		</li>
+		{/loop}
+		{/h5}
+			</ul>
+	{/if}
+									</div>
+			</div>
+		</div>
+{template "content","footer"}
+</div>
+<script type="text/javascript">
+seajs.use(["jquery","alert","autoc","cookie"],function($,alertM){
+	$("#s_list1").add("tr").hover(function(){
+		$(this).addClass("h")
+	},function(){
+		$(this).removeClass("h")
+	})
+	var num = $('#nums').val();
+	$('#num').html(num);
+	var $hname=$("#hname").autoC("{APP_PATH}api.php?op=esfsuggest");
+	var ht=$hname.attr("data-val");
+	$hname.on("focus",function(){
+		if($hname.val()==ht)
+			$hname.val("");
+	}).on("blur",function(){
+		if($hname.val()=="")
+			$hname.val(ht);
+	}).closest("form").submit(function(){
+		if($hname.val()==ht){
+			$hname.focus()
+			return false;
+		}
+	})
+})
+</script>
+</body>
+</html>

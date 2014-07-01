@@ -1,0 +1,133 @@
+<div class="right">
+     <!--周边楼盘+同价位楼盘 begin-->
+     <div class="PartBs">
+            <div class="PartBsc1">
+        <ul>
+          <li class="SearchD" id="i1" onmouseover="Search4(1)">周边楼盘</li>
+		  {if !empty($price) && $price!="一房一价"}
+          <li class="SearchC" id="i2" onmouseover="Search4(2)">同价位楼盘</li>
+		  {/if}
+        </ul>
+      </div>
+	  {php $where="`region`='$region' and id<>'$id' and status=99"}
+{h5:content action="lists" catid="$catid" where="$where" num="10" order="id desc" cache="8600"} 
+      <DIV class="rig_cont px7"  id=j1>
+            <UL class="hlist_a">
+             <LI class="title">
+<SPAN class="td_1">楼盘名称</SPAN>
+<SPAN class="td_02">价格(元/㎡)</SPAN>
+<SPAN class="td_3">对比</SPAN>
+</LI>
+{loop $data $r}
+             <LI>
+<SPAN class="td_1">·<A title="{$r[title]}"  href="{HOUSE_PATH}{$r[id]}/" target="_blank">{$r[title]}</A></SPAN>
+<SPAN class="td_04">{if !empty($r[price]) && $r[price]!="一房一价"}{$r[price]}{else}一房一价{/if}</SPAN>
+<SPAN class="td_02 link6"><a href="javascript:void(0)" onclick="addCompareItem({$r[id]}, '{$r[title]}')">对比</a></SPAN>
+ </LI>
+ {/loop} 
+          
+            </UL>
+      </DIV>
+ {/h5}
+ {php $where=" (`price`='$price' or `range`='$range') and id<>'$id' and price<>'' and status=99"}
+{h5:content action="lists" catid="$catid" where="$where" num="10" order="id desc" cache="8600"}
+    <DIV class="rig_cont px7 search_undis"  id=j2>
+            <UL class="hlist_a">
+             <LI class="title"><SPAN class="td_1">楼盘名称</SPAN><SPAN class="td_02">价格(元/㎡)</SPAN><SPAN class="td_3">对比</SPAN></LI>
+{loop $data $r}
+             <LI>
+<SPAN class="td_1">·<A title="{$r[title]}"  href="{HOUSE_PATH}{$r[id]}/" target="_blank">{$r[title]}</A></SPAN>
+<SPAN class="td_04">{if !empty($r[price]) && $r[price]!="一房一价"}{$r[price]}{else}一房一价{/if}</SPAN>
+<SPAN class="td_02 link6"><a href="javascript:void(0)" onclick="addCompareItem({$r[id]}, '{$r[title]}')">对比</a></SPAN>
+ </LI>
+ {/loop}
+            </UL>
+      </DIV> 
+   {/h5}
+     <div class="rig_end"></div>
+     </div>
+     <!--周边楼盘+同价位楼盘 end-->
+     <div class="hr10"></div>
+     
+
+
+     <!--热点楼盘+最新楼盘 begin-->
+     <div class="PartBs">
+            <div class="PartBsc1">
+        <ul>
+          <li class="SearchD" id="c1" onmouseover="Search1(1)">热点楼盘</li>
+          <li class="SearchC" id="c2" onmouseover="Search1(2)">最新楼盘</li>
+        </ul>
+      </div>
+     {h5:content action="hits" catid="$catid" num="10" order="views DESC" cache="8600"}
+      <DIV class="rig_cont px7"  id=d1>
+            <UL class="hlist_a">
+             <LI class="title"><SPAN class="td_1">楼盘名称</SPAN><SPAN class="td_002">区域</SPAN><SPAN class="td_3">点击(次)</SPAN></LI>
+
+{loop $data $v}
+ {php $menu_info = menu_info('3360',$v[region])}
+ 
+               <LI>
+<SPAN class="td_1">·<A title="{$v[title]}" href="{HOUSE_PATH}{$v[id]}/" target="_blank">{$v[title]}</A></SPAN>
+<SPAN class="td_2 link6"><a href="{HOUSE_PATH}list-r{$menu_info[1]}.html" target="_blank">{$menu_info[0]}</a></SPAN>
+<SPAN class="td_4">{$v[views]}</SPAN>
+ </LI>
+ {/loop}
+          
+            </UL>
+      </DIV>
+   {/h5}
+ {h5:content action="lists" catid="$catid" where="`hot` like '%5%'" num="10" order="id desc" cache="8600"}
+    <DIV class="rig_cont px7 search_undis"  id=d2>
+            <UL class="hlist_a">
+             <LI class="title"><SPAN class="td_1">楼盘名称</SPAN><SPAN class="td_03">区域</SPAN><SPAN class="td_02">价格(元/㎡)</SPAN></LI>
+
+{loop $data $r}
+		{php $menu_info = menu_info('3360',$r[region])}
+ 
+               <LI>
+<SPAN class="td_1">·<A title="{$r[title]}" href="{HOUSE_PATH}{$r[id]}/" target="_blank">{$r[title]}</A></SPAN>
+<SPAN class="td_2 link6"><a href="{HOUSE_PATH}list-r{$menu_info[1]}.html" target="_blank">{$menu_info[0]}</a></SPAN>
+<SPAN class="td_4">{if !empty($r[price]) && $r[price]!="一房一价"}{$r[price]}{else}一房一价{/if}</SPAN>
+ </LI>
+  {/loop}  
+
+            </UL>
+      </DIV> 
+{/h5}
+<div class="rig_end"></div>
+     </div>
+     <!--热点楼盘+最新楼盘 end-->
+     <div class="hr10"></div>
+
+
+     <!--精品楼盘推荐 begin-->
+     <div class="rig_wrap">
+{h5:content action="lists" catid="$catid" where="`hot` like '%6%'" num="10" order="id desc" cache="8600"}
+     <div class="title_rig link5">
+ 		<span class="link_span"><a href="{HOUSE_PATH}list-h6.html" target="_blank">更多>></a></span>
+<a href="{HOUSE_PATH}list-h6.html" target="_blank">精品楼盘推荐</a>
+  </div>
+      <DIV class="rig_cont px7">
+            <UL class="hlist_a">
+             <LI class="title">
+<SPAN class="td_1">楼盘名称</SPAN>
+<SPAN class="td_3">区域</SPAN>
+<SPAN class="td_02">价格(元/㎡)</SPAN>
+</LI>
+
+	{loop $data $r}
+		{php $menu_info = menu_info('3360',$r[region])}
+             <LI>
+<SPAN class="td_1">·<A title="{$r[title]}" href="{HOUSE_PATH}{$r[id]}/" target="_blank">{$r[title]}</A></SPAN>
+<SPAN class="td_2 link6"><a href="{HOUSE_PATH}list-r{$menu_info[1]}.html" target="_blank">{$menu_info[0]}</a></SPAN>
+<SPAN class="td_4">{if !empty($r[price]) && $r[price]!="一房一价"}{$r[price]}{else}一房一价{/if}</SPAN>
+ </LI>{/loop}  
+            </UL>
+      </DIV>
+     <div class="rig_end"></div>
+{/h5}
+     </div>
+     <!--精品楼盘推荐 end-->
+     <div class="hr10"></div>
+</div>

@@ -1,0 +1,570 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link rel="shortcut icon" href="{APP_PATH}favicon.ico" />
+<link href="{CSS_PATH}static/style/news/style/news_style.css" rel="stylesheet" type="text/css" />
+<script language="Javascript" src="{CSS_PATH}static/style/news/js/default.js"></script>
+<script type="text/javascript" src="{CSS_PATH}static/js/search_common.js"></script>
+
+    <script type="text/javascript">//输入框文字消失
+ 		function OnFocusFun(element,elementvalue)
+		{
+			if(element.value==elementvalue)
+			{
+				element.value="";
+				
+			}
+		}
+ 		function OnBlurFun(element,elementvalue)
+		{
+			if(element.value==""||element.value.replace(/\s/g,"")=="")
+			{
+				element.value=elementvalue;
+			
+			}
+		} 
+    </script> 
+
+</head>
+
+<!-- 广告 -->
+<body>
+<div id="wrap">
+<div class="cArea">
+ {template "ssi","ssi_8"}
+<!-- 广告位：新闻内容页通栏1 -->
+
+<!-- 广告位：新闻内页顶部栏目4 -->
+
+<!-- 广告位：新闻内容页通栏2 -->
+
+<!-- 广告位：首页顶部通栏3 -->
+
+
+
+<div class="hr10"></div>
+<!--logo+搜索 begin -->
+
+<div class="logo_search_a">
+  <div class="logoa"><a href="http://news.venfang.com"><img src="{CSS_PATH}static/style/news/newslogo.jpg" /></a></div>
+     
+  <div class="rssa linkaa"><a href="http://www.venfang.com" target="_blank">问房网</a> > </span>{catpos($catid)}  正文</div>
+  
+  													<a href="javascript:;" onclick="setmodel(1, $(this));" style="outline:medium none;" hidefocus="true"  class="on" ></a>										<a href="javascript:;" onclick="setmodel(91, $(this));" style="outline:medium none;" hidefocus="true" ></a>										<a href="javascript:;" onclick="setmodel(205, $(this));" style="outline:medium none;" hidefocus="true" ></a>										<a href="javascript:;" onclick="setmodel(267, $(this));" style="outline:medium none;" hidefocus="true" ></a>										<a href="javascript:;" onclick="setmodel(316, $(this));" style="outline:medium none;" hidefocus="true" ></a>								
+         <form action="{APP_PATH}index.php" method="get" target="_blank">
+				<input type="hidden" name="m" value="search"/>
+				<input type="hidden" name="c" value="index"/>
+				<input type="hidden" name="a" value="init"/>
+				<input type="hidden" name="typeid" value="1" id="typeid"/>
+				<input type="hidden" name="siteid" value="1" id="siteid"/>
+  
+  <div class="searchb">
+    <div class="d3">
+      <input name="q" type="text" class="input01" id="q" value="输入关键字" onfocus="OnFocusFun(this,'输入关键字')" onblur="OnBlurFun(this,'输入关键字')" />
+    </div>
+    <div class="d2">
+      <input name="submit" type="submit" class="smb_btn" value="新闻搜索" />
+    </div>
+  </div>
+  
+   </form>
+</div>
+
+<!--logo+搜索 end -->
+
+</div>
+<style type="text/css">
+.bgcolors{background-color:#e6f1f5; width:590px; height:116px; }
+
+.tjnews {
+    background-color: #FFFFFF;
+    border: 1px solid #B5D0E5;
+    height: 92px;
+    padding: 10px;
+	_padding: 10px 10px 0 10px;
+    width: 567px; 
+
+}
+.Nimgnews{width:283px; height:100px; float:left;}
+.Nimgnews .Nimg{display:block; float:left;width:104px; height:76px;}
+.Nimgnews .Nimgconter{float:right; display:block; width:140px;}
+.Nimgnews img{width:100px; height:75px; padding:2px; border:1px solid #c8c8ca; display:block;}
+.Nimgnews h2{line-height:22px; font-size:12px; display:block; padding:0; width:104px; text-align:center} 
+.Nimgnews h2 a{font-size:12px; font-weight:lighter; color:#666666; text-align:center;  text-align:center}
+.Nimgnews h2 a:link{font-size:12px; font-weight:lighter;  color:#666666;  text-align:center}
+.Nimgnews h2 a:visited{font-size:12px; font-weight:lighter;  color:#666666;  text-align:center}
+.Nimgnews h2 a:hover{font-size:12px; font-weight:lighter; color:#cc0000;  text-align:center}
+.Nimgnews h2 a:active{font-size:12px; font-weight:lighter; color:#666666; text-align:center}
+.Nimgnews p{display:block; width:140px; margin:0; padding:0; font-size:12px; color:#999999; line-height:18px;}
+.Nimgnews p a, .Nimgnews p a:link, .Nimgnews p a:hover, .Nimgnews p a:visited, .Nimgnews p a:active{font-size:12px;}
+.tjnews ul{margin:0; padding:0; float:right; display:block; width:175px;}
+.tjnews ul li{margin:0; padding:0; display:block; width:175px; float:left; height:19px; line-height:19px; color:#969696;}
+.tjnews ul li a,.tjnews ul li a:link,.tjnews ul li a:hover, .tjnews ul li a:active, .tjnews ul li a:visited{font-size:12px;}
+.tjnews ul li a:hover{font-size:12px; color:#cc0000;}
+
+.tabnews{float: left;width:648px; height:340px; background-color:#999999; border:1px solid #CADBF1; overflow:hidden; display:block; background:#fff;}
+.tabnews ul.tabtitle{list-style:none;margin:0;padding:0;line-hei ght:0px;display:block;648; height:34px; background:url({APP_PATH}images/xqbg.gif) left top  repeat-x;  border-bottom:1px solid #CADBF1; _overflow:hidden;}
+.tabnews ul.tabtitle li{float:left; overflow:hidden; display:inline-block; color:#73787b; cursor:pointer; width:161px; border:none; border-right:1px  solid #CADBF1; text-align:center;line-height:35px; height:35px;margin:0;padding:0px;font-family:宋体;font-size:16px; font-weight:bold;}
+.tabnews ul.tabtitle .li2_4{  border-right:none;}
+.tabnews ul.tabtitle .selected { background:url({APP_PATH}images/xqonmouse.gif) left top repeat-x; width:161px; color:#0c58a4; _position:relative;}
+.tabnews div.tab_content{display:block; padding:0px; margin:0; clear:both;background:white; height:285px; padding:10px;}
+.tjnewslist{ height:285px; background:url({APP_PATH}images/tjnewline.gif) center center no-repeat}
+.tjnewslist ul{display:block; width:294px; float:left; padding-right:10px; padding-left:10px; height:285px;}
+.tjnewslist dl{display:block; height:90px; border-bottom:1px dashed #adadad}
+.tjnewslist dl dt{display:block; width:104px; height:76px; float:left;}
+.tjnewslist dl dt img{width:100px; height:75px; padding:2px; border:1px solid #dce0e3;} 
+.tjnewslist dl dd{display:block; float:right; width:180px; height:80px;}
+.tjnewslist dl dd h2{ padding:4px 0 10px 0;}
+.tjnewslist dl dd h2 a{font-size:14px; font-weight:bold; color:#303030; padding:4px 0 10px 0;}
+.tjnewslist dl dd h2 a:hover{ color:#cc0000;}
+.tjnewslist dl dd h2 a:active{ color:#303030;}
+.tjnewslist dl dd h2 a:visited{ color:#303030;}
+.tjnewslist dl dd p{ line-height:18px; text-indent:20px; color:#9b9b9b;}
+.tjnewslist dl dd p a{color:#0f59a2;}
+.tjnewslist dl dd p a:hover{color:#cc0000;}
+.tjnewslist dl dd p a:active{color:#0f59a2;}
+.tjnewslist dl dd p a:visited{color:#0f59a2;}
+.tjnewslist ul li{display:block;}
+.tjnewslist ul li.listnews{ display:block; width:294px; float:left; margin:0; padding:0; height:24px; line-height:24px;} 
+.tjnewslist ul li.listnews a{color:#1154a5;}
+.tjnewslist ul li.listnews a:hover{color:#cc0000}
+.tjnewslist ul li.listnews a:active{color:#1154a5}
+.tjnewslist ul li.listnews a:visited{color:#1154a5}
+.h5{ display:block; height:5px; font-size:0; clear:both;}
+</style>
+<script language="javascript">
+   
+    function showTab(liobj, liname) {
+    if (liname.indexOf(' selected') !== -1) return; 
+    var tag = liobj.parentNode.childNodes;
+    for (var i = 0; i < tag.length; i++) {
+    var item = tag[i];
+    if (item.nodeType === 1) {
+    if (item.className.indexOf(' selected') !== -1) {
+    item.className = item.className.replace(' selected', '');
+    document.getElementById(item.className).style.display = 'none';
+    }
+    }
+    }
+    document.getElementById(liname).style.display = 'block';
+    liobj.className += ' selected';
+    }
+    </script>
+
+
+<div class="cArea">
+
+<div class="cen_boxA">
+
+<div class="listwapb">
+<div class="banner2">
+<!-- 广告位：新闻画中画-标题上 -->
+
+</div>
+
+<div class="listtitlea"><h1>{$title}</h1></div>
+<div class="source">{$inputtime}  作者：{$username} |  来源：{$copyfrom} | 点击：<span id="hits"  class="text"></span> | <span class="linkaa"><a href="#comment0">我要评论</a></span></div>
+<div class="sourcea"><div class="d1">字号：<span id="l1" class="linkee"><a href="javascript:ContentSize(14)" onclick="l1.className='linkee';l2.className='linkeea';">小</a></span>|<span  id="l2" class="linkeea"><a href="javascript:ContentSize(16)" onclick="l1.className='linkeea';l2.className='linkee';"><font style="font-size:14px;">大</font></a></span></div>
+</div>
+
+<!--新闻内容 begin-->
+<div class="banner1"></div>
+<div class="hr15"></div>
+
+	<!--开始-->
+
+<div class="bgcolors">
+	<div class="tjnews">
+		<div class="Nimgnews">
+			{h5:content  action="position" posid="32" thumb="1" order="listorder DESC" num="1"}
+				{loop $data $v}
+							<span class="Nimg">
+			<a href="{$v[url]}"  target="_blank" title="{$v[title]}"><img src="{thumb($v[thumb],106,81)}" width="106" height="81" border="0"/></a>
+			<h2><a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{str_cut($v[title],16)}</a></h2>
+			</span>
+				{/loop}
+			 {/h5}
+			{h5:content  action="position" posid="14" order="listorder DESC" num="5"}
+		 		 			<ul>
+							 {loop $data $v}
+		   		   				<li>·<a  href="{$v[url]}"  target="_blank"{title_style($v[style])} title="{$v[title]}">{str_cut($v[title],22)}</a></li>
+		    				 {/loop}
+		    		    			</ul>
+				{/h5}
+		</div>
+		
+			
+		<div class="Nimgnews">
+				{h5:content  action="position" posid="33" thumb="1" order="listorder DESC" num="1"}
+				{loop $data $v}
+							<span class="Nimg">
+			<a href="{$v[url]}"  target="_blank" title="{$v[title]}"><img src="{thumb($v[thumb],106,81)}" width="106" height="81" border="0"/></a>
+			<h2><a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{str_cut($v[title],16)}</a></h2>
+			</span>
+				{/loop}
+			 {/h5}
+		 		 			{h5:content  action="position" posid="31" order="listorder DESC" num="5"}
+		 		 			<ul>
+							 {loop $data $v}
+		   		   				<li>·<a  href="{$v[url]}"  target="_blank"{title_style($v[style])} title="{$v[title]}">{str_cut($v[title],22)}</a></li>
+		    				 {/loop}
+		    		    			</ul>
+				{/h5}
+		</div>
+
+	</div>
+</div>
+<!--结束-->
+
+	<div class="hr10"></div>
+
+
+
+
+
+<div class="ArticleCnt"  id="ArticleCnt" >
+<p>据问房网数据监控中心统计，{date('n月j日',strtotime($pubdate))}共成交
+<?php echo $xsfts+$ysfts;?>套，成交面积<?php  echo $hcqmj+$jqmj+$gqmj+$gyxqmj;?>㎡。其中普通住宅成交<?php echo $xsfzzts+$ysfzzts;?>套，成交面积<?php echo $xsfzzmj+$ysfzzmj;?>㎡。非住宅成交<?php echo $xsfts+$ysfts-$xsfzzts-$ysfzzts;?>套。</p>
+<table width="480" border="1" bordercolor="#000000" cellpadding="1" cellspacing="0" align="center">
+  <tr>
+    <td colspan="6" align="center">{date('n月j日',strtotime($pubdate))}威海各区成交备案数据</td>
+  </tr>
+  <tr>
+    <td width="80">&nbsp;</td>
+    <td width="80">环翠区</td>
+    <td width="80">经区</td>
+    <td width="80">高区</td>
+    <td width="80">工业新区</td>
+    <td width="80">合计</td>
+  </tr>
+  <tr>
+    <td>成交套数</td>
+    <td align="right">{$hcqts}</td>
+    <td align="right">{$jqts}</td>
+    <td align="right">{$gqts}</td>
+    <td align="right">{$gyxqts}</td>
+    <td align="right"><?php echo $hcqts+$jqts+$gqts+$gyxqts;?></td>
+  </tr>
+  <tr>
+    <td>成交面积</td>
+    <td align="right">{$hcqmj}</td>
+    <td align="right">{$jqmj}</td>
+    <td align="right">{$gqmj}</td>
+    <td align="right">{$gyxqmj}</td>
+    <td align="right"><?php echo $hcqmj+$jqmj+$gqmj+$gyxqmj;?></td>
+  </tr>
+</table>
+
+<p align="center"><a href="http://news.venfang.com/loushi/data/" target="_blank"><font color="#ff0000">更多每日成交数据详情查询</font></a></p>
+
+<table width="400" border="0" cellpadding="2" cellspacing="0" align="center" style="border:1px solid #d6d6d6;">
+  <tr>
+    <td colspan="2" align="center" bgcolor="#D6D6D6">{date('n月j日',strtotime($pubdate))}现售房网上销售</td>
+  </tr>
+  <tr>
+    <td width="120">网上销售套数：</td>
+    <td>{$xsfts}</td>
+  </tr>
+  <tr>
+    <td width="120">网上销售面积：</td>
+    <td>{$xsfmj}</td>
+  </tr>
+  <tr>
+    <td width="120">住宅销售套数：</td>
+    <td>{$xsfzzts}</td>
+  </tr>
+  <tr>
+    <td width="120">住宅销售面积：</td>
+    <td>{$xsfzzmj}</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center" bgcolor="#CCCCCC">{date('n月j日',strtotime($pubdate))}预售房销售</td>
+  </tr>
+  <tr>
+    <td width="120">网上销售套数：</td>
+    <td>{$ysfts}</td>
+  </tr>
+  <tr>
+    <td width="120">网上销售面积：</td>
+    <td>{$ysfmj}</td>
+  </tr>
+  <tr>
+    <td width="120">住宅销售套数：</td>
+    <td>{$ysfzzts}</td>
+  </tr>
+  <tr>
+    <td width="120">住宅销售面积：</td>
+    <td>{$ysfzzmj}</td>
+  </tr>
+</table>
+<p align="center">数据来源于：{$copyfrom}</p>
+
+</div>
+
+<div class="hr15"></div>
+
+<!--翻页 begin-->
+<div class="pagea cnn"><div class="pg">{$pages}</div></div>
+<div class="hr15"></div>
+
+<!--翻页 end-->
+
+<!--新闻内容 end-->
+
+
+<!--您可能感兴趣的文章 begin-->
+<!--您可能感兴趣的文章 end-->
+
+
+<!--本文导航 begin-->
+<div class="hr10"></div>
+<!--本文导航 end-->
+
+
+
+<!--表情 begin-->
+<div>
+  {if module_exists('mood')}<script type="text/javascript" src="{APP_PATH}index.php?s=mood/index/init&id={id_encode($catid,$id,$siteid)}"></script>{/if}</div>
+
+<!--表情 end-->
+<!--返回+分享 begin-->
+
+<div class="share">
+<div class="c1 linkaa"><a href="{APP_PATH}" target="_blank">返回问房网首页>></a>　<a href="http://news.venfang.com" target="_blank">返回资讯中心>></a></div>
+<div class="c2 linkff">
+<!-- Baidu Button BEGIN -->
+    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+        <span class="bds_more">分享到：</span>
+        <a class="bds_qzone"></a>
+        <a class="bds_tsina"></a>
+        <a class="bds_tqq"></a>
+        <a class="bds_renren"></a>
+        <a class="bds_kaixin001"></a>
+    </div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=657066" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?t=" + new Date().getHours();
+</script>
+<!-- Baidu Button END -->
+</div>
+</div>
+<div class="hr10"></div>
+<!--返回+分享 end-->
+{h5:content action="relation" relation="$relation" id="$id" catid="$catid" num="6" keywords="$rs[keywords]"}
+     {if $data}
+<!--相关资讯： begin-->
+<div class="probablywap">
+
+<div class="probablytitle blue">关于 {loop $keywords $keyword}<b><a href="{APP_PATH}index.php?s=content/tag&catid={$catid}&tag={urlencode($keyword)}" class="blue">{$keyword}</a></b> 	{/loop}的相关资讯：</div>
+<ul>	   
+	{loop $data $r} 
+
+<li class="linkeea"><span>{date('Y-m-d',$r[inputtime])}</span>·<a href="{$r[url]}" target="_blank">{$r[title]}</a></li>
+ {/loop}
+ 
+     </ul>
+</div>
+
+<div class="hr10"></div>
+<!--关于相关资讯： end-->
+ {/if}
+          {/h5}
+</div>
+<div class="hr10"></div>
+<div ><a name="comment0" id="comment0"></a>
+
+{if $allow_comment && module_exists('comment')}   
+  <iframe src="{APP_PATH}index.php?s=comment/index/init&commentid={id_encode("content_$catid",$id,$siteid)}&iframe=1" width="100%" height="100%" id="comment_iframe" frameborder="0" scrolling="no"></iframe>
+{/if} 		
+</div>
+
+</div>
+<div class="rightA">
+ 
+
+<!-- 广告位：新闻内页右侧旗帜1 -->
+
+   <!-- 广告位：新闻内页右侧旗帜2 -->
+
+ 
+
+  <!--每日头条 begin-->
+  <div class="rightwapa">
+    <div class="lefttitlea">
+      <div class="righttitlel linkc"><a href="http://news.venfang.com/list.html" target="_blank">每日头条</a></div>
+      <div class="lefttitlerrr"><a href="http://news.venfang.com/list.html" target="_blank">更多>></a></div>
+    </div>
+    <div class="rightnewsc rightnewsc02">
+     <ul>
+     {h5:content  action="position" posid="2" order="listorder DESC" num="4"}
+	  {loop $data $v}
+	  <li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}" style="text-align:center"{title_style($v[style])}>{str_cut($v[title],48)}</a>
+        </li>
+		{/loop}
+	  {/h5}
+	  {h5:content  action="position" posid="35" order="listorder DESC" num="4"}
+	  {loop $data $v}
+	  <li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}" style="text-align:center"{title_style($v[style])}>{str_cut($v[title],48)}</a>
+        </li>
+		{/loop}
+	  {/h5}
+	  {h5:content  action="position" posid="36" order="listorder DESC" num="2"}
+	  {loop $data $v}
+	  <li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}" style="text-align:center"{title_style($v[style])}>{str_cut($v[title],48)}</a>
+        </li>
+		{/loop}
+	  {/h5}
+      </ul>
+    </div>
+  </div>
+  <!--每日头条 end-->
+  <div class="hr10"></div>
+  <!--文字新闻 begin-->
+
+  <!--文字新闻 end-->
+
+
+<!-- 广告位：新闻内页右侧小横幅1 -->
+
+  <!-- 广告位：新闻内页右侧小横幅2 -->
+
+ 
+    <!--图片推荐 begin-->
+  <div class="rightwapa">
+    <div class="lefttitlea">
+      <div class="righttitlel linkc"><a href="http://news.venfang.com/piclist.html" target="_blank">图片推荐</a></div>
+      <div class="lefttitlerrr"><a href="http://news.venfang.com/piclist.html" target="_blank">更多>></a></div>
+    </div>
+    <div class="rigcona">
+	{h5:content  action="position" posid="30" thumb="1" order="listorder DESC" num="4"}
+      <ul>
+	  {loop $data $v}
+		<li><a href="{$v[url]}" target="_blank" title="{$v[title]}"><img src="{thumb($v[thumb],120,90)}" width="120" height="90"/></a>
+            <div class="d4"><a href="{$v[url]}" target="_blank" title="{$v[title]}" style="text-align:center"  style="" >{str_cut($v[title],22)}</a></div>
+        </li>
+		{/loop}
+      </ul>
+	  {/h5}
+    </div>
+  </div>
+  <!--图片推荐 begin-->
+  <div class="hr10"></div>
+  <!--论坛热帖 begin-->
+  <div class="rightwapa">
+    <div class="lefttitlea">
+      <div class="righttitlel linkc"><a href="http://www.bluebbs.com/misc.php?mod=ranklist&type=thread&view=replies&orderby=thisweek" target="_blank">论坛热帖</a></div>
+      <div class="lefttitlerrr"><a href="http://www.bluebbs.com/misc.php?mod=ranklist&type=thread&view=replies&orderby=thisweek" target="_blank">更多>></a></div>
+    </div>
+    <div class="rigcon">
+      {h5:get sql="SELECT id,title,pic FROM pre_common_block_item where bid='647' order by displayorder desc" dbsource="bbs" num="2" return="data" cache="3600"}
+	<ul>
+				{loop $data $r}
+		<li><a href="http://www.bluebbs.com/thread-{$r[id]}-1-1.html" target="_blank" title="{$r[title]}"><img src="http://www.bluebbs.com/data/attachment/{$r[pic]}" border="0"/></a>
+            <div class="d3"><a title="{$r[title]}"  class="listname" href="http://www.bluebbs.com/thread-{$r[id]}-1-1.html"  style="" >{$r[title]}</a></div>
+        </li>
+       {/loop}
+      </ul>
+	 {/h5}
+    </div>
+    <div class="rightnewsc">
+      {h5:get sql="SELECT id,title FROM pre_common_block_item where bid='645' order by displayorder desc" dbsource="bbs" num="9" return="data" cache="3600"}
+	<ul>
+				{loop $data $r}
+		<li>·<a href="http://www.bluebbs.com/thread-{$r[id]}-1-1.html" target="_blank" title="{$r[title]}">{$r[title]}</a>
+        </li>
+       {/loop}
+      </ul>
+	 {/h5}
+    </div>
+  </div>
+  <!--论坛热帖 begin-->
+    <div class="hr10"></div>
+  <!--热点楼盘+最新开盘 begin--> <!--热点楼盘+最新开盘 begin-->
+  <div class="rightwapa">
+    <div class="PartAs">
+      <div class="PartAsc1">
+        <ul>
+          <li class="SearchD" id="e1" onmouseover="Search2(1)">热点楼盘</li>
+          <li class="SearchC" id="e2" onmouseover="Search2(2)">最新开盘</li>
+        </ul>
+      </div>
+      <div id="f1">
+        <div class="rig_contA px1">
+          <ul class="hlist_b">
+           {h5:content action="hits" catid="14" num="10" order="views DESC"}
+			<li class="title"><span class="td_4">楼盘名称</span><span class="td_06">区域</span><span class="td_5">价格(元/㎡)</span><span class="td_7">点击(次)</span></li>
+			{loop $data $v}
+				{php $menu_info = menu_info('3360',$v[region])}
+                   				<li><span class="td_4"><a title="{$v[title]}" href="{HOUSE_PATH}{$v[id]}/" target="_blank" >{str_cut($v[title],16,'')}</a></span><span class="td_06"><a href="{HOUSE_PATH}list-r{$menu_info[1]}.html" target="_blank" >{$menu_info[0]}</a></span><span class="td_05 link6">{if !empty($v[price]) && $v[price]!="一房一价"}{$v[price]}{else}一房一价{/if}</span><span class="td_07">{$v[views]}</span></li>
+				{/loop}
+			{/h5}            
+          </ul>
+        </div>
+      </div>
+      <div class="search_undis"  id="f2">
+        <div class="rig_contA px1">
+          <ul class="hlist_b">
+		  {php $where= "status=99";}
+		  {h5:content action="lists" catid="14" where="$where" num="10" order="opentime desc"}
+            <li class="title"><span class="td_4">楼盘名称</span><span class="td_06">区域</span><span class="td_5">价格(元/㎡)</span><span class="td_7">开盘时间</span></li>
+			{loop $data $v}
+				{php $menu_info = menu_info('3360',$v[region])}
+			          				<li><span class="td_4"><a title="{$v[title]}" href="{HOUSE_PATH}{$v[id]}/" target="_blank" >{str_cut($v[title],16,'')}</a></span><span class="td_06"><a href="{HOUSE_PATH}list-r{$menu_info[1]}.html" target="_blank" >{$menu_info[0]}</a></span><span class="td_05 link6">{if !empty($v[price]) && $v[price]!="一房一价"}{$v[price]}{else}一房一价{/if}</span><span class="td_07">{date('m-d',strtotime($v[opentime]))}</span></li>
+			{/loop}
+		{/h5}
+
+          </ul>
+        </div>
+      </div>
+   
+      <div class="rig_end"></div>
+    </div>
+  </div>
+  <!--热点楼盘+最新开盘 end-->
+  <div class="hr10"></div>
+</div></div>
+
+<!--页尾 begin-->
+
+<script type="text/javascript" src="{CSS_PATH}static/js/jquery.min.js"></script>
+<script type="text/javascript" src="{CSS_PATH}static/js/jquery.sGallery.js"></script>
+
+<script type="text/javascript" src="{JS_PATH}show_picture.js"></script>
+<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>
+
+<script type="text/javascript" language="javascript"><!--
+function ContentSize(size){
+var obj=document.getElementById("ArticleCnt");obj.style.fontSize=size+"px";
+
+}
+--></script>
+
+<!--页尾 end-->
+</div>
+<script type="text/javascript">
+window["_BFD"] = window["_BFD"] || {};
+_BFD.BFD_INFO = {
+	iid : "{$id}",  	//文章的编号
+	user_id : "{$userid}" ,	//  当前用户的user_id，string类型，如果未登录，就是""空字符串,
+	title : "{$title}",  			//当前文章的名称，string类型；
+	url : "{$url}",		// 当前文章的完整链接url，string类型	 
+	category : ["资讯","{catname($catid)}"], 	// 当前文章的完整类别名称，一维数组
+	categroyDetail:[['资讯','http://news.venfang.com/'],['{catname($catid)}','{catlink($catid)}']],//当前文章的完整类别名称和链接，二维数组
+	del : false //该文章是否已经被删除，如果删除，为true
+	 
+};
+
+_BFD.script = document.createElement("script");
+_BFD.script.type = 'text/javascript';
+_BFD.script.async = true;
+_BFD.script.charset = 'utf-8';
+_BFD.script.src = (('https:' == document.location.protocol?'https://ssl-static1':'http://static1')+'.baifendian.com/service/wenfang/wf_news.js');
+document.getElementsByTagName("head")[0].appendChild(_BFD.script);
+</script>
+{template "content","footer"}

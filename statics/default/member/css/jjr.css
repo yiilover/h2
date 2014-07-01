@@ -1,0 +1,58 @@
+.topbg{background: url(../img/tittle_bg.gif) 0px 0px;height: 58px;padding: 0px 0px 0px 220px;line-height: 25px;margin: 0 0 -58px 0}
+.topbg span{background: url(../img/button_bg.gif) 0px -100px;height: 58px;display: block;float: right;width: 124px;}
+.zindex{position: relative;z-index: 9}
+.modAa{width: 207px;float: left;margin:20px 10px 0 0;}
+.modBb{width:743px;float: right;*margin:58px 0 0 0;}
+/*导航*/
+.nav a{display:block;float:left;font-size: 14px;font-weight: bold;width: 85px;text-align: center;height: 28px;line-height: 28px;}
+.nav a:hover,.nav .on a,.nav div.on span a:hover{background:url(../img/button_bg_hover.gif) 0px 0px;color:#F60}
+.nav a.select{background: url(../img/button_bg.gif) 0px -200px;width: 85px;height: 28px;color: white;}
+.nav div{position: relative;width: 89px;height: 28px;float:left;}
+.nav div span{left: 0;top: 28px;width: 83px;border: 1px #1C51AD solid;background: white;position: absolute;display: none}
+.modBb .nav div.on span{display: block}
+.nav div.on span a{width: 100%;background: #fff;color:#333}
+.nav .gl{width: 80px;height: 20px;background: url(../img/button_bg.gif) no-repeat 0 -250px;padding-right: 12px;cursor: pointer;text-indent: -999em;display:block;float:right}
+.nav .gl:hover{background:url(../img/button_bg.gif) no-repeat 0 -250px;}
+/*店铺信息*/
+h1{background: url(../img/button_bg.gif) no-repeat 0px 0px;height: 40px;line-height: 40px;text-align: left;font-size: 14px;font-weight: bold;padding: 5px 0px 0px 50px;}
+.dpinfo{border: #B2C7D8 1px solid;border-top: none;padding: 15px 0px 10px 0px;text-align:center;}
+.dpinfo img{display: inline-block;}
+.dpinfo .tx{border: 1px solid #CCC;padding: 2px;display: block;width: 140px;height: 140px;margin:0px auto;}
+strong{font-weight: 600;}
+.rz img{padding: 0px 10px 0px 0px;}
+.dpinfo p{text-align: left;padding: 0px 10px;}
+/*筛选房源*/
+.sx{border: #B2C7D8 1px solid;border-radius: 3px;margin-top: 10px;}
+.sx h4{background: url(../img/tittle_bg.gif) repeat-x left -100px;height: 27px;line-height: 27px;padding: 0px 10px;font-weight: 600;border-bottom: #B2C7D8 1px solid;}
+.sx ul{margin:5px}
+.sx h5{background: url(../img/button_bg.gif) 0px -50px;height: 31px;padding: 5px 0px 0px 24px;margin: 5px 0px 0px 0px;font-weight: bold;}
+.sxfy li{border-bottom: 1px dotted #CCC;padding: 0px 0px 0px 5px;margin: 0px 10px 0px 15px;line-height: 25px;color: #0041D9;}
+.sx p{padding: 9px;}
+/*右侧*/
+.nav{background: url(../img/nav_bg.jpg) no-repeat;height: 28px;border-bottom: 2px solid #1B50AC;padding: 44px 0px 0px 0px;}
+.fb{height: 37px;line-height: 37px;padding: 0px 10px;border: #ccc 1px solid;border-radius: 3px 3px 0px 0px;border-bottom: 0px;margin-top: 10px;}
+.fy{height: 29px;line-height: 29px;background: url(../img/tittle_bg.gif) repeat-x left -150px;padding: 0px 10px;border: #B2C7D8 1px solid;}
+.fy strong{float: left;}
+.fy .px{float:right;padding: 0 0 0 10px;height:21px;line-height:21px;float: right;background:#fff url(../img/b_list_iconok.gif) no-repeat 100px 0px;border: 1px solid #D9D9D9;width: 110px;cursor: pointer;position: relative;margin-top: 3px;}
+.fy .px span{display:none;position: absolute;left:-1px;top: 21px;line-height: 22px;width: 120px;background: white;border: 1px #D9D9D9 solid;z-index: 200;}
+.fy .px.on span{display: block;}
+.fy .px span a{display: block;width: 110px;padding-left: 10px;height: 22px;line-height: 22px;}
+.fy .px span a:hover{background:#ebf2fc;color:#F60}
+/*房源列表*/
+.jjr_FyList{}
+.jjr_FyList td{border-bottom: 1px dotted #E7E7E7;}
+.jjr_FyList .pic{width: 145px;padding-left: 10px;}
+.jjr_FyList .pic a{width:120px;height: 90px;}
+.jjr_FyList .pic img{width:120px;height: 90px;}
+/*房源列表*/
+.jjr_fy li{width: 215px;height:100px;float: left;border-bottom: 1px dashed #E8E6E6;padding: 10px 0px 10px 145px;position: relative;}
+.jjr_fy li img{position: absolute;left:5px;top: 10px;width: 120px;height: 90px;padding: 3px;border:1px solid #ccc}
+.jjr_fy li img:hover{border: 1px #f00 solid}
+.jjr_fy li .title{font-size: 14px;color: #06C;display: block;height: 25px;overflow: hidden;}
+.jjr_fy li strong{color: #f00}
+.jjr_fy sup,.jjr_FyList sup{display: inline-block;height: 16px;line-height: 16px;font-weight: normal;font-size: 11px;position: relative;top: -3px;}
+.jjr_FyList td p span{display: inline-block;width: 99px;margin: 0}
+.jjrl p{margin: 0 0 0 60px;}
+.modC p{padding: 24px 32px;}
+.jjrl{height: 372px;}
+.jjrl li{margin: 0;height: 75px;overflow: hidden;}

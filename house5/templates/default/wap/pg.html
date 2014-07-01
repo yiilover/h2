@@ -1,0 +1,147 @@
+{template "wap","header"}
+<link type="text/css" rel="stylesheet" href="/statics/default/3g/css/3g_common.css" />
+<link type="text/css" rel="stylesheet" href="/statics/default/3g/css/3g_calculator.css" />
+<script>
+window.addEventListener("load",function() {
+  setTimeout(function(){
+    window.scrollTo(0, 1);
+  }, 0);
+}); 
+</script>
+</head>
+
+<body>
+<header class="header">
+<a href="{WAP_SITEURL}" class="logo">{$WAP['sitename']}</a>
+    <a href="{WAP_SITEURL}" class="bn_back bn_back2" >返回</a>
+    <a href="#" class="bn_search">搜索</a>
+    <a href="#" class="bn_nav">导航</a>
+    <i></i>
+</header>
+<nav class="cal_tit" id="calnav">
+	<ul>
+	<li>
+    	<div class="li_1">
+    	  <label><a href="{WAP_SITEURL}calcul/pg/" class="on">购房能力评估<i></i></a></label>
+    	  <label><a href="{WAP_SITEURL}calcul/tq/" >提前还款计算器</a></label></div>
+        <label class="bn_rm" onclick='calnav.next();return false;'><b> more</b><i></i></label>
+    </li>
+    <li>
+    	<div class="li_2">
+    	  <label><a href="{WAP_SITEURL}calcul/sf/" class="b_r">税费计算器</a></label>
+    	  <label><a href="{WAP_SITEURL}calcul/dk/" class="b_l">贷款计算器</a></label></div>
+        <label class="bn_l" onclick='calnav.prev();return false;'><i></i></label>
+    </li>    
+    </ul>
+</nav>
+<script type="text/javascript" src="/statics/default/3g/js/3g_swipe.min.js"></script>
+<script>
+	var calnav = new Swipe(document.getElementById('calnav'));
+</script>
+<script type="text/javascript" src="/statics/default/3g/js/3g_counter2.js"></script>
+<section class="calculator">
+	<form method="post" name="myform">
+		<div id="calBeforeShow">
+			<ul id="calc1_zuhe" class="formList" style="">
+				<li class="liFirst">
+					<label>购房资金：</label>
+					<input type="tel" name="rg01" size="10" onBlur="chk01()" />
+					<em>万元</em>
+				</li>
+				<li>
+					<label>月收入：</label>
+					<input type="tel" name="rg02" size="10" />
+					<em>元</em>
+				</li>
+				<li>
+					<label>购房支出：</label>
+					<input type="tel" name="rg03" size="10" onBlur="chk02" id="month_money1" onBlur="chk02()" />
+					<em>元/月</em>
+				</li>
+				<li>
+					<label>还款年限：</label>
+					<select size="1" name="rg04">
+						<option value="24">2年(24期)</option>
+						<option value="36">3年(36期)</option>
+						<option value="48">4年(48期)</option>
+						<option value="60">5年(60期)</option>
+						<option value="72">6年(72期)</option>
+						<option value="84">7年(84期)</option>
+						<option value="96">8年(96期)</option>
+						<option value="108">9年(108期)</option>
+						<option value="120">10年(120期)</option>
+						<option value="180">15年(180期)</option>
+						<option value="240">20年(240期)</option>
+						<option value="300">25年(300期)</option>
+						<option value="360">30年(360期)</option>
+					</select>
+				</li>
+				<li class="liLast">
+					<label>房屋面积：</label>
+					<input type="tel" name="rg06" size="10" />
+					<em>平方米</em>
+				</li>
+			</ul>
+			<!-- formList E -->
+			<div class="btnWrap">
+				<input type="button" id="btnSubmit" onClick="chk03()" name="button" value="开始计算" />
+			</div>
+		</div>
+		<!--calBeforeShow E -->
+		<div id="calAfterShow">
+			<ul class="formList">
+				<li class="liFirst">
+					<label>房屋总价：</label>
+					<input type="text" disabled="true" name="rg07" size="8" value="" />
+					<em>元</em>
+				</li>
+				<li>
+					<label>房屋单价：</label>
+					<input type="text" disabled="true" name="rg08" size="8" value="" />
+					<em>元</em>
+				</li>
+				<li>
+					<label>契税：</label>
+					<input type="text" disabled="true" name="rg10" size="8" value="" />
+					<em>元</em>
+				</li>
+				<li>
+					<label>维修基金：</label>
+					<input type="text" disabled="true" name="rg11" size="8" value="" />
+					<em>元</em>
+				</li>
+				<li>
+					<label>首付款：</label>
+					<input type="text" disabled="true" name="rg12" size="8" value="" />
+					<em>元</em>
+				</li>
+				<li>
+					<label>律师费：</label>
+					<input type="text" disabled="true" name="rg14" size="8" value="" />
+					<em>元</em>
+				</li>
+				<li>
+					<label>保险费：</label>
+					<input type="text" disabled="true" name="rg13" size="8" value="" />
+					<em>元</em>
+				</li>
+				<li class="liLast">
+					<label>抵押登记：</label>
+					<input type="tel" disabled="true" name="rg15" size="8" value="" />
+					<em>元</em>
+				</li>
+			</ul>
+			<!--formList_style2 E -->
+			<div class="btnWrap">
+				<input type="reset" name="reset" value="重新计算" onClick="chk05()" />
+			</div>
+			<!--btnWrap E -->
+		</div>
+		<!-- calAfterShow E -->
+		
+                                
+	</form>
+
+</section>
+
+{template "wap","footer"}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="gbk"/>
+	<meta name="keywords" content="经纪人,房地产经纪人,房产经纪人,二手房经纪人,二手房"/>
+	<meta name="description" content="房产网提供最详尽的经纪人列表, 为房地产经纪人提供网络营销工具、房源管理工具,是成为优秀网络房产经纪人最好的网络平台。查看更多房产中介公司,房地产经纪人信息请到房产网。"/>
+	<link href="{APP_PATH}favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+	<link href="{APP_PATH}statics/default/esf/css/reset.css"  rel="stylesheet" type="text/css"/>
+	<link href="{APP_PATH}statics/default/esf/css/esf.css"  rel="stylesheet" type="text/css"/>
+	<link href="{APP_PATH}statics/default/esf/css/jjr.css" rel="stylesheet" type="text/css" />
+	<script src="{APP_PATH}statics/default/js/esf/sea.js" type="text/javascript"></script>
+	<title>{$memberinfo[truename]}-房产经纪人-{$SEO['site_title']}</title>
+</head>
+<body>
+<?php
+$xq = intval($_GET['a']);
+$marea = trim($_GET['m']);
+$range = intval($_GET['p']);
+$type = intval($_GET['t']);
+$page = intval($_GET['g']);
+	?>
+    <div id="main">
+    {template "ssi","ssi_8"}
+<script type="text/javascript">
+seajs.use("topbarlogin")
+</script>    	<div class="topbg">
+    		<span></span>
+    	</div>
+    	<div class="cf">
+    		<div class="modAa">
+    			<h1>{$memberinfo[truename]}的店铺</h1>
+<div class="dpinfo">
+	<img class="tx" src="{$memberinfo[avatar]}" onerror="this.src='{APP_PATH}statics/images/member/nophoto.gif'">
+<strong>{$memberinfo[truename]}</strong><br>
+<div class="rz">
+	{if $idcard_status}<img src="/statics/default/img/esf/identity_yes.gif" title="已通过身份证认证" />{else}<img src="/statics/default/img/esf/identity_no.gif" title="未通过身份证认证" />{/if}
+					{if $certificate_status}<img src="/statics/default/img/esf/aptitude_yes.gif" title="已通过执业资格认证" />{else}<img src="/statics/default/img/esf/aptitude_no.gif" title="未通过执业资格认证" />{/if}
+ 	</div>
+	<p>电话：<strong class="red">{$memberinfo[tel]}</strong></p>
+ 	<p>等级：<img src="{APP_PATH}statics/default/img/esf/{$memberinfo['groupicon']}" border="0" align="absmiddle" title="等级：{$memberinfo['groupname']} 积分：{$memberinfo['point']}" /></p>
+	{php $district_info = menu_info('4000',$memberinfo[district])}
+	<p>服务：{$district_info[0]}</p>
+	<p>公司：{if $memberinfo[company]}<A href="{ESF_PATH}mendian-{$memberinfo[company]}" target="_blank">{$memberinfo[companyname]}</A>{else}{$memberinfo[companyname]}{/if}</p>
+</div>                                <div class="sx">
+                    			<!--筛选房源-->
+    			    			<h4>筛选房源</h4>
+                    <h5>按小区</h5>
+        <ul class="sxfy">
+          {h5:content action="communitylists" catid="113" uid="$memberinfo[userid]" order="updatetime DESC" num="6" cache="10800"}
+			{loop $data $k $r}
+                <li>
+            <a href="{ESF_PATH}jingjiren-rent-{$memberinfo[userid]}-a{$r[relation]}">{$r[communityname]}</a>
+            ({$r[counts]})
+        </li>
+			{/loop}
+		{/h5}
+                </ul>
+                          <h5>按价格</h5>
+		{h5:content action="communitylists_bycondition" catid="113" uid="$memberinfo[userid]" condition="`range`" order="updatetime DESC"  num="6" cache="10800"}
+        <ul class="sxfy">
+			{loop $data $k $r}
+                <li>
+            <a href="{ESF_PATH}jingjiren-rent-{$memberinfo[userid]}-p{$r[range]}">{getbox_val('41','range',$r['range'])}	</a>
+           ({$r[counts]})
+        </li>
+			{/loop}
+                </ul>
+		{/h5}
+                        <h5>按面积</h5>
+        {h5:content action="communitylists_bycondition" catid="113" uid="$memberinfo[userid]" condition="area_range" order="updatetime DESC"  num="6" cache="10800"}
+        <ul class="sxfy">
+			{loop $data $k $r}
+                <li>
+            <a href="{ESF_PATH}jingjiren-rent-{$memberinfo[userid]}-c{$r[area_range]}">{getbox_val('41','area_range',$r['area_range'])}	</a>
+           ({$r[counts]})
+        </li>
+			{/loop}
+                </ul>
+		{/h5}
+                        <h5>按户型</h5>
+        {h5:content action="communitylists_bycondition" catid="113" uid="$memberinfo[userid]" condition="huxingshi" order="updatetime DESC"  num="6" cache="10800"}
+		{php $type_arr = array('&nbsp;','一室','二室','三室','四室','其他')}
+        <ul class="sxfy">
+			{loop $data $k $r}
+                <li>
+            <a href="{ESF_PATH}jingjiren-rent-{$memberinfo[userid]}-t{$r[huxingshi]}">{$type_arr[$r[huxingshi]]}</a>
+           ({$r[counts]})
+        </li>
+			{/loop}
+                </ul>
+		{/h5}
+    			</div>
+    			    		</div>
+ 			<div class="modBb">
+ 				<div class="nav" id="nav">
+	<a class="gl" href="{APP_PATH}index.php?s=member/index">管理店铺</a>
+	<a href="{ESF_PATH}jingjiren-{$memberinfo[userid]}">首页</a>
+	<a href="{ESF_PATH}jingjiren-esf-{$memberinfo[userid]}" >二手房</a>
+	<a href="{ESF_PATH}jingjiren-rent-{$memberinfo[userid]}" class="select">租房</a>
+	<a href="{ESF_PATH}jingjiren-about-{$memberinfo[userid]}"  >店主介绍</a>
+</div>				<p class="fb">当前有<strong class="red" id="num"></strong>套房源满足您的条件</p>
+				<div class="fy"><strong>全部房源</strong>
+					<div class="px" id="px">默认排序	<span>
+                        	                                <a href="{ESF_PATH}jingjiren-rent-{$memberinfo[userid]}">默认排序</a> 
+                                <a href="{ESF_PATH}jingjiren-rent-{$memberinfo[userid]}-o1">发布由新到旧</a> 
+                                <a href="{ESF_PATH}jingjiren-rent-{$memberinfo[userid]}-o2">价格由低高到</a> 
+                                <a href="{ESF_PATH}jingjiren-rent-{$memberinfo[userid]}-o3">面积由大到小</a>
+                            						</span>
+					</div>	
+				</div>
+					                    <!--二手房-->
+                        {php $where = "and uid=$userid";}
+					{h5:content action="esflists_bycommunity" catid="113" where="$where" userid="$userid" relation="$xq" pg="$page" order="updatetime DESC"  limit="10"}					
+					<table class="FyList jjr_FyList">
+					{if $data['result']}
+						{loop $data['result'] $k $r}
+						{php $relationxq = get_relationxq($r[id],113,110)}
+						<tr>
+                            <td class="pic">
+                                <a target="_blank" title="{$r[title]}" href="{ESF_PATH}rent-show-{$r[id]}.html">
+                                    <img src="{if !empty($r[thumb])}{thumb($r[thumb],100,75)}{else}{APP_PATH}statics/default/img/esf/nopic_100x75.gif{/if}"  alt="{$r[title]}">
+                                </a>
+                            </td>
+                            <td class="info">
+                                <h5>
+                                    <a href="{ESF_PATH}rent-show-{$r[id]}.html" target="_blank" title="{$r[title]}">{$r[title]}</a>
+                                                                    </h5>
+                                <p>
+                                                                    <span><a href="{ESF_PATH}xiaoqu-show-{$relationxq[id]}.html" target="_blank">{$r[communityname]}</a></span>
+                                                                户型：{$r[huxingshi]}室{$r[huxingting]}厅{$r[huxingwei]}卫   <br>
+                                    <span>面积：{$r[total_area]}m<sup>2</sup></span>   楼层：{$r[floor]}/{$r[zonglouceng]}层
+                                    <br>
+                                    地址：{$relationxq['address']}                             </p>
+                            </td>
+                            <td class="price red">{$r[price]}元</td>
+                            <td class="time">
+                             {format::sgmdate('Y-m-d H:i:s',$r[updatetime],1)} 更新
+                            </td>
+								</tr>
+                    	{/loop}
+							{else}
+							暂无租房数据
+							{/if}
+							</table>
+					<div class="pagination">{$data['pages']}</div>
+					{/h5}
+					<!-- <span>1</span><a href='{ESF_PATH}jingjiren-rent-{$memberinfo[userid]}-p2'>2</a><a href='{ESF_PATH}jingjiren-rent-{$memberinfo[userid]}-p3'>3</a><a href='{ESF_PATH}jingjiren-rent-{$memberinfo[userid]}-p4'>4</a><a href='{ESF_PATH}jingjiren-rent-{$memberinfo[userid]}-p5'>5</a><a href='{ESF_PATH}jingjiren-rent-{$memberinfo[userid]}-p6'>6</a><a class='next' href='{ESF_PATH}jingjiren-rent-{$memberinfo[userid]}-p2'>下一页</a><a class='pageindex' href='{ESF_PATH}jingjiren-rent-{$memberinfo[userid]}-p6'>末页</a>					 -->
+ 			</div>
+	   	</div>
+	</div>
+ {template "content","footer"}
+<script type="text/javascript">
+seajs.use(["jquery"],function($){
+	$("#nav div").hover(function(){
+		$(this).addClass("on")
+	},function(){
+		$(this).removeClass("on")
+	})
+	var num = $('#nums').val();
+	$('#num').html(num);
+	var time=0;
+	var $ul=$("#jjrl");
+	var h=4*75+4*19;
+	var sh=$ul[0].scrollHeight;
+	var scrollUp=function(){
+		if($ul.scrollTop()>sh-h-99)
+			$ul.animate({scrollTop:0},900)
+		else
+			$ul.animate({scrollTop:"+="+h},900)
+	}
+	time=setInterval(scrollUp,4000);
+	$ul.hover(function(){
+		clearInterval(time);
+	},function(){
+		time=setInterval(scrollUp,4000);
+	})
+})
+</script>
+</body>
+</html>

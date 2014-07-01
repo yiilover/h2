@@ -1,0 +1,111 @@
+
+{template "wap","header"}
+
+<link type="text/css" rel="stylesheet" href="/statics/house5-style1/3g/css/3g_common.css" />
+<link type="text/css" rel="stylesheet" href="/statics/house5-style1/3g/css/3g_calculator.css" />
+<script>
+window.addEventListener("load",function() {
+  setTimeout(function(){
+    window.scrollTo(0, 1);
+  }, 0);
+}); 
+</script>
+</head>
+
+<body>
+<header class="header">
+<a href="{WAP_SITEURL}" class="logo">{$WAP['sitename']}</a>
+    <a href="{WAP_SITEURL}" class="bn_back bn_back2" >返回</a>
+    <a href="#" class="bn_search">搜索</a>
+    <a href="#" class="bn_nav">导航</a>
+    <i></i>
+</header>
+<nav class="cal_tit" id="calnav">
+	<ul>
+	<li>
+    	<div class="li_1">
+    	  <label><a href="{WAP_SITEURL}calcul/sf/" class="on">税费计算器<i></i></a></label>
+    	  <label><a href="{WAP_SITEURL}calcul/dk/" >贷款计算器</a></label></div>
+        <label class="bn_rm" onclick='calnav.next();return false;'><b> more</b><i></i></label>
+    </li>
+    <li>
+    	<div class="li_2">
+    	  <label><a href="{WAP_SITEURL}calcul/pg/" class="b_r">购房能力评估</a></label>
+    	  <label><a href="{WAP_SITEURL}calcul/tq/" class="b_l">提前还款计算器</a></label></div>
+        <label class="bn_l" onclick='calnav.prev();return false;'><i></i></label>
+    </li>    
+    </ul>
+</nav>
+<script type="text/javascript" src="/statics/house5-style1/3g/js/3g_swipe.min.js"></script>
+<script>
+	var calnav = new Swipe(document.getElementById('calnav'));
+</script>
+<script type="text/javascript" src="/statics/house5-style1/3g/js/3g_counter3.js"></script>
+<section class="calculator">
+	<form method="post" name="formt3">
+		<div id="calBeforeShow">
+			<ul id="calc1_zuhe" class="formList" style="">
+				<li class="liFirst">
+					<label>单价：</label>
+					<input type="tel" name="dj3" size="8" maxlength="6" />
+					<em>元/平米</em>
+				</li>
+				<li class="liLast">
+					<label>面积：</label>
+					<input type="tel" name="mj3" size="8" maxlength="7" />
+					<em>平方米</em>
+				</li>
+			</ul>
+			<!-- formList E -->
+			<div class="btnWrap">
+				<input type="button" id="btnSubmit" onClick="runjs3(this.form)" name="math3" value="开始计算" />
+			</div>
+		</div>
+		<!--calBeforeShow E -->
+		<div id="calAfterShow">
+			<ul class="formList">
+				<li class="liFirst">
+					<label>房款总价：</label>
+					<input type="text" disabled="true" name="fkz3" size="8" value="" />
+					<em>元</em>
+				</li>
+				<li>
+					<label>印花税：</label>
+					<input type="text" disabled="true" name="yh" size="8" value="" />
+					<em>元</em>
+				</li>
+				<li>
+					<label>公证费：</label>
+					<input type="text" disabled="true" name="gzh" size="8" value="" />
+					<em>元</em>
+				</li>
+				<li>
+					<label>契税：</label>
+					<input type="text" disabled="true" name="qs" size="8" value="" />
+					<em>元</em>
+				</li>
+				<li>
+					<label class="double">委托办理产权手续费：</label>
+					<input type="text" disabled="true" name="wt" size="8" value="" />
+					<em>元</em>
+				</li>
+				<li class="liLast">
+					<label class="double">房屋买卖手续费：</label>
+					<input type="text" disabled="true" name="fw" size="8" value="" />
+					<em>月</em>
+				</li>
+			</ul>
+			<!--formList_style2 E -->
+			<div class="btnWrap">
+				<input type="reset" name="reset" value="重新计算" onClick="runjs5()" />
+			</div>
+			<!--btnWrap E -->
+		</div>
+		<!-- calAfterShow E -->
+		                
+	</form>
+
+</section>
+<!-- calculator E -->
+
+{template "wap","footer"}

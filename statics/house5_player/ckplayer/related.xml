@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ckplayer>
+  <related_setup>120,90,40,#FFFFFF,#FFCC33,0.8,1,精彩视频推荐：,140,100,25,75,15,10</related_setup>
+  <relatedlist>
+    <related>
+      <img>http://demo1.house5.net/uploadfile/2013/0817/20130817034204556.jpg</img>
+      <url>http://demo1.house5.net/news/video/2013/mdm_0817/1.html</url>
+      <title>笑傲神州2013郭德纲暨德云社全国巡演乌鲁木齐站2</title>
+    </related>
+    <related>
+      <img>http://demo1.house5.net/uploadfile/2013/0817/20130817033940294.jpg</img>
+      <url>http://demo1.house5.net/news/video/2013/ttkf_0817/2.html</url>
+      <title>泡芙小姐迷你剧·花漾季  第19集</title>
+    </related>
+  </relatedlist>
+</ckplayer>

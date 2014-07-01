@@ -1,0 +1,1457 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link rel="shortcut icon" href="{APP_PATH}favicon.ico" />
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />
+<meta name="author" content="house5">
+<link href="{APP_PATH}statics/house5-style1/index/css/reset.css"  rel="stylesheet" type="text/css"/>
+<link href="{APP_PATH}statics/house5-style1/index/css/index.css" rel="stylesheet" type="text/css" />
+<script src="{APP_PATH}statics/house5-style1/sea/js/sea.js"  type="text/javascript"></script>
+<SCRIPT LANGUAGE="JavaScript1.1" SRC="http://house.inhe.net/javascript/flashdiv.js"></SCRIPT>
+<script>
+var a=new Array("midp","j2me","avant","docomo","novarra","palmos","palmsource","240x320","opwv","chtml","pda","windows ce","mmp/","blackberry","mib/","symbian","wireless","nokia","hand","mobi","phone","cdm","up.b","audio","sie-","sec-","samsung","htc","mot-","mitsu","sagem","sony","alcatel","lg","eric","vx","NEC","philips","mmm","xx","panasonic","sharp","wap","sch","rover","pocket","benq","java","pt","pg","vox","amoi","bird","compal","kg","voda","sany","kdd","dbt","sendo","sgh","gradi","jb","dddi","moto","iphone","android","iPod","incognito","webmate","dream","cupcake","webos","s8000","bada","googlebot-mobile")var b=navigator.userAgent.toLowerCase();var c=false;for(var d=0;d<a.length;d++){if(b.indexOf(a[d])>0){c=true;location.href="{$wap_siteurl}"}}
+</script>
+</head>
+<body>
+	<div id="main">
+     <div class="mt2"><!-- 广告位：全站顶部通栏1 -->
+<script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=25"></script></div>
+ <div class="mt2"><!-- 广告位：首页通栏2 -->
+<script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=26"></script></div>
+ <div class="mt2"><!-- 广告位：首页通栏3 -->
+<script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=27"></script></div>
+
+		<div id="topBar">
+			<div class="fl">
+			</div>
+			<div class="fr">
+				<div class="panl" id="topBarPanl">
+				  快速连接
+					<i></i>
+					<div>
+                        <a target="_blank" href="{HOUSE_PATH}">新房</a>
+                        <a target="_blank" href="{catlink(6)}" rel="nofollow">{catname(6)}</a>
+						<a target="_blank" href="{ESF_PATH}" rel="nofollow">二手房</a>
+                        <a target="_blank" href="{ESF_PATH}rent-list.htmL}" rel="nofollow">地图</a>
+                        <a target="_blank" href="{catlink(53)}" rel="nofollow">{catname(53)}</a>
+                        <a target="_blank" href="{HOUSE_PATH}list-t6.html" rel="nofollow">别墅</a>
+						<a target="_blank" href="{TUAN_PATH}" rel="nofollow">看房团</a>
+						 <a target="_blank" href="{BBS_PATH}" rel="nofollow">业主论坛</a>
+						<a target="_blank" href="{APP_PATH}wenfang-p1.html" rel="nofollow">问房</a>
+						
+					</div>
+				</div>
+				<!-- <span>网站热线:</span> -->
+				<a href="{ESF_PATH}chushou.html" class="send" target="_blank">个人免费发布房源</a>
+			</div>
+		</div>
+		<script type="text/javascript">
+			seajs.use(["jquery","topbarlogin"],function($,login){
+				login("http://esf.house.inhe.net/passport/loginbar/entry")
+				$("#topBarPanl").hover(function(){
+					$(this).find("div").show()
+				},function(){
+					$(this).find("div").hide()
+				})
+			})
+		</script>
+		<div class="header">
+			<h1><a href="{siteurl($siteid)}" target="_blank"><img src="{APP_PATH}statics/house5-style1/img/logo.png" alt="{$cha[skinid]}"></a>
+			<a href="{siteurl($siteid)}" target="_blank"></a></h1>
+			<div id="city">
+				<h2>{$default_city}</h2>
+				<span>[切换城市]</span>
+				<a href="javascript:void(0)" id="cityBtn"></a>
+				<div>
+                    <!-- <a target="_blank" href="#">威海</a>
+                    <a target="_blank" rel="nofollow" href="#">烟台</a>
+                    <a target="_blank" rel="nofollow" href="#">青岛</a> -->
+				</div>
+			</div>
+            <div id="Search">
+                <ul class="searchURL">
+                    <li class="on"><a href="{HOUSE_PATH}" target="_blank">新房</a></li>
+                    <li><a href="{ESF_PATH}" target="_blank">二手房</a></li>
+                    <li><a href="{ESF_PATH}rent-list.html" target="_blank">出租房</a></li>
+                    <li><a href="{catlink(6)}" target="_blank">资讯</a></li>
+                    <li><a href="{BBS_PATH}" target="_blank">论坛</a></li>
+                </ul>
+                <a href="{APP_PATH}/map/" class="mapS" target="_blank">地图找房</a>
+                <form action="" id="xinfang">
+                    <div class="scp">
+                        <input type="hidden" name="">
+                        <span>区域/环线</span>
+                        <div>
+                            <a data-val="" href="javascript:void(0)">全部区域</a>
+                            <a data-val="-qiaodong" href="javascript:void(0)" >桥东区</a>
+<a data-val="-qiaoxi" href="javascript:void(0)" >桥西区</a>
+<a data-val="-xinhua" href="javascript:void(0)" >新华区</a>
+<a data-val="-changan" href="javascript:void(0)" >长安区</a>
+<a data-val="-yuhua" href="javascript:void(0)" >裕华区</a>
+<a data-val="-kaifa" href="javascript:void(0)" >开发区</a>
+<a data-val="-luquanshi" href="javascript:void(0)" >鹿泉市</a>
+<a data-val="-zhengding" href="javascript:void(0)" >正定</a>
+<a data-val="-gaochengshi" href="javascript:void(0)" >藁城市</a>
+<a data-val="-luanchengxian" href="javascript:void(0)" >栾城县</a>
+<a data-val="-pingshanxian" href="javascript:void(0)" >平山县</a>
+<a data-val="-yuanshixian" href="javascript:void(0)" >元氏县</a>
+<a data-val="-qita" href="javascript:void(0)">其它区域</a>
+<a data-val="-i1" href="javascript:void(0)">一环以内</a>
+<a data-val="-i2" href="javascript:void(0)">一至二环</a>
+<a data-val="-i3" href="javascript:void(0)">二至三环</a>
+<a data-val="-i4" href="javascript:void(0)">三环以外</a>
+<a data-val="-w8" href="javascript:void(0)" style="color:#F00">地铁1号线</a>
+<a data-val="-w9" href="javascript:void(0)" style="color:#F00">地铁2号线</a>
+<a data-val="-w10" href="javascript:void(0)" style="color:#F00">地铁3号线</a><!--az新首页 搜索-新房区域-->
+                        </div>
+                    </div>
+                    <div class="scp">
+                        <input type="hidden" name="">
+                        <span>项目类型</span>
+                        <div>
+                            <a data-val="" href="javascript:void(0)">全部</a>
+                            <a data-val="-h1" href="javascript:void(0)" >住宅</a>
+<a data-val="-h7" href="javascript:void(0)" >城市综合体</a>
+<a data-val="-h2" href="javascript:void(0)" >商铺</a>
+<a data-val="-h3" href="javascript:void(0)" >写字楼</a>
+<a data-val="-h4" href="javascript:void(0)" >公寓</a>
+<a data-val="-h5" href="javascript:void(0)" >别墅</a>
+<a data-val="-h6" href="javascript:void(0)" >花园洋房</a>
+<a data-val="-h8" href="javascript:void(0)" >酒店</a>
+<a data-val="-h9" href="javascript:void(0)" >工厂</a>
+<a data-val="-t1" href="javascript:void(0)" >教育地产</a>
+<a data-val="-t3" href="javascript:void(0)" >低密居所</a>
+<a data-val="-t4" href="javascript:void(0)" >投资地产</a>
+<a data-val="-t8" href="javascript:void(0)" >公园地产</a>
+<a data-val="-t10" href="javascript:void(0)" >经济住宅</a>
+<a data-val="-t12" href="javascript:void(0)" >景观地产</a><!--az新首页 搜索-新房项目类型-->
+                        </div>
+                    </div>
+                    <div class="scp">
+                        <input type="hidden" name="">
+                        <span>价格范围</span>
+                        <div>
+                            <a data-val="" href="javascript:void(0)">全部</a>
+                              <a data-val="-g1" href="javascript:void(0)" >10000元以下</a>
+  <a data-val="-g2" href="javascript:void(0)" >10000-15000元</a>
+  <a data-val="-g3" href="javascript:void(0)" >15000-20000元</a>
+  <a data-val="-g4" href="javascript:void(0)" >20000-30000元</a>
+  <a data-val="-g5" href="javascript:void(0)" >30000-40000元</a>
+  <a data-val="-g6" href="javascript:void(0)" >40000元以上</a>
+<!--az新首页 搜索-新房价格-->
+                        </div>
+                    </div>
+                    <input type="text" id="xfinput" value="输入关键词" data-url="http://house.inhe.net/xinfang/list">
+                    <button type="submit"> </button>
+                </form>
+                <form action="http://esf.house.inhe.net/list/search" style="display:none" method="post" target="_blank">
+                    <div class="scp">
+                        <input type="hidden" name="place">
+                        <span>区域/地铁</span>
+                        <div>
+                            <a data-val="" href="javascript:void(0)">全部区县</a>
+                              <a data-val="1" href="javascript:void(0)" >桥东区</a>
+  <a data-val="2" href="javascript:void(0)" >桥西区</a>
+  <a data-val="3" href="javascript:void(0)" >新华区</a>
+  <a data-val="4" href="javascript:void(0)" >长安区</a>
+  <a data-val="5" href="javascript:void(0)" >裕华区</a>
+  <a data-val="6" href="javascript:void(0)" >开发区</a>
+  <a data-val="7" href="javascript:void(0)" >鹿泉市</a>
+  <a data-val="8" href="javascript:void(0)" >正定</a>
+  <a data-val="9" href="javascript:void(0)" >藁城市</a>
+  <a data-val="10" href="javascript:void(0)" >栾城县</a>
+  <a data-val="11" href="javascript:void(0)" >平山县</a>
+  <a data-val="12" href="javascript:void(0)" >赵县</a>
+  <a data-val="14" href="javascript:void(0)" >井陉县</a>
+  <a data-val="15" href="javascript:void(0)" >灵寿县</a>
+  <a data-val="16" href="javascript:void(0)" >元氏县</a>
+  <a data-val="17" href="javascript:void(0)" >晋州市</a>
+  <a data-val="18" href="javascript:void(0)" >辛集市</a>
+  <a data-val="19" href="javascript:void(0)" >新乐市</a>
+  <a data-val="20" href="javascript:void(0)" >深泽县</a>
+  <a data-val="21" href="javascript:void(0)" >行唐县</a>
+  <a data-val="100037" href="javascript:void(0)" >其它区</a>
+<!--az新首页 搜索-非新房区域-->
+                        </div>
+                    </div>
+                    <div class="scp" style="width:50px">
+                        <input type="hidden" name="area">
+                        <span>面积</span>
+                        <div>
+                            <a data-val="" href="javascript:void(0)">全部</a>
+                              <a data-val="1" href="javascript:void(0)" >70平米以下</a>
+  <a data-val="3" href="javascript:void(0)" >70-90平米</a>
+  <a data-val="4" href="javascript:void(0)" >90-120平米</a>
+  <a data-val="5" href="javascript:void(0)" >120-150平米</a>
+  <a data-val="6" href="javascript:void(0)" >150-200平米</a>
+  <a data-val="7" href="javascript:void(0)" >200-300平米</a>
+  <a data-val="8" href="javascript:void(0)" >300平米以上</a>
+<!--az新首页 搜索-二手房面积-->
+                        </div>
+                    </div>
+                    <div class="scp" style="width:80px">
+                        <input type="hidden" name="price">
+                        <span>价格范围</span>
+                        <div>
+                            <a data-val="" href="javascript:void(0)">全部</a>
+                              <a data-val="1" href="javascript:void(0)" >50万以下</a>
+  <a data-val="2" href="javascript:void(0)" >50-80万</a>
+  <a data-val="3" href="javascript:void(0)" >80-100万</a>
+  <a data-val="4" href="javascript:void(0)" >100-150万</a>
+  <a data-val="5" href="javascript:void(0)" >150-200万</a>
+  <a data-val="6" href="javascript:void(0)" >200-250万</a>
+  <a data-val="7" href="javascript:void(0)" >250-300万</a>
+  <a data-val="8" href="javascript:void(0)" >300-400万</a>
+<!--az新首页 搜索-二手房出售价格-->
+                        </div>
+                    </div>
+                    <div class="scp" style="width:50px">
+                        <input type="hidden" name="room">
+                        <span>户型</span>
+                        <div>
+                            <a data-val="" href="javascript:void(0)">全部</a>
+                              <a data-val="1" href="javascript:void(0)" >一室</a>
+  <a data-val="2" href="javascript:void(0)" >二室</a>
+  <a data-val="3" href="javascript:void(0)" >三室</a>
+  <a data-val="4" href="javascript:void(0)" >四室</a>
+  <a data-val="5" href="javascript:void(0)" >其它</a>
+<!--az新首页 搜索-二手房户型-->
+                        </div>
+                    </div>
+                    <input type="text" id="esfinput" name="keyword" value="请输入关键字">
+                    <button type="submit"> </button>
+                </form>
+                <form action="http://esf.house.inhe.net/rent/list/search" style="display:none" method="post" target="_blank">
+                    <div class="scp">
+                        <input type="hidden" name="place">
+                        <span>区域/地铁</span>
+                        <div>
+                            <a data-val="" href="javascript:void(0)">全部区县</a>
+                              <a data-val="1" href="javascript:void(0)" >桥东区</a>
+  <a data-val="2" href="javascript:void(0)" >桥西区</a>
+  <a data-val="3" href="javascript:void(0)" >新华区</a>
+  <a data-val="4" href="javascript:void(0)" >长安区</a>
+  <a data-val="5" href="javascript:void(0)" >裕华区</a>
+  <a data-val="6" href="javascript:void(0)" >开发区</a>
+  <a data-val="7" href="javascript:void(0)" >鹿泉市</a>
+  <a data-val="8" href="javascript:void(0)" >正定</a>
+  <a data-val="9" href="javascript:void(0)" >藁城市</a>
+  <a data-val="10" href="javascript:void(0)" >栾城县</a>
+  <a data-val="11" href="javascript:void(0)" >平山县</a>
+  <a data-val="12" href="javascript:void(0)" >赵县</a>
+  <a data-val="14" href="javascript:void(0)" >井陉县</a>
+  <a data-val="15" href="javascript:void(0)" >灵寿县</a>
+  <a data-val="16" href="javascript:void(0)" >元氏县</a>
+  <a data-val="17" href="javascript:void(0)" >晋州市</a>
+  <a data-val="18" href="javascript:void(0)" >辛集市</a>
+  <a data-val="19" href="javascript:void(0)" >新乐市</a>
+  <a data-val="20" href="javascript:void(0)" >深泽县</a>
+  <a data-val="21" href="javascript:void(0)" >行唐县</a>
+  <a data-val="100037" href="javascript:void(0)" >其它区</a>
+<!--az新首页 搜索-非新房区域-->
+                        </div>
+                    </div>
+                    <div class="scp" style="width:50px">
+                        <input type="hidden" name="area">
+                        <span>面积</span>
+                        <div>
+                            <a data-val="" href="javascript:void(0)">全部</a>
+                              <a data-val="1" href="javascript:void(0)" >70平米以下</a>
+  <a data-val="3" href="javascript:void(0)" >70-90平米</a>
+  <a data-val="4" href="javascript:void(0)" >90-120平米</a>
+  <a data-val="5" href="javascript:void(0)" >120-150平米</a>
+  <a data-val="6" href="javascript:void(0)" >150-200平米</a>
+  <a data-val="7" href="javascript:void(0)" >200-300平米</a>
+  <a data-val="8" href="javascript:void(0)" >300平米以上</a>
+<!--az新首页 搜索-二手房面积-->
+                        </div>
+                    </div>
+                    <div class="scp" style="width:80px">
+                        <input type="hidden" name="price">
+                        <span>价格范围</span>
+                        <div>
+                            <a data-val="" href="javascript:void(0)">全部</a>
+                              <a data-val="1" href="javascript:void(0)" >600以下</a>
+  <a data-val="3" href="javascript:void(0)" >600-1000元</a>
+  <a data-val="4" href="javascript:void(0)" >1000-1500元</a>
+  <a data-val="5" href="javascript:void(0)" >1500-2000元</a>
+  <a data-val="6" href="javascript:void(0)" >2000-2500元</a>
+  <a data-val="7" href="javascript:void(0)" >2500-3000元</a>
+  <a data-val="8" href="javascript:void(0)" >3000-4000元</a>
+  <a data-val="9" href="javascript:void(0)" >4000以上</a>
+<!--az新首页 搜索-二手房出租价格-->
+                        </div>
+                    </div>
+                    <div class="scp" style="width:50px">
+                        <input type="hidden" name="room">
+                        <span>户型</span>
+                        <div>
+                            <a data-val="" href="javascript:void(0)">全部</a>
+                              <a data-val="1" href="javascript:void(0)" >一室</a>
+  <a data-val="2" href="javascript:void(0)" >二室</a>
+  <a data-val="3" href="javascript:void(0)" >三室</a>
+  <a data-val="4" href="javascript:void(0)" >四室</a>
+  <a data-val="5" href="javascript:void(0)" >其它</a>
+<!--az新首页 搜索-二手房户型-->
+                        </div>
+                    </div>
+                    <input type="text" id="czfinput" value="请输入关键字（楼盘名或地名）" name="keyword">
+                    <button type="submit"> </button>
+                </form>
+               
+                <form action="{APP_PATH}index.php" style="display:none" id="zixun" method="GET" target="_blank">
+                   <input type="hidden" name="s" value="search/index/init/siteid/1/">
+                  <input type="hidden" name="typeid" value="1">
+                    <input name="q" class="l" type="text" value="请输入关键字">
+                    <button type="submit"> </button>
+                </form>
+                <form action="{BBS_PATH}search.php" style="display:none" id="luntan" method="get" target="_blank" onSubmit="document.charset='gbk';" accept-charset="gbk">
+                    <div class="scp">
+				        <input type="hidden" name="searchsubmit" value="yes">
+                        <input type="hidden" name="mod" value="forum">
+                        <span>搜索类型</span>
+                        <div>
+                            <a data-val="forum" href="javascript:void(0)">不限</a>
+                            <a data-val="thread" href="javascript:void(0)">帖子</a>
+                            <a data-val="forum" href="javascript:void(0)">版块</a>
+                            <a data-val="user" href="javascript:void(0)">用户</a>
+                        </div>
+                    </div>
+                    <input type="hidden" name="searchsubmit" value="yes">
+                    <input class="m" type="text" value="请输入关键字" name="kw">
+                    <button type="submit"> </button>
+                </form>
+            </div>
+            <script type="text/javascript">
+                seajs.use(["jquery","autab","autoc"],function($){
+                    $("#Search").autab("li","form",0,0.4).find("div.scp").hover(function(){
+                        $(this).addClass("on")
+                    },function(){
+                        $(this).removeClass("on")
+                    }).on("click","a",function(){
+                        var $t=$(this).parent().parent()
+                        $t.removeClass("on");
+                        $t.find("span").html($(this).text())
+                        $t.find("input").val($(this).attr("data-val"))
+                    });
+                    $("#Search input").each(function(){
+                        var $t=$(this);
+                        var ht=$t.val();
+                        $t.on("focus",function(){
+                            if($t.val()==ht)
+                                $t.val("");
+                        }).on("blur",function(){
+                            if($t.val()=="")
+                                $t.val(ht);
+                        }).data("val",$t.val());
+                    }).parent().submit(function(){
+                        var $t=$(this).find(":text");
+                        if($t.val()==$t.data("val")){
+                            $t.val("");
+                        }
+                    })
+					$("#luntan,#zixun").unbind("submit").submit(function(){
+                        var $t=$(this).find(":text");
+                        if($t.val()==$t.data("val")){
+                            $t.focus();
+                            return false;
+                        }
+                    })
+                    $("#xinfang").unbind("submit").submit(function(){
+                        var str="",$s=$(this).find("div.scp input"),$t=$(this).find(":text");
+                        $s.each(function(){
+                            str+=$(this).val();
+                        })
+                        if($t.val()!=$t.data("val"))
+                            str+="-K"+$t.val();
+                        window.open($t.attr("data-url")+str+".html");
+                        return false;
+                    })
+					$("#xfinput").autoC("http://house.inhe.net/xinfang/ajax/housejson.html");
+					$("#czfinput").autoC("http://esf.house.inhe.net/ajax/communityjson.html");
+					$("#esfinput").autoC("http://esf.house.inhe.net/ajax/communityjson.html");
+                })
+            </script>
+		</div>
+		
+		<div class="conb menu cf">
+			<p>
+    <a href="{HOUSE_PATH}" target="_blank"><b>新房</b></a>
+    <a href="{catlink(26)}" target="_blank">预告</a>
+    <a href="{TUAN_PATH}" target="_blank">看房团</a>
+    <a href="{catlink(29)}" target="_blank">优惠</a>
+    <a href="{HOUSE_PATH}baojia.html" target="_blank">房价</a>
+    <a href="{catlink(6)}special/" target="_blank">专题</a><br>
+    <a href="{catlink(40)}" target="_blank">热点</a>
+    <a href="{siteurl($siteid)}/map/" target="_blank">地图</a>
+    <a href="{HOUSE_PATH}list-t7.html" target="_blank">写字楼</a>
+    <a href="{HOUSE_PATH}list-t9.html" target="_blank">公寓</a>
+    <a href="{HOUSE_PATH}list-t8.html" target="_blank">商铺</a>
+    <a href="{HOUSE_PATH}list-t6.html" target="_blank">别墅</a>
+</p>
+<p>
+    <a href="{ESF_PATH}" target="_blank"><b>二手房</b></a>
+    <a href="{ESF_PATH}list-h1.html" target="_blank">新售</a>
+    <a href="{ESF_PATH}list-h3.html" target="_blank">急售</a>
+    <a href="{ESF_PATH}map.html" target="_blank">地图</a>
+    <a href="{ESF_PATH}jingjiren/" target="_blank">经纪人</a><br>
+    <a href="{ESF_PATH}rent-list.html" target="_blank">出租房</a>
+    <a href="{ESF_PATH}rent-list-h1.html" target="_blank">新租</a>
+    <a href="{ESF_PATH}rent-list-h3.html" target="_blank">急租</a>
+    <a href="{ESF_PATH}rent-list-l2.html" target="_blank">合租</a>
+    <a href="{ESF_PATH}rent-list-u1.html" target="_blank">个　人</a>
+</p>
+<p>
+    <a href="{catlink(6)}" target="_blank"><b>资讯</b></a>
+    <a href="{catlink(25)}" target="_blank">本地</a>
+    <a href="{catlink(16)}" target="_blank">全国</a>
+    <a href="{catlink(30)}" target="_blank">市场</a><br>
+    <a href="{catlink(27)}" target="_blank">行情</a>
+    <a href="{catlink(33)}" target="_blank">土地</a>
+    <a href="{catlink(32)}" target="_blank">招聘</a>
+    <a href="{catlink(80)}" target="_blank">数据</a>
+</p>
+<p>
+    <a href="{catlink(53)}" target="_blank"><b>家居</b></a>
+    <a href="{catlink(57)}" target="_blank">促销</a>
+    <a href="{catlink(56)}" target="_blank">团购</a>
+    <a href="{catlink(58)}" target="_blank">百科</a><br>
+    <a href="{catlink(59)}" target="_blank">家装</a>
+     <a href="{catlink(114)}" target="_blank">装修</a>
+    <a href="{catlink(55)}" target="_blank">热点</a>
+    <a href="{catlink(56)}" target="_blank">图库</a><!--图库ID 未定-->
+</p>
+<p class="nob">
+    <a href="{BBS_PATH}" target="_blank"><b>互动</b></a>
+    <a href="{HOUSE_PATH}qqqun-p1.html" target="_blank">业主QQ群</a>
+    <a href="{HOUSE_PATH}wenfang-p1.html" target="_blank">问房</a><br>
+    <a href="{BBS_PATH}" target="_blank">业主</a>
+     <a href="{siteurl($siteid)}/tools/fdjsq.html" target="_blank">工具</a>
+    <a href="{siteurl($siteid)}/one.html" target="_blank">一分钟找房</a>
+</p><!--az新首页 导航-->
+		</div>
+		<div class="adb cf">
+		<div class="mt2"><!-- 广告位：-首页通栏4 -->
+		<script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=28"></script>
+		</div>
+		<div class="mt2"><!-- 广告位：-首页通栏5 -->
+		<script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=29"></script>
+		</div>
+		</div>
+		<div class="adb cf border">
+		<div class="adb cf"><!-- 广告位：-首页通栏6 -->
+		<div class="mt2"><script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=31"></script></div>
+
+</div></div>
+		<div class="con cf">
+			<div class="conL">
+				<div class="focus-pic" id="tab1">
+					<div class="dt">
+{h5:content  action="position" posid="1" thumb="1" order="listorder DESC" num="5" cache="3600"}
+{loop $data $v}
+<i {if $n==1}class="on"{/if}>{$n}</i>
+ {/loop}
+</div>
+<ul class="dd">
+	{loop $data $v}
+                <li >
+                <a target="_blank" href="{$v[url]}" title="{$v[title]}"><img alt="{$v[title]}" src="{thumb($v[thumb],300,220)}"/></a><p>
+            </li>
+			{/loop}
+			 {/h5}
+</ul><!--az新首页 1焦点图-->
+				</div>
+				<h4 class="gl"><a href="{APP_PATH}special/" target="_blank" class="more">更多&gt;&gt;</a><a target="_blank" href="{APP_PATH}special/">热点专题</a></h4>
+                <div class="gbh">
+                    <div id="ullr">
+                        <ul class="ibA cf">
+			{h5:special  action="lists" siteid="1" elite="1" listorder="3" num="3"}
+			  {loop $data $r} 
+    <li><a target="_blank"  title="{$r['title']}" href="{$r['url']}"><img alt="{$r['title']}" src="{thumb($r[thumb],280, 118)}" /><span>{$r['title']}</span></a></li>
+			 {/loop}
+			{/h5}
+</ul><!--az新首页 1置家会-焦点图-->
+                        <a href="javascript:void(0)" class="l">&lt;</a>
+                        <a href="javascript:void(0)" class="r">&gt;</a>
+                    </div>
+                    <ul class="cul mt5">
+					 {h5:special  action="lists" siteid="1" elite="0" listorder="3" num="5"}
+					 {loop $data $r}
+				<li><a target="_blank" {title_style($r[style])}  title="{$r['title']}" href="{$r['url']}">{$r['title']}</a></li>
+					 {/loop}
+					{/h5}
+</ul><!--az新首页 专题-列表-->
+                    <div class="mobile">
+                        400-0066-614 
+                    </div>
+                </div>
+				<h4 class="gl"><a href="{TUAN_PATH}" target="_blank" class="more">更多&gt;&gt;</a><a target="_blank" href="{TUAN_PATH}">看房团</a></h4>
+				<div class="inbox cf gbh">
+				 {h5:content  action="position" posid="10" thumb="1" num="1"}
+				 {loop $data $r}
+							<a class="fl" target="_blank" title="{$r['title']}" href="{$r['url']}">
+			<img alt="{$r['title']}" src="{thumb($r[thumb],116, 74)}" />
+		</a>
+		<h5><a target="_blank"  title="{$r['title']}" href="{$r['url']}">{str_cut($r[title],20)}</a></h5>
+		{str_cut($r[description],43)}<a class="tuan-baoming" href="{$r['url']}" target="_blank">我要参团</a>{/loop}{/h5}<div class="clear"></div><!--az新首页 1业界热点-->
+				</div>
+			</div>
+			<div class="conR">
+				<div class="conT">
+					<h3> {h5:content  action="position" posid="34" order="listorder DESC" num="1" }
+			               {loop $data $v}
+						        <a target="_blank" style="color:#FF0000;" title="{$v['title']}" href="{$v['url']}">{str_cut($v[title],48)}</a>
+    <!--az新首页 1头条--> {/loop}
+			  {/h5}
+					</h3>
+					{h5:content  action="position" posid="41" order="listorder DESC" num="3" }
+			               {loop $data $v}
+                   <a target="_blank"  title="{$v['title']}" href="{$v['url']}">{str_cut($v[title],32)}</a> {if $n<3}|{/if}
+				   {/loop}
+			  {/h5}<!--az新首页 1头条相关-->
+				</div>
+				<div class="cf">
+					<div class="fl">
+						
+								<h5><span class="con123"><a href="{catlink(25)}">本地</a></span>
+				{h5:content  action="position" posid="2" order="listorder DESC" num="1" }
+			      {loop $data $v}{if !empty($v[pintiao])}{strip_tags($v[pintiao],'<a> <strong>')}{else} 
+			<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a>
+			 {/if}
+			{/loop}
+			 {/h5}
+			</h5>
+			<ul class="cul">
+			 {h5:content  action="position" posid="37" order="listorder DESC" num="6" }
+			 {loop $data $v} {if !empty($v[pintiao])}<li>{strip_tags($v[pintiao],'<a>  <strong>')}</li> {else} 
+					<li><span class="catname"><a href="{catlink($v[catid])}">[{catname($v[catid])}]</a></span><a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a>
+			</li> {/if}
+				{/loop}
+			 {/h5}
+					</ul>
+			<h5><span class="con123"><a href="{catlink(16)}">全国</a></span>	{h5:content  action="position" posid="35" order="listorder DESC" num="1"  }
+			      {loop $data $v}{if !empty($v[pintiao])}{strip_tags($v[pintiao],'<a> <strong>')}{else} 
+			<a href="{$v[url]}" target="_blank" {title_style($v[style])} title="{$v[title]}">{$v[title]}</a>
+			 {/if}
+			{/loop}
+			 {/h5}</h5>
+			<ul class="cul">
+				 {h5:content  action="position" posid="38" order="listorder DESC" num="6" }
+			 {loop $data $v} {if !empty($v[pintiao])}<li>{strip_tags($v[pintiao],'<a>  <strong>')}</li> {else} 
+					<li><span class="catname"><a href="{$CATEGORYS[$v[catid]][url]}">[{$CATEGORYS[$v[catid]][catname]}]</a></span><a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a>
+			</li> {/if}
+				{/loop}
+			 {/h5}
+					</ul>
+			<h5><span class="con123"><a href="{catlink(27)}">行情</a></span>{h5:content  action="position" posid="36" order="listorder DESC" num="1"  }
+			      {loop $data $v}{if !empty($v[pintiao])}{strip_tags($v[pintiao],'<a> <strong>')}{else} 
+			<a href="{$v[url]}" target="_blank" {title_style($v[style])} title="{$v[title]}">{$v[title]}</a>
+			 {/if}
+			{/loop}
+			 {/h5}</h5>
+			<ul class="cul nobl">
+				 {h5:content  action="position" posid="39" order="listorder DESC" num="6" }
+			 {loop $data $v} {if !empty($v[pintiao])}<li>{strip_tags($v[pintiao],'<a>  <strong>')}</li> {else} 
+					<li><span class="catname"><a href="{$CATEGORYS[$v[catid]][url]}">[{$CATEGORYS[$v[catid]][catname]}]</a></span><a href="{$v[url]}" target="_blank" {title_style($v[style])} title="{$v[title]}">{$v[title]}</a>
+			</li> {/if}
+				{/loop}
+			 {/h5}
+			</ul>
+		<!--az新首页 1地产资讯-->
+					</div>
+					<div class="fr">
+						<div class="conRT">
+							<a href="{catlink(29)}" target="_blank" class="more">更多&gt;&gt;</a>
+							<h4><a target="_blank" href="{catlink(29)}">{catname(29)}</a></h4>
+						</div> {h5:content  action="lists" catid="29" order="listorder DESC" limit="1"}{loop $data $v}
+									<h5><a target="_blank" {title_style($v[style])}  title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></h5>{/loop}{/h5}
+			<ul class="cul"> {h5:content  action="lists" catid="29" order="listorder DESC" limit="2,4"}{loop $data $v}
+					<li><a target="_blank"  {title_style($v[style])}  title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></li>
+				{/loop}{/h5}
+					</ul>
+					<div class="conRT">
+								<a href="{catlink(28)}" target="_blank" class="more">更多&gt;&gt;</a>
+							<h4><a target="_blank" href="{catlink(29)}">{catname(28)}</a></h4>
+						</div> {h5:content  action="lists" catid="28" order="listorder DESC" limit="1"}{loop $data $v}
+			<h5><a target="_blank" {title_style($v[style])}  title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></h5>{/loop}{/h5}
+			<ul class="cul"> {h5:content  action="lists" catid="28" order="listorder DESC" limit="2,4"}{loop $data $v}
+					<li><a target="_blank" {title_style($v[style])}  title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></li>
+				{/loop}{/h5}
+					</ul>
+					<div class="conRT">
+							<a href="{catlink(37)}" target="_blank" class="more">更多&gt;&gt;</a>
+							<h4><a target="_blank" href="{catlink(37)}">{catname(37)}</a></h4>
+						</div> {h5:content  action="lists" catid="37" order="listorder DESC" limit="1"}{loop $data $v}
+			<h5><a target="_blank" {title_style($v[style])}  title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></h5>{/loop}{/h5}
+			<ul class="cul"> {h5:content  action="lists" catid="37" order="listorder DESC" limit="2,4"}{loop $data $v}
+					<li><a target="_blank" {title_style($v[style])}  title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></li>
+				{/loop}{/h5}
+			</ul>
+		<!--[新1]首页一屏右下-->
+			<div><script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=202"></script></div>
+					</div>
+				
+				</div>
+				<div class="mt5"></div>
+		</div>
+
+		<div class="adb cf"><div class="mt2">
+<script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=32"></script></div><!-首页通栏7-->
+			</div></div>
+		<div class="cona">
+			<div class="conaT">
+				<div class="conaTT">
+					<img src="{APP_PATH}statics/house5-style1/index/img/xf.png" alt="" class="fl">
+					<a href="{HOUSE_PATH}" target="_blank">新房首页</a>|<a href="/map" target="_blank">地图找房</a>|<a href="{HOUSE_PATH}baojia.html" target="_blank">楼盘报价</a>|<a href="/special/" target="_blank">买房专题</a>|<a href="{catlink(49)}" target="_blank">{catname(49)}</a>|<a href="{catlink(27)}" target="_blank">{catname(27)}</a>|<a href="{catlink(29)}" target="_blank">{catname(29)}</a>|<a href="{HOUSE_PATH}hxlist.html" target="_blank">户型图</a>|<a href="/tools/fdjsq.html" target="_blank">房贷计算器</a>|<a href="{HOUSE_PATH}qqqun-p1.html" target="_blank">业主QQ群</a></div>
+				<div class="xfs">
+					<span>首字母：</span>
+<span>
+<a target="_blank" href="{HOUSE_PATH}zimu-a.html">A</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-b.html">B</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-c.html">C</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-d.html">D</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-e.html">E</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-f.html">F</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-g.html">G</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-h.html">H</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-i.html">I</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-j.html">J</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-k.html">K</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-l.html">L</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-m.html">M</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-n.html">N</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-o.html">O</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-p.html">P</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-q.html">Q</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-r.html">R</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-s.html">S</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-t.html">T</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-u.html">U</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-v.html">V</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-w.html">W</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-x.html">X</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-y.html">Y</a>
+<a target="_blank" href="{HOUSE_PATH}zimu-z.html">Z</a>
+</span>
+<span>装修状况：</span>
+{php $fix_arr = getbox_name('13','fix')}
+{loop $fix_arr $key $v}
+<a target="_blank" href="{HOUSE_PATH}list{deal_str($lst,'f')}-f{$key}.html">{$v}</a>{/loop}
+<br>
+<span>所在区域：</span>
+{h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC"}
+{loop $data $r}
+{php $reg = explode('$$', $r)}
+<a target="_blank" href="{HOUSE_PATH}list-r{$reg[0]}.html">{$reg[1]}</a>
+{/loop}
+{/h5}
+<span>楼盘特色：</span>
+{php $type_arr = getbox_name('13','character')}
+{loop $type_arr $key $v}
+<a href="{HOUSE_PATH}list-l{$key}.html" val="-l{$key}" target="_blank">{$v}</a>
+{/loop}<br>
+<span>销售单价：</span>
+{php $range_arr = getbox_name('13','range')}
+{loop $range_arr $key $v}
+<a target="_blank" href="{HOUSE_PATH}list-p{$key}.html" val="-p{$key}" target="_blank">{$v}</a>
+{/loop}
+<br>
+<span>楼盘类型：</span>
+{php $type_arr = getbox_name('13','type')}
+{loop $type_arr $key $v}
+<a target="_blank" href="{HOUSE_PATH}list-t{$key}.html" val="-t{$key}" target="_blank">{$v}</a>
+{/loop}
+<br>
+<span>开盘时间：</span>
+<a target="_blank" href="{HOUSE_PATH}list-o1.html">本月开盘</a>
+<a target="_blank" href="{HOUSE_PATH}list-o2.html">下月开盘</a>
+<a target="_blank" href="{HOUSE_PATH}list-o3.html">3月内开盘</a>
+<a target="_blank" href="{HOUSE_PATH}list-o4.html">6月内开盘</a>
+<a target="_blank" href="{HOUSE_PATH}list-o5.html">前3月已开盘</a>
+<a target="_blank" href="{HOUSE_PATH}list-o6.html">前6月已开盘</a>
+<span style="color:#F00"><B>楼盘状态：</B></span>
+<a target="_blank" href="{HOUSE_PATH}list-h2.html">在售楼盘</a>
+<a target="_blank" href="{HOUSE_PATH}list-h3.html">即将上市</a>
+<a target="_blank" href="{HOUSE_PATH}list-h1.html">尾盘</a>
+<a target="_blank" href="{HOUSE_PATH}list-h4.html">热门楼盘</a>
+<a target="_blank" href="{HOUSE_PATH}list-h6.html">精品楼盘</a><!--az新首页 2新房搜索-->
+				</div>
+			</div>
+			<div class="conab cf">
+				<div class="conaL">
+					<div id="tab41">
+						<h4><a href="{HOUSE_PATH}list-h4.html" target="_blank" class="more">更多&gt;&gt;</a>
+							<a href="{HOUSE_PATH}list-h4.html" target="_blank" class="h4tab on"><span>热点楼盘</span></a>
+							<a href="{HOUSE_PATH}list-h6.html" target="_blank" class="h4tab"><span>精品楼盘</span></a></h4>
+						<div class="autab">
+							<div class="bl ibA cf mb2">
+                {h5:content  action="lists" catid="14" where="hot like '%4%' " order="listorder DESC" limit="3"}{loop $data $v}
+                <a href="{$v[url]}" target="_blank" title="{$v[title]}">
+                <img src="{thumb($v[thumb],100,53)}" alt="{$v[title]}">
+                <span>{$v[title]}</span>
+            </a>
+             {/loop}{/h5}
+        </div>
+<table>{h5:content  action="lists" catid="14" where="hot like '%4%' " order="listorder DESC" limit="3,7"}{loop $data $v}
+        {php $menu_info = menu_info('3360',$v[region])}
+            <tr>
+            <td width="56"><span>[<a href="{HOUSE_PATH}list-r{$menu_info[1]}.html" target="_blank">{$menu_info[0]}</a>]</span></td>
+            <td><span><a href="{$v[url]}" target="_blank" title="{$v[title]}">{$v[title]}</a></span></td>
+            <td width="72"><span>{if !empty($r[price])}{$v[price]}/㎡{else}待定{/if}</span></td>
+            <td width="56"><span>{getbox_val('13','type',$v['type'])}</span></td>
+        </tr>  {/loop}{/h5}
+              
+        </table>
+
+<!--az新首页 2热点楼盘-->
+						</div>
+						<div class="autab" style="display:none">
+							<div class="bl ibA cf mb2">
+		{h5:content  action="lists" catid="14" where="hot like '%6%' " order="listorder DESC" limit="3"}{loop $data $v}
+                <a href="{$v[url]}" target="_blank" title="{$v[title]}">
+                <img src="{thumb($v[thumb],100,53)}" alt="{$v[title]}">
+                <span>{$v[title]}</span>
+            </a>
+             {/loop}{/h5}
+    <!--az新首页 2特价房源|图-->
+							</div>
+							<table>
+{h5:content  action="lists" catid="14" where="hot like '%6%' " order="listorder DESC" limit="3,7"}{loop $data $v}
+        {php $menu_info = menu_info('3360',$v[region])}
+            <tr>
+            <td width="56"><span>[<a href="{HOUSE_PATH}list-r{$menu_info[1]}.html" target="_blank">{$menu_info[0]}</a>]</span></td>
+            <td><span><a href="{$v[url]}" target="_blank" title="{$v[title]}">{$v[title]}</a></span></td>
+            <td width="72"><span>{if !empty($v[price])}{$v[price]}/㎡{else}待定{/if}</span></td>
+            <td width="56"><span>{getbox_val('13','type',$v['type'])}</span></td>
+        </tr>  {/loop}{/h5}
+</table><!--az新首页 2特价房源|列表-->
+						</div>
+					</div>
+					<div id="tab12">
+					<h4 class="mt10">
+						<a href="{HOUSE_PATH}list-l8.html" target="_blank" class="h4tab on"><span>经济楼盘</span></a>
+						<a href="{HOUSE_PATH}list-l6.html" target="_blank" class="h4tab"><span>投资楼盘</span></a></h4>
+					<div class="tabToplist">
+                    	<table>
+		{h5:content  action="lists" catid="14" where="`character` like '%8%' " order="listorder DESC" limit="10"}{loop $data $v}
+        {php $menu_info = menu_info('3360',$v[region])}
+
+    <tr>
+            <td width="56"><span><a target="_blank" title="{$menu_info[0]}" href="{HOUSE_PATH}list-r{$menu_info[1]}.html">{$menu_info[0]}</a></span></td>
+            <td><span><a target="_blank"  title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></span></td>
+            <td width="72"><span>{if !empty($v[price])}{$v[price]}/㎡{else}待定{/if}</span></td>
+            <td width="56"><span>{getbox_val('13','type',$v['type'])}</span></td>
+    </tr>
+     {/loop}{/h5}
+</table><!--az新首页 2周点击排行-->
+						<table style="display:none">
+ 	{h5:content  action="lists" catid="14" where="`character` like '%6%' " order="listorder DESC" limit="10"}{loop $data $v}
+        {php $menu_info = menu_info('3360',$v[region])}
+
+    <tr>
+            <td width="56"><span><a target="_blank" title="{$menu_info[0]}" href="{HOUSE_PATH}list-r{$menu_info[1]}.html">{$menu_info[0]}</a></span></td>
+            <td><span><a target="_blank"  title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></span></td>
+            <td width="72"><span>{if !empty($v[price])}{$v[price]}/㎡{else}待定{/if}</span></td>
+            <td width="56"><span>{getbox_val('13','type',$v['type'])}</span></td>
+    </tr>
+     {/loop}{/h5}
+</table><!--az新首页 2周400电话排行-->
+					</div>
+					</div>
+				</div>
+				<div class="conaR">
+					<div class="conaRC cf">
+						<div class="conaRCL">
+							<div class="conRT">
+								<a href="{catlink(37)}" target="_blank" class="more">更多&gt;&gt;</a>
+								<h4><a target="_blank" href="{catlink(37)}">{catname(37)}</a></h4>
+							</div>
+							<ul class="cul">
+				{h5:content  action="lists" catid="37" order="listorder DESC" limit="8"}{loop $data $v}
+					<li><a target="_blank" {title_style($v[style])}  title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></li>
+				{/loop}{/h5}
+   
+</ul><!--az新首页 2新房导购-->
+							<div class="conRT mt10">
+								<a href="{catlink(29)}" target="_blank" class="more">更多&gt;&gt;</a>
+								<h4><a target="_blank" href="{catlink(29)}">折扣优惠</a></h4>
+							</div>
+							<ul class="cul">
+								{h5:content  action="lists" catid="37" moreinfo="1" order="listorder DESC" limit="8"}
+								{loop $data $v}
+								{php $house_info = get_relationinfo($v[xglp],14,1)}
+    <li>{if $v[xglp]}<a target="_blank"  title="[{$house_info[title]}] " href="{$house_info[url]}">[{$house_info[title]}] </a>{/if}<a target="_blank"  title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></li>{/loop}{/h5}
+   
+</ul><!--([新1]首页-新房中心-小广告)广告版位调用-->
+<ul class="mt5"><script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=204"></script></ul>
+						</div>
+						<div class="conaRCR">
+							<div id="tab13">
+								<h4 class="mb10"><a href="{HOUSE_PATH}list.html" target="_blank" class="more">更多&gt;&gt;</a>
+									<a href="{HOUSE_PATH}list-h5.html" target="_blank" class="h4tab on"><span>最新楼盘</span></a>
+									<a href="{HOUSE_PATH}list-h3.html" target="_blank" class="h4tab"><span>即将上市</span></a></h4>
+								<table>
+		{h5:content  action="lists" catid="14" where="hot like '%5%' " order="listorder DESC" limit="10"}{loop $data $v}
+        {php $menu_info = menu_info('3360',$v[region])}
+
+            <tr>
+            <td width="56"><span>[<a target="_blank" title="{$menu_info[0]}" href="{HOUSE_PATH}list-r{$menu_info[1]}.html">{$menu_info[0]}</a>]</span></td>
+            <td><span><a target="_blank"  title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></span></td>
+            <td width="72"><span>{if !empty($v[price])}{$v[price]}/㎡{else}待定{/if}</span></td>
+            <td width="56"><span>{getbox_val('13','type',$v['type'])}</span></td>
+        </tr>{/loop}{/h5}
+           
+    </table>
+
+
+<!--az新首页 2最新楼盘-->
+								<table style="display:none">
+           {h5:content  action="lists" catid="14" where="hot like '%3%' " order="listorder DESC" limit="10"}{loop $data $v}
+        {php $menu_info = menu_info('3360',$v[region])}
+
+            <tr>
+            <td width="56"><span>[<a target="_blank" title="{$menu_info[0]}" href="{HOUSE_PATH}list-r{$menu_info[1]}.html">{$menu_info[0]}</a>]</span></td>
+            <td><span><a target="_blank"  title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></span></td>
+            <td width="72"><span>{if !empty($v[price])}{$v[price]}/㎡{else}待定{/if}</span></td>
+            <td width="56"><span>{getbox_val('13','type',$v['type'])}</span></td>
+        </tr>{/loop}{/h5}
+    </table>
+
+
+<!--az新首页 2近期开盘-->
+							</div>
+							<div id="tab31">
+								<h4 class="mt10"><a href="{HOUSE_PATH}list.html" target="_blank" class="more">更多&gt;&gt;</a>
+									<a href="{HOUSE_PATH}list-t6.html" target="_blank" class="h4tab on"><span>别墅</span></a>
+									<a href="{HOUSE_PATH}list-t7.html" target="_blank" class="h4tab"><span>写字楼</span></a>
+									<a href="{HOUSE_PATH}list-t8.html" target="_blank" class="h4tab"><span>商铺</span></a>
+								</h4>
+								<div class="ibA cf mb10">
+		{h5:content  action="lists" catid="14" where="`type` like '%6%' " order="listorder DESC" limit="3"}{loop $data $v}
+       <a target="_blank" title="{$v[title]}" href="{$v[url]}">
+			<img alt="{$v[title]}" src="{thumb($v[thumb],77,67)}" />
+			<span>{$v[title]}</span>
+		</a>{/loop}{/h5}
+    <!--az新首页 2别墅-->
+								</div>
+								<div class="ibA cf mb10" style="display:none">
+										{h5:content  action="lists" catid="14" where="`type` like '%7%' " order="listorder DESC" limit="3"}{loop $data $v}
+       <a target="_blank" title="{$v[title]}" href="{$v[url]}">
+			<img alt="{$v[title]}" src="{thumb($v[thumb],77,67)}" />
+			<span>{$v[title]}</span>
+		</a>{/loop}{/h5}
+    <!--az新首页 2写字楼-->
+								</div>
+								<div class="ibA cf mb10" style="display:none">
+										{h5:content  action="lists" catid="14" where="`type` like '%8%' " order="listorder DESC" limit="3"}{loop $data $v}
+       <a target="_blank" title="{$v[title]}" href="{$v[url]}">
+			<img alt="{$v[title]}" src="{thumb($v[thumb],77,67)}" />
+			<span>{$v[title]}</span>
+		</a>{/loop}{/h5}
+    <!--az新首页 3商铺-->
+								</div>
+							</div>
+							<div id="tab21">
+								<h4><a href="{catlink(6)}" target="_blank" class="more">更多&gt;&gt;</a>
+									<a href="{catlink(34)}" target="_blank" class="h4tab on"><span>{catname(34)}</span></a>
+									<a href="{catlink(31)}" target="_blank" class="h4tab"><span>{catname(31)}</span></a></h4>
+								<ul class="cul">
+								{h5:content  action="lists" catid="34" posids="0" order="id DESC" num="5" cache="86400"}{loop $data $v}
+								 <li><a target="_blank"  title="{$v[title]} " href="{$v[url]}">{$v[title]}</a></li>{/loop}{/h5}
+								 </ul><!--az新首页 2购房专题-->
+                                <ul class="cul" style="display:none">
+  {h5:content  action="lists" catid="31" posids="0" order="id DESC" num="5" cache="86400"}{loop $data $v}
+								 <li><a target="_blank"  title="{$v[title]} " href="{$v[url]}">{$v[title]}</a></li>{/loop}{/h5}
+</ul><!--az新首页 2淘房日记-->
+							</div>
+						</div>
+					</div>
+<div class="mt5 fr"><script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=203"></script></div>
+<!--]首页-新房中心右下-->
+				</div>
+			</div>
+		</div>
+		<div class="adb cf">
+<!--新首页广告 通栏7-->
+<div class="mt2"><script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=32"></script></div>
+<div class="mt2"></div><!--新首页广告 通栏7--></div>
+
+
+
+		<div class="cona">
+			<div class="conaT">
+				<div class="conaTT">
+					<img src="{APP_PATH}statics/house5-style1/index/img/hd.png" alt="" class="fl">
+					<a href="{BBS_PATH}" target="_blank">论坛首页</a>|<A href="{HOUSE_PATH}wenfang-p1.html" target="_blank">楼盘问答</A>|<A href="{TUAN_PATH}" target="_blank">看房团</A></div>
+			</div>
+			<div class="conab cf">
+				<div class="conaL">
+					<h4><a href="{catlink(32)}" target="_blank" class="more">更多&gt;&gt;</a><a target="_blank" href="{catlink(32)}">地产招聘</a></h4>
+					<ul class="cul mt10">
+{h5:content  action="lists" catid="32" order="listorder DESC" limit="4"}{loop $data $v}
+					<li><a target="_blank" {title_style($v[style])}  title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></li>
+				{/loop}{/h5}
+</ul><!--az新首页 3置家行动-->
+					<h4 class="mt10"><a href="{catlink(17)}" target="_blank" class="more">更多&gt;&gt;</a><a target="_blank" href="{catlink(17)}">楼盘对比</a></h4>
+					<div id="ull">
+						<div class="ulcon">
+							<ul class="ibA cf">
+{h5:content  action="lists" catid="17"  order="id DESC" num="10" moreinfo="1"}
+{loop $data $v}
+    <li>{h5:content action="relationlp" xglp="$v[xglp]" id="$v[xglp]" catid="14" num="2" return="lppk"}
+ {loop $lppk $r}<a target="_blank" title="{$r[title]}" href="{$v[url]}" class="{if $n==1}fl{else}fr{/if}">
+			<img alt="{$r[title]}" src="{thumb($r[thumb],80,65,0)}" />
+			<span>{$r[title]}</span>
+		</a>{/loop}{/h5}</li>{/loop}{/h5}
+ 
+</ul><!--az新首页 3楼盘对比-->
+						</div>
+						<a href="javascript:void(0)" class="l">&lt;</a>
+						<a href="javascript:void(0)" class="r">&gt;</a>
+					</div>
+					<h4><a href="http://bbs.inhe.net/thread-htm-fid-60.html" target="_blank" class="more">更多&gt;&gt;</a><a target="_blank" href="http://bbs.inhe.net/thread-htm-fid-60.html">谈房论市</a></h4>
+					<div class="inbox cf">
+								<a class="fl" target="_blank" title="【微播楼市】" href="http://bbs.inhe.net/read-htm-tid-2435412.html">
+			<img alt="【微播楼市】" src="http://house.inhe.net/upload/2013/0522/1369213229310.jpg" />
+		</a>
+		<h5><a target="_blank"  title="【微播楼市】" href="http://bbs.inhe.net/read-htm-tid-2435412.html">【微播楼市】</a></h5>
+		女人胸罩比房价贵！你的房几罩杯？【<a href="http://bbs.inhe.net/read-htm-tid-2435412.html" target="_blank">详细</a>】<!--az新首页 3评房团|图-->
+					</div>
+					<ul class="cul mt10">
+    <li>        <a target="_blank"  title="【壹周楼市秀】红五月成交乏力 威海看房团荣归" href="http://house.inhe.net/special/lsqk/yzlsx_20130520/">【壹周楼市秀】红五月成交乏力 威海看房团荣归</a>
+    </li>
+    <li>        <a target="_blank"  title="【镜像石门】威海V5—万人置业大调查数据公布 " href="http://house.inhe.net/special/ltzt/jxsm_201300520/">【镜像石门】威海V5—万人置业大调查数据公布 </a>
+    </li>
+</ul><!--az新首页 3评房团|列表-->
+				</div>
+				<div class="conaR">
+					<div class="conaRC cf">
+						<div class="conaRCL">
+							<div class="conRT">
+								<a href="http://bbs.inhe.net/index-htm-m-bbs-cateid-1259.html" target="_blank" class="more">更多&gt;&gt;</a>
+								<h4><a target="_blank" href="http://bbs.inhe.net/index-htm-m-bbs-cateid-1259.html">论坛热点</a></h4>
+							</div>
+							<ul class="cul">
+    <li><a target="_blank"  title="[盛邦大都会]" href="http://bbs.inhe.net/thread-htm-fid-1023.html">[盛邦大都会]</a><a target="_blank"  title="四室豪华样板间对外开放 去参观咯" href="http://bbs.inhe.net/read-htm-tid-2435816.html">四室豪华样板间对外开放 去参观咯</a></li>
+    <li><a target="_blank"  title="[海悦天地]" href="http://bbs.inhe.net/thread-htm-fid-806.html">[海悦天地]</a><a target="_blank"  title="亲子广场现已营业 内有千米小火车哦 " href="http://bbs.inhe.net/read-htm-tid-2435834.html">亲子广场现已营业 内有千米小火车哦 </a></li>
+    <li><a target="_blank"  title="[长瑞上城]" href="http://bbs.inhe.net/forum-1627-1.html">[长瑞上城]</a><a target="_blank"  title="不做屌丝做乐活族 看售楼部看户型图" href="http://bbs.inhe.net/read-htm-tid-2435855.html">不做屌丝做乐活族 看售楼部看户型图</a></li>
+    <li><a target="_blank"  title="[兰亭]" href="http://bbs.inhe.net/thread-htm-fid-1625.html">[兰亭]</a><a target="_blank"  title="兰亭挨着月季公园 先来看围挡外的月季花" href="http://bbs.inhe.net/read-htm-tid-2435949.html">兰亭挨着月季公园 先来看围挡外的月季花</a></li>
+    <li><a target="_blank"  title="[雍雅锦江]" href="http://bbs.inhe.net/thread-htm-fid-1022.html">[雍雅锦江]</a><a target="_blank"  title="全新园林景观图曝光 绿意盎然风光好" href="http://bbs.inhe.net/read-htm-tid-2435953.html">全新园林景观图曝光 绿意盎然风光好</a></li>
+    <li><a target="_blank"  title="威海地铁样图出来了？！萌萌的样子 你喜欢不" href="http://bbs.inhe.net/read-htm-tid-2435824.html">威海地铁样图出来了？！萌萌的样子 你喜欢不</a></li>
+</ul><!--az新首页 3论坛热点-->
+							<div class="conRT mt10">
+								<a href="http://bbs.inhe.net/thread-htm-fid-929.html" target="_blank" class="more">更多&gt;&gt;</a>
+								<h4><a target="_blank" href="http://bbs.inhe.net/thread-htm-fid-929.html">购房问答</a></h4>
+							</div>
+							<ul class="cul">
+    <li>        <a target="_blank"  title=" [买房咨询]听说10层是浮沉层，这个有道理吗？" href="http://bbs.inhe.net/read-htm-tid-2422234.html"> [买房咨询]听说10层是浮沉层，这个有道理吗？</a></li>
+    <li>        <a target="_blank"  title="[公积金]北京交的公积金，在威海买房能用么？" href="http://bbs.inhe.net/read-htm-tid-2422556.html">[公积金]北京交的公积金，在威海买房能用么？</a></li>
+    <li>        <a target="_blank"  title="[紫林湾]帮忙分析一下紫林湾靠谱吗能否入手买" href="http://bbs.inhe.net/read-htm-tid-2423252.html">[紫林湾]帮忙分析一下紫林湾靠谱吗能否入手买</a></li>
+    <li>        <a target="_blank"  title="[紫熙东苑]如何，靠谱吗？价位位置都非常合适" href="http://bbs.inhe.net/read-htm-tid-2423253.html">[紫熙东苑]如何，靠谱吗？价位位置都非常合适</a></li>
+    <li>        <a target="_blank"  title="[茗雅苑]请问时代星城更名之后的茗雅苑可靠吗" href="http://bbs.inhe.net/read-htm-tid-2423081.html">[茗雅苑]请问时代星城更名之后的茗雅苑可靠吗</a></li>
+    <li>        <a target="_blank"  title="[限购令]之前买房再卖掉，又买现在还买是几套" href="http://bbs.inhe.net/read-htm-tid-2423217.html">[限购令]之前买房再卖掉，又买现在还买是几套</a></li>
+</ul><!--az新首页 3购房问答-->
+						</div>
+						<div class="conaRCR">
+							<h4><a href="http://bbs.inhe.net/thread-htm-fid-562.html" target="_blank" class="more">更多&gt;&gt;</a><a href="http://bbs.inhe.net/thread-htm-fid-562.html" target="_blank">精彩活动</a></h4>
+									<a class="jchd" target="_blank" title="【十里洋房】十万元！住洋房！首次置业者的洋房时代 有奖调查 赢话费大礼包" href="http://bbs.inhe.net/read-htm-tid-2432565.html">
+			<img alt="【十里洋房】十万元！住洋房！首次置业者的洋房时代 有奖调查 赢话费大礼包" src="http://house.inhe.net/upload/2013/0514/1368497054262.jpg" />
+		</a>
+    <!--az新首页 3精彩活动|图-->
+							<ul class="cul">
+    <li>        <a target="_blank"  title="【奥北公元】首届儿童艺术季6月1日开幕 等你参加！" href="http://bbs.inhe.net/read-htm-tid-2436074.html">【奥北公元】首届儿童艺术季6月1日开幕 等你参加！</a>
+    </li>
+    <li>        <a target="_blank" style="color:#FF0000;" title="【勒泰中心】这个夏天相约勒泰中心 精彩活动享不停" href="http://bbs.inhe.net/read-htm-tid-2432449.html">【勒泰中心】这个夏天相约勒泰中心 精彩活动享不停</a>
+    </li>
+    <li>        <a target="_blank"  title="【金麦加·汇君城】动动手指选社区“采暖方式 ”得大礼" href="http://bbs.inhe.net/read-htm-tid-2419334.html">【金麦加·汇君城】动动手指选社区“采暖方式 ”得大礼</a>
+    </li>
+</ul><!--az新首页 3精彩活动|列表-->
+							<h4><a href="http://bbs.inhe.net/thread-htm-fid-144.html" target="_blank" class="more">更多&gt;&gt;</a><a href="http://bbs.inhe.net/thread-htm-fid-144.html" target="_blank">工程进展</a></h4>
+							<div class="ibA bl cf">
+										<a target="_blank" title="雍雅锦江" href="http://bbs.inhe.net/read-htm-tid-2435796.html">
+			<img alt="雍雅锦江" src="http://house.inhe.net/upload/2013/0524/1369357246674.jpg" />
+			<span>雍雅锦江</span>
+		</a>
+    		<a target="_blank" title="蓝莓公馆" href="http://bbs.inhe.net/read-htm-tid-2435956.html">
+			<img alt="蓝莓公馆" src="http://house.inhe.net/upload/2013/0524/1369357222278.jpg" />
+			<span>蓝莓公馆</span>
+		</a>
+    		<a target="_blank" title="睿和中心" href="http://bbs.inhe.net/read-htm-tid-2435853.html">
+			<img alt="睿和中心" src="http://house.inhe.net/upload/2013/0524/1369357197714.jpg" />
+			<span>睿和中心</span>
+		</a>
+    <!--az新首页 3工程进展|图-->
+							</div>
+							<ul class="cul">
+    <li><a target="_blank"  title="[联邦名都二期]" href="http://bbs.inhe.net/thread-htm-fid-433.html">[联邦名都二期]</a><a target="_blank"  title="闪拍联邦名都二期（怡博苑） 位置不错" href="http://bbs.inhe.net/read-htm-tid-2435470.html">闪拍联邦名都二期（怡博苑） 位置不错</a></li>
+    <li><a target="_blank"  title="[天洲·视界城]" href="http://bbs.inhe.net/thread-htm-fid-1386.html">[天洲·视界城]</a><a target="_blank"  title="天洲视界城有了新的进展了 关心的进来瞧" href="http://bbs.inhe.net/read-htm-tid-2435391.html">天洲视界城有了新的进展了 关心的进来瞧</a></li>
+    <li><a target="_blank"  title="[新大院] " href="http://bbs.inhe.net/thread-htm-fid-787.html">[新大院] </a><a target="_blank"  title="新大院一期已经封顶交房啦 二期也即将封顶哦" href="http://bbs.inhe.net/read-htm-tid-2435392.html">新大院一期已经封顶交房啦 二期也即将封顶哦</a></li>
+</ul><!--az新首页 3工程进展|列表-->
+						</div>
+					</div>
+					<div class="conaADB fr"><embed src='/Uploadfiles/UserSite/tejiaf_20120928/650600.swf' quality='high' pluginspage='http://www.macromedia.com/go/getflashplayer' type='application/x-shockwave-flash' width='650' height='60' wmode="transparent" title="威海特价房源" scale='exactfit'></embed></div><!--nz新首页广告 旗帜3-->
+				</div>
+			</div>
+		</div>
+		<div class="adb cf"><div class="mt2"><embed width="960" height="80" plugspace="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" scale="exactfit" wmode="opaque" flashvars="referrer=http%3A//house.inhe.net/" allowscriptaccess="always" quality="autohigh" src="Uploadfiles/adpublish2012/house_zhiliancm_20130225.swf" title="智联传媒 HOUSE5"></div>
+<!--nz新首页广告 通栏4--></div>
+		<div class="cona">
+			<div class="conaT">
+				<div class="conaTT">
+					<img src="{APP_PATH}statics/house5-style1/index/img/es.png" alt="" class="fl">
+					<a href="{ESF_PATH}list.html" target="_blank">二手房出售</a>|<a href="{ESF_PATH}rent-list.html" target="_blank">二手房出租</a>|<a href="{ESF_PATH}xiaoqu-list.html" target="_blank">小区找房</a>|
+                    <a href="{ESF_PATH}map.html" target="_blank">地图找房</a>|<a href="{ESF_PATH}jingjiren/" target="_blank">经纪人</a>|<a href="{catlink(66)}" target="_blank">二手房资讯</a></div>
+			</div>
+			<div class="conab cf">
+				<div class="conaL">
+					<div id="tab22">
+						<h4><a href="{ESF_PATH}list.html" target="_blank" class="more">更多&gt;&gt;</a>
+							<a href="{ESF_PATH}list.html" target="_blank" class="h4tab on"><span>二手房快搜</span></a>
+							<a href="{ESF_PATH}rent-list.html" target="_blank" class="h4tab"><span>租房快搜</span></a></h4>
+						<ul class="esfs">
+
+
+	<li class="bl">
+		<a target="_blank" href="{ESF_PATH}list-r3361.html">环翠区</a>
+		<a target="_blank" href="{ESF_PATH}list-r3362.html">经区</a>
+		<a target="_blank" href="{ESF_PATH}list-r3363.html">高区</a>
+		<a target="_blank" href="{ESF_PATH}list-r3365.html">荣成市</a>
+		<a target="_blank" href="{ESF_PATH}list-r3366.html">文登市</a>
+	</li>
+	<li class="bl">
+		<a target="_blank" href="{ESF_PATH}list-r3367.html">乳山市</a>
+		<a target="_blank" href="{ESF_PATH}list-r3364.html">工业新区</a>
+	</li>
+	<li class="bl">
+		<a target="_blank" href="{ESF_PATH}list-p1.html" val="-p1">50万以下</a>
+		<a target="_blank" href="{ESF_PATH}list-p2.html" val="-p2">50-80万</a>
+		<a target="_blank" href="{ESF_PATH}list-p3.html" val="-p3">80-100万</a>
+		<a target="_blank" href="{ESF_PATH}list-p4.html" val="-p4">100-150万</a>
+		
+	
+	</li>
+	<li class="bl">
+		<a target="_blank" href="{ESF_PATH}list-p5.html" val="-p5">150-200万</a>
+		<a target="_blank" href="{ESF_PATH}list-p6.html" val="-p6">200-250万</a>
+		<a target="_blank" href="{ESF_PATH}list-p7.html" val="-p7">250-300万</a>
+		<a target="_blank" href="{ESF_PATH}list-p8.html" val="-p8">300-400万</a>
+	</li>
+	<li class="bl">
+		<a target="_blank" href="{ESF_PATH}list-c1.html" val="-c1">70平以下</a>
+		<a target="_blank" href="{ESF_PATH}list-c3.html" val="-c3">70-90平</a>
+		<a target="_blank" href="{ESF_PATH}list-c4.html" val="-c4">90-120平</a>
+		<a target="_blank" href="{ESF_PATH}list-o120.html" val="-c5">120平以上</a>		
+	</li>
+	<li>
+		<a href="{ESF_PATH}list-t1.html" target="_blank">一室</a>
+		<a href="{ESF_PATH}list-t2.html" target="_blank">二室</a>
+		<a href="{ESF_PATH}list-t3.html" target="_blank">三室</a>
+		<a href="{ESF_PATH}list-t4.html" target="_blank">四室</a>
+		<a href="{ESF_PATH}list-t5.html" target="_blank">其它</a>
+	</li>
+</ul><!--az新首页 4二手房快搜-->
+						<ul class="esfs"  style="display:none">
+	<li class="bl">
+		<a target="_blank" href="{ESF_PATH}rent-list-r3361.html">环翠区</a>
+		<a target="_blank" href="{ESF_PATH}rent-list-r3362.html">经区</a>
+		<a target="_blank" href="{ESF_PATH}rent-list-r3363.html">高区</a>
+		<a target="_blank" href="{ESF_PATH}rent-list-r3365.html">荣成市</a>
+		<a target="_blank" href="{ESF_PATH}rent-list-r3366.html">文登市</a>
+	</li>
+	<li class="bl">
+		<a target="_blank" href="{ESF_PATH}rent-list-r3367.html">乳山市</a>
+		<a target="_blank" href="{ESF_PATH}rent-list-r3364.html">工业新区</a>
+	</li>
+	<li class="bl">
+        <A href="{ESF_PATH}rent-list-p1.html" target="_blank">600以下</A>
+        <A href="{ESF_PATH}rent-list-p3.html" target="_blank">600-1000元</A>
+        <A href="{ESF_PATH}rent-list-p4.html" target="_blank">1000-1500元</A>
+        <A href="{ESF_PATH}rent-list-p5.html" target="_blank">1500-2000元</A>
+	</li>
+	<li class="bl">
+        <A href="{ESF_PATH}rent-list-p6.html" target="_blank">2000-2500元</A>
+        <A href="{ESF_PATH}rent-list-p7.html" target="_blank">2500-3000元</A>
+        <A href="{ESF_PATH}rent-list-p8.html" target="_blank">3000元以上</A>
+	</li>
+	<li class="bl">
+		<a target="_blank" href="{ESF_PATH}rent-list-c1.html" val="-c1">70平以下</a>
+		<a target="_blank" href="{ESF_PATH}rent-list-c3.html" val="-c3">70-90平</a>
+		<a target="_blank" href="{ESF_PATH}rent-list-c4.html" val="-c4">90-120平</a>
+		<a target="_blank" href="{ESF_PATH}rent-list-o120.html" val="-c5">120平以上</a>
+	</li>
+	<li>
+		<a href="{ESF_PATH}rent-list-t1.html" target="_blank">一室</a>
+		<a href="{ESF_PATH}rent-list-t2.html" target="_blank">二室</a>
+		<a href="{ESF_PATH}rent-list-t3.html" target="_blank">三室</a>
+		<a href="{ESF_PATH}rent-list-t4.html" target="_blank">四室</a>
+		<a href="{ESF_PATH}rent-list-t5.html" target="_blank">其它</a>
+	</li>
+</ul><!--az新首页 4租房快搜-->
+					</div>
+					<div id="tab23">
+						<h4 class="cf"><a href="{ESF_PATH}xiaoqu-list.html" target="_blank" class="more">更多&gt;&gt;</a>
+							<a href="{ESF_PATH}xiaoqu-list.html" target="_blank" class="h4tab on"><span>热门小区</span></a>
+							<a href="{ESF_PATH}list-h3.html" target="_blank" class="h4tab"><span>急售二手房</span></a></h4>
+						<ul class="cul hotli">
+			{h5:content action="lists" catid="110" num="8" order="listorder DESC"   moreinfo="1" }
+					{loop $data $r}	{php $menu_info = menu_info('3360',$r[region])}
+            <li>
+			{h5:content action="esfcount" relation="$r[id]" catid="113" return="rentcount"}
+            <span class="fr">租<i>{$rentcount}</i>套</span>
+			{/h5}
+			{h5:content action="esfcount" relation="$r[id]" catid="112"  return="esfcount"}
+			<span class="fr">售<i>{$esfcount}</i>套</span>
+			{/h5}
+			
+			
+            [<a href="{ESF_PATH}list-r{$menu_info[1]}.html" target="_blank">{$menu_info[0]}</a>]
+            <a href="{$r[url]}" title="{$r[title]}" target="_blank">{$r[title]}</a>
+        </li>	{/loop}{/h5}
+          
+    </ul><!--az新首页 4热门小区-->
+						<ul class="cul hotli" style="display:none">
+ {h5:content action="lists" catid="112"  where="flag like '%3%'" num="8" order="updatetime DESC"   moreinfo="1" }
+ {loop $data $r} {php $menu_info = menu_info('3360',$r[region])}
+ {php $rxq = get_relationxq($r[id],112,110)}
+            <li>
+            <span class="fr">{$r[price]}万</span>
+            <span class="fr">{$r[total_area]}㎡</span>
+            [<a href="{ESF_PATH}list-r{$menu_info[1]}.html" target="_blank">{$menu_info[0]}</a>]
+            <a href="{$r[url]}" title="{$r[title]}" target="_blank">{$rxq[title]}</a>
+        </li>
+        {/loop}{/h5}
+    </ul><!--az新首页 4热门写字楼-->
+					</div>
+				</div>
+				<div class="conaR">
+					<div class="conaRC cf">
+						<div class="conaRCL" id="tab42">
+							<h4 class="cf"><a href="{ESF_PATH}list.html" target="_blank" class="more">更多&gt;&gt;</a>
+								<a href="{ESF_PATH}list.html" target="_blank" class="h4tab on"><span>二手房源</span></a>
+								<a href="{ESF_PATH}rent-list.html" target="_blank" class="h4tab"><span>出租房源</span></a></h4>
+							<div class="autab">
+								<div class="ibA bl cf">
+			{h5:content action="lists" catid="112" where="flag like '%1%'" num="3" order="updatetime DESC"   moreinfo="1" }{loop $data $r}
+			{php $rxq = get_relationxq($r[id],112,110)}
+               <a href="{$r[url]}" target="_blank">
+                <img src="{thumb($rxq[thumb],90,78)}" alt="{$rxq[title]}">
+                <span>{$rxq[title]}</span>
+            </a> {/loop}{/h5}
+        </div>
+<table>{h5:content action="lists" catid="112"   num="13" order="updatetime DESC"   moreinfo="1" }
+		{loop $data $r}{php $menu_info = menu_info('3360',$r[region])}
+		{php $rxq = get_relationxq($r[id],112,110)}
+            <tr>
+            <td width="56"><span>[<a href="{ESF_PATH}list-r{$menu_info[1]}.html" target="_blank">{$menu_info[0]}</a>]</span></td>
+            <td><span><a href="{$r[url]}" target="_blank" title="{$r[title]}">{$rxq[title]}</a></span></td>
+            <td width="48"><span>{$r[huxingshi]}室{$r[huxingting]}厅</span></td>
+            <td width="48"><span>{$r[total_area]}㎡</span></td>
+            <td width="56"><span>{$r[price]}万</span></td>
+        </tr>{/loop}{/h5}
+          
+        </table><!--az新首页 4二手房源-->
+							</div>
+							<div class="autab" style="display:none">
+								<div class="ibA bl cf">
+              {h5:content action="lists" catid="113" where="flag like '%1%'" num="3" order="updatetime DESC"   moreinfo="1" }{loop $data $r}
+			{php $rxq = get_relationxq($r[id],113,110)}
+               <a href="{$r[url]}" target="_blank">
+                <img src="{thumb($rxq[thumb],90,78)}" alt="{$rxq[title]}">
+                <span>{$rxq[title]}</span>
+            </a> {/loop}{/h5}
+        </div>
+<table>
+           {h5:content action="lists" catid="113"   num="13" order="updatetime DESC"   moreinfo="1" }
+				{loop $data $r}{php $menu_info = menu_info('3360',$r[region])}
+		{php $rxq = get_relationxq($r[id],113,110)}
+            <tr>
+            <td width="56"><span>[<a href="{ESF_PATH}rent-list-r{$menu_info[1]}.html" target="_blank">{$menu_info[0]}</a>]</span></td>
+            <td><span><a href="{$r[url]}" target="_blank" title="{$r[title]}">{$rxq[title]}</a></span></td>
+            <td width="48"><span>{$r[huxingshi]}室{$r[huxingting]}厅</span></td>
+            <td width="48"><span>{$r[total_area]}㎡</span></td>
+            <td width="56"><span>{$r[price]}元/月</span></td>
+        </tr>{/loop}{/h5}
+             
+        </table><!--az新首页 4出租房源-->
+							</div>
+						</div>
+						<div class="conaRCR">
+							<div id="tab24">
+								<h4>
+									<a href="{ESF_PATH}list.html" target="_blank" class="h4tab on"><span>二手房特色</span></a>
+									<a href="{ESF_PATH}rent-list.html" target="_blank" class="h4tab"><span>租房特色</span></a></h4>
+									<ul class="esfs">
+	<li class="bl">
+		<a href="{ESF_PATH}list-f1.html" target="_blank">毛坯</a>
+		<a href="{ESF_PATH}list-f2.html" target="_blank">精装</a>
+		<a href="{ESF_PATH}list-f3.html" target="_blank">中等装修</a>        
+		<a href="{ESF_PATH}list-f4.html" target="_blank">简装</a>
+		<a href="{ESF_PATH}list-f5.html" target="_blank">豪华装修</a>
+		<a href="{ESF_PATH}list-f6.html" target="_blank">原房</a> 
+	</li>
+	<li class="bl">
+		
+		<a href="{ESF_PATH}list-l1.html" target="_blank">6层以下</a>
+        <a href="{ESF_PATH}list-l2.html" target="_blank">6-12层</a>
+        <a href="{ESF_PATH}list-l3.html" target="_blank">12-20层</a>
+        <a href="{ESF_PATH}list-l4.html" target="_blank">20层以上</a>
+	</li>
+	<li class="bl">
+		  <a href="{ESF_PATH}list-y1.html" target="_blank">2000年以前</a>
+          <a href="{ESF_PATH}list-y2.html" target="_blank">2000年以后</a>
+          <a href="{ESF_PATH}list-y3.html" target="_blank">2005年以后</a>
+          <a href="{ESF_PATH}list-y4.html" target="_blank">2010年以后</a>
+	</li>
+	<li>
+		<a href="{ESF_PATH}list.html" target="_blank" class="c">不限</a> 
+		<a href="{ESF_PATH}list-o2.html" target="_blank">3天内发布</a>
+		<a href="{ESF_PATH}list-o3.html" target="_blank">7天内发布</a>
+		<a href="{ESF_PATH}list-o4.html" target="_blank">15天内发布</a>
+		<a href="{ESF_PATH}list-o5.html" target="_blank">30天内发布</a>
+	</li>
+</ul><!--az新首页 4写字楼出租快搜-->
+									<ul class="esfs" style="display:none">
+	<li class="bl">
+		        <a href="{ESF_PATH}rent-list.html" target="_blank">不限</a> 
+				<a href="{ESF_PATH}rent-list-u2.html" target="_blank">中介</a> 
+				<a href="{ESF_PATH}rent-list-u1.html" target="_blank">个人</a> 
+	</li>
+	<li class="bl">
+		<a href="{ESF_PATH}rent-list.html" target="_blank">不限</a>
+				                    <a href="{ESF_PATH}rent-list-l1.html" target="_blank">整租</a>
+                                	<a href="{ESF_PATH}rent-list-l2.html" target="_blank">合租</a>
+                                	<a href="{ESF_PATH}rent-list-l3.html" target="_blank">日租</a>
+	</li>
+	<li class="bl">
+							   		<a href="{ESF_PATH}rent-list-f1.html" target="_blank">毛坯</a> 
+               	               		<a href="{ESF_PATH}rent-list-f2.html" target="_blank">精装</a> 
+               	               		<a href="{ESF_PATH}rent-list-f3.html" target="_blank">中等装修</a> 
+               	               		<a href="{ESF_PATH}rent-list-f4.html" target="_blank">简装</a> 
+               	               		<a href="{ESF_PATH}rent-list-f5.html" target="_blank">豪华装修</a> 
+               	               		<a href="{ESF_PATH}rent-list-f6.html" target="_blank">原房</a> 
+	</li>
+	<li>
+	<a href="rent-list-u2.html" target="_blank">不限</a> 
+					<a href="{ESF_PATH}rent-list-o2.html" target="_blank">3天内发布</a>
+					<a href="{ESF_PATH}rent-list-o3.html" target="_blank">7天内发布</a>
+					<a href="{ESF_PATH}rent-list-o4.html" target="_blank">15天内发布</a>
+					<a href="{ESF_PATH}rent-list-o5.html" target="_blank">30天内发布</a>
+	</li>
+</ul><!--az新首页 4写字楼出售快搜-->
+							</div>
+							<div id="tab25">
+								<h4>
+									<a href="{ESF_PATH}rent-list-u2.html" target="_blank" class="h4tab on"><span>中介</span></a>
+									<a href="{ESF_PATH}rent-list-u1.html" target="_blank" class="h4tab"><span>个人</span></a></h4>
+									<ul class="cul hotli">
+ {h5:content action="lists" catid="112"  where="isbroker=1" num="6" order="updatetime DESC" moreinfo="1" }
+ {loop $data $r} {php $menu_info = menu_info('3360',$r[region])}
+ {php $rxq = get_relationxq($r[id],112,110)}
+            <li>
+            <span class="fr">{$r[price]}万</span>
+            <span class="fr">{$r[total_area]}㎡</span>
+            [<a href="{ESF_PATH}list-r{$menu_info[1]}.html" target="_blank">{$menu_info[0]}</a>]
+            <a href="{$r[url]}" title="{$r[title]}" target="_blank">{$rxq[title]}</a>
+        </li>
+        {/loop}{/h5}
+    </ul><!--az新首页 4商铺出租快搜-->
+									<ul class="cul hotli" style="display:none">
+	 {h5:content action="lists" catid="112"  where="isbroker=0" num="6" order="updatetime DESC" moreinfo="1" }
+ {loop $data $r} {php $menu_info = menu_info('3360',$r[region])}
+ {php $rxq = get_relationxq($r[id],112,110)}
+            <li>
+            <span class="fr">{$r[price]}万</span>
+            <span class="fr">{$r[total_area]}㎡</span>
+            [<a href="{ESF_PATH}list-r{$menu_info[1]}.html" target="_blank">{$menu_info[0]}</a>]
+            <a href="{$r[url]}" title="{$r[title]}" target="_blank">{$rxq[title]}</a>
+        </li>
+        {/loop}{/h5}
+</ul><!--az新首页 4商铺出售快搜-->
+							</div>
+							<h4><a href="http://esf.house.inhe.net/jingjiren/" target="_blank" class="more">更多&gt;&gt;</a><a target="_blank" href="http://esf.house.inhe.net/jingjiren/">房产经纪人</a></h4>
+							<ul class="cf jjrimg">
+							{h5:member action="memberlist" type="1" order="point DESC"  num="5"}
+							{loop $data['result'] $k $v} 
+				
+    <li>		<a target="_blank" title="{$v[truename]}" href="{ESF_PATH}jingjiren-{$v[userid]}">
+			<img alt="{$v[truename]}" src="{$avatar}" />
+		</a>
+		<a target="_blank"  title="{$v[truename]}" href="{ESF_PATH}jingjiren-{$v[userid]}">{$v[truename]}</a>
+    </li> {/loop}{/h5}
+  
+</ul><!--az新首页 4优秀经纪人-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="adb cf"><div></div>
+<!--nz新首页广告 通栏9--></div>
+        <div class="cona">
+			<div class="conaT">
+				<div class="conaTT">
+					<img src="{APP_PATH}statics/house5-style1//index/img/zx.png" alt="" class="fl">
+					<a target="_blank" href="{catlink(54)}">{catname(54)}</a>|<a target="_blank" href="{catlink(59)}">{catname(59)}</a>|<a target="_blank" href="{catlink(55)}">{catname(55)}</a>|<a target="_blank" href="{catlink(56)}">{catname(56)}</a>|<a target="_blank" href="{catlink(57)}">{catname(57)}</a>|<a target="_blank" href="{catlink(58)}">{catname(58)}</a>
+				</div>
+			</div>
+			<div class="conab cf">
+				<div class="conaL">
+					<h4><a href="{catlink(57)}" target="_blank" class="more">更多&gt;&gt;</a><a target="_blank" href="{catlink(57)}">{catname(57)}</a></h4>
+					<div class="ibA bl cf">
+					{h5:content  action="lists"  thumb="1"  catid="57" order="listorder DESC" limit="3" } {loop $data $v}
+								<a target="_blank" title="{$v[title]}" href="{$v[url]}">
+			<img alt="{$v[title]}" src="{thumb($v[thumb],77,67)}" />
+			<span>{$v[title]}</span>
+		</a>{/loop}{/h5}
+    		
+    <!--az新首页 5打折促销|图-->
+					</div>
+					<ul class="cul mb10">
+					{h5:content  action="lists" posids="0" catid="57" order="listorder DESC" limit="3,3" } {loop $data $v}
+    <li><a target="_blank" title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></li>{/loop}{/h5}
+
+</ul><!--az新首页 5打折促销|列表-->
+					<h4><a href="{catlink(58)}" target="_blank" class="more">更多&gt;&gt;</a><a target="_blank" href="{catlink(58)}">{catname(58)}</a></h4>
+					<ul class="cul mb10">
+{h5:content  action="lists" posids="0" catid="58" order="listorder DESC" limit="6" } {loop $data $v}
+    <li><a target="_blank" title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></li>{/loop}{/h5}
+</ul><!--az新首页 5建材快搜-->
+				</div>
+				<div class="conaR">
+					<div class="conaRC cf">
+						<div class="conaRCL">
+							<div class="conRT">
+								<a href="{catlink(54)}" target="_blank" class="more">更多&gt;&gt;</a>
+								<h4><a target="_blank" href="{catlink(54)}">{catname(54)}</a></h4>
+							</div>
+							<ul class="cul">
+{h5:content  action="lists" posids="0" catid="54" order="listorder DESC" limit="6" } {loop $data $v}
+    <li><a target="_blank" title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></li>{/loop}{/h5}
+
+</ul><!--az新首页 5家居资讯-->
+							<div class="conRT mt10">
+									<a href="{catlink(55)}" target="_blank" class="more">更多&gt;&gt;</a>
+								<h4><a target="_blank" href="{catlink(55)}">{catname(55)}</a></h4>
+							</div>
+							<ul class="cul">
+   {h5:content  action="lists" posids="0" catid="55" order="listorder DESC" limit="6" } {loop $data $v}
+    <li><a target="_blank" title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></li>{/loop}{/h5}
+</ul><!--az新首页 5家居论坛-->
+						</div>
+						<div class="conaRCR">
+						<h4><a href="{catlink(56)}" target="_blank" class="more">更多&gt;&gt;</a><a target="_blank" href="{catlink(56)}">{catname(56)}</a></h4>
+							<div class="inbox cf gbh">
+							 {h5:content  action="lists" thumb="1" catid="56" order="listorder DESC" limit="1" } {loop $data $v}
+				<a class="fl" target="_blank" title="{$v[title]}" href="{$v[url]}">
+			<img alt="{$v[title]}" src="{thumb($v[thumb],116,74)}" />
+		</a>
+		<h5><a target="_blank"  title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></h5>
+		{str_cut($v[description],30)}【<a href="{$v[url]}" target="_blank">详细</a>】{/loop}{/h5}<!--az新首页 5精彩活动|图-->
+							</div>
+							<ul class="cul">
+			{h5:content  action="lists"  catid="56" order="listorder DESC" limit="1,3" } {loop $data $v}
+   <li><a target="_blank" title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></li>{/loop}{/h5}
+   
+</ul><!--az新首页 5精彩活动|列表-->
+						<h4><a href="{catlink(59)}" target="_blank" class="more">更多&gt;&gt;</a><a target="_blank" href="{catlink(59)}">{catname(59)}</a></h4>
+							<ul class="cul">
+  	{h5:content  action="lists"   catid="59" order="listorder DESC" limit="6" } {loop $data $v}
+   <li><a target="_blank" title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></li>{/loop}{/h5}
+</ul><!--az新首页 5装修日记-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="adb cf"><div><a href="http://jiaju.inhe.net/zhuanti/zhuanti_ad/hp_130413/" target="_blank"><img src="/Uploadfiles/adpublish2012/jiaju_20130418.gif" alt="华鹏陶瓷" name="" width="960" height="80" border="0"></a></div><!--nz新首页广告 通栏10--></div>
+		<div class="conb">
+			<h3>排行榜</h3>
+			<div class="cf toplist">
+				<ul class="l">
+    <li class="b">一周资讯排行</li>
+		{h5:content  action="hits" catid="6" order="weekviews DESC" num="10" } {loop $data $v}
+            <li><a target="_blank" title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></li>{/loop}{/h5}
+    </ul>
+				 <ul>
+    <li class="b">一周楼盘排行</li>
+	{h5:content  action="hits" catid="14" order="weekviews DESC" num="10" } {loop $data $v}
+            <li><span class="fr">{$v[views]}次</span><a target="_blank" title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></li>{/loop}{/h5}
+                
+        </ul>
+				<ul>
+    <li class="b">一周小区排行</li>
+	{h5:content  action="hits" catid="110" order="weekviews DESC" num="10" } {loop $data $v}
+            <li><span class="fr">{$v[views]}次</span><a target="_blank" title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></li>{/loop}{/h5}
+     
+    </ul>
+				<ul class="l">
+    <li class="b">一周团购排行</li>
+	{h5:content  action="toptuangou" years="1" num="10" } {loop $data $v}
+            <li><span class="fr">{$v[counts]}人</span><a target="_blank" title="{$v[subject]}" href="{HOUSE_PATH}{$v[relation]}">{$v[subject]}</a></li>{/loop}{/h5}
+           
+    </ul>
+			</div>
+		</div>
+        <div class="adb cf"><!--nz新首页广告 通栏7--></div>
+		<div class="conb">
+			<h3>
+				<span class="ztControl" id="ztControl">
+					<i class="l"></i>
+					<i class="on"></i>
+					<i></i>
+					<i></i>
+					<i class="r"></i>
+				</span>
+			精彩回顾</h3>
+			<div class="ztcon ibA">
+				<ul id="ztcon">
+	 {h5:content  action="lists" posid="0" catid="6" thumb="1" order="listorder DESC" num="18"}
+		 {loop $data $v}
+	    <li> <a href="{$v[url]}" title="{$v[title]}" target="_blank">
+            <img src="{thumb($v[thumb],143,108)}" alt="{$v[title]}" />
+            <span>{$v[title]}</span>
+        </a>
+    </li>
+  {/loop}{/h5}
+</ul>
+<!--az新首页 精彩回顾-->
+			</div>
+		</div>
+
+<div class="friendslink">
+			<h3>合作伙伴</h3>
+			<ul class="cf">
+			 {h5:link  action="type_list" typeid="41" siteid="1" linktype="1" order="listorder DESC" num="18" return="pic_link"} 
+            {loop $pic_link $v}
+			 <li><a target="_blank" href="{$v[url]}"><img width="90" height="40" border="0" alt="{$v[name]}" src="{$v[logo]}"></a></li>
+             {/loop}{/h5}
+			 </ul>
+			 <!--az新首页 合作伙伴-->
+		</div>
+
+		
+
+		<div class="friendslink">
+			<h3>友情链接</h3>
+			<ul class="cf">
+			  {h5:link  action="type_list" typeid="42" siteid="1" order="listorder DESC" return="data"}
+			   {loop $data $r}
+ <li><a href="{$r[url]}" title="{$r[name]}" target="_blank">{$r[name]}</a></li>
+             {/loop}{/h5}
+			 </ul>
+			 <!--az新首页 友情链接-->
+		</div>
+
+	</div>
+<script type="text/javascript">
+seajs.use("indexcontrol")
+</script>
+{template "content","footer"}
+</body>
+</html><!--b新闻首页 新版脚注1-->

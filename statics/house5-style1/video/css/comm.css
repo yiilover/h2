@@ -1,0 +1,153 @@
+
+.b{ border:1px solid #d9d9d9}
+/*header*/
+.header{ height:80px}
+.header .logo{ float:left; width:280px;}
+.header .logo a{ width:200px; height:60px; display:block; margin:5px 0 0 30px;}
+.header .search{ float:left}
+.header .search .text{width:410px; height:32px; margin-top:14px; background:#e9e9e9}
+.header .search .text input{ border:1px solid #c0c0c0; width:334px; height:26px; line-height:26px; padding:0 1px; margin:2px 0 0 2px; color:#666}
+.header .search .text .button{ background:url(../img/index.png); width:61px; height:28px; line-height:28px; float:right; color:#333; margin:2px 2px 0 0; text-align:center}
+.header .search p{ line-height:26px}
+.header .search p a{ color:#666}
+.header .search p a:hover{ text-decoration:underline}
+.header .phone{ width:222px; height:45px; float:right; margin-top:20px; display:inline;}
+.header .phone div{width:82px; height:20px; float:left; overflow:hidden; text-indent:-999px}
+.header .phone label{ width:140px; height:20px; float:left;}
+.header .phone span{ float:right; margin-top:7px; color:#ccc; }
+.header .phone a{ color:#cc0000;}
+.header .phone a:hover{ text-decoration:underline}
+/*footer*/
+.footer .search{ height:48px; border:1px solid #d9d9d9; border-bottom:0; background:#fff}
+.footer .search div{ float:left; margin:10px 0 0 25px; width:320px; display:inline; height:28px; background:#e9e9e9}
+.footer .search div input{ float:left; height:26px; line-height:26px; background:#e9e9e9; border:0; width:240px; margin-left:5px; color:#666}
+.footer .search div a{ float:right; width:64px; line-height:28px; color:#fff; background:#c0c0c0; text-align:center; font-weight:bold}
+.footer .search span{ float:left; margin:18px 0 0 20px}
+.footer .search span a{ color:#666}
+.footer .search span a:hover{ text-decoration:underline; color:#cc0000}
+.footer .search span a.red{ color:#cc0000}
+.footer .flinks{ background:#e6e6e6; border:1px solid #d9d9d9; border-top:0; height:108px}
+.footer .flinks dl{ float:left; width:220px; padding:15px 0 0; display:inline; line-height:24px; margin-left:18px;}
+.footer .flinks dt{ font-weight:bold; color:#cc0000}
+.footer .flinks .yline{ width:1px; height:70px; float:left; margin-top:18px; background:url(../img/index.png) right -301px;}
+.footer .flinks a{ color:#333; white-space:nowrap;}
+.footer .flinks a:hover{ color:#cc0000}
+.footer .licences{ text-align:center; line-height:18px; margin:10px auto}
+.footer .licences span{ font-family:"Arial";}
+/*navBar*/
+.navBar{ background:#222; height:40px}
+.navBar .mainNav{ width:960px; margin:0 auto; _margin-bottom:-3px}
+.navBar .mainNav li{ float:left; position:relative; height:40px; margin-top:1px}
+.navBar .mainNav li a{ height:28px; color:#fff; font-size:14px; font-weight:bold; padding:12px 20px 0 15px; display:inline-block; background:url(../img/logo.png) right -155px}
+.navBar .mainNav li.last a{ background:0}
+.navBar .mainNav li.curr a,.navBar .mainNav li a:hover{ color:#cc0000; background:url(../img/logo.png) right -110px}
+.feedclk{ float:right; line-height:18px; padding-left:20px; background:url(../img/feedback.png) no-repeat; color:#fff; margin-top:12px;}
+/*µ¼º½*/
+.v-nav { width:960px; margin:0 auto; height:40px; background:#222; }
+.v-nav .area { overflow:visible; }
+.v-nav-left li { float:left; font-size:14px; height:40px; line-height:40px; position:relative; }
+.v-nav-on { background:#c61a14; font-weight:bold; }
+.v-nav-left .v-nav-on a:hover { background:#c61a14; }
+.v-nav-left a:hover { background:#3c3c3c; }
+.v-nav-left a { color:#fff; display:block; padding:0px 15px; }
+.v-nav-left a:hover { text-decoration:none; color:#fff; }
+.v-nav-left a:visited { color:#fff; }
+.v-nav-new { display:block; width:25px; height:14px; position:absolute; background-position:-15px -114px; overflow:hidden; top:-6px; right:10px; }
+.v-nav-right li { float:left; line-height:40px; padding-left:9px; height:40px; margin-left:10px }
+.v-nav-right a, .v-nav-right a:hover, .v-nav-right a:visited { color:#fff; }
+.v-nav-right .v-nav-history { position:relative; color:#fff; cursor:pointer; background-position:64px -99px; padding-right:21px; }
+.v-nav-right .on { background-color:#f4f4f4; background-position:64px -140px; color:#333; }
+.v-notlogin { width:170px; height:33px; line-height:33px; background:#f4f4f4; padding:0px 15px; width:192px; }
+.v-history { width:237px; padding:5px 10px 0px 10px; background:#f4f4f4; }
+.v-history li { border-bottom:1px dotted #d5d6d6; line-height:1.7; padding:3px 0px; width:237px; height:40px; overflow:hidden; float:left; }
+.v-history-left { width:223px; }
+.v-history-left div { width:223px; height:20px; overflow:hidden; }
+.v-history-del { background-position:-35px -134px; width:9px; height:9px; cursor:pointer; margin:15px 5px 0px 0px; overflow:hidden; }
+.v-history-play { margin:0px 10px 0px 0px; }
+.v-history-link { height:33px; line-height:33px; text-align:right; }
+.v-history-link span { color:#dcdddd; }
+/*hotLabel*/
+.hotLabel{ float:right; width:263px; height:172px; background:#fff}
+.hotLabel .title{ margin:13px 10px;color:#cc0000}
+.hotLabel .title a{ float:right; color:#cc0000; margin-top:5px;}
+.hotLabel .title h3{font:16px "\5FAE\8F6F\96C5\9ED1";}
+.hotLabel .content{ padding:0 10px; line-height:20px}
+.hotLabel .content a{ color:#666; white-space:nowrap; margin-right:8px;}
+.hotLabel .content a:hover{ color:#cc0000; text-decoration:underline}
+.hotLabel .content a.font14{ font-size:14px}
+/*shareTV*/
+.shareTV{ float:right; width:263px; height:225px; _overflow:hidden}
+.shareTV h3{ margin:13px 0 13px 10px;color:#cc0000;font:16px "\5FAE\8F6F\96C5\9ED1";}
+.shareTV .content{ height:75px;}
+.shareTV .content .img{ width:65px; height:65px; border:1px solid #ccc; float:left; margin:0 15px 0 13px; display:inline}
+.shareTV .content .img a{ width:63px; height:63px; margin:1px; background:url(../img/weibo.jpg); display:block}
+.shareTV .content .img a.tvwei{ background-position:0 -63px}
+.shareTV .content strong a{font-size:14px; color:#cc0000}
+.shareTV .content strong a:hover{ text-decoration:underline}
+.shareTV .content p{ color:#333; margin:5px 0 8px}
+.shareTV .sharebutton{ margin-left:8px}
+/*popRank*/
+.popRank{float:right; width:263px; height:280px}
+.popRank h3{ margin:8px 0 5px 10px;color:#333;font:16px "\5FAE\8F6F\96C5\9ED1"; }
+.popRank li{ line-height:24px;}
+.popRank li a{ color:#666;}
+.popRank li a:hover{ color:#cc0000; text-decoration:underline;}
+.popRank li.up a{ color:#cc0000;}
+.popRank li.up span{ background:#cc0000; color:#fff}
+.popRank li span{background:#ccc; color:#fff; width:15px; height:14px; float:left; text-align:center; line-height:14px; margin:5px 8px 0; display:inline}
+.popRank li dt{ float:left; width:210px}
+.popRank li dd{ float:left; color:#999}
+/*commRank*/
+.commRank li dt{width:195px}
+.commRank li dd{ color:#333}
+.commRank li dd a,.commRank li.up dd a{ color:#999}
+.commRank li dd a:hover{ color:#cc0000}
+/*newComm*/
+.newComm{float:right; width:263px; height:280px}
+.newComm h3{ margin:13px 0 8px 10px;color:#333;font:16px "\5FAE\8F6F\96C5\9ED1";}
+.newComm ul{ margin-left:13px}
+.newComm li{ line-height:22px; height:22px; color:#666}
+.newComm li a{ color:#666;}
+.newComm li a:hover{ color:#cc0000; text-decoration:underline}
+/*host*/
+.host{ background:#ccc; height:112px}
+.host .hostL{ float:left}
+.host .hostL li{ float:left; width:230px}
+.host .people1,.host .people2,.host .people3{ float:left; width:90px; height:112px; background:url(../img/people.jpg) -10px;}
+.host .people2{ background-position:-102px 0;}
+.host .people3{ background-position:-210px 0;}
+.host .hostL .peopleInfo{ line-height:18px; margin-top:15px; float:left; width:120px; display:inline}
+.host .hostL .peopleInfo b,.host .hostL .peopleInfo p{ color:#666}
+.host .hostL .peopleInfo span{ color:#333}
+.host .hostL .peopleInfo a{ color:#cc0000;}
+.host .hostL .yline{ background:url(../img/index.png) -89px -301px; height:70px; width:1px; float:left; margin:20px 0 0 10px; display:inline}
+.host .hostR{ float:right; width:265px}
+.host .hostR h3{margin:13px 0 8px 10px;font-size:14px}
+.host .hostR li{ line-height:20px; color:#666}
+.host .hostR a{ color:#666}
+.host .hostR a:hover{ text-decoration:underline}
+/*page*/
+.page{ text-align:center; height:25px; line-height:25px;}
+.page a,.page span{ color:#333; border:1px solid #ccc; padding:3px 7px; margin-right:7px;}
+.page span{ color:#ccc;}
+.page a.on,.page a.on:hover,.page span.on{ color:#fff; background-color:#cc0000; border:0; padding:4px 8px;}
+.page a:hover{ color:#cc0000; text-decoration:underline}
+/*feedback*/
+.feedback{ width:480px; height:600px; border:5px solid #ccc; background:#fff; display:none}
+.feedback .title{ height:30px; line-height:30px; border-bottom:1px solid #ccc; background:#e8e8e8; font-size:14px; padding-left:10px}
+.feedback .title a{ float:right; width:11px; height:11px; margin:10px 10px 0 0; background:url(../img/feedback.png) 0 -120px}
+.feedback .content{ padding:10px 20px}
+.feedback .content input{ vertical-align:middle;}
+.feedback .content input[type=text]{ line-height:24px; height:24px}
+.feedback .content input[type=text],.feedback .content textarea{ border:1px solid #cfcfcf;}
+.feedback .content textarea{ resize:none; width:361px; height:142px; font-family:Tahoma, Geneva, sans-serif}
+.feedback .content h2{ line-height:28px; background:url(../img/feedback.png) 0 -40px no-repeat; padding-left:40px; font-size:14px; font-weight:bold; color:#000}
+.feedback .content .tit2{ background-position:0 -80px}
+.feedback .content .tit2 em{ font-size:12px; font-weight:normal; margin-left:10px; color:#999}
+.feedback .content div{ color:#333; line-height:30px; margin-top:10px}
+.feedback .content div label.qit{ margin-left:66px}
+.feedback .content div .qit_w{ width:300px}
+.feedback .content div .w361{ width:361px}
+.feedback .content div span.det{ vertical-align:top;}
+.feedback .content div a.feedbackSubmit{ background:url(../img/feedback.png) 0 -150px; width:69px; height:24px; text-align:center; line-height:24px; display:block; color:#fff; font-weight:bold; margin:15px auto 25px;}
+.feedback .content p.txt{ color:#999; line-height:24px}

@@ -1,0 +1,19 @@
+.xafc-nav {width:960px; height:30px; line-height:25px; margin:0 auto; text-align:left;border-bottom:1px solid #dedede;}
+.xafc-nav .nav-link{float:left; color:#333;text-decoration:none;font-size:12px;line-height:25px; }
+.nav-link a,.nav-link a:visited {color:#333;text-decoration:none;font-size:12px;line-height:25px; }
+.nav-link a:hover {color:#c00;text-decoration:underline;font-size:12px;line-height:25px; }
+.xafc-nav .nav-link a:hover {color:#c00;text-decoration:underline;font-size:12px;line-height:25px; }
+.xafc-nav .rightCon {float:right; _display:inline; margin:0 0 0 6px;}
+.xafc-nav .nav-link a {padding:0 3px;line-height:25px; }
+ 
+.xafc_big{width:960px; text-align:left; height:120px;border-top:1px solid #CADBF1; }
+ 
+ 
+ 
+.xafc_foot{padding-top:10px;margin:0 auto;width:770px; line-height:25px;text-align:center;font-size:12px;float:left;}
+.xafc_foot a{color:#333;text-decoration:none;line-height:25px; font-size:12px;}
+.xafc_foot a:hover{color:#c00;text-decoration:underline;line-height:25px; font-size:12px;}
+.xafc_foot a:active{color:#c00;text-decoration:underline;line-height:25px; font-size:12px;}
+ 
+ 
+.xafc_picgif{width:180px;  float:left; height:60px; margin-top:10px;}

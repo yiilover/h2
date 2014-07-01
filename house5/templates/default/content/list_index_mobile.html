@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="format-detection" content="telephone=no" />
+<meta name="keywords" content="房产,房地产,买房,租房,业主论坛,业主社区,新房,二手房,写字楼,商铺,装修,家居,建材,家具,团购,房地产新闻,房地产业内精英,房地产博客"/>
+<title>手机问房网触屏版</title>
+<script type="text/javascript">
+	function loadTime() {
+		var timestamp = new Date().getTime();
+		var url = document.URL;
+		var index = url.indexOf("timestamp");
+		if (index == -1) {
+			url = url + '&amp;timestamp=' + timestamp;
+			window.location = url;
+		}
+	}
+</script>
+<script language="Javascript" src="{CSS_PATH}static/js/jquery.js"></script>
+<script language="javascript" src="{APP_PATH}css/mobile/cookie.js"></script>
+<script src="{APP_PATH}css/mobile/gears_init.js"></script>
+<script src="{APP_PATH}css/mobile/geo.js"></script>
+<script language="javascript" src="{APP_PATH}css/mobile/venfang.js"></script>
+<link href="{APP_PATH}css/mobile/css.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<a id="filter"></a>
+<div class="wrap">   
+  <ul id="nav" class="nav">
+  <div style="width:320px">
+    <li class="navcur" style="width:16%">首页</li>
+    <li style="width:16%"><a href="{HOUSE_PATH}">新房</a></li>
+    <li style="width:20%"><a href="http://esf.venfang.com/sale/">二手房</a></li>
+    <li style="width:16%"><a href="http://news.venfang.com/list.html">资讯</a></li>
+    <div class="clear"></div>
+    </div>
+  </ul>
+  <div class="searchbox">
+  <form action="search.php" method="get" accept-charset="gbk" onsubmit="document.charset='gbk';">
+    <div class="search flol ">
+      	<div id="s1_text1_bold" class="searcrange flol">新房</div>
+		<div class="select">
+		    <p><input name="type" class="se" type="radio" value="0" checked="checked"/>&nbsp;&nbsp;<span>新房</span></p>
+		    <p><input name="type" class="se" type="radio" value="1" />&nbsp;&nbsp;<span>二手房</span></p>
+		</div>
+      <div class="searhinputbox" >
+        <input name="keyword" type="text" class="searhinput"  value="" maxlength="32" autocomplete="off"/>
+      </div>
+    </div>
+    <div class="searchbtnbox" >
+      <input class="searchbtn" type="submit" value="搜索" />
+    </div>
+    </form>
+    <div class="clear"></div>
+  </div>
+  <div class="content">
+    <div class="clu" >
+    <a href="http://house.venfang.com/">
+      <div class="clu-tit">
+        <div class="clu-name flol">新房</div><div class="clu-more flor"></div>
+      </div>
+      </a>
+      <div class="boxpadleft8">
+      	<div class="grayboderbox" style="margin-top:8px">
+			
+	        
+	        
+		        <a href="http://house.venfang.com/list-o1.html" class="ablack">
+		        	<div class="arrbox2 borderbot" style=" background-color:#F7F6F3"><img src="{APP_PATH}css/mobile/images/kaipan.png" width="24"><span class="f18"> 本月开盘</span></div>
+				</a>
+			
+			<a href="http://news.venfang.com/" class="ablack">
+			<div class="arrbox2" style=" background-color:#F7F6F3"><img src="{APP_PATH}css/mobile/images/guide.png" width="24"><span class="f18"> 房产导购</span></div>
+			</a>
+			
+			<div class="clear"></div>
+		</div>
+          <!-- 内容开始 -->
+          
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="cat">
+          <tr>
+            <td width="50px" valign="top" ><div class="catname ">区域</div></td>
+            <td width="100%"><ul class="catcont ">
+            	
+               {h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC" cache="86400"}
+			{loop $data $r}
+			{if $n<=4}
+			<?php
+				$reg = explode('$$', $r);//add by L 2012/3/22
+			?>
+				<li>
+                <a href="{HOUSE_PATH}list-r{$reg[0]}.html">{$reg[1]}</a></li>
+				{/if}
+              {/loop}
+               	
+                <div class="clear"></div>
+              </ul></td>
+            <td width="50px"><div id="more1" class="more"><span class="up">全部</span></div></td>
+          </tr>
+          <tr class="moreitems">
+            <td valign="top" >&nbsp;</td>
+            <td colspan="2"><div class="otheritem">
+            <ul class="catcont">
+	            
+	                {loop $data $r}
+				{if $n>4}
+	               <?php
+				$reg = explode('$$', $r);//add by L 2012/3/22
+			?>
+				<li>
+                <a href="{HOUSE_PATH}list-r{$reg[0]}.html">{$reg[1]}</a></li>
+				{/if}
+              {/loop}
+	            
+                <div class="clear"></div>
+            </ul></div></td>
+          </tr>
+
+        </table>
+        
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="cat">
+          <tr>
+            <td width="50px" valign="top" ><div class="catname ">类别</div></td>
+            <td width="100%"><ul class="catcont ">
+                <li><a href="{HOUSE_PATH}list-t1.html" >住宅</a></li>
+                <li><a  href="{HOUSE_PATH}list-t7.html" >写字楼</a></li>
+                <li><a href="{HOUSE_PATH}list-t8.html" >商铺</a></li>
+                
+                <div class="clear"></div>
+              </ul></td>
+            <td width="50px"><div class="more"><span class="up">全部</span></div></td>
+          </tr>
+          <tr class="moreitems">
+            <td valign="top" >&nbsp;</td>
+            <td colspan="2"><div class="otheritem">
+            <ul class="catcont">
+	            <li><a href="{HOUSE_PATH}list-t5.html">综合体</a></li>
+	            <li><a  href="{HOUSE_PATH}list-t10.html" >经济适用房</a></li>
+                <li><a href="{HOUSE_PATH}list-t6.html" >别墅</a></li>
+                <div class="clear"></div>
+            </ul></div></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="cat">
+         
+         
+         
+         
+          <tr>
+            <td width="50px" valign="top" ><div class="catname ">价格</div></td>
+            <td width="100%"><ul class="catcont ">
+                <li><a href="{HOUSE_PATH}list-p3.html">4千-5千</a></li>
+                <li><a href="{HOUSE_PATH}list-p4.html">5千-6千</a></li>
+				<li><a href="{HOUSE_PATH}list-p5.html">6千-7千</a></li>
+                <div class="clear"></div>
+              </ul></td>
+            <td width="50px"><div class="more"><span class="up">全部</span></div></td>
+          </tr>
+          <tr class="moreitems">
+            <td valign="top" >&nbsp;</td>
+            <td colspan="2"><div class="otheritem">
+            <ul class="catcont">
+	            <li><a href="{HOUSE_PATH}list-p6.html">7千-8千</a></li>
+	            <li><a href="{HOUSE_PATH}list-p7.html">8千-1万</a></li>
+	            <li><a href="{HOUSE_PATH}list-p8.html" >1万以上</a></li>
+				 <li><a href="{HOUSE_PATH}list-p2.html" >3千-4千</a></li>
+	            <li><a href="{HOUSE_PATH}list-p1.html"  >3千以下</a></li>
+                <div class="clear"></div>
+            </ul></div></td>
+          </tr>
+         
+         </table>
+	</div>
+    <div class="clu">
+    <a href="esf.d?m=esflist&city=weihai">
+      <div class="clu-tit">
+        <div class="clu-name flol">二手房</div><div class="clu-more flor"></div>
+      </div>
+     </a>
+      <div class="boxpadleft8">
+      
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="cat">
+          <tr>
+            <td width="50px" valign="top" ><div class="catname ">区域</div></td>
+            <td width="100%"><ul class="catcont ">
+                
+               <li><a href="http://esf.venfang.com/sale/c1/">环翠区</a></li>
+				<li><a href="http://esf.venfang.com/sale/c3/">高区</a></li>
+				<li><a href="http://esf.venfang.com/sale/c2/">经区</a></li>
+               	
+                <div class="clear"></div>
+              </ul></td>
+            <td width="50px"><div class="more"><span class="up">全部</span></div></td>
+          </tr>
+          <tr class="moreitems">
+            <td valign="top" >&nbsp;</td>
+            <td colspan="2"><div class="otheritem">
+            <ul class="catcont">
+				<li><a href="http://esf.venfang.com/sale/c6/">荣成</a></li>
+				<li><a href="http://esf.venfang.com/sale/c7/">文登</a></li>
+				<li><a href="http://esf.venfang.com/sale/c8/">乳山</a></li>
+	            <li><a href="http://esf.venfang.com/sale/c5/">工业新区</a></li>
+	            
+                <div class="clear"></div>
+            </ul></div></td>
+          </tr>
+        </table>
+        
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="cat">
+          <tr>
+            <td width="50px" valign="top" ><div class="catname ">面积</div></td>
+            <td width="100%"><ul class="catcont1">
+                <li><a href="http://esf.venfang.com/sale/c0/a50-70">50-70㎡</a></li> 
+				<li><a href="http://esf.venfang.com/sale/c0/a70-90">70-90㎡</a></li> 
+				<li><a href="http://esf.venfang.com/sale/c0/a90-110">90-110㎡</a></li>
+                <div class="clear"></div>
+              </ul></td>
+            <td width="50px"><div class="more"><span class="up">全部</span></div></td>
+          </tr>
+          <tr class="moreitems">
+            <td valign="top" >&nbsp;</td>
+            <td colspan="2"><div class="otheritem">
+            <ul class="catcont1">
+	            <li><a href="http://esf.venfang.com/sale/c0/a0-50">50㎡以下</a></li>
+				<li><a href="http://esf.venfang.com/sale/c0/a110-130">110-130㎡</a></li>
+				<li><a href="http://esf.venfang.com/sale/c0/a130-150">130-150㎡</a></li> 
+				<li><a href="http://esf.venfang.com/sale/c0/a150-200">150-200㎡</a></li> 
+				<li><a href="http://esf.venfang.com/sale/c0/a200-250">200-250㎡</a></li> 
+				<li><a href="http://esf.venfang.com/sale/c0/a250-300">250-300㎡</a></li> 
+				<li><a href="http://esf.venfang.com/sale/c0/a300-500">300-500㎡</a></li> 
+				<li><a href="http://esf.venfang.com/sale/c0/a500-0">500㎡以上</a></li>
+                <div class="clear"></div>
+            </ul></div></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="cat">
+        
+          <tr>
+            <td width="50px" valign="top" ><div class="catname ">价格</div></td>
+            <td width="100%"><ul class="catcont1">
+               <li><a href="http://esf.venfang.com/sale/c0/p0-40">40万以下</a></li>
+				<li><a href="http://esf.venfang.com/sale/c0/p40-60">40-60万</a></li>
+				<li><a href="http://esf.venfang.com/sale/c0/p60-80">60-80万</a></li>
+                <div class="clear"></div>
+              </ul></td>
+            <td width="50px"><div class="more"><span class="up">全部</span></div></td>
+          </tr>
+          <tr class="moreitems">
+            <td valign="top" >&nbsp;</td>
+            <td colspan="2"><div class="otheritem">
+            <ul class="catcont1">
+	           <li><a href="http://esf.venfang.com/sale/c0/p80-100">80-100万</a></li>
+				 <li><a href="http://esf.venfang.com/sale/c0/p100-120">100-120万</a></li>
+				 <li><a href="http://esf.venfang.com/sale/c0/p120-150">120-150万</a></li>
+				 <li><a href="http://esf.venfang.com/sale/c0/p150-200">150-200万</a></li>
+				 <li><a href="http://esf.venfang.com/sale/c0/p200-250">200-250万</a></li>
+				 <li><a href="http://esf.venfang.com/sale/c0/p250-300">250-300万</a></li>
+				 <li><a href="http://esf.venfang.com/sale/c0/p300-500">300-500万</a></li>
+				 <li><a href="http://esf.venfang.com/sale/c0/p500-0">500万以上</a></li>
+                <div class="clear"></div>
+            </ul></div></td>
+          </tr>
+          
+        </table>
+      </div>
+    </div>
+    
+    <div class="clu">
+    <a href="http://news.venfang.com/">
+      <div class="clu-tit">
+        <div class="clu-name flol"  style="width:80px">房产导购</div>
+        <div class="clu-more flor"></div>
+        <div class="clear"></div>
+      </div>
+     </a>
+      <div class="boxpadleft8">
+        <ul class="infolist">
+        	{h5:content  action="position" posid="2" moreposid="2" order="listorder DESC" num="4" cache="1800"}
+			{loop $data $r}
+				<li><a href="http://news.venfang.com/showinfo-{$r[catid]}-{$r[id]}.html">{str_cut($r[title], 34)}</a></li>
+			{/loop}
+		   {/h5}			
+          	<div class="clear"></div>
+        </ul>
+      </div>
+      <div class="locabox">
+        <div class="loca flol"><img src="{APP_PATH}css/mobile/images/ico-loca.png" width="24" ">当前位置：<span id="addr"></span></div>
+        <div class="refres flor"><img src="{APP_PATH}css/mobile/images/ico-refres.png" width="24" > </div>
+      </div>
+      </div>
+      </div>
+  </div>
+
+<div class="foot">
+   <div id="top" class="backtop f16"><a href="#filter"><img src="{APP_PATH}css/mobile/images/backtop.png" >返回顶部</a></div>
+   <div class="version">
+		<div class="flol">
+		</div><div class="flol curv">触屏版</div><div class="flol"><A href="{APP_PATH}index.html?from=mobile">电脑版</A></div>
+	</div>
+   <div class="copy f12">Copyright &copy; 2012 VenFang.com 问房网 版权所有<BR><BR> 鲁ICP备11018261号-3</div>
+</div>
+<script type="text/javascript">
+	window.scrollTo(0, 1);
+</script>
+
+</div>
+</body>
+</html>

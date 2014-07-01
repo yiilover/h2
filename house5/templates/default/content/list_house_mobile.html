@@ -1,0 +1,671 @@
+<?php
+	$param = $_GET['param'];//2012/8/7
+	if(!empty($param)&&stristr($param,'-')!=false)
+	{
+		$param_arr = explode('-', $param);
+		foreach($param_arr as $_v) {
+				if($_v) 
+				{
+					if(preg_match ( '/([a-z])(\d*)/', $_v, $matchs))
+					{
+						$$matchs[1] = intval($matchs[2]);
+					}
+				}
+			}
+		$parentid = $r;
+		$bid = $b;
+		$range = $p;
+		$type = $t;
+		$fix = $f;
+		$character = $l;
+		$opentime = $o;
+		$hot = $h;
+		$ord = $n;
+		$page = $g;
+		$datatype = intval($d);
+	}
+	else
+	{
+ 	$parentid = intval($_GET['r']);
+	$bid = intval($_GET['b']);
+	$range = intval($_GET['p']);
+	$type = intval($_GET['t']);
+	$fix = intval($_GET['f']);
+	$character = intval($_GET['l']);
+	$opentime = intval($_GET['o']);
+	$hot = intval($_GET['h']);
+	$ord = intval($_GET['n']);
+	$page = intval($_GET['g']);
+	$keyword = trim($_GET['keyword']);
+	$k = trim($_GET['k']);
+	$datatype = intval($_GET['d']);
+	}
+	$where = "status=99";
+	if(!empty($keyword))
+	{
+		$keyword1 = iconv('gbk', 'utf-8', $keyword);//rewrite 只支持UTF-8编码的中文
+		$lst1.= "-k".htmlentities(urlencode($keyword1));
+		$where.=" and (`title` like '%$keyword%' or `address` like '%$keyword%' )";
+	}
+	if(!empty($k))
+	{
+		$keyword = iconv('utf-8','gbk' , $k);
+		$lst1.= "-k".htmlentities(urlencode($k));
+		$where.=" and (`title` like '%$keyword%' or `address` like '%$keyword%' )";
+	}
+ 	if(!empty($parentid))
+	{
+		$lst = "-r".$parentid;
+	}
+	if(!empty($bid))
+	{
+		$lst.= "-b".$bid;
+	}
+	if(!empty($parentid) && !empty($bid))
+	{
+		$where.=" and `region`=$bid";
+	}
+	elseif(!empty($parentid) && empty($bid))//区域顶级
+	{
+		$arrchildid = get_arrchildid('3360',$parentid);
+		$where.=" and `region` in ($arrchildid)";
+	}
+	if(!empty($range))
+	{
+		$lst.= "-p".$range;
+		$where.=" and `range`=$range";
+	}
+	if(!empty($type))
+	{
+		$lst.= "-t".$type;
+		$where.=" and `type` like '%$type%'";
+	}
+	if(!empty($fix))
+	{
+		$lst.= "-f".$fix;
+		$where.=" and `fix`=$fix";
+	}
+	if(!empty($character))
+	{
+		$lst.= "-l".$character;
+		$where.=" and `character` like '%$character%'";
+	}
+	if(!empty($opentime))
+	{
+		$lst.= "-o".$opentime;
+		if($opentime=='1')
+		{
+			$where.=" and DATE_FORMAT(opentime,'%Y%m') = DATE_FORMAT(CURDATE(),'%Y%m')";//本月
+		}
+		elseif($opentime=='2')
+		{
+			$where.=" and DATE_FORMAT(opentime,'%Y%m') = DATE_FORMAT(DATE_ADD(CURDATE(), INTERVAL 1 MONTH),'%Y%m')";//下月
+		}
+		elseif($opentime=='3')
+		{
+			$where.=" and DATE_FORMAT(opentime,'%Y%m') = DATE_FORMAT(DATE_ADD(CURDATE(), INTERVAL 3 MONTH),'%Y%m')";//三月内
+		}
+		elseif($opentime=='4')
+		{
+			$where.=" and DATE_FORMAT(opentime,'%Y%m') = DATE_FORMAT(DATE_ADD(CURDATE(), INTERVAL 6 MONTH),'%Y%m')";//六月内
+		}
+		elseif($opentime=='5')
+		{
+			$where.=" and DATE_FORMAT(opentime,'%Y%m') = DATE_FORMAT(DATE_SUB(CURDATE(), INTERVAL 3 MONTH),'%Y%m')";//前三月
+		}
+		elseif($opentime=='6')
+		{
+			$where.=" and DATE_FORMAT(opentime,'%Y%m') = DATE_FORMAT(DATE_SUB(CURDATE(), INTERVAL 6 MONTH),'%Y%m')";//前六月
+		}
+	}
+	if(!empty($hot))
+	{
+		if($hot=='2'||$hot=='3')
+		{
+			$hot1 = $hot-1;
+			$where.=" and xszt ='$hot1'";
+			$lst.= "-h".$hot;
+		}
+		elseif($hot=='1')
+		{
+			$hot1 = 3;
+			$where.=" and xszt ='$hot1'";
+			$lst.= "-h".$hot;
+		}
+		else
+		{
+			$where.=" and `hot` like '%$hot%'";
+			$lst.= "-h".$hot;
+		}
+	}
+	if(!empty($ord))
+	{
+		if($ord=='1')
+		{
+			$order=" CAST(price AS SIGNED) DESC";
+		}
+		elseif($ord=='2')
+		{
+			$order=" CAST(price AS SIGNED) ASC";
+		}
+		elseif($ord=='3')
+		{
+			$order=" opentime DESC";
+		}
+		elseif($ord=='4')
+		{
+			$order=" opentime ASC";
+		}
+		elseif($ord=='5')
+		{
+			$order=" jfdate DESC";
+		}
+		elseif($ord=='6')
+		{
+			$order=" jfdate ASC";
+		}
+		$lst.= "-n".$ord;
+	}
+	else
+	{
+		$order = "id DESC";
+	}
+	?>
+{if $datatype=='0'}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>手机问房网触屏版-新房</title>
+<link href="http://www.venfang.com/css/mobile/css.css" rel="stylesheet" type="text/css"/>
+<link href="http://www.venfang.com/css/mobile/scroll.css" rel="stylesheet" type="text/css"  />
+<script language="Javascript" src="{CSS_PATH}static/js/jquery.js"></script>
+<script language="javascript" src="http://www.venfang.com/css/mobile/xinfang.js"></script>
+</head>
+<body>
+<a id="filter"></a>
+<div class="wrap">
+  <ul class="nav">
+  <div style="width:320px">
+    <li style="width:16%"><a href="http://www.venfang.com/mobile.html">首页</a></li>
+    <li class="navcur" style="width:16%">新房</li>
+    <li style="width:20%"><a href="http://esf.venfang.com/sale/">二手房</a></li>
+    <li style="width:16%"><a href="http://news.venfang.com/list.html">资讯</a></li>
+    <div class="clear"></div>
+    </div>
+  </ul>
+  <div class="content">
+  <div class="boxpadleft8 pagelist">
+    
+  <div style="margin-top:10px; height:38px;">
+	<form action="search.php" method="get" accept-charset="gbk" onsubmit="document.charset='gbk';">
+    <div class="xqsearch flol">
+      <div id="xqsearcrange" class="xqsearcrange flol">新房</div>
+      	<div class="select">
+		    <p><input name="type" type="radio" value="0" checked="checked"/>&nbsp;&nbsp;<span>新房</span></p>
+		    <p><input name="type" type="radio" value="1" />&nbsp;&nbsp;<span>二手房</span></p>
+		</div>
+      <div class="searhinputbox" >
+        <input name="keyword" type="text" class="searhinput"  value="" maxlength="32" autocomplete="off">
+      </div>
+    </div>
+    <div class="xqsearchbtnbox" >
+      <input class="xqsearchbtn" type="submit" value="搜索" />
+    </div>
+    <div class="clear"></div>
+    </form>
+  </div>
+  
+  <div style="margin-top:12px;">
+		<div class="selcond">您的搜索条件
+		<ul>
+		{if !empty($parentid)}
+		{php $menu_info = menu_info('3360',$parentid)}
+		<li id="r">{$menu_info[0]}<input type="hidden" id="hr" value="{$parentid}"></li>
+		{else}
+		<input type="hidden" id="hr" value="">
+		{/if}
+		{if !empty($type)}
+		{if $type=="1"}
+		<li id="t">住宅</li>
+		{/if}
+		{if $type=="5"}
+		<li id="t">综合体</li>
+		{/if}
+		{if $type=="6"}
+		<li id="t">别墅</li>
+		{/if}
+		{if $type=="7"}
+		<li id="t">写字楼</li>
+		{/if}
+		{if $type=="8"}
+		<li id="t">商铺</li>
+		{/if}
+		{if $type=="10"}
+		<li id="t">经济适用房</li>
+		{/if}
+		<input type="hidden" id="ht" value="{$type}">
+		{else}
+		<input type="hidden" id="ht" value="">
+		{/if}
+		{if !empty($range)}
+		{if $range=="1"}		
+		<li id="p">3千以下</li>
+		{/if}
+		{if $range=="2"}		
+		<li id="p">3千-4千</li>
+		{/if}
+		{if $range=="3"}		
+		<li id="p">4千-5千</li>
+		{/if}
+		{if $range=="4"}		
+		<li id="p">5千-6千</li>
+		{/if}
+		{if $range=="5"}		
+		<li id="p">6千-7千</li>
+		{/if}
+		{if $range=="6"}		
+		<li id="p">7千-8千</li>
+		{/if}
+		{if $range=="7"}		
+		<li id="p">8千-1万</li>
+		{/if}
+		{if $range=="8"}		
+		<li id="p">1万以上</li>
+		{/if}
+		<input type="hidden" id="hp" value="{$range}">
+		{else}
+		<input type="hidden" id="hp" value="">
+		{/if}
+		{if !empty($fix)}
+		{if $fix=="1"}
+		<li id="f">毛坯</li>
+		{/if}
+		{if $fix=="2"}
+		<li id="f">简装修</li>
+		{/if}
+		{if $fix=="3"}
+		<li id="f">精装修</li>
+		{/if}
+		<input type="hidden" id="hf" value="{$fix}">
+		{else}
+		<input type="hidden" id="hf" value="">
+		{/if}
+		{if !empty($opentime)}
+		{if $opentime=="1"}		
+		<li id="o">本月开盘</li>
+		{/if}
+		{if $opentime=="2"}		
+		<li id="o">下月开盘</li>
+		{/if}
+		{if $opentime=="3"}		
+		<li id="o">三月内开盘</li>
+		{/if}
+		{if $opentime=="4"}		
+		<li id="o">六月内开盘</li>
+		{/if}
+		{if $opentime=="5"}		
+		<li id="o">前三月已开</li>
+		{/if}
+		{if $opentime=="6"}		
+		<li id="o">前六月已开</li>
+		{/if}
+		<input type="hidden" id="ho" value="{$opentime}">
+		{else}
+		<input type="hidden" id="ho" value="">
+		{/if}
+		{if !empty($character)}
+		{if $character=="2"}
+		<li id="l">小户型</li>
+		{/if}
+		{if $character=="3"}
+		<li id="l">公园地产</li>
+		{/if}
+		{if $character=="4"}
+		<li id="l">教育地产</li>
+		{/if}
+		{if $character=="5"}
+		<li id="l">旅游房产</li>
+		{/if}
+		{if $character=="6"}
+		<li id="l">投资地产</li>
+		{/if}
+		{if $character=="7"}
+		<li id="l">海景地产</li>
+		{/if}
+		{if $character=="8"}
+		<li id="l">经济住宅</li>
+		{/if}
+		{if $character=="9"}
+		<li id="l">宜居生态地产</li>
+		{/if}
+		<input type="hidden" id="hl" value="{$character}">
+		{else}
+		<input type="hidden" id="hl" value="">
+		{/if}
+		{if !empty($ord)}
+		{if $ord=="1"}
+		<li id="n">价格由高到低</li>
+		{/if}
+		{if $ord=="2"}
+		<li id="n">价格由低到高</li>
+		{/if}
+		<input type="hidden" id="hn" value="{$ord}">
+		{else}
+		<input type="hidden" id="hn" value="">
+		{/if}
+		</ul>
+		</div>
+	  </div>
+	  <div class="clear"></div>
+  <div class="sum">查找楼盘</div>
+  <div class="clu">
+ {if empty($parentid)}
+   	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="cat">
+          <tr>
+            <td width="50px" valign="top" ><div class="catname ">区域</div></td>
+            <td width="100%"><ul class="catcont " style="font-size:17px">
+            {h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC" cache="86400"}
+			{loop $data $r}
+			{if $n<=4}
+			<?php
+				$reg = explode('$$', $r);//add by L 2012/3/22
+			?>
+				<li>
+                <a href="{HOUSE_PATH}list-r{$reg[0]}{deal_str($lst,'r')}.html">{$reg[1]}</a></li>
+				{/if}
+              {/loop}
+               	
+                <div class="clear"></div>
+              </ul></td>
+            <td width="50px"><div id="more1" class="more"><span class="up">全部</span></div></td>
+          </tr>
+          <tr class="moreitems">
+            <td valign="top" >&nbsp;</td>
+            <td colspan="2"><div class="otheritem">
+            <ul class="catcont" style="font-size:17px">
+	            {loop $data $r}
+				{if $n>4}
+	               <?php
+				$reg = explode('$$', $r);//add by L 2012/3/22
+			?>
+				<li>
+                <a href="{HOUSE_PATH}list-r{$reg[0]}{deal_str($lst,'r')}.html">{$reg[1]}</a></li>
+				{/if}
+              {/loop}
+	            
+                <div class="clear"></div>
+            </ul></div></td>
+          </tr>
+        </table>
+     {/if}
+   
+   {if empty($type)}
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="cat">
+          <tr>
+            <td width="50px" valign="top" ><div class="catname ">类别</div></td>
+            <td width="100%"><ul class="catcont " style="font-size:17px">
+                <li><a href="{HOUSE_PATH}list{deal_str($lst,'t')}-t1.html" >住宅</a></li>
+                <li><a  href="{HOUSE_PATH}list{deal_str($lst,'t')}-t7.html" >写字楼</a></li>
+                <li><a href="{HOUSE_PATH}list{deal_str($lst,'t')}-t8.html" >商铺</a></li>
+                
+                <div class="clear"></div>
+              </ul></td>
+              <td width="50px"><div class="more"><span class="up">全部</span></div></td>
+          </tr>
+          <tr class="moreitems">
+            <td valign="top" >&nbsp;</td>
+            <td colspan="2"><div class="otheritem">
+            <ul class="catcont" style="font-size:17px">
+				<li><a href="{HOUSE_PATH}list{deal_str($lst,'t')}-t5.html">综合体</a></li>
+	            <li><a  href="{HOUSE_PATH}list{deal_str($lst,'t')}-t10.html" >经济适用房</a></li>
+                <li><a href="{HOUSE_PATH}list{deal_str($lst,'t')}-t6.html" >别墅</a></li>
+                <div class="clear"></div>
+            </ul></div></td>
+          </tr>
+        </table>
+     {/if}  
+      
+       
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" class="cat">
+      
+          <tr>
+            <td width="50px" valign="top" ><div class="catname ">价格</div></td>
+            <td width="100%"><ul class="catcont " style="font-size:17px">
+                <li><a href="{HOUSE_PATH}list{deal_str($lst,'p')}-p3.html">4千-5千</a></li>
+                <li><a href="{HOUSE_PATH}list{deal_str($lst,'p')}-p4.html">5千-6千</a></li>
+				<li><a href="{HOUSE_PATH}list{deal_str($lst,'p')}-p5.html">6千-7千</a></li>
+                <div class="clear"></div>
+              </ul></td>
+            <td width="50px"><div class="more"><span class="up">全部</span></div></td>
+          </tr>
+          <tr class="moreitems">
+            <td valign="top" >&nbsp;</td>
+            <td colspan="2"><div class="otheritem">
+            <ul class="catcont" style="font-size:17px">				
+				<li><a href="{HOUSE_PATH}list{deal_str($lst,'p')}-p6.html">7千-8千</a></li>
+	            <li><a href="{HOUSE_PATH}list{deal_str($lst,'p')}-p7.html">8千-1万</a></li>
+	            <li><a href="{HOUSE_PATH}list{deal_str($lst,'p')}-p8.html" >1万以上</a></li>
+				 <li><a href="{HOUSE_PATH}list{deal_str($lst,'p')}-p2.html" >3千-4千</a></li>
+	            <li><a href="{HOUSE_PATH}list{deal_str($lst,'p')}-p1.html"  >3千以下</a></li>
+                <div class="clear"></div>
+            </ul></div></td>
+          </tr>
+        
+        </table>
+        
+        <a class="more_info" style="margin-left:20px">显示更多搜索条件</a>
+        
+        
+         <div class="select_info none">
+         
+	        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="cat">
+	          <tr>
+	            <td width="50px" valign="top" ><div class="catname ">开盘</div></td>
+	            <td width="100%"><ul class="catcont " style="font-size:17px">
+	                <li><a href="{HOUSE_PATH}list{deal_str($lst,'o')}-o1.html">本月开盘</a></li>
+	                <li><a href="{HOUSE_PATH}list{deal_str($lst,'o')}-o2.html">下月开盘</a></li>
+	                <div class="clear"></div>
+	              </ul></td>
+	            <td width="50px"><div class="more"><span class="up">全部</span></div></td>
+	          </tr>
+	          <tr class="moreitems">
+	            <td valign="top" >&nbsp;</td>
+	            <td colspan="2"><div class="otheritem">
+	            <ul class="catcont" style="font-size:17px">
+		            <li><a href="{HOUSE_PATH}list{deal_str($lst,'o')}-o3.html">三月内开盘</a></li>
+		            <li><a href="{HOUSE_PATH}list{deal_str($lst,'o')}-o4.html">六月内开盘</a></li>
+		            <li><a href="{HOUSE_PATH}list{deal_str($lst,'o')}-o5.html">前三个月已开</a></li>
+		            <li><a href="{HOUSE_PATH}list{deal_str($lst,'o')}-o6.html">前六个月已开</a></li>
+	                <div class="clear"></div>
+	            </ul></div></td>
+	          </tr>
+	          </table>
+	         
+        
+       
+      
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="cat">
+          <tr>
+            <td width="50px" valign="top" ><div class="catname ">排序</div></td>
+            <td width="100%"><ul class="catcont " style="font-size:17px">
+                <li><a href="{HOUSE_PATH}list{deal_str($lst,'n')}-n1.html"   >价格由高到低</a></li>
+                <li><a href="{HOUSE_PATH}list{deal_str($lst,'n')}-n2.html"  >价格由低到高</a></li>
+                <div class="clear"></div>
+              </ul></td>
+            <td width="50px"><div class="more"><span class="up">全部</span></div></td>
+          </tr>
+          <tr class="moreitems">
+            <td valign="top" >&nbsp;</td>
+            <td colspan="2"><div class="otheritem">
+            <ul class="catcont" style="font-size:17px">
+	            <li><a href="{HOUSE_PATH}list{deal_str($lst,'n')}-n3.html"  >开盘时间由近到远</a></li>
+	            <li><a href="{HOUSE_PATH}list{deal_str($lst,'n')}-n4.html"  >开盘时间由远到近</a></li>
+	            <li><a href="{HOUSE_PATH}list{deal_str($lst,'n')}-n5.html"  >入住时间由近到远</a></li>
+	            <li><a href="{HOUSE_PATH}list{deal_str($lst,'n')}-n6.html" >入住时间由远到近</a></li>
+                <div class="clear"></div>
+            </ul></div></td>
+          </tr>
+          </table>
+
+	        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="cat">
+	          <tr>
+	            <td width="50px" valign="top" ><div class="catname ">特色</div></td>
+	            <td width="100%"><ul class="catcont " style="font-size:17px">
+	                <!-- <li><a href="{HOUSE_PATH}list{deal_str($lst,'l')}-l1.html">打折优惠楼盘</a></li> -->
+	                <li><a href="{HOUSE_PATH}list{deal_str($lst,'l')}-l2.html">小户型</a></li>
+					<li><a href="{HOUSE_PATH}list{deal_str($lst,'l')}-l7.html">海景房产</a></li>
+	                <div class="clear"></div>
+	              </ul></td>
+	            <td width="50px"><div class="more"><span class="up">全部</span></div></td>
+	          </tr>
+	          <tr class="moreitems">
+	            <td valign="top" >&nbsp;</td>
+	            <td colspan="2"><div class="otheritem">
+	            <ul class="catcont" style="font-size:17px">
+		            <li><a href="{HOUSE_PATH}list{deal_str($lst,'l')}-l3.html">公园地产</a></li>
+		            <li><a href="{HOUSE_PATH}list{deal_str($lst,'l')}-l4.html">教育地产</a></li>
+		            <li><a href="{HOUSE_PATH}list{deal_str($lst,'l')}-l5.html">旅游房产</a></li>
+		            <li><a href="{HOUSE_PATH}list{deal_str($lst,'l')}-l6.html">投资房产</a></li>
+		            <li><a href="{HOUSE_PATH}list{deal_str($lst,'l')}-l8.html">经济住宅</a></li>
+		            <li><a href="{HOUSE_PATH}list{deal_str($lst,'l')}-l9.html">宜居生态地产</a></li>
+	                <div class="clear"></div>
+	            </ul></div></td>
+	          </tr>
+	          </table>
+	         
+	         
+	           
+	          <table width="100%" border="0" cellpadding="0" cellspacing="0" class="cat">
+	          <tr>
+	            <td width="50px" valign="top" ><div class="catname ">装修</div></td>
+	            <td width="100%"><ul class="catcont " style="font-size:17px">
+	                <li><a href="{HOUSE_PATH}list{deal_str($lst,'f')}-f1.html">毛坯</a></li>
+	                <li class="none"><a href="{HOUSE_PATH}list{deal_str($lst,'f')}-f2.html">简装修</a></li>
+	                <li><a href="{HOUSE_PATH}list{deal_str($lst,'f')}-f3.html">精装修</a></li>
+	                <div class="clear"></div>
+	              </ul></td>
+	            <td width="50px"><div class="more none"><span class="up">全部</span></div></td>
+	          </tr>
+	          <tr class="moreitems">
+	            <td valign="top" >&nbsp;</td>
+	            <td colspan="2"><div class="otheritem">
+	            <ul class="catcont" style="font-size:17px">
+		            <li><a href="{HOUSE_PATH}list{deal_str($lst,'f')}-f4.html">豪华装修</a></li>
+	                <div class="clear"></div>
+	            </ul></div></td>
+	          </tr>
+	          </table>
+	          
+	           
+	        <a class="hide_info none" style="margin-left:20px">显示精简搜索条件</a>
+  	</div>
+  </div>
+  
+  <script type="test/javascript">
+	for(var i=0;i<10;i++){
+		up(i);
+	}
+
+	function up(i){	
+		$('.up').eq(i).click(function(){
+	    if($('.up').eq(i).html()=="全部"){
+	    $('tr.moreitems').eq(i).show();
+		$('.up').eq(i).html("收起");
+	    }
+	    else if($('.up').eq(i).html()=="收起"){
+	    $('tr.moreitems').eq(i).hide();
+		$('.up').eq(i).html("全部");
+	    }
+	});
+	}
+</script>
+{/if}
+{h5:content action="lists" catid="$catid" where="$where" num="10" lst="$lst" order="$order" page="$page" moreinfo="1" cache="10800"}<!-- 楼盘列表 -->
+{if $datatype=='0'}
+   <div class="sum">共<span class="redb" id="num"></span>个楼盘</div>
+   <div id="totalpage" class="none">{$pages}</div>
+   <div class="none">{$housepages}</div>
+	<div id="content">
+{/if}	
+	{loop $data $r}
+	<div class="hits">
+  	 <div class="house houselist">
+  		<a class="ablack" id="{$r[id]}" href="{$r[url]}" >
+  		<table width="100%"  border="0" cellspacing="0">
+        <tr>
+          <td width="80px" valign="middle"><div class="house-pic"><img  src="{if !empty($r[thumb])}{thumb($r[thumb],130,90)}{else}{APP_PATH}statics/default/img/index/nopic.jpg{/if}"  /></div></td>
+          <td width="100%" valign="middle"><table width="100%"  height="50" border="0" cellspacing="0"  class="houselist-txt" >
+              <tr>
+                <td width="100%"  colspan="2" class="f16"><span class="flol title">{$r[title]}</span><span class="flor fbla saling">{get_ztname($r[xszt])}</span>
+                  </td>
+              </tr>
+              <tr>
+			  {php $menu_info = menu_info('3360',$r[region])}
+                <td colspan="2" class="f16"><span class="flol fgray district">{$menu_info[0]}</span><div class="fblu flor fbla price">{if !empty($r[price]) && $r[price]!="一房一价"} {if $r[priceunit]=="0" }{$r[price]}元/平{elseif  $r[priceunit]=="2"}{price_short($r[price])}/套{/if} {else}一房一价{/if}</div></td>
+              </tr>
+               <tr>
+               
+               
+                <td style="height:24px">
+                	<div class="f14 flor fgray fun_bar" id="{$r[id]}"></div>
+                </td>
+               
+              </tr>
+            </table></td>
+        </tr>
+      </table>
+      </a>
+      </div>
+	</div>
+    {/loop}
+	{/h5}
+	{if $datatype=='1'}
+	<script language="Javascript" src="{CSS_PATH}static/js/jquery.js"></script>
+<script language="javascript" src="http://www.venfang.com/css/mobile/xinfang.js"></script>
+{/if}
+  {if $datatype=='0'}
+  <script>
+var num = $('#nums').val();
+$('#num').html(num);
+</script>
+	</div>
+<div id="drag" >
+<div class="draginner fblu" style="height:37px;background:none;font-size:16px;" align="center">点击查看更多内容</div>
+</div>
+</div>      
+  
+  
+</div>
+<div class="detail" style="display:none"></div>
+
+<div class="foot">
+   <div id="top" class="backtop f16"><a href="#filter"><img src="http://www.venfang.com/css/mobile/images/backtop.png" >返回顶部</a></div>
+   <div class="copy f12">Copyright &copy; 2012 VenFang.com 问房网 版权所有<BR><BR> 鲁ICP备11018261号-3</div>
+</div>
+<script type="text/javascript">
+	window.scrollTo(0, 1);
+</script>
+</div>
+<script type="text/javascript">
+	$("body").scrollTop(60);
+	
+	window.localStorage.counter=2;
+	window.localStorage.drag="xf";
+	var total=$('#totalpage').html()
+	if(total<=1){
+	  $("#drag").hide();
+	}
+
+	$('#drag').click(function(){
+	//alert("OK");
+	load();
+	});
+	
+</script>
+<script type="text/javascript" src="http://www.venfang.com/css/mobile/dom3.js"></script>
+{/if}
+</body>
+</html>

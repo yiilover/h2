@@ -1,0 +1,103 @@
+{template "content","head_house_show"}
+ <div class="wrap mB10 crumb">您的位置：<a href="{APP_PATH}" title="">首页</a> > <a href="{HOUSE_PATH}" title="新房">新房</a> > <a href="{$url}" title="{$title}">{$title}</a> > <a href="{HOUSE_PATH}{$id}/wenfang-p1.html" title="在线咨询">在线咨询</a><span id="weizi"></span></div>
+
+<script language="javascript">
+function tiwen(){
+  var cname=document.getElementById('cname').value;
+   if ( cname.length < 2 )
+	{
+	alert("请输入正确的昵称.");
+	return false;
+	}
+	
+  var tel=document.getElementById('title').value;
+   if(/^13\d{9}$/g.test(tel)||(/^15[0-35-9]\d{8}$/g.test(tel))||(/^18[0-9]\d{8}$/g.test(tel))){       
+   }else{  
+    alert("请输入正确的号码.");
+	return false; 
+   }
+
+   var content=document.getElementById('content').value;
+   if ( content.length == 0 )
+	{
+	alert("内容不能为空.");
+	return false;
+	}
+	
+   $.post("{APP_PATH}index.php?s=content/index/lp_post_js",{cname:cname,tel:tel,content:content,cid:"{$id}",subject:"{$title}",region:"{menu_linkinfo('3360',$region)}",regionid:"{$region}"},function(data){
+        alert(data);	
+		if(data.indexOf("成功")>-1){
+		  document.getElementById('cname').value="";
+		  document.getElementById('title').value="";
+		  document.getElementById('content').value="";
+		  initTw(1);
+		}  
+   });
+   
+}
+
+function initTw(p){
+     $.post("{APP_PATH}index.php?s=content/index/lp_show_list",{cid:"{$id}",page:p,perpage:10},function(data){
+       document.getElementById('zxtwlist').innerHTML=data;		 
+   });
+}
+
+initTw(1);
+
+</script>
+<div class="wrap clear wrap_shadow LP_Gallery LP_FAQ_Online">
+    <div class="shadow fix">
+    	<div class="fix commHd">
+        	<span class="fr JS_jia"><div id="bdshare" class="bdshare_b" style="line-height: 12px;">
+            
+             <a class="shareCount"></a></div></span>
+        	<h3 class="fl fw_B fs_14">{$title}[{$xszt}]</h3>
+            <div class="fl fs_14 fw_B LP_hotline">售楼热线:<em class="en c_orangered fw_B">{$tel}</em></div>
+            <div class="fl LP_swm">
+                	<a href="javascript:showfceng('erweima',1);" ><img src="{APP_PATH}statics/house5-style1/newhouse/img/erweima.png" /></a>
+                    <div class="LP_swm_panel">
+                    	<b></b>
+                    	<div class="swm"><img src="{APP_PATH}caches/caches_content/caches_house/mobile_houseqrcode/{$siteid}/{$id}.png" alt="{$title}" width="171" height="171"/></div>
+                    </div>
+            </div>
+            <a href="javascript:callphones('4882430623961921590');" title="免费通话" class="forCALL"><b></b>免费通话</a><a href="javascript:showfceng('dxfsc',1);" title="发送到手机" class="forMAIL"><b></b>发送到手机</a><a title="收藏本楼盘" href="#" class="collect"><b></b>收藏</a> 
+        </div>
+        
+     <div class="fl commLeft">
+            
+            <div class="LP_FAQ_head">
+            	<a href="javascript:scrollTo(0,100000);" class="fr faq_btn">我要提问</a>
+            </div>
+			<div id="zxtwlist"></div>
+            
+            <div class="faq_form clear">
+                <div class="tr">
+            		<div class="fl th">您的昵称<b class="c_orangered">*</b></div>
+                    <div class="fl td"><input type="text" class="txt" size="80" id="cname" name="cname" maxlength="5"/></div>
+                </div>
+				<div class="tr">
+            		<div class="fl th">手&nbsp;&nbsp;&nbsp;&nbsp;机<b class="c_orangered">*</b></div>
+                    <div class="fl td"><input type="text" class="txt" id="title" name="title" maxlength="30" /></div>
+                </div>
+                <div class="tr">
+            		<div class="fl th" style="height:70px">内&nbsp;&nbsp;&nbsp;&nbsp;容<b class="c_orangered">*</b></div>
+                    <div class="fl td"><textarea name="content" id="content" cols="" rows="" class="txtarea"></textarea></div>
+                </div>
+            </div>
+            <div class="faq_form_btn"><input type="button" class="faq_btn" onClick="tiwen();" /></div>
+            
+        </div>
+
+<div class="fl commRight">		
+          <div class="fw_B fs_14 title" style="margin:15px 0 10px;">{$title}楼盘关注</div>
+          <div class="ct_had"><span class="fl">已有<b class="en c_orangered" id="tuangou"></b>人参团</span><a href="javascript:showfceng('tgbmc',1);" class="fl">立即参团</a></div>
+         <div class="fw_B fs_14 title">热点楼盘推荐</div>
+		  {h5:content action="hits" catid="14" num="9" order="views DESC" cache="10800"}
+		{loop $data $v}
+			{php $menu_info = menu_info('3360',$v[region])}
+		            <div class="lp_faq_rank_tr"> <span class="lp_faq_t1"><a title="{$v[title]}" href="{$v[url]}/" target="_blank" >{str_cut($v[title],16,'')}</a></span><span class="lp_faq_t2">{$menu_info[0]}</span><span class="lp_faq_t3 c_orangered">{$v[views]}</span> </div>
+				{/loop}
+			{/h5}
+    </div>
+</div>
+{template "content","footer_house_show"}

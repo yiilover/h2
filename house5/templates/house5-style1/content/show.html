@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="gbk"/>
+<title>{$title}-杭州ZUZ房产网</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link rel="shortcut icon" href="{APP_PATH}favicon.ico" />
+<link href="{APP_PATH}statics/house5-style1/index/css/reset.css"  rel="stylesheet" type="text/css"/>
+<link href="{APP_PATH}statics/house5-style1/news/css/news.css" rel="stylesheet" type="text/css"/>
+<link href="{APP_PATH}statics/house5-style1/pic/css/white.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="{APP_PATH}statics/house5-style1/pic/js/jquery.js"></script>
+<script type="text/javascript" src="{APP_PATH}statics/house5-style1/pic/js/fet.js"></script>
+<script src="{APP_PATH}statics/house5-style1/sea/js/sea.js"  type="text/javascript"></script>
+</head>
+<body>
+	
+	<div id="main">
+        <div id="header">
+   {template "ssi","ssi_8"}
+   <div class="mt5 cf">
+	
+</div>
+	 <h1><a href="{APP_PATH}"  title="{$site_title}" class="logo fl">
+	<img src="{APP_PATH}statics/house5-style1/img/logo.png" alt="{$SEO['site_title']}" width="150" height="50"/></a></h1>
+	<div id="Search">
+		<ul class="searchURL">
+			<li class="on"><a   target="_blank">资讯</a></li>
+			<li><a href="{HOUSE_PATH}"  target="_blank">新房</a></li>
+			<li><a href="{ESF_PATH}list.html"  target="_blank">二手房</a></li>
+			<li><a href="{ESF_PATH}rent-list.html"  target="_blank">出租房</a></li>
+			<li><a href="{catlink(7)}"  target="_blank">图库</a></li>
+			<li><a href="{catlink(10)}"  target="_blank">视频</a></li>
+			<li class="more"><a href="javascript:void(0)">更多<em></em></a>
+				<div>
+					<a target="_blank" href="{BBS_PATH}">论坛</a>
+				</div>
+			</li>
+		</ul>
+		<a href="{APP_PATH}map/" target="_blank" class="mapS">地图找房</a>
+		<input type="text" value="请输入关键字" data-val="请输入关键字">
+		<button> </button>
+	</div>
+	<div id="indexMenu"> 
+		<em class="r2"></em>
+		<div id="newMenu">
+	<a href="javascript:void(0)" class="fir">网站导航</a>
+	{template "ssi","ssi_12"}
+</div>
+<script type="text/javascript">
+seajs.use("jquery",function($){
+	var $newMenu=$("#newMenu")
+	$newMenu.hover(function(){
+		$newMenu.addClass("on")
+	},function(){
+		$newMenu.removeClass("on")
+	}).find("li").hover(function(){
+		$(this).addClass("on")
+	},function(){
+		$(this).removeClass("on")
+	})
+})
+$(document).ready(function(){    //防止大图
+    $("#topic_content img").each(function(){     //
+        var width = 600;
+        var height = 600;
+        var image = $(this);
+        if (image.width() > image.height()){
+           if(image.width()>width){
+            image.width(width);
+            image.height(width/image.width()*image.height());
+           }
+        }
+        else{
+           if(image.height()>height){
+            image.height(height);
+            image.width(height/image.height()*image.width());
+           }
+        }
+    });
+});
+</script>		<ul class="menuL">
+
+			<li>
+				<a href="{catlink(6)}" target="_self" >首页<em></em></a>
+			</li>
+			{h5:content action="category" catid="6" num="7" siteid="$siteid" order="listorder ASC"}
+			{loop $data $r}
+			<li{if $catid==$r[catid]} class="s"{/if}>
+				<a href={$r[url]}>{$r[catname]}<em></em></a>
+            </li>
+			{/loop} {/h5} 
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	seajs.use(["jquery","nsearch"],function($){
+		$("#Search").hSearch("{APP_PATH}index.php?s=search/index/init/siteid/1/typeid/1/","#")//前面是搜索地址，后面是ajax查询新盘api
+	})
+</script> 	
+        <div class="bread">
+			<div class="fr">
+				<form id="search" name="search" action="{APP_PATH}index.php" method="GET">
+				  <input type="hidden" name="s" value="search/index/init/siteid/1/">
+                  <input type="hidden" name="typeid" value="1">
+                  <input name="q" id="q" type="text" class="txt" value="请输入搜索关键字" onfocus="if(this.value=='请输入搜索关键字'){this.value='';}" onblur="if(this.value==''){this.value='请输入搜索关键字';}">
+					<input type="submit" class="button" id="submit" value="搜索">
+                </form>
+			</div> <sub></sub>
+			<a href="{APP_PATH}" class="one">首页</a>{catpos($catid,'')}                         
+            		</div>		<div class="cf mt10">
+			<div class="w650 newsA fl">
+				<div class="NewsCont">
+                    <h1 class="News">{$title}</h1>
+					<div class="ly">
+					
+						<span class="fr">
+							时间：{$inputtime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字号：<a id="small" href="javascript:void(0)">T</a>|<a id="big" href="javascript:void(0)">T</a>
+						</span>
+						来源：{$copyfrom} 点击：<span id="hits"  class="text"></span>
+					</div>
+                    <div id="cookieContent" class="BSHARE_POP">   
+                    	                            <div class="point"> 
+                                <strong>核心提示：</strong>
+                               {$description}
+                                    </div>
+                                                <div class="">
+   <script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=54"></script></div>
+{if $xgsp}
+   {php $video_src = $xgsp;}
+   <script language="javascript" src="{APP_PATH}index.php?s=content/index/showvideo/action/js/id/{$xgsp}"></script>
+ {/if}
+   {if $xgtk}<script language="javascript" src="{APP_PATH}index.php?s=content/index/showrelation/action/js/id/{$xgtk}"></script>{/if}
+               <div  class="content txt pdb15" id="topic_content">                        
+						{$content}
+						 <!--相关楼盘 begin-->
+{h5:content action="relationlp" xglp="$xglp" id="$xglp" catid="14" num="5" cache="3600"}
+ {if $data}
+ {loop $data $r}
+ {php $menu_info = menu_info('3360',$r[region])}
+<div class="relevantwap">
+<div class="listtp"><a href="{$r[url]}" target="_blank"><img src="{thumb($r[thumb], 147, 110, 0)}" width="138" height="98" alt="{$r[title]}" title="{$r[title]}"/></a></div>
+<ul>
+<li><span class="td_1"><a href="{$r[url]}" target="_blank">{$r[title]}</a>({get_typename($r[type])})	 </span><span class="td_2 linkaa">[{get_ztname($r[xszt])}]</span></li>
+    <li><span class="td_4">价&nbsp;&nbsp;&nbsp;&nbsp;格：</span>
+	<span class="td_5">{if !empty($r[price]) && $r[price]!="一房一价"} {$r[price]}{if $r[priceunit]=="0" }元/平方米{else}元/套{/if} {else}一房一价{/if}</span></li>
+	<li><span class="td_4">地&nbsp;&nbsp;&nbsp;&nbsp;址：[<a href="{HOUSE_PATH}list-r{$menu_info[1]}.html" target="_blank">{$menu_info[0]}</a>]{$r[address]}</span></li>
+	<li><span class="td_4">销售电话：</span><span class="td_5">{$r[tel]}</span></li>
+	<li><span class="td_4 linkaa"><a href="{HOUSE_PATH}{$r[id]}/xinxi.html" target="_blank">楼盘资料</a>｜<a href="{HOUSE_PATH}{$r[id]}/huxing.html" target="_blank">户型图</a>｜<a href="{HOUSE_PATH}{$r[id]}/xiangce.html">楼盘相册</a>｜<a href="{HOUSE_PATH}{$r[id]}/dianping.html">楼盘点评</a>｜<a href="{HOUSE_PATH}{$r[id]}/dongtai.html" target="_blank">销售动态</a>｜<a href="{HOUSE_PATH}{$r[id]}/jiage.html" target="_blank">价格明细</a>｜<a href="{$r[bbs]}" target="_blank">论坛</a></span></li>
+</ul>
+</div>
+<div class="hr10"></div>
+{/loop}
+{/if}
+          {/h5}
+<!--相关楼盘 end-->
+               </div>
+
+
+               <div class="tags pdb10 cf">
+                            <span class="fr f14">【责任编辑：{$username}】</span>
+							Tags： {loop $keywords $keyword}
+{php $keyword1=iconv('GBK','UTF-8',$keyword);}
+<b><a href="{catlink(6)}keyword-{$catid}-{urlencode($keyword1)}.html" class="blue">{$keyword}</a></b> 	{/loop}
+                            </div>
+                    </div>
+				    <!--分页-->
+                    <div id="pageCon">
+                    <div class="pagination" >
+                    {$pages}
+                     </div>
+                            <!--分页导航-->
+	                          </div>
+                        <div id="rePR" class="pagination" style="display:none;">
+                            <a class='read' href='javascript:'>分页阅读</a>
+                        </div>                       
+                        
+                    </div>
+				{if $titles}
+				<div class="bwdh" id="">
+            	<p class="bwdh_title">本文导航</p>
+                <ul>
+				{loop $titles $k $v} 
+				<li>第{$k}页：
+				    <a target="_self" title="{$v[title]}" href="{$v[url]}">{$v[title]}</a>					</li>
+				{/loop}
+				                    </ul>
+            </div>
+			{/if}
+
+					<div class="share" style="border-bottom:#E6E6E6 solid 1px;">
+					<div class="share_baidu">
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+<span class="bds_more">分享到：</span>
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=757321" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+						</div>
+			<a target="_blank" href="javascript:void(0)" id="copyhref" title="复制地址">复制地址</a>
+							｜<a target="_blank" href="" title="打印">打印</a>
+							｜<a target="_blank" href="javascript:void(0)" id="colpage" title="关闭">关闭</a>
+						
+				    </div><div class="NewsCont">                
+                
+							<div class="Readings">
+                            <h4>相关阅读</h4>
+                            <ul class="List cf">
+							{h5:content action="relation" relation="$relation" id="$id" catid="$catid" num="10" keywords="$rs[keywords]" cache="3600"}
+                               {if $data}{loop $data $r} 
+                            <!---->
+                                         <li>·<a href="{$r[url]}" target="_blank">{$r[title]}</a></li>
+										  {/loop} {/if}
+											 {/h5}
+                                                                 </ul>
+                        </div>
+
+                    				<!--表情 begin-->
+<div class="mb10">
+  {if module_exists('mood')}<script type="text/javascript" src="{APP_PATH}index.php?s=mood/index/init&id={id_encode($catid,$id,$siteid)}"></script>{/if}</div>
+<!--表情 end-->
+<div class="mb10"><a name="comment0" id="comment0"></a>
+</div>
+{if $allow_comment && module_exists('comment')}   
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1754522"></script>
+<!-- UY END -->
+{/if} 	
+</div>
+
+                <div class="share" style="border-bottom:#E6E6E6 solid 1px;"><h4 class="f14"><B>大家都在关注的楼盘：</B></h4></div>                
+                <div class="NewsCont">
+<ul class="hotList">
+{h5:content  action="house_position" posid="21" catid="14"  num="4" order="id desc" cache="10800"}
+		        {loop $data $v}
+           <li>
+        <a href="{$v[url]}" title="{$v[title]}" target="_blank" class="imga">
+            <img src="{thumb($v[thumb],130,92)}" alt="{$v[title]}" width="130" height="92" border="0" /></a>
+        <span class="imgT"><a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></span>
+        <span class="price">均价：{if !empty($v[price]) && $v[price]!="待定"}{$v[price]}{else}待定{/if}</span>
+        <span><a href="{$v[url]}/dongtai.html" target="_blank">动态</a><a href="{$v[url]}/xiangce.html"   target="_blank">相册</a><a href="{$v[url]}/huxing.html" target="_blank">户型</a><a class="iconE" href="{$v[url]}/tuan.html" target="_blank">团购</a></span>
+        <div class="clear"></div>
+    </li>{/loop} {/h5}
+         
+    </ul></div>
+                
+                			</div>
+						<div class="w300 fr">
+            		                    <div class="newsC" id="tab3">
+    <h2>
+           <ul class="cf tabtitle">
+            <li class="on">折扣优惠</li>
+            <li>最新资讯</li>
+        </ul>
+        资讯
+    </h2>
+    <ul class="NewsList cf">
+	 {h5:content  action="lists" posids="0" catid="29" order="id DESC" num="10" cache="10800"}
+	 {loop $data $r}
+          <li><a href="{$r[url]}" target="_blank"  style=""  title="{$r[title]}">{$r[title]}</a></li>
+               {/loop}
+                  </ul>
+				{/h5}
+    <ul class="NewsList cf" style="display:none"> 
+                    {h5:content  action="lists" posids="0" catid="6" order="id DESC" num="10" cache="10800"}
+	 {loop $data $r}
+          <li><a href="{$r[url]}" target="_blank"  style=""  title="{$r[title]}">{$r[title]}</a></li>
+               {/loop}
+                  </ul>
+				{/h5}
+            </ul>
+</div>
+                    <div class="mt10">
+ 
+</div>
+					<div class="newsC" id="tab1">
+						<h2>
+							<a href="{HOUSE_PATH}">更多>></a>
+							<ul class="cf tabtitle">
+								<li class="on">热点楼盘</li>
+								<li>最新开盘</li>
+							</ul>
+							楼盘
+						</h2>
+						<table class="lp" width="280" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr>
+            <th width="102">楼盘名称</th>
+            <th width="65">开盘价</th>
+            <th width="48">位置</th>
+            <th width="65">开盘时间</th>
+        </tr>  {h5:content action="hits" catid="14" num="10" order="views DESC" cache="10800"}
+		{loop $data $v}
+				{php $menu_info = menu_info('3360',$v[region])}
+                        <tr>
+                    <td width="102">
+                        <em><a title="{$v[title]}" href="{$v[url]}/" target="_blank" >{str_cut($v[title],16,'')}</a></em> 
+                    </td>
+                    <td width="65">
+                        <span>{if !empty($v[price]) && $v[price]!="一房一价"}{$v[price]}{else}一房一价{/if}</span>
+                    </td>
+                    <td width="48"><a href="{HOUSE_PATH}list-r{$menu_info[1]}.html" target="_blank" >{$menu_info[0]}</a></td>
+                    <td width="65">{date('m-d',strtotime($v[opentime]))}</td>
+                </tr>
+                          {/loop}
+			{/h5}   
+                </tbody>
+</table>
+
+                        <table class="lp" width="280" border="0" align="center" cellpadding="0" cellspacing="0" style="display:none; ">
+    <tbody>
+        <tr>
+            <th width="102">楼盘名称</th>
+            <th width="65">开盘价</th>
+            <th width="48">位置</th>
+            <th width="65">开盘时间</th>
+        </tr>
+                   {php $where= "status=99";}
+		  {h5:content action="lists" catid="14" where="$where" num="10" order="opentime desc" cache="10800"}
+		        {loop $data $v}
+				{php $menu_info = menu_info('3360',$v[region])}
+                        <tr>
+                    <td width="102">
+                        <em><a title="{$v[title]}" href="{$v[url]}/" target="_blank" >{str_cut($v[title],16,'')}</a></em> 
+                    </td>
+                    <td width="65">
+                        <span>{if !empty($v[price]) && $v[price]!="一房一价"}{$v[price]}{else}一房一价{/if}</span>
+                    </td>
+                    <td width="48"><a href="{HOUSE_PATH}list-r{$menu_info[1]}.html" target="_blank" >{$menu_info[0]}</a></td>
+                    <td width="65">{date('m-d',strtotime($v[opentime]))}</td>
+                </tr>
+                          {/loop}
+			{/h5}   
+                </tbody>
+</table>
+
+					</div>
+				
+                    <div class="mt10"> </div>
+                   
+                    <div class="newsC">
+    <h2>
+       
+        图片新闻
+    </h2>
+    <ul class="ImgList cf">
+	{h5:content  action="lists" catid="6" thumb="1" order="listorder DESC" num="4" cache="86400"}
+	  {loop $data $v}
+                    <li>
+              <a href="{$v[url]}" target="_blank" title="{$v[title]}"><img src="{thumb($v[thumb],120,90)}" width="120" height="90"/></a>
+                <span>
+                   <a href="{$v[url]}" target="_blank" title="{$v[title]}" style="text-align:center"  style="" >{str_cut($v[title],22)}</a>
+                </span>
+            </li>{/loop}  {/h5}
+      </ul>
+	
+                   
+</div>
+
+<div class="newsC">
+    <h2>
+               一周新闻排行
+    </h2>
+    <ol class="Top10">
+	 {h5:content action="hits" catid="6" num="10" order="views DESC" cache="10800"}
+{loop $data $v}
+                   <li class="A"><i>{$n}</i>   <a href="{$v[url]}" target="_blank" title="{$v[title]}" style="text-align:center"  style="" >{$v[title]}</a></li>
+                  {/loop}{/h5}
+            </ol>
+</div>
+			</div>
+  </div>
+</div>
+
+	{template "content","footer"}
+
+</body>
+</html>
+<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>
+<script type="text/javascript">
+seajs.use(["jquery","alert","autab","cookie","copy","share"],function($,alertM){
+	$("#tab1").autab("ul.tabtitle li","table.lp");
+	$("#tab2").autab("ul.tabtitle li","ul.ImgList");
+	$("#tab3").autab("ul.tabtitle li","ul.NewsList");
+	$("#share").share();
+	var $big=$("#big"),
+		$small=$("#small"),
+		$content=$("#cookieContent");
+	var fontsize=$.cookie("fontsize")?$.cookie("fontsize"):14;
+	$("#cookieContent").css("fontSize",fontsize+"px");
+	if(fontsize>16)
+		$big.addClass("no");
+	if(fontsize<14)
+		$small.addClass("no");
+	$big.on("click",function(){
+		fontsize=fontsize-0+2;
+		if(fontsize>16){
+			fontsize=18;
+			$big.addClass("no")
+		}
+		$.cookie("fontsize",fontsize);
+		$content.css("fontSize",fontsize+"px");
+		$small.removeClass("no");
+	})
+	$small.on("click",function(){
+		fontsize=fontsize-2;
+		if(fontsize<14){
+			fontsize=12;
+			$small.addClass("no")
+		}
+		$.cookie("fontsize",fontsize);
+		$content.css("fontSize",fontsize+"px");
+		$big.removeClass("no");
+	})
+	
+	$("#copyhref").zclip({
+		copy: window.location.href,
+		afterCopy: function() {
+			alertM("复制成功",{cName:"succ"})
+		}
+	});
+	$("#colpage").on("click",function(){
+		window.opener=null;       
+		window.open("","_self");     
+		window.close();    
+	})
+	})
+	
+</script>

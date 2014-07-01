@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>{$title}</title>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0" />
+<link rel="stylesheet" href="{IMG_PATH}wx/css/index.css" type="text/css" media="screen" />
+</head>
+<body class="writing_body">
+<!------------------------------ 主体文件 ------------------------------>
+<h1 class="writing_til">{$title}</h1>
+<div class="writer">
+   {$inputtime} 来源:{$copyfrom}</div>
+
+		
+		  		<a href="weixin://profile/venfang" class="users">
+                    <div class="lef">
+                        <span class="photos"><img src="{IMG_PATH}wx/images/wxlogo.jpg" /></span>
+                        <div class="userd">
+                            <p>问房网</p>
+                            <p class="gray">微信号:venfang</p>
+                        </div>
+                    </div>
+					<div class="arrow"></div>
+                </a>			
+
+
+
+			<div class="text">
+			{$content}
+			</div>
+
+			<div class="share" onClick="WeiXinShareBtn();"><em></em>分享到朋友圈</div> 
+				<script language="javascript">
+				function WeiXinShareBtn() {
+    				if (typeof WeixinJSBridge == "undefined") {
+    					alert("请在微信客户端点击");
+    				} else {
+    					WeixinJSBridge.invoke('shareTimeline', {
+    						"title": "{$title}"//新闻标题
+    						,"link": "http://news.venfang.com/wx-showinfo-109-{$id}.html"//本页连接
+    						,"desc": "{str_cut(strip_tags($description), 180)}"
+    						,"img_url": "{$thumb}"//提取第一张图片作为缩略图     
+    						
+    					});
+    				}
+			    }
+
+
+			     function follow(b){
+			    	if (typeof WeixinJSBridge == "undefined"){
+						return false;
+					} 
+  	
+			    	WeixinJSBridge.invoke(
+						'addContact',
+						{"webtype": "1","username": b,},
+						function(a) {
+							if (a.err_msg == 'add_contact:added') {
+								//关注失败
+							} else if (a.err_msg == 'add_contact:ok') {
+								//关注成功
+							}
+						}
+					);
+				}
+			    
+			</script>
+
+
+
+<div class="text_foot" style="color:#c0c0c0">本页由<a href="http://www.venfang.com/" target="_blank" style="color:#000; text-decoration:none;">问房网</a>推送</div>
+<div style="display:none;">
+<!--统计代码-->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F8321d5953a7049ac4ddbd63293fcc360' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</div>
+</body>
+</html>

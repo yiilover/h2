@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Document */
+.wrap_shadow{padding-bottom:20px; background:url(../img/shadow.png) center bottom no-repeat;}
+.main2_1{ width:953px; height:40px; margin:1px auto 0; background:url(../img/bj.gif) no-repeat 10px -744px #f7f7f7; border-bottom:#e6e6e6 solid 1px; font-family:"Microsoft YaHei"; text-align:left; color:#333333; font-size:16px; line-height:40px; text-indent:80px; text-align:right; padding-right:15px;}
+.main2_2{ width:940px; height:auto; margin:15px auto;}
+.tuli{ margin-top:12px;}
+.main2_1 span{ float:left; width:auto; line-height:40px; text-align:right; color:#006b94;}
+.main2_1 a,.main2_1 a:visited{font-size:12px; line-height:40px;}
+.donglan{ width:850px; height:auto;}
+.main_tab_dong{ background:#d7d7d7; width:100%; height:auto; margin:0 auto; margin-top:5px;}
+.main_tab_dong tr td{ height:30px;}
+.main_tab_dong tr .main_tab_dong_td1{ text-align:right; color:#999999; background:#f7f7f7; width:80px; font-weight:bold;}
+.main_tab_dong tr .main_tab_dong_td3{ text-align:center; color:#999999; background:#f7f7f7; font-weight:bold;}
+.main_tab_dong tr .main_tab_dong_td4{ text-align:center; color:#CC0000; background:#ffffff;}
+.main_tab_dong tr .main_tab_dong_td2{ text-align:left; color:#999999; background:#ffffff; text-indent:10px;}
+
+.donglan_box{ width:850px; height:215px; overflow-y:scroll;}
+
+.donglan_box ul li{ float:left; width:77px; height:30px; background:#2f97ff; text-align:center; margin:3px 3px!important; margin:3px 2px; list-style-type:none;}
+.donglan_box ul .donghover{ float:left; width:77px; height:30px; background:#f75900; text-align:center; margin:3px 3px!important; margin:3px 2px; cursor:pointer;}
+
+.donglan_box ul li a,.donglan_box ul li a:visited,.donglan_box ul li a:hover,.donglan_box ul .donghover a,.donglan_box ul .donghover a:visited,.donglan_box ul .donghover a:hover{ line-height:30px; text-decoration:none; color:#FFFFFF; font-weight:bold; font-size:14px; display:block; width:79px; height:30px;}
+
+.loubiao{position:relative; padding:10px 0;width: 900px;overflow: hidden;margin: 0px auto;}
+.biao{position:absolute; left:0; top:0; color:#FFF;}
+.biao:hover{z-index:1;}
+.biao a{color:#FFF;}
+.biao-1{position:absolute; left:0; top:0; width:65px; height:39px; text-align:center; line-height:27px; background:url(../img/sa2.gif) 0 0 no-repeat; z-index:2; cursor:pointer;}
+.biao-2{position:absolute; left:70px; top:0; width:110px; height:115px; line-height:24px; padding:5px 0 0 12px; text-align:left; z-index:99;}
+.biaozs .biao-1{background-position:0 0;}
+.biaozs .biao-2{ background:#2990dc; border:#ffffff solid 2px;}
+.biaosw .biao-1{background-position:0 -78px;}
+.biaosw .biao-2{ background:#828282; border:#ffffff solid 2px;}
+.biaows .biao-1{background-position:0 -39px;}
+.biaows .biao-2{ background:#3e9e54; border:#ffffff solid 2px;}
+.biao-2 a,.biao-2 a:visited{ color:#ffffff;}
+.snone{ display:none;}
+.shadow{border:1px solid #dbdbdb; background:#FFF;}
+.ribbon{position:absolute; left:-1px; top:-1px;}
+/*提示效果*/
+body div#tooltip { position:absolute; z-index:99999; max-width:300px; width:auto!important; width:auto; background:#fcfaf4; border:#aeaeae solid 1px; text-align:left; padding:8px;}
+body div#tooltip p { margin:0;padding:0; color:#555555;font:12px verdana,arial,sans-serif;}
+body div#tooltip p em { display:block;margin-top:3px;color:#216cac;font-style:normal; font-weight:bold;}
+body div#tooltip p span {color:#d25300;}

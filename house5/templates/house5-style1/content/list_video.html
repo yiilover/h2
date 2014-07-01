@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<link href="{APP_PATH}statics/house5-style1/video/css/list.css" rel="stylesheet" type="text/css" />
+</head>
+<script>
+    var orderType =0;
+    var showSet = "r";
+</script>
+<body>
+<div class="header w960">
+<!--header-->
+	<div class="logo"><a href="{catlink(115)}"><img src="{APP_PATH}statics/house5-style1/img/logo.png" alt=""></a></div>
+    <div class="search">
+    	<div class="text">
+        	<form id="search" name="search" action="{APP_PATH}index.php" method="GET">
+				  <input type="hidden" name="s" value="search/index/init/siteid/1/">
+                  <input type="hidden" name="typeid" value="3">
+                  <input name="q" id="q" type="text" class="txt" value="请输入搜索关键字" onfocus="if(this.value=='请输入搜索关键字'){this.value='';}" onblur="if(this.value==''){this.value='请输入搜索关键字';}">
+					<input type="submit" class="button" id="submit" value="搜&nbsp;索">
+                </form>
+        </div>
+     <p>
+	  
+        </p>
+    </div>
+    <div class="phone">
+        <div></div><label></label>
+        <span>
+        <a href="{APP_PATH}" target="_blank">网站首页</a> |
+        <a href="{BBS_PATH}" target="_blank">业主社区</a>
+        </span>
+    </div>
+</div>
+<!--header end-->
+<div class="navBar"><!--navBar-->
+<div class="v-nav">
+    <div id="overlayBox" class="v-area clearfix">
+        <ul class="left v-nav-left">
+		{h5:content action="category" catid="10" num="7" siteid="$siteid" order="listorder ASC"}
+        	<li><a href="{catlink(10)}" title="首页">首页</a></li>
+			{loop $data $r}
+            <li{if $r[catid]==$catid} class="v-nav-on"{/if} ><a href="{$r[url]}" title="{$r[catname]}">{$r[catname]}</a></li>
+            {/loop}
+			{/h5}
+            <!--<li><a target="_self" title="最新" href="">最新</a><span class="v-nav-new"></span></li>-->
+            </ul>
+      </div></div>
+</div>
+<!--navBar end-->
+
+<div class="hr_10"></div>
+<div class="w960">
+	<div class="blockL">    
+        <div class="adPlay b">
+		{if $CAT[image]}
+        	<div id="picContent"><img src="{$CAT[image]}" />
+            </div>
+		{/if}
+            <div>
+            <!--<span class="changeBtn"><a href="javascript:void(0)" class="on"></a><a href="javascript:void(0)"></a><a href="javascript:void(0)"></a><a href="javascript:void(0)"></a><a href="javascript:void(0)"></a></span>-->
+            </div>
+        </div>
+		<script>
+//			$.PlayInfo.init({picList:'#picContent a img',blockList:'.changeBtn a'});
+		</script>
+        <div class="hr_10"></div>
+    	<!-- <div class="rankStyle">
+        	<div class="bg">
+                <div class="order">
+                    <span>排序方式：</span>
+                        <a href="" class="hover">最新发布</a>
+                        <a href="">最多播放</a>
+                </div>
+        	</div>
+        </div> -->
+        <div class="videoList">
+            <ul id="style2">
+				{h5:content action="lists" catid="$catid" num="12" order="id DESC" moreinfo="1" page="$page"}
+				{loop $data $r}
+					<li>
+                	    <a href="{$r[url]}" target="_blank" title="{$r[title]}"><img src="{$r[thumb]}" alt="{$r[title]}" /></a>
+                	    <span><a href="{$r[url]}" target="_blank" title="{$r[title]}">{str_cut($r[title],40,'')}</a><code>上传时间：{date('Y-m-d',$r[inputtime])}</code></span>
+                        <p><b>【简介】</b>{$r[description]}<a href="{$r[url]}">详情&gt;&gt;</a></p>
+                        {if $r[relation]}
+						<label><a href="{HOUSE_PATH}{$r[relation]}/" target="_blank">楼盘详情</a>&nbsp;|&nbsp;<a href="{HOUSE_PATH}{$r[relation]}/tuan.html" target="_blank">参与团购</a>&nbsp;|&nbsp;<a href="{HOUSE_PATH}{$r[relation]}/wenfang-p1.html" target="_blank">问房</a>&nbsp;|&nbsp;<a href="{HOUSE_PATH}{$r[relation]}/dongtai.html" target="_blank">动态</a>&nbsp;|&nbsp;<a href="{HOUSE_PATH}{$r[relation]}/" target="_blank">查看地图</a></label>
+						{/if}
+                        <a href="{$r[url]}" class="vplay" target="_blank"></a>
+                    </li>
+					  {/loop}{/h5}                	                
+                					</ul>
+        </div>
+        <div class="hr_10"></div>
+        <div class="pageBg">       
+            	<div class="page"><!--page-->
+            	    {$pages}		
+   				 </div><!--page end--> 
+        </div>
+    </div>
+    <div class="blockR"><!--blockR-->
+        <div class="popRank b"><!--popRank-->
+            <h3>人气排行</h3>
+            <ol> 
+			{h5:content action="hits" catid="10" num="10" order="views DESC"}
+				{loop $data $v}				
+                        <li class="up">
+                        <dt><span>{$n}</span><a href="{$v[url]}" target="_blank"  title="{$v[title]}">{str_cut($v[title],28,'')}</a></dt>
+                        <dd>{get_hits(5,$v[id])}次</dd>
+                    </li>
+					{/loop}
+				{/h5}
+            </ol>
+        </div><!--popRank end-->
+        <div class="hr_10"></div>
+        <div class="hotLabel b"><!--hotLabel-->
+            <div class="title"><a href="#" target="_blank">更多&gt;&gt;</a><h3>热门标签</h3></div>
+            <div class="content">
+            </div>
+        </div><!--hotLabel end-->
+        <div class="hr_10"></div>
+        <div class="hotTV b"><!--hotTV-->
+            <div class="title"><a href="{catlink(10)}" target="_blank">更多&gt;&gt;</a><h3>最新视频</h3></div>
+            <ul>
+			 {h5:content action="lists" catid="10" num="8" order="id DESC"}
+				{loop $data $v}
+                	<li>
+                        <a href="{$v[url]}" target="_blank" title="{$v[title]}" class="img">
+                            <img src="{$v[thumb]}" alt="{$v[title]}" />
+                        </a>
+                        <p><a href="{$v[url]}" target="_blank">{$v[title]}</a></p>
+                    </li>
+				{/loop}
+				{/h5}
+            </ul>
+            <div class="clear"></div>
+        </div><!--hotTV end-->
+     </div><!--blockR end-->
+</div>
+<div class="hr_10"></div>
+<div class="hr_10"></div>
+{template "content","footer"}
+<div class="hr_10"></div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+@charset "utf-8";
+/**
+* Description: Base style 
+* Developers: zhaoyongchang <yongchang@leju.sina.com.cn>
+**/
+
+.ss_tj{ height:38px; line-height:34px}
+.ss_tj a{ display:block; width:25%; height:40px; float:left; clear:none; font-size:14px; color:#c9d7f1 ; background:#213e74; text-shadow:1px 1px 0px #0b234f; position:relative;}
+.ss_tj a span{ display:block; border-right:1px solid #294a89; height:38px; border-top:1px solid #1a315d; border-bottom:1px solid #1a315d; border-left:0px}
+.ss_tj a span b{ display:block; border-left:1px solid #1a315d; height:38px; padding:0 15px 0 6px; text-overflow:ellipsis; white-space:nowrap; overflow:hidden; line-height:38px}
+.ss_tj a i{ display:block; width:8px; height:5px; background:url(../images/wap/arr_4.png); background-size:8px 5px; position:absolute; top:19px; right:7px}
+.ss_tj a .clo{ display:block; width:11px; height:11px; background:url(../images/wap/close.png); background-size:11px 11px; position:absolute; top:16px; right:7px}
+.ss_tj .sel_on{ background:#112446}
+.ss_tj .sel_on span{border-bottom:1px solid #112446}
+.tj_con{ display:block; background-color:rgba(1,15,41,0.9); z-index:100; width:100%}
+.tj_con li label{display:block; float:left; clear:none;}
+.tj_con li label a{display:block; height:30px; background:#658edb; line-height:30px; text-align:center; font-size:14px; color:#FFF; border-radius:3px; -webkit-box-shadow:0px 0px 3px #0d1b34; text-shadow:0px 0px 3px #24488c; margin:3px; text-overflow:ellipsis; white-space:nowrap; overflow:hidden; padding:2px 2px 1px 2px}
+.tj_con .p_d{padding:5px 3px 5px 3px}
+.m_4 label{ width:25%}
+.m_3 label{ width:33%}
+.tj_con nav{ height:9px; text-align:center; overflow:hidden; line-height:1px; padding:8px 0 6px 0}
+.tj_con nav em{ display:inline-block; width:7px; height:7px;  background:#fff; border-radius:5px; margin:0 3px; border:1px solid #fff}
+.tj_con nav .on{ background:#4bb223; border:1px solid #62c93b}
+.swipe {position:relative; z-index:1; -webkit-perspective:1000; -webkit-backface-visibility:hidden}
+
+
+.ss_list{}
+.ss_list a {display:block; height:80px; border-top:1px solid #fff; position:relative; background:-webkit-gradient(linear, left top, left bottom, color-stop(0, #fff),  color-stop(1, #ececec));}
+.ss_list a .lpic{ display:block; position:absolute; width:90px; height:80px; -webkit-box-shadow:0px 0px 3px #000 inset; background-size:90px 80px; top:0; left:0; z-index:1}
+.ss_list a sub{ display:block; width:32px; height:20px; background:#cf504f; border-radius:2px; text-align:center; color:#fff; font-size:12px; line-height:20px; text-shadow:1px 1px 0px #a22827; position:absolute; top:7px; left:58px; z-index:2}
+.ss_list a sub em{ display:block; position:absolute; width:5px; height:9px; right:-5px; top:4px; background:url(../images/wap/ico_sj.png); background-size:5px 9px}
+.ss_list a .ltxt{ display:block; margin:0 0 0 90px; height:74px; overflow:hidden; border-bottom:1px solid #d9d9d9; border-left:1px solid #fff; padding:5px 9px 0 9px; line-height:24px; background:url(../images/wap/arr_1s.png) right center no-repeat; background-size:17px 12px}
+.ss_list a .ltxt label{ display:block; height:24px; line-height:24px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; text-shadow:1px 1px 0px #fff;}
+.ss_list a .ltxt .h1{ font-size:16px; font-weight:bold; color:#333}
+.ss_list a .ltxt .jg{ font-size:14px; color:#cc3b3a; font-weight:bold}
+.ss_list a .ltxt .wz{ font-size:12px; color:#666}
+.ss_list a .ltxt .wz b{ font-weight:normal; color:#cacaca; padding:0 5px;}
+
+
+.list_page { height:36px; padding:5px 0; background:#213e74; color:#fff; text-align:center; font-size:16px; line-height:36px; position:relative; text-shadow:1px 1px 0px #000}
+.list_page em{ display:block; width:100%; position:absolute; top:0; height:4px; background:url(../images/wap/yy_y.png) 0 -4px repeat-x; overflow:hidden; z-index:10}
+.list_page a{ display:block; width:34px; height:34px; border:1px solid #274479;  background:#112446; border-radius:5px; position:absolute; line-height:200px; overflow:hidden}
+.list_page a i{ display:block; width:13px; height:11px; position:absolute; top:12px; left:11px; background:url(../images/wap/pic_arr3.png) no-repeat; background-size:26px 11px;}
+.list_page .l_bn{ left:10px; top:5px}
+.list_page .l_bn i{ background-position:0 0}
+.list_page .r_bn{ right:10px; top:5px}
+.list_page .r_bn i{ background-position:-13px 0}
+

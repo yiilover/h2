@@ -1,0 +1,19 @@
+{php if(!HTTP_REFERER || strpos(HTTP_REFERER,'/login')) @header("Location: ".$_GET['forward']);}
+<style>
+body,html{background:none; padding:0; margin:0}
+.log{line-height:24px;*line-height:27px; height:24px;float:right; font-size:12px}
+.log span{color:#ced9e7}
+.log a{color:#049;text-decoration: none;}
+.log a:hover{text-decoration: underline;}
+.log .snda{ position:relative; bottom:-3px}
+</style>
+<script type="text/javascript">
+function ajax_login() {
+window.top.art.dialog({id:'login'}).close();
+window.top.art.dialog({title:'»áÔ±µÇÂ¼£º',id:'login',iframe:'{APP_PATH}index.php?s=member/index/ajax_login',width:'420',height:'380'});
+}
+</script>
+<body style="background-color:transparent">
+<div class="log">{if $_username}{L('hellow')} {get_nickname()}, <a href="{APP_PATH}my" target="_blank">{L('member_center')}</a> <a href="{APP_PATH}index.php?s=member/index/logout&forward={urlencode($_GET['forward'])}&siteid={$siteid}" target="_top">{L('logout')}</a>{else}<a href="{APP_PATH}register.html?forward={urlencode($_GET['forward'])}" target="_blank">{L('register')}</a> <span>|</span> <a href="{APP_PATH}login.html?forward={urlencode($_GET['forward'])}" target="_top" onclick="ajax_login();return false;">{L('login')}</a>
+{/if}</div>
+</body>

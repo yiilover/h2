@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>House5提示信息</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<base target="_self"/>
+<style>
+html,body,form,h1,h2,h3,h4,h5,ul,dl,dt,dd,div,p,img,li{margin:0;padding:0;list-style:none;border:none;font-size:12px;}
+body{text-align:center;font-family:Tahoma,Geneva,sans-serif;background:#E6E8F0;background:#fff\9;padding-bottom:25px;_background:url(about:black) no-repeat fixed;}
+.ts_div {
+	width:500px;
+	overflow:hidden;
+	margin:0 auto;
+	margin-top:150px;
+	border:1px solid #E9E9E9;
+	border-radius:3px;
+}
+.ts_border {
+	border:7px solid #efefef;
+}
+.ts_b2 {
+	background:#fff;
+	border:1px solid #E9E9E9;
+	padding:10px 20px 10px 20px;
+}
+.ts_div h2 {
+	text-align:left;
+	color:#666;
+	border-bottom:1px dotted #ccc;
+	padding-bottom:10px;
+	font-size:12px;
+}
+.ts_div p {
+	line-height:70px;
+	background:url({APP_PATH}images/ts_bg.png) no-repeat 0 center;
+	margin:10px auto;
+	font-size:14px;
+	text-align:left;
+	text-indent:70px;
+}
+.ts_tz {
+	margin:10px auto;
+	text-align:right;
+	width:500px;
+	color:#666;
+}
+.ts_tz a {
+	color:#f30;
+}
+</style>
+<script type="text/javaScript" src="{JS_PATH}jquery.min.js"></script>
+<script language="JavaScript" src="{JS_PATH}admin_common.js"></script>
+</head><body style="background:#f7f7f7;">
+<div class="ts_div">
+   <div class="ts_border">
+      <div class="ts_b2">
+        <h2>House5提示</h2>
+        <p>{$msg}</p>
+      </div>
+   </div>
+</div>
+<div class="ts_tz">
+{if $url_forward=='goback' || $url_forward==''}
+	<a href="javascript:history.back();" >[点这里返回上一页]</a>
+	{elseif $url_forward=="close"}
+	<input type="button" name="close" value=" 关闭 " onClick="window.close();">
+	{elseif $url_forward=="blank"}
+	{elseif $url_forward}
+	<a href="{$url_forward}">如果您的浏览器没有自动跳转，请点击这里</a>
+	<script language="javascript">setTimeout("redirect('{$url_forward}');",{$ms});</script> 
+	{/if}
+	{if $dialog}<script style="text/javascript">window.top.location.reload();window.top.art.dialog({id:"{$dialog}"}).close();</script>{/if}
+	</div><script style="text/javascript">
+	function close_dialog() {
+		window.top.location.reload();window.top.art.dialog({id:"<?php echo $dialog?>"}).close();
+	}
+</script>
+</body></html>

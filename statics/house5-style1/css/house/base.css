@@ -1,0 +1,22 @@
+@charset "utf-8";
+/* CSS Document */
+
+body { font:12px "\5B8B\4F53","\5FAE\8F6F\96C5\9ED1"; padding:0; margin:0;}
+ul,li,ol,p,h1,h2,h3,h4,h5,h6,dl,dd,iframe,form{ margin:0; padding:0; list-style:none;}
+img { border:none; vertical-align:top;}
+a{ text-decoration:none;}
+.hide{ display:none;}
+.clear{ clear:both;}
+.hr_5{ height:5px; clear:both; line-height:1px; font-size:1px;}
+.hr_10{ height:10px; clear:both; line-height:1px; font-size:1px;}
+.w960{ width:960px; margin:0 auto;}
+.no_border{ border:none;}
+em{ color:#cc0000; font-style:normal}
+
+/*AD Banner*/
+.adbanner{margin:auto; margin-bottom:5px; position:relative}
+.adbanner object{ position:absolute; z-index:9; width:100%; height:100%;}
+.adbanner object EMBED{ position:absolute; z-index:9; width:100%; height:100%;}
+.adbanner img.adimg{ position:absolute; z-index:9; width:100%; height:100%;}
+.adbanner a{ display:block; position:absolute; z-index:999;width:100%; height:100%;}
+.adbanner a img{ width:100%; height:100%; border:0}

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+		<title>{$search_q} - {if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+		<link rel="shortcut icon" href="{APP_PATH}favicon.ico" />
+		<style type="text/css">
+			body{text-align:center;font-size:12px;}
+			.pss_main{width:1000px;}
+			.pss_top{margin:0 0 100px 0;}
+			.pss_logo{margin:67px 0 46px 0;}
+			.pss_foot{margin:162px 0 63px 0;}
+			.pss_s{border:1px solid white;}
+			.pss_logo.after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+			.fl{float:left;}
+			.fr{float:right;}
+			.cb{clear:both;}
+			.tl{text-align:left;}
+			.tr{text-align:right;}
+			.pl{padding-left:360px;}
+			.ps{padding-right:325px;}
+		</style>
+					
+		<base target="_blank">
+			
+	</head>
+
+	<body>
+		<center>
+		<div class="pss_main">
+			<div class="pss_top">
+				
+	{template 'ssi', 'ssi_8'}
+				</div>
+			<div class="pss_logo">
+				<div class="pl fl tr"><img src="{APP_PATH}statics/default/img/logo.png" /></div>
+				<div class="ps fr tl"><img src="{APP_PATH}statics/default/img/search/pss_s.gif" /></div>
+				<div class="cb"></div>
+			</div>
+			<div class="pss_s" style="margin-bottom:160px;">
+				<script src="{APP_PATH}index.php?s=content/index/topsearch" type="text/javascript"></script>
+			</div>
+				
+			</div>
+{template 'content', 'footer'}

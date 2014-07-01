@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="gbk"/>
+	<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+	<meta name="keywords" content="{$SEO['keyword']}">
+    <meta name="description" content="{$SEO['description']}">
+    <link href="{APP_PATH}favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+	<link href="{APP_PATH}statics/house5-style1/index/css/reset.css"  rel="stylesheet" type="text/css"/>
+	<script src="{APP_PATH}statics/house5-style1/sea/js/sea.js"  type="text/javascript"></script>
+	<link href="{APP_PATH}statics/house5-style1/newhouse/css/newhouse.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+	<div id="main" class="xfindex">
+		<div id="header">
+	{template "ssi","ssi_8"}
+	<h1><a href="{APP_PATH}"  title="{$site_title}" class="logo fl">
+	<img src="{APP_PATH}statics/house5-style1/img/logo.png" alt="{$SEO['site_title']}" width="150" height="50"/></a></h1>
+	<div id="Search">
+		<ul class="searchURL">
+			<li class="on"><a href="{HOUSE_PATH}"  target="_blank">新房</a></li>
+			<li><a href="{ESF_PATH}list.html"  target="_blank">二手房</a></li>
+			<li><a href="{ESF_PATH}rent-list.html"  target="_blank">出租房</a></li>
+			<li class="more"><a href="javascript:void(0)">更多<em></em></a>
+				<div>
+					<a href="{catlink(6)}"  target="_blank">资讯</a>
+					<a target="_blank" href="{catlink(7)}">图库</a>
+					<a target="_blank" href="{catlink(10)}">视频</a>
+					<a target="_blank" href="{BBS_PATH}">论坛</a>
+				</div>
+			</li>
+		</ul>
+		<a href="{APP_PATH}map/" target="_blank" class="mapS">地图找房</a>
+		<div id="qy">
+			<span>区域/地铁</span>
+			<div>
+				<a href="javascript:void(0)" data-val="">全部区县</a>
+	{h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC" cache="86400"}
+{loop $data $r}
+<?php
+ 	$reg = explode('$$', $r);//add by L 2012/3/22
+	?>
+	<a href="javascript:void(0)" data-val="-r{$reg[0]}">{$reg[1]}</a>											
+	{/loop}
+{/h5}
+			</div>
+		</div>
+		<div id="wy">
+			<span>项目类型</span>
+			<div>
+				<a href="javascript:void(0)" data-val="">全部</a>
+											<a  href="javascript:void(0)" data-val="-h1">住宅</a>
+											<a  href="javascript:void(0)" data-val="-h7">城市综合体</a>
+											<a  href="javascript:void(0)" data-val="-h2">商铺</a>
+											<a  href="javascript:void(0)" data-val="-h3">写字楼</a>
+											<a  href="javascript:void(0)" data-val="-h4">公寓</a>
+											<a  href="javascript:void(0)" data-val="-h5">别墅</a>
+											<a  href="javascript:void(0)" data-val="-h6">花园洋房</a>
+											<a  href="javascript:void(0)" data-val="-h8">酒店</a>
+											<a  href="javascript:void(0)" data-val="-h9">工业地产</a>
+												</div>
+		</div>
+		<div id="jg">
+			<span>价格范围</span>
+			<div>
+				<a href="javascript:void(0)" data-val="">全部</a>
+											<a  href="javascript:void(0)" data-val="-g1">10000元以下</a>
+											<a  href="javascript:void(0)" data-val="-g2">10000-15000元</a>
+											<a  href="javascript:void(0)" data-val="-g3">15000-20000元</a>
+											<a  href="javascript:void(0)" data-val="-g4">20000-30000元</a>
+											<a  href="javascript:void(0)" data-val="-g5">30000-40000元</a>
+											<a  href="javascript:void(0)" data-val="-g6">40000元以上</a>
+												</div>
+		</div>
+		<input type="text" value="请输入关键字（楼盘名/地址）" data-val="请输入关键字（楼盘名/地址）">
+		<button> </button>
+	</div>
+	<div id="indexMenu"> 
+		<em class="r2"></em>
+		<div id="newMenu">
+	<a href="javascript:void(0)" class="fir">网站导航</a>
+	{template "ssi","ssi_12"}
+</div>
+<script type="text/javascript">
+seajs.use("jquery",function($){
+	var $newMenu=$("#newMenu")
+	$newMenu.hover(function(){
+		$newMenu.addClass("on")
+	},function(){
+		$newMenu.removeClass("on")
+	}).find("li").hover(function(){
+		$(this).addClass("on")
+	},function(){
+		$(this).removeClass("on")
+	})
+})
+</script>		<ul class="menuL">
+			<li class="s">
+				<a href="{HOUSE_PATH}" target="_self" >首页<em></em></a>
+			</li>
+			<li >
+				<a href="{HOUSE_PATH}list.html" target="_self" >搜索楼盘<em></em></a>
+            </li>
+			<li >
+				<a href="{APP_PATH}map/" target="_blank" >地图找房<em></em></a>
+			</li>
+			<li >
+				<a href="{HOUSE_PATH}baojia.html" target="_self" >今日房价<em></em></a>
+			</li>
+			<li >
+				<a href="{catlink(37)}" target="_self">楼盘导购<em></em></a>
+			</li>
+			<li>
+				<a href="{APP_PATH}special/" target="_blank">购房专题<em></em></a>
+			</li>
+			<li >
+				<a href="{HOUSE_PATH}hxlist.html" target="_self" >户型图<em></em></a>
+			</li>
+			<li  >
+				<a href="{APP_PATH}tools/fdjsq.html" target="_self" >贷款计算器</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	seajs.use(["jquery","hsearch"],function($){
+		$("#Search").hSearch("{HOUSE_PATH}list","{APP_PATH}api.php?op=house")//前面是搜索地址，后面是ajax查询新盘api
+	})
+</script>        <div class="mt2"></div><!--新房二手房广告 新房首页-导航下通栏1-->
+		<div class="mt10 cf">
+			<!--楼盘动态-->
+			<div class="fl boxA">
+				<h3>
+					区域楼盘
+				</h3>
+				<p>
+					<a href="{HOUSE_PATH}list.html">全部</a>
+					{h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC"}
+{loop $data $r}
+{php $reg = explode('$$', $r)}
+<a target="_blank" href="{HOUSE_PATH}list-r{$reg[0]}.html">{$reg[1]}</a>
+{/loop}
+{/h5}
+				</p>
+				<h3>
+					价格区间
+				</h3>
+				<p>
+					{php $range_arr = getbox_name('13','range')}
+{loop $range_arr $key $v}
+<a target="_blank" href="{HOUSE_PATH}list-p{$key}.html" val="-p{$key}" target="_blank">{$v}</a>
+{/loop}
+		        </p>
+				<h3>
+					开盘时间
+				</h3>
+				<p>
+					<a target="_blank" href="{HOUSE_PATH}list-o1.html">本月开盘</a>
+<a target="_blank" href="{HOUSE_PATH}list-o2.html">下月开盘</a>
+<a target="_blank" href="{HOUSE_PATH}list-o3.html">3月内开盘</a>
+<a target="_blank" href="{HOUSE_PATH}list-o4.html">6月内开盘</a>
+<a target="_blank" href="{HOUSE_PATH}list-o5.html">前3月已开盘</a>
+<a target="_blank" href="{HOUSE_PATH}list-o6.html">前6月已开盘</a>
+		                	                				</p>
+				<h3>
+					项目类型
+				</h3>
+				<p>
+				{php $type_arr = getbox_name('13','type')}
+{loop $type_arr $key $v}
+<a target="_blank" href="{HOUSE_PATH}list-t{$key}.html" val="-t{$key}" target="_blank">{$v}</a>
+{/loop}
+
+				</p>
+				<p class="more">
+					<a href="{HOUSE_PATH}list.html">
+						更多筛选方式 <em></em>
+					</a>
+				</p>
+			</div>
+			<div class="w730 fr">
+				
+				<!--新闻资讯-->
+				<div class="w345 fl border">
+						<div class="tit">
+    <span>{catname(26)}</span><a href="{catlink(26)}" target="_blank">更多</a>
+</div>
+<ul class="news_jiantou">
+{h5:content  action="lists" catid="26" order="listorder DESC" limit="7"}{loop $data $v}
+            <li><a target="_blank" {title_style($v[style])}  title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></li>
+         {/loop}{/h5}
+    </ul><!--f新房首页 一屏右侧-栏目1-->
+						<div class="tit tit2 mt5">
+    <span>{catname(29)}</span><a href="{catlink(29)}" target="_blank">更多</a>
+</div>
+<ul class="news_jiantou news_noline">
+        {h5:content  action="lists" catid="29" order="listorder DESC" limit="8"}{loop $data $v}
+            <li><a target="_blank" {title_style($v[style])}  title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></li>
+         {/loop}{/h5}
+    </ul><!--f新房首页 一屏右侧-栏目2-->
+					</div>
+
+<div class="w375 fr border">
+					<div class="focus-pic" id="tab1">
+{h5:content  action="position" posid="1" thumb="1" order="listorder DESC" num="5" cache="3600"}
+   <div class="dt">
+     {loop $data $v}
+<i {if $n==1}class="on"{/if}>{$n}</i>
+ {/loop}
+    </div>
+       <ul class="dd">
+	  {loop $data $v}
+        <li {if $n!=1}style="display:none;"{/if}>
+            <a target="_blank" href="{$v[url]}" title="{$v[title]}"><img alt="{$v[title]}" src="{thumb($v[thumb],300,220)}"/></a><p><a target="_blank" href="{$v[url]}" title="{$v[title]}">{$v[title]}</a></p>
+        </li>
+{/loop}
+			 {/h5}
+          
+        </ul>
+</div><!--f新房首页 焦点图-->
+<ul class="news news_jiantou mt5 news_noline">
+ {h5:content  action="lists" catid="28" order="listorder DESC" limit="8"}{loop $data $v}
+            <li><a target="_blank" {title_style($v[style])}  title="{$v[title]}" href="{$v[url]}">{$v[title]}</a></li>
+            {/loop}
+			 {/h5}
+    </ul><!--f新房首页 一屏中间-推荐列表-->
+				</div>
+
+			</div>
+
+		</div>
+        <div class="mt5"></div><!--q新房广告 新房首页-通栏1-->
+		<div class="mt10 cf">
+			<div class="w220 fl">
+				<div class="border">
+					<h3>
+						<a class="fr" href="{HOUSE_PATH}list-h5.html" target="_blank">更多</a>
+						最新楼盘
+					</h3>
+					<ul>{h5:content  action="lists" catid="14" where="hot like '%5%' " order="listorder DESC" limit="6"}{loop $data $v}
+					 {php $menu_info = menu_info('3360',$v[region])}
+					        										<li>
+							<a class="a1" href="{HOUSE_PATH}list-r{$menu_info[1]}.html">{$menu_info[0]}</a>
+							<a href="{$v[url]}">{$v[title]}</a>
+							<span class="a3">{getbox_val('13','type',$v['type'])}</span>
+						</li>
+									 {/loop}{/h5}
+																</ul>
+				</div>
+				<!--热点楼盘-->
+				<div class="border mt10">
+					<h3 class="pdlr10 bg_fcfcfc border_xuxian_bottom">
+						<a class="fr" href="{HOUSE_PATH}list-h4.html" target="_blank">更多</a>
+						热点楼盘
+					</h3>
+					<ul>{h5:content  action="lists" catid="14" where="hot like '%4%' " order="listorder DESC" limit="6"}{loop $data $v}
+					 {php $menu_info = menu_info('3360',$v[region])}
+					        	<li>
+							<a class="a1" href="{HOUSE_PATH}list-r{$menu_info[1]}.html">{$menu_info[0]}</a>
+							<a href="{$v[url]}">{$v[title]}</a>
+							<span class="a3">{getbox_val('13','type',$v['type'])}</span>
+						</li>
+									 {/loop}{/h5}
+											
+																</ul>
+				</div>
+				<!--一周关注楼盘-->
+				<div class="border mt10">
+					<h3 class="pdlr10 bg_fcfcfc border_xuxian_bottom">
+						<a class="fr" href="{HOUSE_PATH}list.html" target="_blank">更多</a>
+						一周关注楼盘
+					</h3>
+					<div class="cf pdb10">
+					{h5:content  action="hits" catid="14" order="weekviews DESC" num="1" } {loop $data $v}	
+					{php $menu_info = menu_info('3360',$v[region])}
+					<div class="imgtxt cf">
+							<div class="fl">
+								<span class="num1">1</span>
+								<img src="{thumb($v[thumb],68,52)}" width="68" height="52" alt="{$menu_info[0]}" >
+							</div>
+							<p>
+								<a class="red" href="{$v[url]}" target="_blank">{$v[title]}</a>
+								| {$menu_info[0]}							</p>
+							<p>均价:{if !empty($v[price])}{$v[price]}/㎡{else}待定{/if}</p>
+						</div>
+									 {/loop}{/h5}					          										          										          										          										          										          										          														<ul>
+					{h5:content  action="hits" catid="14" order="weekviews DESC" limit="1,8" }
+					{php $i=2}
+					{loop $data $v}
+						<li><span  class="num1"  >{$i}</span><a href="{$v[url]}" target="_blank">{$v[title]}</a>
+								<span class="a3">{if !empty($v[price])}{$v[price]}/㎡{else}待定{/if}</span></li>
+									{$i++}
+								{/loop}{/h5}	
+																													</ul>
+										</div>
+				</div>
+				<!--团购排行-->
+				<div class="border mt10">
+					<h3 class="pdlr10 bg_fcfcfc border_xuxian_bottom">
+						<a class="fr" href="{HOUSE_PATH}list.html" target="_blank">更多</a>
+						本月团购排行
+					</h3>
+					<div class="pdb10">
+				{h5:content  action="toptuangou" month="1" num="10" } 																						<ul>		
+							{loop $data $v}						
+							<li>
+								<span  class="num1" >{$n}</span>
+								<a target="_blank" title="{$v[subject]}" href="{HOUSE_PATH}{$v[relation]}">{$v[subject]}</a>
+								<span class="a3">{$v[counts]}人</span>
+							</li>
+											 {/loop}
+								</ul>
+				{/h5}
+										</div>
+				</div>
+			</div>
+			<div class="w730 fr">
+				<!--新房价格查询-->
+				<div class="border w728 cf" id="tab2">
+					<div class="titl cf">
+						<b>新房价格查询</b>
+							<ul>
+						{php $range_arr = getbox_name('13','range')}
+						{php $i=1}
+						
+						{loop $range_arr $key $v}
+						{if $i<7}
+						 <li {if $n==1}class="on"{/if}><a href="{HOUSE_PATH}list-p{$key}.html">{$v}</a></li>	{php $i++}
+						{/if} {/loop}
+					<li><span><a href="{HOUSE_PATH}list.html" target="_blank">更多</a></span></li>
+						</ul>
+					</div>
+					{php $i=1}
+					
+					{loop $range_arr $key $v}
+					{if $i<7}
+					{php $where="`range`=$key"}
+					<div class="housetxt cf" {if $i==1}style="display:block"{else}style="display:none"{/if}>
+						<ul class="rightimg">
+						{h5:content  action="lists" catid="14" where="$where" order="listorder DESC" limit="4"}{loop $data $v}
+    													<li>
+								<p>
+									<a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a>
+								</p>
+								<a href="{$v[url]}" title="{$v[title]}" target="_blank">
+									<img data-src="{thumb($v[thumb],169,130)}" alt="{$v[title]}" /></a>
+							</li>{/loop}{/h5}
+						</ul>
+						<ul class="houselist">
+						{h5:content  action="lists" catid="14" where="$where" order="listorder DESC" limit="3,24"}{loop $data $v}
+							<li><span>{if !empty($v[price])}{$v[price]}/㎡{else}待定{/if}</span><a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></li>
+						{/loop}{/h5}
+						</ul>
+						</div>
+						{php $i++}
+						{/if}
+						{/loop}
+						</div>
+				<div class="mt10 mb10"><!--q新房广告 新房首页-旗帜1--> </div><!--q新房广告 新房首页-旗帜1-->
+				<!--新房区域查询-->
+				<div class="border w728 cf" id="tab3">
+					<div class="titl">
+						<b>新房区域查询</b>
+						<ul class="w70">
+					{h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC"}
+						{php $i=1}
+						{loop $data $r}
+						{php $reg = explode('$$', $r)}
+						{if $i<8}
+						 <li {if $n==1}class="on"{/if}><a href="{HOUSE_PATH}list-r{$reg[0]}.html">{$reg[1]}</a></li>	{php $i++}
+						{/if} {/loop}
+					<li><span><a href="{HOUSE_PATH}list.html" target="_blank">更多</a></span></li>
+						</ul>
+					</div>
+					{php $i=1}
+					{loop $data $r}
+					{php $where = "status=99";}
+					{php $reg = explode('$$', $r)}
+					{php $arrchildid = get_arrchildid('3360',$reg[0]);}
+					{php $where.=" and `region` in ($arrchildid)";}
+					{if $i<8}
+					<div class="housetxt cf" {if $i==1}style="display:block"{else}style="display:none"{/if}>
+						<ul class="rightimg">
+						{h5:content  action="lists" catid="14" where="$where" order="listorder DESC" limit="4"}{loop $data $v}
+    													<li>
+								<p>
+									<a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a>
+								</p>
+								<a href="{$v[url]}" title="{$v[title]}" target="_blank">
+									<img data-src="{thumb($v[thumb],169,130)}" alt="{$v[title]}" /></a>
+							</li>{/loop}{/h5}
+						</ul>
+						<ul class="houselist">
+						{h5:content  action="lists" catid="14" where="$where" order="listorder DESC" limit="3,24"}{loop $data $v}
+							<li><span>{if !empty($v[price])}{$v[price]}/㎡{else}待定{/if}</span><a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></li>
+						{/loop}{/h5}
+						</ul>
+						</div>
+
+						{php $i++}
+						{/if}
+						{/loop}
+						{/h5}
+											
+                    		</div>
+				<div class="mt10 mb10"><!--q新房广告 新房首页-旗帜2--></div><!--q新房广告 新房首页-旗帜2-->
+				<!--按项目类型查询-->
+				<div class="border w728 cf" id="tab4">
+					<div class="titl">
+						<b>按项目类型查询</b>
+						<ul>
+					{php $type_arr = getbox_name('13','type')}
+						{php $i=1}						
+						{loop $type_arr $key $v}
+						{if $i<7}
+						 <li {if $n==1}class="on"{/if}><a href="{HOUSE_PATH}list-p{$key}.html">{$v}</a></li>	{php $i++}
+						{/if} {/loop}
+					<li><span><a href="{HOUSE_PATH}list.html" target="_blank">更多</a></span></li>
+						</ul>
+					</div>
+					{php $i=1}					
+					{loop $type_arr $key $v}
+					{if $i<7}
+					{php $where="`type` like '%$key%'"}
+					<div class="housetxt cf" {if $i==1}style="display:block"{else}style="display:none"{/if}>
+						<ul class="rightimg">
+						{h5:content  action="lists" catid="14" where="$where" order="listorder DESC" limit="4"}{loop $data $v}
+    													<li>
+								<p>
+									<a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a>
+								</p>
+								<a href="{$v[url]}" title="{$v[title]}" target="_blank">
+									<img data-src="{thumb($v[thumb],169,130)}" alt="{$v[title]}" /></a>
+							</li>{/loop}{/h5}
+						</ul>
+						<ul class="houselist">
+						{h5:content  action="lists" catid="14" where="$where" order="listorder DESC" limit="3,24"}{loop $data $v}
+							<li><span>{if !empty($v[price])}{if $v[priceunit]=="0" }{$v[price]}元/㎡{elseif  $v[priceunit]=="2"}{price_short($v[price])}/套{/if} {else}待定{/if}</span><a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></li>
+						{/loop}{/h5}
+						</ul>
+						</div>
+						{php $i++}
+						{/if}
+						{/loop}
+														</div>
+			</div>
+		</div>
+        <div class="mt5"><!--q新房广告 新房首页-通栏2--></div>
+<!--q新房广告 新房首页-通栏2-->
+		<div class="mt10 cf">
+			<div class="w313 fl border mr10">
+    <h3>
+        <a class="fr" href="{catlink(29)}" target="_blank">更多</a>
+        <b class="line">{catname(29)}</b>
+    </h3>
+    <div class="imgtxtB cf">
+	{h5:content  action="lists" catid="29" thumb="1" order="listorder DESC" limit="1"}
+	{loop $data $v}
+                          <a href="{$v[url]}" class="fl" target="_blank"><img src="{thumb($v[thumb],80,60)}"  width="80" height="60" alt="{$v[title]}" /></a>
+                  <p><a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></p>
+	{/loop}{/h5}
+            </div>
+    <ul>{h5:content  action="lists" catid="29" order="listorder DESC" limit="1,4"}{loop $data $v}
+                <li><span>{date('m月d日',$v[inputtime])}</span><a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></li>
+{/loop}{/h5}
+            </ul>
+</div><!--f新房首页 三屏左侧-栏目1-->
+			<div class="w313 fl border">
+   <h3>
+        <a class="fr" href="{catlink(31)}" target="_blank">更多</a>
+        <b class="line">{catname(31)}</b>
+    </h3>
+    <div class="imgtxtB cf">
+	{h5:content  action="lists" catid="31" thumb="1" order="listorder DESC" limit="1"}
+	{loop $data $v}
+                          <a href="{$v[url]}" class="fl" target="_blank"><img src="{thumb($v[thumb],80,60)}"  width="80" height="60" alt="{$v[title]}" /></a>
+                  <p><a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></p>
+	{/loop}{/h5}
+            </div>
+    <ul>{h5:content  action="lists" catid="31" order="listorder DESC" limit="1,4"}{loop $data $v}
+                <li><span>{date('m月d日',$v[inputtime])}</span><a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></li>
+{/loop}{/h5}
+    </ul>
+</div><!--f新房首页 三屏中间-栏目1-->
+			<div class="w313 fr border">
+  <h3>
+        <a class="fr" href="{catlink(28)}" target="_blank">更多</a>
+        <b class="line">{catname(28)}</b>
+    </h3>
+    <div class="imgtxtB cf">
+	{h5:content  action="lists" catid="28" thumb="1" order="listorder DESC" limit="1"}
+	{loop $data $v}
+                          <a href="{$v[url]}" class="fl" target="_blank"><img src="{thumb($v[thumb],80,60)}"  width="80" height="60" alt="{$v[title]}" /></a>
+                  <p><a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></p>
+	{/loop}{/h5}
+            </div>
+    <ul>{h5:content  action="lists" catid="28" order="listorder DESC" limit="1,4"}{loop $data $v}
+                <li><span>{date('m月d日',$v[inputtime])}</span><a href="{$v[url]}" title="{$v[title]}" target="_blank">{$v[title]}</a></li>
+{/loop}{/h5}
+    </ul>
+</div><!--f新房首页 三屏右侧-栏目1-->
+		</div>
+        <div class="mt2"></div><!--q新房广告 新房首页-通栏3-->
+		<div class="mt10 cf border">
+    <h3>
+        <a class="fr" href="{catlink(39)}" target="_blank">更多</a>
+        <b class="line"> {catname(39)} </b>
+    </h3>
+    <div class="goufangzt cf" id="gfzt">
+        <div>
+		 {h5:content  action="lists" catid="39" limit="1"  thumb="1"  order="listorder DESC" }{loop $data $v}
+          <a target="_blank" href="{$v[url]}" title="{$v[title]}"><img alt="{$v[title]}" src="{thumb($v[thumb],270,250)}" width="270" height="250"></a>
+          <a  href="{$v[url]}" target="_blank" class="pic_pop" style="line-height:237px;">{$v[title]}</em></a>
+		  {/loop}{/h5}
+        </div>
+        <ul class="fl w660">
+		{h5:content  action="lists" catid="39" limit="1,8"  thumb="1"  order="listorder DESC" }{loop $data $v}
+         <li>
+		 <a target="_blank" href="{$v[url]}" title="{$v[title]}"><img alt="{$v[title]}" src="{thumb($v[thumb],140,105)}" width="140" height="105"></a>
+         <a href="{$v[url]}" target="_blank" class="pic_pop">{$v[title]}</a>
+        </li> {/loop}{/h5}
+                      
+                    </ul>
+    </div>
+</div>
+
+
+				
+</div>
+{template "content","footer"}
+<script type="text/javascript">
+seajs.use(["jquery","autab"],function($){
+	$("#tab1").autab("i","li",4);
+	$("#tab2,#tab3,#tab4").autab("div.titl li:not(:has(span))","div.housetxt");
+	$("#gfzt").on("mouseover","li,div",function(){
+		$(this).find(".pic_pop").stop().animate({top:0});
+	}).on("mouseout","li,div",function(){
+		$(this).find(".pic_pop").stop().animate({top:"100%"});
+	})
+	$("#tree").on("click","span",function(){
+		var $t=$(this);
+		window.open($t.attr("url") ? $t.attr("url") : ("{APP_PATH}" + $t.attr("href")));
+	})
+})
+</script>
+
+</body>
+</html>

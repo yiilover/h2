@@ -1,0 +1,79 @@
+{template "content","head_house_show"}
+<script type="text/javascript" src="{APP_PATH}statics/house5-style1/newhouse/js/showDialog.js"></script>
+<link href="{APP_PATH}statics/house5-style1/newhouse/css/showDialog.css" rel="stylesheet" type="text/css" />
+ <div class="wrap mB10 crumb">您的位置：<a href="{APP_PATH}" title="">首页</a> > <a href="{HOUSE_PATH}" title="新房">新房</a> > <a href="{$url}" title="{$title}">{$title}</a> > <a href="{HOUSE_PATH}{$id}/shapan.html" title="在线沙盘">在线沙盘</a><span id="weizi"></span></div>
+<div class="wrap clear wrap_shadow LP_Situation">
+    <div class="shadow fix">
+    	<div class="fix commHd">
+        	<h3 class="fl fw_B fs_14">{$title}[{$xszt}]</h3>
+            <div class="fl fs_14 fw_B LP_hotline">售楼热线:<em class="en c_orangered fw_B">{$tel}</em></div>
+            <div class="fl LP_swm">
+                	<a href="javascript:showfceng('erweima',1);" ><img src="{APP_PATH}statics/house5-style1/newhouse/img/erweima.png" /></a>
+                    <div class="LP_swm_panel">
+                    	<b></b>
+                    	<div class="swm"><img src="{APP_PATH}caches/caches_content/caches_house/mobile_houseqrcode/{$siteid}/{$id}.png" alt="{$title}" width="171" height="171"/></div>
+                    </div>
+            </div>
+            <a href="javascript:callphones('4882430623961921590');" title="免费通话" class="forCALL"><b></b>免费通话</a><a href="javascript:showfceng('dxfsc',1);" title="发送到手机" class="forMAIL"><b></b>发送到手机</a><a title="收藏本楼盘" href="#" class="collect"><b></b>收藏</a> 
+        </div>
+       	<div class="main2_1"><span>{$title} 网络沙盘 在售房源一览</span><img src="{APP_PATH}statics/house5-style1/newhouse/img/tuli.gif" class="tuli" alt="沙盘图例"></div>
+        <div class="main2_2">
+            
+			<div class="loubiao">
+                <img src="{$shapan}" border="0" onmouseover="mouseout(0);" usemap="#rdMap">
+                <map name="rdMap" id="rdMap">
+			{h5:content action="buildinfo" catid="19" relation="$id" order="id DESC"}
+			{php $i=0;}
+			{loop $data $v}
+			{php list($v[top], $v[left]) = explode('|', $v[shapan]);}
+			
+                <div class="biao {if $v[xszt]=='1'}biaozs{elseif $v[xszt]==2}biaows{else}biaosw{/if}" id="wai{$i}" style="left: {$v[left]}; top: {$v[top]}; z-index: 999;"><div class="biao-1" onmouseover="showceng({$i});" onclick="showWindow('【{$title}】 {$v[title]} 房源详细信息一览','{APP_PATH}index.php?s=content/index/buildinfo/bid/{$v[id]}','900');">
+				{php $v['xszt'] = getbox_val('29','xszt',$v['xszt']);}
+				{$v[title]}{$v['xszt']}</div><div id="ceng{$i}" class="biao-2 snone" onmouseover="clearTime({$i});" style="z-index: 999; display: none;"><p>楼栋：{$v[title]}</p><p>单元：{$v[unit]}个单元</p><p>层数：{$v[floor]}层</p><p>户数：{$v[hushu]}</p><p><a href="javascript:;" onclick="showWindow('【{$title}】 {$v[title]} 房源详细信息一览','{APP_PATH}index.php?s=content/index/buildinfo/bid/{$v[id]}','900');" title="">&gt;&gt;查看楼栋详情</a></p></div></div>
+			{php $i++;}
+			{/loop}
+			{/h5}
+			    </map>                
+            </div>
+		</div>
+    </div>
+</div>
+<script type="text/javascript">
+    var n = 8;
+    var upid = -1;
+    var thistime = null;
+    function mouseout(d) {
+        thistime = setTimeout(function () {
+            mouseover();
+        }, 500);
+    };
+    function clearTime(d) {
+        if (thistime != null) {
+            clearTimeout(thistime);
+            thistime = null;
+        };
+        $("#ceng" + d).css("display", "block");
+    };
+    function mouseover() {
+        for (var i = 0; i < n; i++) {
+            if (thistime != null) {
+                $("#ceng" + i).css("display", "none");
+            };
+        };
+    };
+    function showceng(d) {
+        if (thistime != null) {
+            clearTimeout(thistime);
+            thistime = null;
+        };
+
+        if (upid > -1 && upid != d) {
+            $("#ceng" + upid).css("display", "none");
+            $("#wai" + upid).css("zIndex", "99");
+        };
+        $("#ceng" + d).css("display", "block");
+        $("#wai" + d).css("zIndex", "999");
+        upid = d;
+    };
+</script>
+{template "content","footer_house_show"}

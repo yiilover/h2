@@ -1,0 +1,15 @@
+{h5:vote action="show" subjectid="$subjectid" order="$order"}
+		{loop $data $v}
+		<form action="?s=vote/index/post&subjectid={$subjectid}" method="post">
+		<h5>{$v[subject]}</h5>
+			{h5:vote action="option_lists" subjectid="$subjectid" return="dat"}
+			{loop $dat $option_v}
+			
+			<a href="{$option_v[url]}" target="_blank">{$option_v[option]}</a> <br>
+			{/loop}
+			{$pages}
+			{/h5}
+		<input type="submit" value="Ìá½»" />
+		</form>
+		{/loop}
+ {/h5}

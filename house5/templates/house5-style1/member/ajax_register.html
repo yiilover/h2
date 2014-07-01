@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>µÇÂ¼</title>
+  <meta name="Generator" content="">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+<style>
+<!--
+/* reset */
+body{background:#fff;line-height:166.6%;font-size:12px}
+body,input,select,button{font-family:verdana,sans-serif}
+h1,h2,h3,h4,h5,h6,select,input,textarea,button,table{font-size:100%}
+body,h1,h2,h3,h4,h5,h6,ul,ol,li,form,p,dl,dt,dd,table,th,td,img,blockquote{margin:0;padding:0;border:0}
+input,button,textarea,img{line-height:normal}
+abbr,acronym,address,cite,q,em,code,var,dfn,ins{font-style:normal;text-decoration:none;border:0}
+q:before,q:after{content:""}
+ul,ol{list-style:none}
+table{border-collapse:collapse;border-spacing:0}
+select,input,button,button img{vertical-align:middle}
+.ipt-r,
+.ipt-c{width:16px;height:16px;+width:15px;+height:15px;_height:14px;padding:0;margin:2px 3px 2px 0;overflow:hidden;-ms-box-sizing:border-box}
+.page,.header,.content,.footer{margin:auto}
+element.style {
+    color: red;
+}
+.login .fi-btns,
+.header,
+.fn-clear{+zoom:1;}
+
+.login .fi-btns:before,
+.login .fi-btns:after,
+.header:before,
+.header:after,
+.fn-clear:before,
+.fn-clear:after{clear:both;content:".";font-size:0;display:block;height:0;overflow:hidden;visibility:hidden;}
+/* È«¾Ö */
+a{color:#1F4E8B}
+.btn, .bg {
+    background-color: transparent;
+    background-image: url("/statics/default/img/index/loginbg.gif");
+    background-repeat: no-repeat;
+}
+
+.login{width:356px;padding:20px 0 0 40px;position:absolute;}
+.login h2{display:none}
+.login .form{zoom:1}
+.login .fi{margin:22px 0;position:relative}
+.login .fi .lb{font-size:14px}
+.login .fi-btns,
+.login .fi-nolb{padding-left:50px}
+.login .at{font-size:16px;font-family:arial,sans-serif}
+.login .ipt-t{width:200px;height:20px;margin-right:3px;border:1px solid #7A8395;padding:4px;font-size:14px;line-height:18px;font-weight:bold;ime-mode:disabled;background-color:#EFF6FA}
+.login .ipt-t-on{border:1px solid #ccc;background-color:#fffff0;}
+.login .ipt-t-focus,
+.login .ipt-t:focus{background-color:#FFFFE1}
+.login .ipt-t-fullid{width:255px}
+.login .ipt-t-domain{width:100px;margin-left:3px}
+.login .cookie,
+.login .ssl{color:#707070;margin-right:35px}
+.login .btn-login{float:left;padding:0;border:0;width:95px;height:35px;_height:36px;margin-right:20px;_margin-right:17px;background-position:0 -144px;cursor:pointer}
+.login .btn-login span{visibility:hidden}
+.login .btn-login-hover,
+.login .btn-login:hover{background-position:-144px -144px}
+.login .domain{width:125px;position:absolute;left:230px;top:5px;+left:235px;+top:8px;line-height:normal;word-break:break-all;word-wrap:break-word}
+.login .msg-err{color:#d90000}
+.login .link{margin:0 10px 0 -10px;padding-top:12px;border-top:1px solid #CDD8E6;text-align:center}
+.login .link a{color:#768AA4;text-decoration:none;margin-right:3px;}
+.login .link .login_ljzc{color:red;}
+-->
+</style>
+ </head>
+<div class="login">
+					<h2>µÇÂ¼</h2>
+				<form method="post" action="index.php?s=member/index/login" onsubmit="save_username();" id="myform" name="myform" class="form">
+                <input type="hidden" name="forward" id="forward" value="{$forward}">
+							
+							<div class="fi">
+								<label class="lb">ÕÊ  ºÅ£º</label>
+								<input type="text" value="" name="username" onfocus="this.className='ipt-t ipt-t-on'" class="ipt-t">
+							</div>
+							<div class="fi">
+								<label class="lb">ÃÜ  Âë£º</label>
+								<input type="password" onfocus="this.className='ipt-t ipt-t-on'"  name="password" class="ipt-t ipt-t-pwd">
+								<a target="_blank" href="{APP_PATH}index.php?s=member/index/forget_password">Íü¼ÇÃÜÂë</a>
+							</div>
+						<div class="fi"> 
+								<label class="lb">Ñé Ö¤£º</label>
+								<input type="text" onfocus="this.className='ipt-t ipt-t-domain ipt-t-on'"  value="" name="code" class="ipt-t ipt-t-domain">
+								
+							</div>
+					
+												
+							<div class="fi fi-nolb">
+								<label class="cookie"><input type="checkbox" name="cookietime" value="2592000" class="ipt-c">¼Ç×¡µÇÂ¼×´Ì¬</label>
+							
+							</div>
+							<div class="fi fi-btns">
+								<button onmouseout="this.className='btn btn-login'" onmouseover="this.className+=' btn-login-hover'" class="btn btn-login" type="submit"><span>µÇ Â¼</span></button>
+								
+							</div>
+						</form>
+						
+						<div class="link"> 
+							<A class="lo_sina" title="ÐÂÀËÎ¢²©ÕÊºÅµÇÂ¼" href="{APP_PATH}index.php?s=member/index/public_sina_login&forward={$forward}">ÐÂÀËÎ¢²©</A>
+							<A class="lo_qq" title="QQÕÊºÅµÇÂ¼" href="{APP_PATH}index.php?s=member/index/public_qq_loginnew&forward={$forward}">QQÕÊºÅ</A> 
+							<A class="login_ljzc" title="Á¢¼´×¢²á" href="{APP_PATH}index.php?s=member/index/register/forward/{$forward}">Á¢¼´×¢²á</A>
+						</div>
+				</div>

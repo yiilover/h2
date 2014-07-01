@@ -1,0 +1,130 @@
+@charset "utf-8";
+/**
+* Description: Base style 
+* Developers: zhaoyongchang <yongchang@leju.sina.com.cn>
+**/
+/*RESET
+-------------------------------------------------------------- */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, hr, pre, code, form, input, button, fieldset, textarea, p, blockquote, th, td { margin: 0; padding: 0; -webkit-text-size-adjust:none}
+table { border-collapse: collapse; border-spacing: 0 }
+fieldset, img { border: 0 }
+address, caption, cite, code, dfn, em, strong, th, var { font-style: normal; font-weight: normal }
+ol, ul { list-style: none }
+body{ position:relative; font-family:Arial, Helvetica, sans-serif; height:100%}
+a{ text-decoration:none}
+html{ display:block}
+
+
+.main{ background:url(../images/wap/index_bg.png) #6e8fce; background-size:102px 90px; padding-bottom:20px; position:relative}
+
+.top_line{ height:4px; background:#2d4b90; border-bottom:1px solid #253f7a}
+.logo{ height:60px; background: url(../images/wap/i_logo_line.png) top repeat-x; background-size:1px 42px; text-align:center; position:relative}
+.logo .img{ padding:14px 20px 0 20px; background:url(../images/wap/index_bg.png); background-size:102px 90px; display:block; margin:0 auto; width:115px;; line-height:200px; overflow:hidden}
+.logo .img p{ display:block; width:115px; height:38px; background:url(../images/wap/i_logo.png); background-size:115px 38px; overflow:hidden}
+
+.sel_city_bn{ height:40px; line-height:40px; background:url(../images/wap/sel_ct_ico.png) right no-repeat; background-size:8px 40px; font-size:14px; color:#fff; position:absolute; top:0; right:10px; display:block; padding:0 12px 0 0; text-align:right; text-shadow:1px 1px 0px #3259a3}
+
+.m_ser{ padding:0 0 0 10px; height:36px; background:#fff; border-radius:3px; -webkit-box-shadow: 0px 0px 3px #152d65; margin:0 10px 2px 10px; position:relative}
+.m_ser .input_keys{ border:0; height:36px; line-height:14px; color:#999; font-size:14px; display:block; background:#fff; border-radius:3px; width:100%; -webkit-appearance:none;}
+.m_ser .search_bn{ display:block; position:absolute; width:36px; height:36px; top:0px; right:0px;  border-radius:3px; background:url(../images/wap/i_ser_bn.png); background-size:36px}
+.m_ser .ico_clear { width:32px; height:36px; position:absolute; top:0; right:36px; display:block}
+.m_ser .ico_clear i{ display:block; width:18px; height:18px; border-radius:18px; background:url(../images/wap/h_so_img.png) 0px -32px no-repeat #d8d8d8; background-size:23px 50px; margin:10px auto 0 auto}
+
+.m_wz{ display:block; margin:0 12px; height:40px; position:relative}
+.m_wz .t{ margin:0 80px 0 0; padding:0 0 0 18px; background:url(../images/wap/i_wz.png) 0 13px no-repeat; background-size:15px; line-height:40px; color:#ccf2fe; font-size:12px; text-shadow:1px 1px 0px #0b2462; text-overflow:ellipsis; white-space:nowrap; overflow:hidden}
+.m_wz .b{ display:block; height:40px; width:72px; position:absolute; top:0; right:0; line-height:40px; font-size:14px; text-align:right; background:url(../images/wap/wz_icon.gif) 0 -1px no-repeat; background-size:12px 40px; color:#fff; text-shadow:1px 1px 0px #0b2462; }
+
+.m_sel{ margin:0 10px 10px 10px; border-radius:3px; -webkit-box-shadow: 0px 0px 4px #0c1f4d inset; background:rgba(1,15,48,0.4)}
+.m_sel .top_nav{ height:40px}
+.m_sel .top_nav ul{height:40px}
+.m_sel .top_nav li em{ display:block; width:25%; height:38px; float:left; clear:none; position:relative; line-height:38px; padding:1px 0 0 0; border-bottom:1px solid #4a69b5; background-color:rgba(0,0,0,0.5); color:#8caaf6; font-size:14px; text-align:center}
+.m_sel .top_nav .on em{ background-color:rgba(0,0,0,0.0); border-bottom:0px; padding-bottom:1px; color:#fff; background: url(../images/wap/i_sel_nav.png) center no-repeat; background-size:5px 40px}
+.m_sel .top_nav .bn_map{ display:block; width:76px; height:38px; line-height:38px; font-size:14px; color:#fff; text-align:center; border-bottom:1px solid #3f5b9e; padding:1px 0 0 16px; position:absolute; top:0; right:0; background:url(../images/wap/wz_ico.gif) 8px 9px no-repeat; background-size:12px 22px; background-color:rgba(0,0,0,0.3); border-radius:0 3px 0 0; text-shadow:0px 0px 3px #000; }
+.m_sel .m_con{ margin:0 10px; padding:6px 0 0 0}
+.m_sel .m_con p{ display:block; width:100%; border-top:1px dotted #1c2f5e; height:36px}
+.m_sel .m_con .s_p{ border:0}
+.m_sel .m_con p label{ display:block; float:left; line-height:36px; height:36px; text-align:center; clear:none; width:33%}
+.m_sel .m_con .l4 label{ width:25%}
+.m_sel .m_con p label a{ color:#fff; font-size:14px; position:relative; display:block}
+.m_sel .m_con p label a i{ display:block; width:0px; height:12px; overflow:hidden; position:absolute; top:12px; right:0px; border-left:1px dotted #1c2f5e;}
+
+.m_sel .bot_nav{ height:9px; text-align:center; overflow:hidden; line-height:1px; padding:6px 0 14px 0}
+.m_sel .bot_nav em{ display:inline-block; width:7px; height:7px;  background:#fff; border-radius:5px; margin:0 3px; border:1px solid #fff}
+.m_sel .bot_nav .on{ background:#4bb223; border:1px solid #62c93b}
+
+.m_tool{ height:54px}
+.m_tool a{ display:block; width:25%; height:54px; float:left; clear:none; text-align:center; padding:4px 0 0 0; text-shadow:0px 0px 3px #082154}
+.m_tool a span{ display:block; border-right:1px solid #6084d6; border-left:1px solid #4967ac; padding:4px 0 0 0}
+.m_tool a i{ display:block; height:26px; background:url(../images/wap/i_tool_bn.png) 0 0 no-repeat; background-size:24px 104px; width:24px; margin:0 auto}
+.m_tool a .ico2{ background-position:0 -26px}
+.m_tool a .ico3{ background-position:0 -52px}
+.m_tool a .ico4{ background-position:0 -78px}
+.m_tool a b{ display:block; height:24px; line-height:24px; font-size:14px; color:#fff}
+
+.m_bg{ width:100%; position:absolute; bottom:0px; left:0; height:19px; background:url(../images/wap/i_m_bg.png) repeat-x; border-bottom:1px solid #5774bb}
+
+.tit_h2{ display:block; height:38px; line-height:38px; padding:2 10px 0 10px; background:#253458; border-bottom:1px solid #3259a3; font-size:16px; font-weight:bold; color:#fff; text-shadow:0px 0px 3px #3259a3; position:relative}
+.tit_h2 i, .tit_h2 .h{ display:block; position:absolute; width:56px; height:6px; background:url(../images/wap/deta_nva_s.png) center no-repeat; background-size:11px 6px; margin:0 auto; left:0px; top:35px}
+
+.new_list{padding:5px 0}
+.new_list div{background:url(../images/wap/time_line.png) repeat-y; background-size:2px 2px; margin:0 10px 0 10px}
+.new_list div a{ display:block; padding:12px 0 10px 0; margin:0 0 0 12px; border-bottom:1px dotted #d8d8d8; line-height:16px; color:#2758b6; text-shadow:1px 1px 0px #fff; background:url(../images/wap/arr_1.png) center right no-repeat; background-size:7px 12px; position:relative; font-size:16px}
+.new_list div a label em{ display:block; width:11px; height:11px; background:url(../images/wap/deta_ico_bg.png)-39px -56px; background-size:50px 150px; -webkit-box-shadow:1px 1px 1px #fff; position:absolute; right:-10px; top:-1px}
+.new_list div a span{ overflow:hidden; white-space:nowrap; text-overflow:ellipsis; display:block}
+.new_list div a label{ display:block; font-size:10px; position:absolute; top:-5px; position:relative; line-height:10px; color:#333; width:60px}
+.new_list div a i{ display:block; width:7px; height:7px; border:2px solid #a5b8dc; border-radius:6px; position:absolute; top:7px; left:-17px; -webkit-box-shadow:1px 1px 1px #fff; background:#fff}
+
+.bn_most{ height:40px; background:url(../images/wap/line_1.png) top repeat-x; margin-bottom:13px}
+.bn_most div, .bn_most .s2{ margin:0 10px; height:40px; background:-webkit-gradient(linear, left top, left bottom, color-stop(0, #f8f8f8), color-stop(1, #e5e5e5)); border:1px solid #d4d4d4; border-top:1px solid #f1f1f1;  border-radius:0 0 5px 5px;  -webkit-box-shadow: 0px 0px 3px #c3c3c3; position:relative; text-shadow:1px 1px 0px #fff;}
+.bn_most div b{ display:block; width:98%; height:1px; background:#f1f1f1; overflow:hidden; top:39px; left:3px; position:absolute}
+.bn_most div i, .bn_most div .h { background:#fff; width:100%; height:5px; top:-6px; left:0; position:absolute; display:block; overflow:hidden}
+
+.bn_most div .top{ display:block; width:40px; height:22px; font-size:12px; position:absolute; z-index:2; right:0; border-left:1px solid #fff; text-align:center; font-size:12px; background:url(../images/wap/deta_ico_bg.png) 15px -90px no-repeat; background-size:50px 150px; padding:16px 0 0 0; line-height:22px; color:#999}
+.bn_most .most{ margin:0 41px 0 0; border-right:1px solid #d1d1d1; height:26px; display:block; text-align:center; padding:8px 0 4px 0}
+.bn_most .most span{ display:block; height:26px; width:90px; font-size:16px; font-weight:bold; color:#333; margin:0 auto; line-height:26px; overflow:hidden; background:url(../images/wap/deta_ico_bg.png) -33px -71px no-repeat; background-size:50px 150px; padding:0 0 0 10px }
+.bn_most .most em{ font-size:12px; color:#999}
+.bn_most .most .num{ width:140px}
+.bn_most .most .up{ background:url(../images/wap/deta_ico_bg.png) -33px -124px no-repeat;}
+.bn_most sub{ display:block; background:#fff; height:5px; position:absolute; width:100%; top:-10px; left:0}
+
+.pm_tit{ height:40px}
+.pm_tit li{ display:block; width:50%; float:left; clear:none}
+.pm_tit h2{ display:block; height:38px; border:0px; border-top:1px solid #d8d8d8; border-bottom:1px solid #d8d8d8; background:#f5f5f5; line-height:38px; text-align:center; font-size:16px; text-shadow:0px 0px 3px #fff; position:relative}
+.pm_tit .on h2{ background:#6e8fce; border:1px solid #3259a3; color:#fff; text-shadow:0px 0px 3px #3259a3;}
+.pm_tit .on h2 i{ display:block; position:absolute; width:100%; height:6px; background:url(../images/wap/deta_nva_s.png) center no-repeat; background-size:11px 6px; margin:0 auto; left:0px; top:33px}
+
+
+.pm_con{ margin:2px 10px 0 10px}
+.pm_con a {display:block; height:60px; border-bottom:1px dotted #d8d8d8; position:relative; padding:8px 0}
+.pm_con .end{ border-bottom:0px}
+.pm_con a .lpic{ display:block; position:absolute; width:68px; height:60px; -webkit-box-shadow:0px 0px 2px #000 inset; background-size:90px 80px; top:8px; left:0; z-index:1}
+.pm_con a sub{ display:block; width:14px; height:14px; background:#cf504f; border-radius:2px; text-align:center; color:#fff; font-size:12px; line-height:14px; text-shadow:1px 1px 0px #a22827; position:absolute; top:11px; left:3px; z-index:2}
+.pm_con a .ltxt{ display:block; margin:0 0 0 78px; height:60px; overflow:hidden;  padding:0px 9px 0 0; line-height:24px; background:url(../images/wap/arr_1s.png) right center no-repeat; background-size:17px 12px}
+.pm_con a .ltxt label{ display:block; height:20px; line-height:20px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden}
+.pm_con a .ltxt .h1{ font-size:14px; font-weight:bold; color:#2758b6}
+.pm_con a .ltxt .jg{ font-size:12px; color:#cc3b3a; font-weight:bold}
+.pm_con a .ltxt .wz{ font-size:12px; color:#666; width:210px}
+.pm_con a .ltxt .wz b{ font-weight:normal; color:#cacaca; padding:0 5px;}
+
+footer{ background:#6e8fce; padding:8px 0; text-align:center; border-top:1px solid #133068; text-shadow:0 0 3px #0f367f; }
+footer .p1{ color:#fff; font-size:12px; line-height:20px}
+footer .p2{ color:#d1e1ff; font-size:10px; line-height:16px}
+
+.m_t20{ margin-top:20px}
+
+
+.sel_city{ position:fixed; top:0; bottom:0; z-index:1001; width:100%; background:rgba(10,10,10,0.5)}
+.sel_city .m_con{ margin:0 10px; background:rgba(10,10,10,0.9); border-radius:5px; -webkit-box-shadow:0px 0px 5px #000; border:1px solid #000; padding:10px; margin-top:60px}
+.sel_city .m_con h1{ display:block; line-height:60px; height:60px; text-align:center; color:#b9b9b9; font-size:20px; border-radius:5px; background:#292929; -webkit-box-shadow:0px 0px 5px #000 inset; text-shadow:0px 0px 5px #000; margin-bottom:10px; border:1px solid #0d0d0d}
+.sel_city .m_con h1 b{ color:#fff}
+.sel_city .city_con{}
+.sel_city .city_con label{ width:25%; height:38px; line-height:38px; text-align:center; display:block; float:left; clear:none}
+.sel_city .city_con a{ display:block; color:#fff; font-size:14px; position:relative}
+.sel_city .city_con a i{ display:block; border-left:1px dotted #575757; height:14px; top:12px; right:0px; width:0px; position:absolute}
+.sel_city .city_con p{ display:block; clear:both; height:38px}
+.sel_city .city_con .bg_p{ background:rgba(0,0,0,0.5);}
+.sel_city .city_con nav{ height:9px; text-align:center; overflow:hidden; line-height:1px; padding:8px 0 6px 0}
+.sel_city .city_con nav em{ display:inline-block; width:7px; height:7px;  background:#fff; border-radius:5px; margin:0 3px; border:1px solid #fff}
+.sel_city .city_con nav .on{ background:#4bb223; border:1px solid #62c93b}
+.sel_city .close{ display:block; padding:4px; position:absolute; top:46px; right:0}
+.sel_city .close i{ display:block; width:22px; height:22px; background:url(../images/wap/ico_clo.png) center no-repeat #4bb223; background-size:12px 11px; border-radius:12px; border:1px solid #62c93b}

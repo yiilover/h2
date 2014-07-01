@@ -1,0 +1,93 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import url("base.css");
+
+body{ background:url(../../img/house/onebg.gif) center top}
+.one{ width:645px; margin:0 auto}
+.one .top{ height:180px;}
+.one .logo{margin-top:50px;width:200px; height:50px; background:url(../../img/logo.png) no-repeat; _background:url(../../img/house/onelogoIE6.gif); float:left}
+.one .logo_r{ width:200px; height:60px; background:url(../../img/house/one.gif); float:right; margin-top:39px; display:inline}
+.one .switch{ border-right:1px solid #bababa;}
+.one .switch li{ width:92px; height:40px; text-align:center; float:left; background:url(../../img/house/one.gif) -198px -220px; color:#666; cursor:pointer;}
+.one .switch li.on{background:url(../../img/house/one.gif) -198px -270px; color:#cc0000; font-weight:bold}
+.one .switch li b{ border-right:1px solid #bababa; float:right; height:13px; margin-top:7px; margin-top:8px\0/; *margin-top:8px; _margin-top:7px;}
+.one .container{ border:5px solid #dfdfdf; width:635px; height:360px;}
+.one .container .container_bg{width:635px; height:360px; background:#daeaf9; filter:alpha(opacity=50); -moz-opacity:0.5; -khtml-opacity:0.5; opacity:0.5; position:absolute; z-index:-999}
+.one .container .tit{ background:url(../../img/house/one.gif) 0 -60px; width:275px; height:47px; position:absolute; margin:13px 0 0 -9px}
+.one .container .tit h3{ font:22px "\5FAE\8F6F\96C5\9ED1"; color:#fff; margin:7px 0 0 15px}
+.one .container .tit h3 label{ font-size:26px}
+.one .box a.jump{ background:url(../../img/house/one.gif) -145px -110px; width:145px; height:40px; text-indent:-9999px; display:block; outline:none; blr:expression(this.onFocus=this.blur());}
+
+/*result*/
+.result{ width:155px; border:3px solid #ccc; position:absolute; margin:133px 0 0 -182px; *margin-top:121px; padding:5px; color:#333; background:#fff}
+.result strong{ line-height:30px;}
+.result li{ line-height:30px; height:30px; border-bottom:1px dotted #ccc;}
+.result dt,.result dd{ float:left;}
+
+/*b1*/
+.one .box .b1 li{ float:left; margin:20px 0 0 20px; _display:inline}
+.one .box .b1{ margin:50px 0 0 50px; float:left\0/;}
+.one .box .b1 li a,.one .box .b3 li a,.one .box .b4 li a,.one .box .b6 li a{ background:url(../../img/house/one.gif) 0 -155px; width:104px; height:63px; padding-top:20px; text-align:center; display:block; font:20px/24px "\5FAE\8F6F\96C5\9ED1";color:#cc0000;}
+.one .box .b1 li a:hover,.one .box .b3 li a:hover,.one .box .b4 li a:hover,.one .box .b6 li a:hover{background:url(../../img/house/one.gif) 0 -280px;}
+.one .box .b1 a.jump,.one .box .b4 a.jump{ margin:20px auto 0}
+/*b2*/
+.one .box .b2{display:none; margin:130px auto 0; width:620px; height:230px;}
+.one .box .b2 table{ border-collapse:collapse; margin-top:5px;}
+.one .box .b2 table td{ width:124px; text-align:center; color:#bbb;}
+.one .box .b2 .sliderRange{ width:496px; margin:0 auto}
+.one .box .b2 .priceTop{ height:16px; margin:0 25px}
+.one .box .b2 .priceTop .right{ float:right}
+.one .box .b2 .priceBot{ text-align:center; margin-top:10px; height:30px}
+.one .box .b2 b{ font-size:14px;}
+.one .box .b2 label{ color:#cc0000; font-weight:bold; font-size:16px}
+.one .box .b2 .b2btn{ height:40px; width:300px; margin:10px auto 0}
+.one .box .b2 a.jump{ float:left;}
+.one .box .b2 a.next{ background:url(../../img/house/one.gif) 0 -110px; width:145px; height:40px; text-indent:-9999px; float:right;outline:none; blr:expression(this.onFocus=this.blur());}
+.one .box .b2 p{ float:right; margin-top:50px}
+/*b3*/
+.one .box .b3{ margin:70px 0 0 50px; display:none;}
+.one .box .b3 ul{ float:right; width:370px;}
+.one .box .b3 a.jump{ float:left; margin-top:95px}
+.one .box .b3 li{ float:left; margin:0 0 10px 10px; _display:inline}
+/*b4*/
+.one .box .b4{ margin:100px 0 0 70px; display:none;}
+.one .box .b4 ul{ overflow:hidden; _zoom:1}
+.one .box .b4 li{ float:left; margin:0 0 10px 20px; _display:inline}
+/*b5*/
+.one .box .b5 li a{ background:url(../../img/house/one.gif) 0 -240px; width:104px; height:31px; line-height:31px; font-weight:bold; text-align:center; display:block; font-size:14px; color:#cc0000;}
+.one .box .b5 li a:hover{background:url(../../img/house/one.gif) 0 -370px;}
+.one .box .b5{ margin:70px 0 0 50px; display:none; float:left\0/; width:585px;}
+.one .box .b5 ul{ float:right; width:370px;}
+.one .box .b5 ul span{ color:#cc0000; font:14px "\5FAE\8F6F\96C5\9ED1"}
+.one .box .b5 a.jump{ float:left; margin-top:95px; margin-right:65px\0/;}
+.one .box .b5 li{ float:left; margin:0 0 10px 10px; _display:inline}
+/*b6*/
+.one .box .b6{ margin:100px 0 0 25px; display:none;}
+.one .box .b6 li{ float:left; margin:0 0 10px 10px; _display:inline}
+.one .box .b6 a.jump{ float:left; margin:40px 0 0 40px}
+/*final*/
+.one .box .b7{ display:none;}
+.prompt{height:20px; margin:20px 0 0 300px; color:#cc0000; font:14px "\5FAE\8F6F\96C5\9ED1"}
+.final{ margin:40px 0 0 0; position:relative;}
+.final a.prevButton,.final a.prevMore,.final a.nextButton,.final a.nextMore{ position:absolute; width:27px; height:26px; background:url(../../img/house/one.gif); display:block;outline:none; blr:expression(this.onFocus=this.blur());}
+.final a.prevButton{left:12px; top:60px; background-position:-110px -190px;}
+.final a.prevMore{left:12px; top:110px;background-position:-110px -220px;}
+.final a.nextButton{right:12px; top:60px;background-position:-110px -250px;}
+.final a.nextMore{right:12px; top:110px;background-position:-110px -280px;}
+.final a.prevButton:hover{ background-position:-140px -190px;}
+.final a.prevMore:hover{background-position:-140px -220px;}
+.final a.nextButton:hover{ background-position:-140px -250px;}
+.final a.nextMore:hover{ background-position:-140px -280px;}
+.final .final_m{ position:relative; width:517px; height:220px; overflow:hidden; left:58px;}
+.final .final_m ul{ position:absolute; height:220px; width:2000px;}
+.final .final_m li{ width:155px; height:218px; float:left; background:#fff; border:1px solid #e5e5e5; margin-right:23px; text-align:center; line-height:18px;color:#666; display:inline}
+.final .final_m li p{ height:32px; overflow:hidden;}
+.final .final_m li a.img{ width:120px; height:90px; padding:1px; border:1px solid #ccc; display:block; margin:13px auto 5px}
+.final .final_m li a.img img{ width:120px; height:90px;}
+.final .final_m li h2 a{ color:#cc0000; font-size:14px;}
+.final .final_m li a.detail,.final .final_m li a.gomap{ background:url(../../img/house/one.gif) -200px -38px; width:60px; height:22px; line-height:22px; text-align:center; display:inline-block; color:#fff; margin-top:5px}
+.final .final_m li a.gomap{ background:url(../../img/house/one.gif) -210px -155px; color:#000}
+.pushbtn{ float:right; margin-top:15px;}
+.pushbtn a{ background:url(../../img/house/one.gif) -110px -155px; width:98px; height:31px; line-height:31px; text-align:center; float:right; color:#666; margin-right:10px}
+.pushbtn a.rest{ color:#cc0000}

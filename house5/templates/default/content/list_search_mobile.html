@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="keywords" content="威海房产资讯,威海房地产门户,房产资讯,手机问房网" />
+<meta name="description" content="手机问房网资讯频道,致力于为房地产业界、租房、购房人群提供各类服务与咨讯。包括即时房产头条、楼市政策、市场动态、楼盘展示、写字楼、商铺、地产圈等房产相关内容！" />
+<title>手机问房网触屏版-导购</title>
+<link href="{APP_PATH}css/mobile/css.css" rel="stylesheet" type="text/css"/>
+<link href="{APP_PATH}css/mobile/scroll.css" rel="stylesheet" type="text/css"  />
+<script language="Javascript" src="{CSS_PATH}static/js/jquery.js"></script>
+<script language="javascript" src="{APP_PATH}css/mobile/zixun.js"></script>
+</head>
+<body>
+<a id="filter"></a>
+<div class="wrap">
+   <div class="jiaju-his"> <a href="{APP_PATH}">首页</a>&gt;<a href="http://news.venfang.com/list.html">资讯</a>&gt;<a>搜索结果</a>
+    <div class="clear"></div>
+  </div>
+  <div class="content">
+    <div class="clu">
+    <form action="http://house.venfang.com/search.php" method="get" accept-charset="gbk" onsubmit="document.charset='gbk';">
+      <div class="searchbox">
+        <div class="info-search flol ">
+        <input name="type" type="hidden" value="2">
+          <div class="info-searhinputbox" >
+            <input name="keyword" type="text" class="info-searhinput"  value="{$keyword}" maxlength="32" autocomplete="off">
+          </div>
+        </div>
+        <div class="xqsearchbtnbox">
+          <input class="xqsearchbtn" type="submit" value="搜索" />
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      </form>
+	  {php $where = "status=99 and (title like '%$keyword%' or description like '%$keyword%') and islink='0'"}
+	  {h5:content action="lists" catid="6" where="$where" num="10" keyword="$keyword" order="id DESC" page="$page" cache="1800"}
+      <div class="boxpadleft8">
+        <ul class="infolist f16">
+	        {loop $data $r}
+				<li><a class="ablack" href="http://news.venfang.com/showinfo-{$r[catid]}-{$r[id]}.html">{$n}.{str_cut($r[title], 36)}</a></li>
+			{/loop}			
+          <div class="clear"></div>
+        </ul>
+      </div>
+	  {/h5}
+    </div>
+    {$mobilepages}
+      
+    <div class="boxpadleft8 f16" style="padding-top:6px" >
+      <div style="border-top:1px solid #B3B3B3;padding-bottom:6px"></div>
+      <table width="100%" height="30" border="0" cellspacing="0" >
+        <tr>
+          <td width="36%" align="right">前往第</td>
+          <td width="21%" align="center"><input type="text" name="textfield" id="textfield" style="width:50px; height:24px; line-height:24px; font-family:Arial; font-size:16px"></td>
+          <td width="8%">页</td>
+          <td width="35%"><div class="info-btn-throupage"><a class="ablack" onclick="gopage()">翻页</a></div></td>
+        </tr>
+      </table>
+      <div id="totalpage" style="display:none">231</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="foot">
+   <div id="top" class="backtop f16"><a href="#filter"><img src="{APP_PATH}css/mobile/images/backtop.png" >返回顶部</a></div>
+   <div class="copy f12">Copyright &copy; 2012 VenFang.com 问房网 版权所有<BR><BR> 鲁ICP备11018261号-3</div>
+</div>
+<script type="text/javascript">
+	window.scrollTo(0, 1);
+</script>
+
+<script type="text/javascript">
+function gopage(){
+	var totalpage = $('#totalpage').html();
+	var input_page = $('#textfield').val();
+	if(input_page == ''){
+		alert('请输入页码！');
+		return;
+	}else if(!/^\d*$/.test(input_page) || input_page == 0){
+		if(input_page == 0){
+			alert( '输入的页码不正确！');
+		}else{
+			alert( '输入必须为数字！');
+		}
+		return;
+	}else if(parseInt(input_page) > parseInt(totalpage)){
+		alert("输入的页码不在范围内！");
+	}else if(parseInt(input_page) <= parseInt(totalpage)){
+		var url = document.URL;
+		if(url.indexOf("-p") > 0){
+			url2 = url.substring(url.indexOf("-p")+1,url.length);
+			url = url.replace("-"+url2,"-p"+input_page+".html");
+			window.location = url;
+		}else{
+			url = url.replace(".html","-p"+input_page+".html");
+			window.location = url;
+		}
+	}
+}
+
+function request(paras)
+{ 
+    var url = location.href;
+    if(url.indexOf("#") > 0){
+    	url = url.substring(0,url.indexOf("#"));
+    } 
+    var paraString = url.substring(url.indexOf("?")+1,url.length).split("&"); 
+    var paraObj = {} 
+    for (i=0; j=paraString[i]; i++){ 
+    paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length); 
+    } 
+    var returnValue = paraObj[paras.toLowerCase()]; 
+    if(typeof(returnValue)=="undefined"){ 
+    return ""; 
+    }else{ 
+    return returnValue; 
+    } 
+}
+</script>
+</body>
+</html>

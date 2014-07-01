@@ -1,0 +1,1167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link rel="shortcut icon" href="{APP_PATH}favicon.ico" />
+<link href="{APP_PATH}statics/default/css/news/news_style.css" rel="stylesheet" type="text/css" />
+<script language="Javascript" src="{APP_PATH}statics/default/css/news/default.js"></script>
+<script src="{APP_PATH}statics/default/js/lib/MSClass.js" type="text/javascript"></script>
+    <script type="text/javascript">//输入框文字消失
+ 		var mobiles = new Array
+            (
+                "midp", "j2me", "avant", "docomo", "novarra", "palmos", "palmsource",
+                "240x320", "opwv", "chtml", "pda", "windows ce", "mmp/",
+                "blackberry", "mib/", "symbian", "wireless", "nokia", "hand", "mobi",
+                "phone", "cdm", "up.b", "audio", "sie-", "sec-", "samsung", "htc",
+                "mot-", "mitsu", "sagem", "sony", "alcatel", "lg", "eric", "vx",
+                "NEC", "philips", "mmm", "xx", "panasonic", "sharp", "wap", "sch",
+                "rover", "pocket", "benq", "java", "pt", "pg", "vox", "amoi",
+                "bird", "compal", "kg", "voda", "sany", "kdd", "dbt", "sendo",
+                "sgh", "gradi", "jb", "dddi", "moto", "iphone", "android",
+                "iPod", "incognito", "webmate", "dream", "cupcake", "webos",
+                "s8000", "bada", "googlebot-mobile"
+            )
+ 
+    var ua = navigator.userAgent.toLowerCase();
+    var isMobile = false;
+    for (var i = 0; i < mobiles.length; i++) {
+        if (ua.indexOf(mobiles[i]) > 0) {
+            isMobile = true;
+			location.href = "{APP_PATH}list.html";
+        }
+    }
+	function OnFocusFun(element,elementvalue)
+		{
+			if(element.value==elementvalue)
+			{
+				element.value="";
+				
+			}
+		}
+ 		function OnBlurFun(element,elementvalue)
+		{
+			if(element.value==""||element.value.replace(/\s/g,"")=="")
+			{
+				element.value=elementvalue;
+			
+			}
+		} 
+    </script> 
+</head>
+<style type="text/css">
+.partbd ul li{display:block; float:left; width:50px; line-height:22px;  height:22px; text-align:center; text-decoration:none;}
+.partbd ul li a{display:inline-block;}
+.partbd li a:link, .partbd li a:visited {display: inline-block; height: 17px;line-height: 17px;padding: 0 5px;text-decoration:none;}
+.partbd li a:hover{background: none repeat scroll 0 0 #30c8f7;color:#ffffff;text-decoration:none;}
+.Newimgnews{width:960px; HEIGHT:297px;}
+.imgtitle{ width:960px; height:30px; background:url({APP_PATH}statics/default/img/news/imgtitle.gif)}
+.imgtitle h2{display:block; height:30px; line-height:30px; float:left; font-size:14px; color:#1155AA; font-weight:bold; padding-left:15px;}
+.imgtitle .Nmore{float:right; color:#333333; padding-right:10px; position:relative; top:10px; width:50px;}
+.imgconetent{width:958px; height:269px; border:1px solid #b2d0e8; border-top:none;} 
+.imgshows{width:308px; height:269px; background:url({APP_PATH}statics/default/img/news/imgshowline.gif) right center no-repeat; float:left;}
+.otherlist{width:645px; height:239px; float:right; padding-top:15px; padding-bottom:15px;}
+.otherlist ul li{display:block; width:161px; height:124px; float:left; text-align:center;}
+.otherlist ul li img{display:block; width:132px; height:94px; padding:2px; border:1px solid #dce0e1; margin:0 auto;}
+.otherlist ul li .listname{display:block; height:24px; line-height:24px; text-align:center ; color:#323232;}
+.otherlist ul li a:hover{color:#cc0000; text-decoration:none;}
+.imgtitle h2 a{ font-size:14px; color:#1155AA; font-weight:bold;}
+.imgtitle h2 a:hover{color:#CC0000; text-decoration:underline;}
+.hr5{ clear:both; height:5px; font-size:0;}
+.imgtitle a:hover{color:#cc0000; text-decoration:underline;}
+</style>
+<script>
+function MM_over(mmObj) {
+	var mSubObj = mmObj.getElementsByTagName("div")[0];
+	mSubObj.style.display = "block";
+	mSubObj.style.backgroundColor = "#fff";
+}
+function MM_out(mmObj) {
+	var mSubObj = mmObj.getElementsByTagName("div")[0];
+	mSubObj.style.display = "none";
+	
+}
+</script>
+<body>
+<div id="wrap">
+<div class="cArea">
+ {template "ssi","ssi_8"}
+<!--通用头部 end-->
+<div style="text-align:center;width:950px;margin:0px auto;margin-bottom:3px;">
+<!-- 广告位：全站顶部通栏1 -->
+<script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=25"></script>
+</div>
+<div style="text-align:center;width:950px;margin:0px auto;margin-bottom:3px;">
+<!-- 广告位：资讯首页通栏1 -->
+<script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=42"></script>
+</div>
+<div style="text-align:center;width:950px;margin:0px auto;margin-bottom:3px;">
+<!-- 广告位：资讯首页通栏2 -->
+<script language="javascript" src="{APP_PATH}index.php?s=poster/index/show_poster&id=43"></script>
+</div>
+<div class="hr10"></div>
+<!--logo+搜索 begin -->
+<div class="logo_search">
+  <div class="logo"><a href="{APP_PATH}"><img src="{APP_PATH}statics/default/img/logo.png" alt="{$SEO['site_title']}" /></a></div>
+  
+   <!-- 切换城市开始 -->
+      <div onmouseover="MM_over(this)" onmouseout="MM_out(this)" class="city" style=" line-height:40px; padding-left:5px; width:300px;  float:left; position:relative; top:5px; border-left:1px dashed #CCCCCC; z-index:9999"> <span  style="display:block; float:left; cursor:pointer; padding-left:5px; padding-right:0px;">{$default_city}</span><span style="float:left; cursor:pointer; width:12px; display:block; background:url({APP_PATH}statics/default/img/icon/city.jpg) center no-repeat; height:40px;"></span>
+          <!-- 隐藏层开始 -->
+  
+  
+ 
+  <div class="rss linka" style="float:left"><a target=_top href="javascript:window.external.addFavorite('{APP_PATH}','{$SEO['site_title']}')">收藏本页</a>&nbsp;&nbsp;<a onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('{APP_PATH}');" href="#">设为首页</a></div>
+  </div>
+  <div class="searcha">
+  													<a href="javascript:;" onclick="setmodel(1, $(this));" style="outline:medium none;" hidefocus="true"  class="on" ></a>										<a href="javascript:;" onclick="setmodel(91, $(this));" style="outline:medium none;" hidefocus="true" ></a>										<a href="javascript:;" onclick="setmodel(205, $(this));" style="outline:medium none;" hidefocus="true" ></a>										<a href="javascript:;" onclick="setmodel(267, $(this));" style="outline:medium none;" hidefocus="true" ></a>										<a href="javascript:;" onclick="setmodel(316, $(this));" style="outline:medium none;" hidefocus="true" ></a>								
+         <form action="{APP_PATH}index.php" method="get" target="_blank">
+				<input type="hidden" name="s" value="search/index/init"/>
+				<input type="hidden" name="typeid" value="1" id="typeid"/>
+				<input type="hidden" name="siteid" value="1" id="siteid"/>
+  
+    <div class="d3">
+      <input name="q" type="text" class="input01" id="q" value="输入关键字" onfocus="OnFocusFun(this,'输入关键字')" onblur="OnBlurFun(this,'输入关键字')" />
+    </div>
+    <div class="d2">
+      <input name="submit" type="submit" class="smb_btn" value="新闻搜索" />
+    </div>
+	 </form>
+  </div>
+</div>
+<!--logo+搜索 end -->
+<!--导航 begin -->
+<div class="nav">
+<ul class="linkb">
+<li><a href="{catlink(6)}" target="_blank">资讯首页</a></li>
+<li class="line"> </li>
+{h5:content action="category" catid="6" num="25" siteid="$siteid" order="listorder ASC"}{loop $data $r}
+<li><a href={$r[url]}>{$r[catname]}</a></li> 
+<li class="line"> </li>
+{/loop} {/h5} 
+</ul>
+</div>
+<div style="text-align:center;width:960px;margin:0px auto;margin-bottom:3px;">
+<!-- 广告位：资讯顶部通栏2 -->
+<script type="text/javascript">BAIDU_CLB_fillSlot("378968");</script>
+</div>
+<div style="text-align:center;width:960px;margin:0px auto;margin-bottom:3px;">
+<!-- 广告位：资讯顶部通栏3 -->
+<script type="text/javascript">BAIDU_CLB_fillSlot("378969");</script>
+</div>
+<div class="hr10"></div>
+<!--导航 end -->
+</div>
+<SCRIPT src="{APP_PATH}statics/default/js/news/scrollpic.js" type=text/javascript></SCRIPT>
+<div class="cArea">
+<div class="left">
+<!--聚焦图片 begin-->
+<div class="jjtp">
+{h5:content  action="position" posid="1" siteid=”$siteid” order="listorder DESC" thumb="1" num="5" cache="3600"}
+{if $data}
+<script src="{APP_PATH}statics/default/js/news/house5flash_1.js" type="text/javascript"></script>
+<div id="flashcontent01"></div>
+<script type="text/javascript">	
+var speed = 4000;		
+<?php
+$pics = Array();
+$mylinks = Array();
+$titles = Array();
+foreach ($data as $key=>$value)
+{
+	$pics[]= thumb($value[thumb],300,225);
+	$mylinks[] = $value[url];
+	$titles[] = str_cut($value[title],36);
+}
+$pics = implode('|',$pics);
+$mylinks = implode('|',$mylinks);
+$titles = implode('|',$titles);
+?>
+var pics="<?php echo $pics;?>";	
+var mylinks="<?php echo $mylinks;?>";
+var texts="<?php echo $titles;?>";			
+var sohuFlash2 = new sohuFlash("{APP_PATH}statics/default/img/news/house50414a.swf","flashcontent01","300","225","8","#ffffff");
+sohuFlash2.addParam("quality", "medium");
+sohuFlash2.addParam("wmode", "opaque");						sohuFlash2.addVariable("speed",speed);
+sohuFlash2.addVariable("p",pics);	
+sohuFlash2.addVariable("l",mylinks);
+sohuFlash2.addVariable("icon",texts);
+sohuFlash2.write("flashcontent01");
+</script>
+{/if}
+{/h5}
+</div>
+<!--聚焦图片 end-->
+<div class="hr10"></div>
+<!--精品推荐 begin-->
+<div class="leftwap">
+<div class="lefttitle">
+<div class="lefttitlel linkc"><div class="a1"><img src="{APP_PATH}statics/default/img/news/tbb.jpg" alt="问房网"/></div>
+  精品推荐</div>
+<div class="lefttitler"></div>
+</div>
+ {h5:content  action="position" posid="42" siteid=”$siteid” catid="6" order="listorder DESC" thumb="1" num="4" cache="86400"}
+	  {loop $data $v}
+<div class="PartTabt3">
+<div class="PartTabtl2">
+	<a href="{$v[url]}" title="{$v[title]}" target="_blank"><img alt="{$v[title]}" src="{thumb($v[thumb],80,60)}" style="width: 80px; height: 60px" /></a></div>
+<div class="PartTabtr3 linki">
+	<a href="{$v[url]}">{$v[title]}</a></div>
+<div class="PartTabtr2 linkhh" style="height:51px;">{str_cut($v[description],160)}<span class="linkhh">[<a href="{$v[url]}">详细</a>]</span></div>
+  </div>
+	{/loop}
+{/h5}
+</div>
+<!--精品推荐 end-->
+<div class="hr10"></div>
+</div>
+<div class="center">
+<div class="topnews">
+	{h5:content  action="position" posid="2" siteid=”$siteid” order="listorder DESC" num="1" cache="3600"}
+	<div class="a1 linkd">
+				{loop $data $v}
+		<a class="STYLE1" href="{$v[url]}">{$v[title]}</a>
+			{/loop}
+		</div>
+			 {/h5}
+	<ul>
+		<li>
+			热点：{h5:content  action="lists" catid="40" siteid=”$siteid” order="id DESC" num="2" cache="3600"}
+			{loop $data $v}
+			[<a href="{$v[url]}" title="{$v[title]}">{str_cut($v[title],24,'')}</a>]
+			 {/loop}&nbsp;{/h5}</li>
+		<li>
+			预告：{h5:content  action="lists" catid="49" siteid=”$siteid” order="id DESC" num="2" cache="3600"}
+			{loop $data $v}
+			[<a href="{$v[url]}" title="{$v[title]}">{str_cut($v[title],24,'')}</a>]
+			 {/loop}&nbsp;{/h5}</li>
+		<li>
+			导购：{h5:content  action="lists" catid="37" siteid=”$siteid” order="id DESC" num="2" cache="3600"}
+			{loop $data $v}
+			[<a href="{$v[url]}" title="{$v[title]}">{str_cut($v[title],24,'')}</a>]
+			 {/loop}&nbsp;{/h5}</li>
+	</ul>
+</div>
+<div class="topnews">
+ {h5:content  action="position" posid="35" siteid=”$siteid” order="listorder DESC" num="1" cache="3600"}
+		{loop $data $v}
+	<h1 class="a1 linkd">
+		<a href="{$v[url]}" title="{$v[title]}">{$v[title]}</a></h1>
+		{/loop}
+{/h5}
+	<ul>
+		<li>
+			全国：
+			{h5:content  action="lists" catid="16" siteid=”$siteid” order="id DESC" num="2" cache="3600"}
+			{loop $data $v}
+			[<a href="{$v[url]}" title="{$v[title]}">{str_cut($v[title],24,'')}</a>]&nbsp;
+			 {/loop}{/h5}</li>
+		<li>
+			威海：
+			{h5:content  action="lists" catid="24" siteid=”$siteid” order="id DESC" num="2" cache="3600"}
+			{loop $data $v}
+			[<a href="{$v[url]}" title="{$v[title]}">{str_cut($v[title],24,'')}</a>]&nbsp;
+			 {/loop}{/h5}</li>
+		<li>
+			快报：
+			{h5:content  action="lists" catid="26" siteid=”$siteid” order="id DESC" num="2" cache="3600"}
+			{loop $data $v}
+			[<a href="{$v[url]}" title="{$v[title]}">{str_cut($v[title],24,'')}</a>]
+			 {/loop}&nbsp;{/h5}</li>
+	</ul>
+</div>
+<div class="cennews">
+<div class="tiilecen"><span class="linkii"><a href="{APP_PATH}list.html">更多>></a></span>
+  <div class="a1 linke"><a href="{APP_PATH}list.html">要闻</a></div>
+  <!--
+<div class="a1">
+03月29日</div>
+-->
+</div>
+<div class="newscon linkf">
+<ul>
+{h5:content  action="lists" catid="24" siteid=”$siteid” order="id DESC" num="5" cache="3600"}
+{loop $data $v}
+		  <li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+		 {/loop}
+	{/h5}
+<li></li> 
+{h5:content  action="lists" catid="39" siteid=”$siteid” order="id DESC" num="5" cache="3600"}
+{loop $data $v}
+		  <li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+		 {/loop}
+{/h5}
+</ul>
+</div>
+</div>
+<div class="cennews">
+<div class="tiilecen"><span class="linkii"><a href="{siteurl($siteid)}/list.html">更多>></a></span>
+  <div class="a1 linke">快讯</div>
+<div class="a1">24小时滚动新闻</div></div>
+<div class="hr10"></div>
+<div class="newsconc" id="scrollDiv">
+{h5:content action="lists" catid="16" num="10" siteid=”$siteid” order="id DESC" cache="3600"}
+<ul>
+ {loop $data $v}
+<li><span>{date('m/d',$v[inputtime])}</span> ·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+</ul>
+</div>
+	<SCRIPT defer>
+	new Marquee("scrollDiv",0,2,400,110,22,2000,3000,22)
+</script>
+</div>
+</div>
+<div class="right">
+<!--热点专题 begin-->
+<div class="rightwap">
+<div class="righttitle">
+<div class="righttitlel linkc"><a href="{catlink(6)}special/">热点专题</a></div>
+<div class="righttitler"><a href="{catlink(30)}special/">更多>></a></div>
+</div>
+<div class="rightcon">
+<div class="PartTabt2">
+{h5:special  action="lists" siteid="$siteid" elite="1" listorder="3" num="1"}
+	  {loop $data $r}
+ <div class="PartTabtl2"><a href="{$r['url']}" target="_blank" title="{$r['title']}"><img src="{thumb($r[thumb],102,77)}" width="102" height="77" alt="{$r['title']}" alt="{$r['title']}"/></a></div>
+<div class="PartTabtr3 linkg"><a href="{$r['url']}" target="_blank" title="{$r['title']}">{$r['title']}</a></div>
+<div class="PartTabtr2 linkh"><a href="{$r['url']}" target="_blank" title="{$r['title']}">{$r['title']}</a></div>
+ {/loop}
+{/h5}
+</div>
+<div class="rightnews">
+{h5:special  action="lists" siteid="$siteid" elite="1" listorder="3" num="7"}
+		 <ul>
+		 {loop $data $r}
+		{if $n>1}
+ <li>·<a href="{$r['url']}" target="_blank" title="{$r['title']}">{$r['title']}</a></li>
+{/if}
+   {/loop}
+ </ul>
+{/h5}
+    </ul>
+</div>
+</div>
+</div>
+<!--热点专题 end-->
+<div class="hr10"></div>
+<!--新房导购 begin-->
+<div class="rightwap">
+<div class="righttitle">
+<div class="righttitlel linkc"><a href="{catlink(37)}">{catname(37)}</a></div>
+<div class="righttitler"><a href="{catlink(37)}loushi/daogou/">更多>></a></div>
+</div>
+<div class="rightcon">
+<div class="PartTabt2">
+ {h5:content  action="position" posid="10" catid="37" thumb="1" order="listorder DESC" num="1" cache="3600"}
+	  {loop $data $r}
+ <div class="PartTabtl2"><a href="{$r['url']}" target="_blank" title="{$r['title']}"><img src="{thumb($r[thumb],102,77)}" width="102" height="77" alt="{$r['title']}" alt="{$r['title']}"/></a></div>
+<div class="PartTabtr3 linkg"><a href="{$r['url']}" target="_blank" title="{$r['title']}">{str_cut($r[title],18,'')}</a></div>
+<div class="PartTabtr2 linkh"><a href="{$r['url']}" target="_blank">{str_cut($r[description],52)}</a></div>
+ {/loop}
+{/h5}
+</div>
+<div class="rightnews">
+{h5:content  action="lists" posids="0" catid="37" order="id DESC" num="4" cache="3600"}
+		 <ul>
+		 {loop $data $r}
+ <li>·<a href="{$r['url']}" target="_blank" title="{$r['title']}">{$r['title']}</a></li>
+   {/loop}
+ </ul>
+{/h5}
+    </ul>
+</div>
+</div>
+</div>
+<!--新房导购 end-->
+<div class="hr10"></div>
+<!--楼市周报 begin-->
+<div class="rightwap">
+<div class="righttitle">
+<div class="righttitlel linkc"><a href="{catlink(67)}">{catname(67)}</a></div>
+<div class="righttitler"><a href="{catlink(67)}">更多>></a></div>
+</div>
+<div class="rightcon">
+  <div class="rightnewsd">
+{h5:content  action="lists" posids="0" catid="67" order="id DESC" num="7" cache="10800"}
+		 <ul>
+		 {loop $data $r}
+ <li>·<a href="{$r['url']}" target="_blank" title="{$r['title']}">{$r['title']}</a></li>
+   {/loop}
+ </ul>
+{/h5}
+</div>
+</div>
+</div>
+<!--视频资讯 end-->
+<div class="hr10"></div>
+</div>
+</div>
+<div class="cArea">
+<div class="left">
+<!--市场分析 begin-->
+<div class="leftwapa">
+<div class="lefttitle">
+  <div class="righttitlel linkc"><a href="{catlink(30)}">{catname(30)}</a></div>
+  <div class="lefttitlerr"><a href="{catlink(30)}">更多>></a></div>
+</div>
+<div class="leftnews">
+<ul>
+ {h5:content  action="position" posid="10" catid="30" order="listorder DESC" num="1" cache="10800"}
+	  {loop $data $v}
+	  <li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}"  style="" >{$v[title]}</a></li>
+	  {/loop}
+{/h5}
+{h5:content  action="lists" posids="0" catid="30" order="id DESC" num="4" cache="10800"}
+{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}"  style="" >{$v[title]}</a></li>
+{/loop}
+    </ul>
+{/h5}
+</div>
+</div>
+<!--市场分析 end-->
+<div class="hr10"></div>
+<!--地产人物 begin-->
+<div class="leftwapa">
+<div class="lefttitle">
+   <div class="righttitlel linkc"><a href="{catlink(38)}">{catname(38)}</a></div>
+  <div class="lefttitlerr"><a href="{catlink(38)}">更多>></a></div>
+</div>
+<div class="PartTabt1">
+ {h5:content  action="position" posid="10" catid="38" order="listorder DESC" thumb="1" num="1" cache="10800"}
+	  {loop $data $v}
+	<div class="PartTabtl2"><a href="{$v[url]}" target="_blank"><img src="{thumb($v[thumb],100,75)}" width="100" height="75" alt="{$v[title]}"/></a></div>
+<div class="PartTabtr3 linkg"><a href="{$v[url]}" target="_blank"  style=""  title="{$v[title]}">{$v[title]}</a></div>
+<div class="PartTabtr2 linkh"><a href="{$v[url]}" target="_blank">{str_cut($v[description],112)}</a></div>
+{/loop}
+{/h5}
+</div>
+<div class="leftnews">
+{h5:content  action="lists" posids="0" catid="38" order="id DESC" num="3" cache="10800"}
+<ul>
+{loop $data $v}
+    					<li>·<a href="{$v[url]}" target="_blank"  style=""  title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+    </ul>
+{/h5}
+</div>
+</div>
+<!--地产人物 end-->
+<div class="hr10"></div>
+<!--楼市佳人 begin-->
+<div class="leftwapa">
+<div class="lefttitle">
+  <div class="righttitlel linkc"><a href="{catlink(64)}">{catname(64)}</a></div>
+  <div class="lefttitlerr"><a href="{catlink(64)}">更多>></a></div>
+</div>
+<div class="PartTabt1">
+ {h5:content  action="position" posid="10" catid="64" order="listorder DESC" thumb="1" num="1" cache="86400"}
+	  {loop $data $v}
+	<div class="PartTabtl2"><a href="{$v[url]}" target="_blank"><img src="{thumb($v[thumb],100,75)}" width="100" height="75" alt="{$v[title]}"/></a></div>
+<div class="PartTabtr3 linkg"><a href="{$v[url]}" target="_blank"  style=""  title="{$v[title]}">{$v[title]}</a></div>
+<div class="PartTabtr2 linkh"><a href="{$v[url]}" target="_blank">{str_cut($v[description],112)}</a></div>
+{/loop}
+{/h5}
+</div>
+<div class="leftnews">
+{h5:content  action="lists" posids="0" catid="64" order="id DESC" num="3" cache="86400"}
+<ul>
+{loop $data $v}
+    					<li>·<a href="{$v[url]}" target="_blank"  style=""  title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+    </ul>
+{/h5}
+</div>
+</div>
+<!--楼市佳人 end-->
+<div class="hr5"></div>
+</div>
+<div class="center">
+<!--威海关注 begin-->
+<div class="centerwap">
+<div class="centitle">
+  <div class="a1 linkc"><a href="{catlink(24)}">{catname(24)}</a></div>
+  <span><a href="{catlink(24)}">更多>></a></span></div>
+   {h5:content  action="position" posid="10" catid="24" order="listorder DESC" num="1" cache="3600"}
+	  {loop $data $v}
+  <div class="topnewsa linkd">
+<li><a href="{$v['url']}" target="_blank" title="{$v[title]}">{$v[title]}</a></li>
+  </div>
+  {/loop}
+  {/h5}
+{h5:content  action="lists" posids="0" catid="24" order="id DESC" num="9" cache="3600"}
+  <div class="cennews">
+    <div class="newscona linkf">
+<ul>
+{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+</ul>
+</div>
+</div>
+{/h5}
+</div>
+<!--威海关注 end-->
+<!--全国楼市 begin-->
+<div class="centerwap">
+<div class="centitle">
+  <div class="a1 linkc"><a href="{catlink(16)}">{catname(16)}</a></div>
+  <span><a href="{catlink(16)}">更多>></a></span></div>
+  {h5:content  action="position" posid="10" catid="16" order="listorder DESC" num="1" cache="3600"}
+	  {loop $data $v}
+  <div class="topnewsa linkd">
+<li><a href="{$v[url]}" target="_blank" title="{$v[title]}">{$v[title]}</a></li>
+  </div>
+    {/loop}
+  {/h5}
+{h5:content  action="lists" posids="0" catid="16" order="id DESC" num="9" cache="3600"}
+  <div class="cennews">
+    <div class="newsconb linkf">
+<ul>
+{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+</ul>
+</div>
+</div>
+{/h5}
+</div>
+<!--全国楼市 end-->
+<div class="hr5"></div>
+</div>
+<div class="right">
+<!--行情播报 begin-->
+<div class="rightwap">
+<div class="righttitle">
+<div class="righttitlel linkc"><a href="{catlink(27)}">{catname(27)}</a></div>
+<div class="righttitler"><a href="{catlink(27)}">更多>></a></div>
+</div>
+<div class="rightcon">
+{h5:content  action="lists" catid="27" order="id DESC" num="7" cache="3600"}
+  <div class="rightnewsd">
+<ul>
+{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{$v[title]}</a></li>
+{/loop}
+    </ul>
+</div>
+{/h5}
+</div>
+</div>
+<!--行情播报 end-->
+<div class="hr10"></div>
+<!--地产招聘 begin-->
+<div class="rightwap">
+<div class="righttitle">
+<div class="righttitlel linkc"><a href="{catlink(32)}">{catname(32)}</a></div>
+<div class="righttitler"><a href="{catlink(32)}">更多>></a></div>
+</div>
+<div class="rightcon">
+{h5:content  action="lists" catid="32" order="id DESC" num="7" cache="10800"}
+           <div class="rightnewsd">
+<ul>
+{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{$v[title]}</a></li>
+{/loop}
+    </ul>
+</div>
+{/h5}
+</div>
+</div>
+<!--地产招聘 end-->
+<div class="hr10"></div>
+<!--社会热点 begin-->
+<div class="rightwap">
+<div class="righttitle">
+<div class="righttitlel linkc"><a href="{catlink(40)}">{catname(40)}</a></div>
+<div class="righttitler"><a href="{catlink(40)}">更多>></a></div>
+</div>
+<div class="rightcon">
+  <div class="rightnewsd">
+  {h5:content  action="lists" catid="40" order="id DESC" num="7" cache="10800"}
+<ul>
+{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{$v[title]}</a></li>
+	{/loop}
+    </ul>
+{/h5}
+</div>
+</div>
+</div>
+<!--社会热点 end-->
+<div class="hr5"></div>
+</div>
+</div>
+<div class="hr5"></div>
+<div class="cArea">
+<!--图片新闻 begin-->
+<DIV class="Newimgnews">
+	<div class="imgtitle">
+	<h2><a href="{siteurl($siteid)}/piclist.html">图片新闻</a></h2>
+	<a class="Nmore"  href="{siteurl($siteid)}/piclist.html">更多>></a>	
+	</div>
+	<div class="imgconetent">
+		<div class="imgshows"><!-- 里面的图片展播层的宽请设置为307px  高269px -->
+<script type="text/javascript">
+function $(id){return document.getElementById(id)};
+</script>
+<style type="text/css">
+#JINGDONGBox{position:relative;}
+#JINGDONGNumID{ position:absolute; bottom:5px; right:5px;}
+#JINGDONGNumID li{list-style:none;float:left;width:15px;height:12px; line-height:12px; FILTER:alpha(opacity=80);opacity:0.8;border:1px solid #D00000;background-color:#FFFFFF;color:#D00000;text-align:center;cursor:pointer;margin-right:4px; overflow:hidden;}
+#JINGDONGNumID li:hover,#JINGDONGNumID li.active{border:1px solid #D00000;background-color:#FF0000;color:#FFFFFF;width:18px; line-height:13px; font-weight:bold;font-size:13px;}
+#JINGDONGContentID li{position:relative;}
+.mask{FILTER:alpha(opacity=40);opacity:0.4;width:100%;height:35px;background-color:#000000;position:absolute;bottom:0;left:0;display:block;}
+.comt{width:250px;height:20px;position:absolute;left:0;bottom:5px;font-size:14px;color:#ffffff;font-weight:bold;text-indent:10px;text-align:left;}
+.comt a{ color:#FFFFFF; text-decoration:none;}
+.comt a:hover{color:#FFFFFF; text-decoration:none;}
+</style>
+<div style="overflow:hidden;width:285px;height:240px;position:relative; top:15px; left:10px; clear:both; background-color:#ffffff;">
+	{h5:content  action="position" posid="12" thumb="1" order="listorder DESC" num="5" cache="10800"}
+	<div id="JINGDONGBox" >
+		<ul id="JINGDONGContentID">
+			{loop $data $v}
+                 			<li><a href="{$v[url]}"><img border="0" src="{thumb($v[thumb],285,240)}" width="285" height="240" alt="{$v[title]}"/></a><div class="mask"></div><div class="comt"><a href="{$v[url]}" title="{$v[title]}">{str_cut($v[title],30)}</a></div></li>
+			{/loop}
+								</ul>
+	</div>
+	<ul id="JINGDONGNumID">
+		{loop $data $v}
+		<li class="">{$n}</li>
+		{/loop}
+	</ul>
+  {/h5}
+</div>
+<script type="text/javascript">
+new Marquee(
+{
+	MSClassID : "JINGDONGBox",
+	ContentID : "JINGDONGContentID",
+	TabID	  : "JINGDONGNumID",
+	Direction : 2,
+	Step	  : 0.5,
+	Width	  : 285,
+	Height	  : 240,
+	Timer	  : 20,
+	DelayTime : 3000,
+	WaitTime  : 0,
+	ScrollStep: 285,
+	SwitchType: 0,
+	AutoStart : 1
+})
+</script>
+		</div>
+		<div class="otherlist">
+			{h5:content  action="lists" catid="6" thumb="1" order="id DESC" num="8" cache="10800"}
+			<ul>
+				{loop $data $v}
+				<li>
+				<a href="{$v[url]}"><img border="0" src="{thumb($v[thumb],138,100)}" width="138" height="100" alt="{$v[title]}"/></a>
+				<a title="{$v[title]}"  class="listname" href="{$v[url]}">{str_cut($v[title],26)}</a>
+				</li>
+			{/loop}      			
+			</ul>
+			{/h5}
+		</div>
+	</div>
+</DIV>
+<DIV class=hr10></DIV>
+<!--图片新闻 end-->
+</div>
+<div class="cArea">
+<div class="left">
+<!--看房日记 begin-->
+<div class="leftwapa">
+<div class="lefttitle">
+  <div class="righttitlel linkc"><a href="{catlink(31)}">{catname(31)}</a></div>
+  <div class="lefttitlerr"><a href="{catlink(31)}">更多>></a></div>
+</div>
+<div class="PartTabt1">
+{h5:content  action="position" posid="10" catid="31" thumb="1" order="listorder DESC" num="1" cache="10800"}
+ {loop $data $v}
+<div class="PartTabtl2"><a href="{$v[url]}" target="_blank" title="{$v[title]}"><img src="{thumb($v[thumb],100,75)}" width="100" height="75" alt="{$v[title]}"/></a></div>
+<div class="PartTabtr3 linkg"><a href="{$v[url]}" target="_blank" title="{$v[title]}">{$v[title]}</a></div>
+<div class="PartTabtr2 linkh"><a href="{$v[url]}" target="_blank">{str_cut($v[description],112)}</a></div>
+	{/loop}
+  {/h5}
+</div>
+<div class="leftnews">
+{h5:content  action="lists" posids="0" catid="31" order="id DESC" num="3" cache="10800"}
+<ul>
+ {loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{$v[title]}</a></li>
+{/loop}
+    </ul>
+  {/h5}
+</div>
+</div>
+<!--看房日记 end-->
+<div class="hr10"></div>
+<!--项目进度 begin-->
+<div class="leftwapa">
+<div class="lefttitle">
+  <div class="righttitlel linkc"><a href="{catlink(28)}">{catname(28)}</a></div>
+  <div class="lefttitlerr"><a href="{catlink(28)}">更多>></a></div>
+</div>
+<div class="PartTabt1">
+{h5:content  action="position" posid="10" catid="28" thumb="1" order="listorder DESC" num="1" cache="10800"}
+ {loop $data $v}
+<div class="PartTabtl2"><a href="{$v[url]}" target="_blank" title="{$v[title]}"><img src="{thumb($v[thumb],100,75)}" width="100" height="75" alt="{$v[title]}"/></a></div>
+<div class="PartTabtr3 linkg"><a href="{$v[url]}" target="_blank" title="{$v[title]}">{$v[title]}</a></div>
+<div class="PartTabtr2 linkh"><a href="{$v[url]}" target="_blank">{str_cut($v[description],112)}</a></div>
+	{/loop}
+  {/h5}
+</div>
+<div class="leftnews">
+{h5:content  action="lists" posids="0" catid="28" order="id DESC" num="3" cache="10800"}
+<ul>
+ {loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{$v[title]}</a></li>
+{/loop}
+    </ul>
+  {/h5}
+</div>
+</div>
+<!--项目进度 end-->
+<div class="hr10"></div>
+<!--小V探盘 begin-->
+<div class="leftwapa">
+<div class="lefttitle">
+  <div class="righttitlel linkc"><a href="{catlink(36)}">{catname(36)}</a></div>
+  <div class="lefttitlerr"><a href="{catlink(36)}">更多>></a></div>
+</div>
+<div class="PartTabt1">
+{h5:content  action="position" posid="10" catid="36" thumb="1" order="listorder DESC" num="1" cache="10800"}
+ {loop $data $v}
+<div class="PartTabtl2"><a href="{$v[url]}" target="_blank" title="{$v[title]}"><img src="{thumb($v[thumb],100,75)}" width="100" height="75" alt="{$v[title]}"/></a></div>
+<div class="PartTabtr3 linkg"><a href="{$v[url]}" target="_blank" title="{$v[title]}">{$v[title]}</a></div>
+<div class="PartTabtr2 linkh"><a href="{$v[url]}" target="_blank">{str_cut($v[description],112)}</a></div>
+	{/loop}
+  {/h5}
+</div>
+<div class="leftnews">
+{h5:content  action="lists" posids="0" catid="36" order="id DESC" num="3" cache="10800"}
+<ul>
+ {loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{$v[title]}</a></li>
+{/loop}
+    </ul>
+  {/h5}
+</div>
+</div>
+<!--小编探盘 end-->
+<div class="hr10"></div>
+</div>
+<div class="center">
+<!--楼市快报 begin-->
+<div class="centerwap">
+<div class="centitle">
+  <div class="a1 linkc"><a href="{catlink(26)}">{catname(26)}</a></div>
+  <span><a href="{catlink(26)}">更多>></a></span></div>
+  {h5:content  action="position" posid="10" catid="26" order="listorder DESC" num="1" cache="3600"}
+  <div class="topnewsa linkd">
+  {loop $data $v}
+<li><a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+	{/loop}
+  </div>
+  {/h5}
+  <div class="cennews">
+    <div class="newscona linkf">
+{h5:content  action="lists" catid="26" order="id DESC" num="5" cache="3600"}
+<ul>
+{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+</ul>
+{/h5}
+</div>
+</div>
+</div>
+<!--楼市快报 end-->
+<!--楼市预告 begin-->
+<div class="centerwap">
+<div class="centitle">
+  <div class="a1 linkc"><a href="{catlink(49)}">{catname(49)}</a></div>
+  <span><a href="{catlink(49)}">更多>></a></span></div>
+  {h5:content  action="position" posid="10" catid="49" order="listorder DESC" num="1" cache="3600"}
+  <div class="topnewsa linkd">
+     {loop $data $v}
+<li><a href="{$v[url]}" target="_blank" title="{$v[title]}">{$v[title]}</a></li>
+	{/loop}
+  </div>
+  {/h5}
+  <div class="cennews">
+    <div class="newscona linkf">
+{h5:content  action="lists" catid="49" order="id DESC" num="5" cache="3600"}
+<ul>
+{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+</ul>
+{/h5}
+</div>
+</div>
+</div>
+<!--楼市预告 end-->
+<!--楼市周报 begin-->
+<div class="centerwap">
+<div class="centitle">
+  <div class="a1 linkc"><a href="{catlink(34)}">{catname(34)}</a></div>
+  <span><a href="{catlink(34)}">更多>></a></span></div>
+  {h5:content  action="position" posid="10" catid="34" order="listorder DESC" num="1" cache="10800"}
+  <div class="topnewsa linkd">
+     {loop $data $v}
+<li><a href="{$v[url]}" target="_blank" title="{$v[title]}">{$v[title]}</a></li>
+	{/loop}
+  </div>
+  {/h5}
+  <div class="cennews">
+    <div class="newscona linkf">
+{h5:content  action="lists" catid="34" order="id DESC" num="5" cache="10800"}
+<ul>
+{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+</ul>
+{/h5}
+</div>
+</div>
+</div>
+<!--楼市周报 end-->
+<div style="width:640px; height:95px;">
+	<!-- 广告位：空位补缺 -->
+<script type="text/javascript">BAIDU_CLB_fillSlot("415212");</script>
+</div>
+</div>
+<div class="right">
+<!--优惠信息 begin-->
+<div class="rightwap">
+<div class="righttitle">
+<div class="righttitlel linkc"><a href="{catlink(29)}">{catname(29)}</a></div>
+<div class="righttitler"><a href="{catlink(29)}">更多>></a></div>
+</div>
+<div class="rightcon">
+  <div class="rightnewsd">
+  {h5:content  action="lists" catid="29" order="id DESC" num="7" cache="10800"}
+<ul>
+{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+	{/loop}
+    </ul>
+{/h5}
+</div>
+</div>
+</div>
+<!--优惠信息 end-->
+<div class="hr10"></div>
+<!--土地交易 begin-->
+<div class="rightwap">
+<div class="righttitle">
+<div class="righttitlel linkc"><a href="{catlink(33)}">{catname(33)}</a></div>
+<div class="righttitler"><a href="{catlink(33)}">更多>></a></div>
+</div>
+<div class="rightcon">
+  <div class="rightnewsd">
+{h5:content  action="lists" catid="33" order="id DESC" num="7" cache="10800"}
+<ul>
+{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+	{/loop}
+    </ul>
+{/h5}
+</div>
+</div>
+</div>
+<!--土地交易 end-->
+<div class="hr10"></div>
+<!--风水漫谈 begin-->
+<div class="rightwap">
+<div class="righttitle">
+<div class="righttitlel linkc"><a href="{catlink(63)}">{catname(63)}</a></div>
+<div class="righttitler"><a href="{catlink(63)}">更多>></a></div>
+</div>
+<div class="rightcon">
+  <div class="rightnewsd">
+{h5:content  action="lists" catid="63" order="id DESC" num="7" cache="86400"}
+<ul>
+{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+	{/loop}
+    </ul>
+{/h5}
+</div>
+</div>
+</div>
+<!--风水漫谈 end-->
+<div class="hr10"></div>
+</div>
+</div>
+<!--看地报告 end-->
+<div class="cArea">
+<div class="left">
+<!--行业动态 begin-->
+<div class="leftwapa">
+<div class="lefttitle">
+  <div class="righttitlel linkc"><a href="{catlink(23)}">{catname(23)}</a></div>
+  <div class="lefttitlerr"><a href="{catlink(23)}">更多>></a></div>
+</div>
+<div class="PartTabt1">
+ 
+{h5:content  action="position" posid="10" catid="23" thumb="1" order="listorder DESC" num="1" cache="10800"}
+ {loop $data $v}
+<div class="PartTabtl2"><a href="{$v[url]}" target="_blank" title="{$v[title]}"><img src="{thumb($v[thumb],100,75)}" width="100" height="75" alt="{$v[title]}"/></a></div>
+<div class="PartTabtr3 linkg"><a href="{$v[url]}" target="_blank" title="{$v[title]}">{str_cut($v[title],28,'')}</a></div>
+<div class="PartTabtr2 linkh"><a href="{$v[url]}" target="_blank">{str_cut($v[description],112)}</a></div>
+	{/loop}
+  {/h5}
+</div>
+<div class="leftnews">
+{h5:content  action="lists" posids="0" catid="23" order="id DESC" num="3" cache="10800"}
+<ul>
+ {loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{$v[title]}</a></li>
+{/loop}
+    </ul>
+  {/h5}
+</div>
+</div>
+<!--行业动态 end-->
+<div class="hr10"></div>
+<!--购房宝典 begin-->
+<div class="leftwapa">
+<div class="lefttitle">
+  <div class="righttitlel linkc"><a href="{catlink(35)}">{catname(35)}</a></div>
+  <div class="lefttitlerr"><a href="{catlink(35)}">更多>></a></div>
+</div>
+<div class="PartTabt1"> 
+{h5:content  action="position" posid="10" catid="35" thumb="1" order="listorder DESC" num="1" cache="86400"}
+ {loop $data $v}
+<div class="PartTabtl2"><a href="{$v[url]}" target="_blank" title="{$v[title]}"><img src="{thumb($v[thumb],100,75)}" width="100" height="75" alt="{$v[title]}"/></a></div>
+<div class="PartTabtr3 linkg"><a href="{$v[url]}" target="_blank" title="{$v[title]}">{$v[title]}</a></div>
+<div class="PartTabtr2 linkh"><a href="{$v[url]}" target="_blank">{str_cut($v[description],112)}</a></div>
+	{/loop}
+  {/h5}
+</div>
+<div class="leftnews">
+{h5:content  action="lists" posids="0" catid="35" order="id DESC" num="3" cache="86400"}
+<ul>
+ {loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{$v[title]}</a></li>
+{/loop}
+    </ul>
+  {/h5}
+</div>
+</div>
+<!--租赁常识 end-->
+<div class="hr10"></div>
+<!--家装日记 begin-->
+<div class="leftwapa">
+<div class="lefttitle">
+  <div class="righttitlel linkc"><a href="{catlink(59)}">{catname(59)}</a></div>
+  <div class="lefttitlerr"><a href="{catlink(59)}">更多>></a></div>
+</div>
+{h5:content  action="position" posid="10" catid="59" thumb="1" order="listorder DESC" num="1" cache="86400"}
+		{loop $data $v}		
+<div class="PartTabt1">
+<div class="PartTabtl2"><a href="{$v[url]}" target="_blank" title="{$v[title]}"><img src= "{thumb($v[thumb],100,75)}" width="100" height="75" alt="{$v[title]}"/></a></div>
+<div class="PartTabtr3 linkg"><a href="{$v[url]}" target="_blank" title="{$v[title]}">{str_cut($v[title],26)}</a></div>
+<div class="PartTabtr2 linkh"><a href="{$v[url]}" target="_blank">{str_cut($v[description],80)}</a></div>
+</div>
+	{/loop}
+{/h5}
+<div class="leftnews">
+{h5:content  action="lists" catid="59" posids="0" order="id DESC" num="3" cache="86400"}
+<ul>
+	{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+    </ul>
+{/h5}
+</div>
+</div>
+<!--家装日记 end-->
+<div class="hr5"></div>
+</div>
+<div class="center">
+<!--商业地产 begin-->
+<div class="centerwap">
+<div class="centitle">
+  <div class="a1 linkc"><a href="{catlink(46)}">{catname(46)}</a></div>
+  <span><a href="{catlink(46)}">更多>></a></span></div>
+  {h5:content  action="position" posid="10" catid="46" order="listorder DESC" num="1" cache="86400"}
+  <div class="topnewsa linkd">
+     {loop $data $v}
+<li><a href="{$v[url]}" target="_blank" title="{$v[title]}">{$v[title]}</a></li>
+	{/loop}
+  </div>
+  {/h5}
+  <div class="cennews">
+    <div class="newscona linkf">
+{h5:content  action="lists" posids="0" catid="46" order="id DESC" num="5" cache="86400"}
+<ul>
+{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+</ul>
+{/h5}
+</div>
+</div>
+</div>
+<!--商业地产 end-->
+<!--旅游地产 begin-->
+<div class="centerwap">
+<div class="centitle">
+  <div class="a1 linkc"><a href="{catlink(21)}">{catname(21)}</a></div>
+  <span><a href="{catlink(21)}">更多>></a></span></div>
+  {h5:content  action="position" posid="10" catid="21" order="listorder DESC" num="1" cache="86400"}
+  <div class="topnewsa linkd">
+     {loop $data $v}
+<li><a href="{$v[url]}" target="_blank" title="{$v[title]}">{$v[title]}</a></li>
+	{/loop}
+  </div>
+  {/h5}
+  <div class="cennews">
+    <div class="newscona linkf">
+{h5:content  action="lists" posids="0" catid="21" order="id DESC" num="5" cache="86400"}
+<ul>
+{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+</ul>
+{/h5}
+</div>
+</div>
+</div>
+<!--旅游地产 end-->
+<!--装修家居 begin-->
+<div class="centerwap">
+<div class="centitle">
+  <div class="a1 linkc"><a href="{catlink(58)}">{catname(58)}</a></div>
+  <span><a href="{catlink(58)}">更多>></a></span></div>
+  <div class="topnewsa linkd">
+  {h5:content  action="position" posid="10" catid="58" order="listorder DESC" num="1" cache="86400"}
+				{loop $data $v}
+<li><a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{$v[title]}</a></li>
+{/loop}
+				{/h5}
+  </div>
+  <div class="cennews">
+    <div class="newsconb linkf">
+{h5:content  action="lists" catid="59" posids="0" order="id DESC" num="5" cache="86400"}
+						<ul>
+							{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{$v[title]}</a></li>
+	{/loop}
+							</ul>
+					{/h5}
+</div>
+</div>
+</div>
+<!--装修家居 end-->
+<div class="hr5"></div>
+</div>
+<div class="right">
+<!--24小时资讯排行榜 begin-->
+<div class="rightwap">
+<div class="righttitle">
+<div class="righttitlela linkc"><a href="{APP_PATH}list.html" target="_blank">24小时资讯排行榜</a></div>
+<div class="righttitlera"><a href="{siteurl($siteid)}/list.html" target="_blank">更多>></a></div>
+</div>
+<div class="rightcon">
+  <div class="rightnewsb">
+  {h5:content action="lists" catid="6" num="16" order="id DESC" cache="3600"}
+      <ul>
+	  {loop $data $v}
+<li><a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+	{/loop}
+    </ul>
+{/h5}
+</div>
+</div>
+</div>
+<!--24小时资讯排行榜 end-->
+<div class="hr10"></div>
+<!--促销信息 begin-->
+<div class="rightwap">
+<div class="righttitle">
+<div class="righttitlel linkc"><a href="{catlink(57)}">{catname(57)}</a></div>
+<div class="righttitler"><a href="{catlink(57)}">更多>></a></div>
+</div>
+<div class="rightcon">
+  <div class="rightnewsd">
+  {h5:content  action="lists" catid="57" order="id DESC" num="7" cache="86400"}
+<ul>
+{loop $data $v}
+<li>·<a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+    </ul>
+{/h5}
+</div>
+</div>
+</div>
+<!--促销信息 end-->
+<div class="hr5"></div>
+</div>
+</div>
+<div class="cArea">
+<!--娱乐地产 begin-->
+<div class="imgestate"><DIV id="simg">
+<DIV class="sleft2" id="leftScroll">
+<IMG id=img_prev id="LeftArr2" height=27 src="{APP_PATH}statics/default/img/news/left.gif" width=14>
+</DIV>
+<DIV id="sImage">
+    <ul>
+<DIV id="ISL_Cont_2">
+<DIV>	
+{h5:content  action="lists" catid="39" thumb="1" order="id DESC" num="12" cache="86400"}
+{loop $data $v}
+ <li class="active1"><a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}"><img src="{thumb($v[thumb],130,100)}" width="130" height="100" alt="{$v[title]}"/></a><br /><a href="{$v[url]}" target="_blank"{title_style($v[style])} title="{$v[title]}">{$v[title]}</a></li>
+{/loop}
+{/h5}
+</DIV>
+</DIV>
+    </ul>
+  </DIV>
+<DIV class="sright1" id="rightScroll">
+<IMG id=RightArr2  height=27 src="{APP_PATH}statics/default/img/news/right.gif" width=14></DIV></DIV></div>
+<div class="hr10"></div>
+<SCRIPT language=javascript type=text/javascript>
+		<!--//--><![CDATA[//><!--
+		var scrollPic_02 = new ScrollPic();
+		scrollPic_02.scrollContId   = "ISL_Cont_2"; //内容容器ID
+		scrollPic_02.arrLeftId      = "LeftArr2";//左箭头ID
+		scrollPic_02.arrRightId     = "RightArr2"; //右箭头ID
+		scrollPic_02.frameWidth     = 846;//显示框宽度
+		scrollPic_02.pageWidth      = 140; //翻页宽度
+		scrollPic_02.speed          = 100; //移动速度(单位毫秒，越小越快)
+		scrollPic_02.space          = 130; //每次移动像素(单位px，越大越快)
+		scrollPic_02.autoPlay       = true; //自动播放
+		scrollPic_02.autoPlayTime   = 3; //自动播放间隔时间(秒)
+		scrollPic_02.initialize(); //初始化							
+		//--><!]]>
+</SCRIPT>
+<!--娱乐地产 end-->
+</div>
+<div class="cArea">
+<!--友情链接 begin-->
+<div class="mthz">
+<div class="mthz_bt"><div class="a2 linkc">友情链接</div></div>
+<div class="linkyq link5">
+      {h5:link  action="type_list" typeid="42" siteid="$siteid" order="listorder DESC" return="data" cache="86400"}
+             <ul>
+			 {loop $data $r}
+                            <li><a href="{$r[url]}" title="{$r[name]}" target="_blank">{$r[name]}</a></li>
+             {/loop}
+			 </ul>
+			 {/h5}
+   </div>
+</div>
+<div class="hr10"></div>
+<!--友情链接 end-->
+</div>
+</div>
+</div>
+{template "content","footer"}

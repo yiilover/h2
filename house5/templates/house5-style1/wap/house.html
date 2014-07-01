@@ -1,0 +1,374 @@
+{template "wap","header"}
+<link type="text/css" rel="stylesheet" href="/statics/house5-style1/3g/css/3g_houselist.css" />
+<link type="text/css" rel="stylesheet" href="/statics/house5-style1/3g/css/3g_common.css" />
+<script>
+window.addEventListener("load",function() {
+  setTimeout(function(){
+    window.scrollTo(0, 1);
+  }, 0);
+}); 
+</script>
+<script>
+$(function(){
+	$("#[id^=tj_con_]").css('height',"0");
+});
+function fun_clk(ids)
+{	
+	var cc = 0;
+	hh = $("#tj_con_"+ids).height();
+	$("#[id^=tj_con_]").css('height',"0");
+	$("#a"+ids).removeClass("sel_on");
+	$("#[id^=a]").removeClass("sel_on");
+	//$("#i"+ids).removeClass("clo");	
+	if(!hh){$("#tj_con_"+ids).css('height',"auto");
+	$("#a"+ids).addClass("sel_on");
+	//$("#i"+ids).addClass("clo");
+	}else{
+	$("#tj_con_"+ids).css('height',"0");
+	$("#a"+ids).removeClass("sel_on");
+	//$("#i"+ids).removeClass("clo");
+	}
+
+	$(document).mouseup(function(){
+	//$("#[id^=tj_con_]").css('height',"0");
+	//$("#a"+ids).removeClass("sel_on");
+	});
+}
+</script>
+</head>
+
+<body>
+<div class="top_head">
+<header class="header">
+	<a href="{WAP_SITEURL}" class="logo">{$WAP['sitename']}</a>
+    <a href="{WAP_SITEURL}" class="bn_back bn_back2" >首页</a>
+    <a href="#" class="bn_search">搜索</a>
+    <a href="#" class="bn_nav">导航</a>
+    <i></i>
+</header>
+	<script>
+	/*点击搜索和导航触发的事件*/
+	$(".bn_search").bind("click", function(){
+		var getifclass = $(this).attr("class").indexOf("bn_search_on");
+		if(getifclass > -1)
+		{
+			$(".h_so").css("display", "none");
+			$(".bn_search").removeClass("bn_search_on");
+		}
+		else
+		{
+			$(".h_so").css("display", "block");
+			$(".bn_search").addClass("bn_search_on");
+			$(".h_nav").css("height", "0px");
+			$(".bn_nav").removeClass("bn_nav_on");
+			$('#ico_del').css('display', 'none');
+		}
+			
+	});
+	$(".bn_nav").bind("click", function(){
+		$(".bn_search").removeClass("bn_search_on");
+		var getifclass = $(this).attr("class").indexOf("bn_nav_on");
+		if(getifclass > -1)
+		{
+			$(".h_nav").css("height", "0px");
+			$(".bn_nav").removeClass("bn_nav_on");
+		}
+		else
+		{
+			$(".h_so").css("display", "none");
+			$(".bn_search").removeClass("bn_search_on");
+			$(".h_nav").css("height", "43px");
+			$(".bn_nav").addClass("bn_nav_on");
+		}
+	});
+	function changeCity()
+	{
+		var stylecss = $(".sel_city").attr("style").indexOf("0px");
+		if(stylecss > -1)
+		{
+			$(".sel_city").attr("style", "");
+			$(".sel_city").css("height", "auto");
+		}
+		else
+		{
+			$(".sel_city").css("height", "0px");
+			$(".sel_city").css("overflow", "hidden");
+		}
+		
+	}
+	</script>
+<script type="text/javascript" src="/statics/house5-style1/3g/js/3g_swipe.min.js"></script>
+<div class="h_so" style="display:none">
+	<div class="m_con">
+		<form id="search_form" name="f" action="{WAP_SITEURL}list.html" method="get">
+	    	<input type="search" name='k' id="kw" class="input_keys" id="kw"  value="请输入楼盘……"  onfocus="if(this.value=='请输入楼盘……'){this.value='';}$('#ico_del').css('display', 'block');" onblur="if(this.value=='')this.value='请输入楼盘……';" autocomplete="off">
+	        <span class="ico_clear" onclick="$('#search_form input').val('')"><i id="ico_del" style="display:none"></i></span>
+	        <div class="search_bn" onClick="$('form').submit()"><i></i></div>
+    	</form>
+    </div>
+</div>
+<nav class="h_nav" id="slidermnav" style="height: 0px; overflow:hidden;">
+	<ul>
+    	<li style="display:block">
+        <p class="m_con nav_1">
+        <a href="{WAP_SITEURL}" style="width:18%">首页<em></em></a><a href="{WAP_SITEURL}list.html" style="width:28%">楼盘检索<em></em></a><a href="{WAP_SITEURL}top/" style="width:26%">楼盘榜<em></em></a><a href="{WAP_SITEURL}map/" style="width:28%">找房楼盘</a><i onclick='slidermnav.next();return false;'></i>
+        </p>	
+        </li>
+        <li style="display:none">
+        <p class="m_con nav_2">
+        <a href="{WAP_SITEURL}news/" style="width:33%">新房导购<em></em></a><a href="{WAP_SITEURL}calcul/" style="width:34%">房贷计算<em></em></a><i onclick='slidermnav.prev();return false;'></i>
+        </p>	
+      </li>
+    </ul>
+</nav>
+
+<?php
+$param = $_GET['param'];
+	if(!empty($param)&&stristr($param,'-')!=false)
+	{
+		$param_arr = explode('-', $param);
+		foreach($param_arr as $_v) {
+				if($_v) 
+				{
+					if(preg_match ( '/([a-z])(\d*)/', $_v, $matchs))
+					{
+						$$matchs[1] = intval($matchs[2]);
+					}
+				}
+			}
+		$parentid = $r;
+		$bid = $b;
+		$range = $p;
+		$type = $t;
+		$character = $l;
+		$hot = $h;
+		$ord = $n;
+		$page = $g;
+	}
+	else
+	{
+ 	$parentid = intval($_GET['r']);
+	$bid = intval($_GET['b']);
+	$range = intval($_GET['p']);
+	$type = intval($_GET['t']);
+	$character = intval($_GET['l']);
+	$hot = intval($_GET['h']);
+	$ord = intval($_GET['n']);
+	$page = intval($_GET['g']);
+	$keyword = trim($_GET['keyword']);
+	$k = trim($_GET['k']);
+	}
+	
+	$where = "status=99";
+	if(!empty($keyword))
+	{
+		$keyword1 = iconv('gbk', 'utf-8', $keyword);//rewrite 只支持UTF-8编码的中文
+		$lst1.= "-k".htmlentities(urlencode($keyword1));
+		$where.=" and (`title` like '%$keyword%' or `address` like '%$keyword%' )";
+	}
+
+	if(!empty($k))
+	{
+		$keyword = iconv('utf-8','gbk' , $k);
+		$lst1.= "-k".htmlentities(urlencode($k));
+		$where.=" and (`communityname` like '%$keyword%')";
+		$lstaddr.= "<em>".$keyword."<a href=\"list.html\"></a></em>";
+	}
+ 	if(!empty($parentid))
+	{
+		$lst = "-r".$parentid;
+	}
+	if(!empty($bid))
+	{
+		$lst.= "-b".$bid;
+	}
+	if(!empty($parentid) && !empty($bid))
+	{
+		$where.=" and `region`=$bid";
+	}
+	elseif(!empty($parentid) && empty($bid))//区域顶级
+	{
+		$arrchildid = get_arrchildid('3360',$parentid);
+		$where.=" and `region` in ($arrchildid)";
+	}
+	if(!empty($range))
+	{
+		$lst.= "-p".$range;
+		$where.=" and `range`=$range";
+	}
+	if(!empty($character))
+	{
+		$lst.= "-l".$character;
+		$where.=" and `character` like '%$character%'";
+	}
+	if(!empty($type))
+	{
+		$lst.= "-t".$type;
+		$where.=" and `type` like '%$type%'";
+	}
+	if(!empty($ord))
+	{
+		if($ord=='1')
+		{
+			$order=" CAST(price AS SIGNED) DESC";
+		}
+		elseif($ord=='2')
+		{
+			$order=" CAST(price AS SIGNED) ASC";
+		}
+		elseif($ord=='3')
+		{
+			$order=" opentime DESC";
+		}
+		$lst.= "-n".$ord;
+	}
+	else
+	{
+		$order = "id DESC";
+	}
+	if(!empty($hot))
+	{
+			$where.=" and `flag` like '%$hot%'";
+			$lst.= "-h".$hot;
+	}
+	?>
+<script>
+	var slidermnav = new Swipe(document.getElementById('slidermnav'));
+</script>
+<div class="ss_tj">
+<a href="#" onclick="fun_clk('pos')" value="pos"  id="apos" ><span><b>
+{if !empty($parentid)}
+{php $menu_info = menu_info('3360',$parentid)}
+{$menu_info[0]}{else}位置{/if}</b></span><i   id="ipos" {if !empty($parentid)} class="clo"{/if}></i></a>
+<a href="#"   onclick="fun_clk('price')" id="aprice"><span><b>{if !empty($range)}{getbox_val('13','range',$range)}{else}价格{/if}</b></span><i  id="iprice" {if !empty($range)} class="clo"{/if}></i></a>
+<a href="#"   onclick="fun_clk('cut')" id="acut"><span><b>
+{if !empty($type)}{getbox_val('13','type',$type)}{else}类型{/if}</b></span><i  id="icut" {if !empty($type)} class="clo"{/if}></i></a>
+<a href="#"  onclick="fun_clk('spe')"  id="aspe"><span><b>{if !empty($character)}{getbox_val('13','character',$character)}{else}特色{/if}</b></span><i  id="ispe" ></i></a>
+</div>
+<div class="tj_con" id="tj_con_pos" style="overflow:hidden;height:0px;">
+<div class="p_d">
+<div id='slider_pos' class="m_4">
+<ul>
+<li style='display:block'>
+<label><a href="{WAP_SITEURL}list{deal_str($lst,'r')}.html">全部</a></label>
+{h5:content action="getlinkage" keyid="3360" parentid="0" order="listorder ASC" cache="86400"}
+{loop $data $r}
+<?php
+ 	$reg = explode('$$', $r);//add by L 2012/3/22
+	?>
+<label><a href="{WAP_SITEURL}list-r{$reg[0]}{deal_str($lst,'r')}.html">{$reg[1]}</a></label>
+{/loop}
+{/h5}
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="tj_con" id="tj_con_price" style="overflow:hidden;height:0px;">
+<div class="p_d">
+
+<div id='slider_price' class="m_3">
+<ul>
+<li style='display:block'>
+<label><a href="{WAP_SITEURL}list{deal_str($lst,'p')}.html">全部</a></label>
+{php $range_arr = getbox_name('13','range')}
+{loop $range_arr $key $v}
+<label><a href="{WAP_SITEURL}list{deal_str($lst,'p')}-p{$key}.html">{$v}</a></label>
+{/loop}
+</li>
+</ul>
+</div>
+
+<nav id="nav_price" >
+    <span id='position_price'>
+	<em class="on">
+																		</em>	
+	</span>
+</nav>
+</div>
+</div>
+<div class="tj_con" id="tj_con_cut" style="overflow:hidden;height:0px;">
+<div class="p_d">
+
+<div id='slider_cut' class="m_4">
+<ul>
+<li style='display:block'>
+<label><a href="{WAP_SITEURL}list{deal_str($lst,'t')}.html">全部</a></label>
+{php $type_arr = getbox_name('13','type')}
+{loop $type_arr $key $v}
+<label><a href="{WAP_SITEURL}list{deal_str($lst,'t')}-t{$key}.html">{$v}</a></label>
+{/loop}
+</li>
+</ul>
+</div>
+
+
+<nav id="nav_cut" >
+    <span id='position_cut'>
+	<em class="on">
+																										</em>	
+	</span>
+</nav>
+</div>
+</div>
+<div class="tj_con" id="tj_con_spe" style="overflow:hidden;height:0px;">
+<div class="p_d">
+
+<div id='slider_spe' class="m_4">
+<ul>
+<li style='display:block'>
+<label><a href="{WAP_SITEURL}list{deal_str($lst,'l')}.html">全部</a></label>
+{php $character_arr = getbox_name('13','character')}
+{loop $character_arr $key $v}
+<label><a href="{WAP_SITEURL}list{deal_str($lst,'l')}-l{$key}.html">{$v}</a></label>
+{/loop}
+</li>
+</ul>
+</div>
+
+<nav id="nav_spe" >
+    <span id='position_spe'>
+	<em class="on">
+																												</em>	
+	</span>
+</nav>
+</div>
+</div>
+</div>
+<input type="hidden" id="slidername" name="slidername" />
+</div>
+{h5:content action="lists" catid="$catid" where="$where" num="16" lst="$lst" order="$order" page="$page" cache="10800"}<!-- 楼盘列表 -->
+<section class="ss_list" style="padding-top:81px">
+{loop $data $r}
+<a href="{WAP_SITEURL}detail/{$r[id]}/">
+	 <?php $hot = explode(',', $r[hot]);
+					foreach ($hot as $t => $c) {
+					if(intval($c))
+					{
+						if($c=='4')
+						{
+					echo '<sub>热门<em></em></sub>';	
+						}
+						elseif($c=='5')
+						{
+					echo '<sub>新盘<em></em></sub>';		
+						}
+						elseif($c=='6')
+						{
+					echo '<sub>精品<em></em></sub>';		
+						}
+					}
+				}?>	<label class="lpic" style="background:url({if !empty($r[thumb])}{thumb($r[thumb],240,180)}{else}{APP_PATH}statics/house5-style1/img/index/nopic.jpg{/if})"></label>
+    <p class="ltxt">
+    	<label class="h1">{$r[title]}</label>
+        <label class="jg">{if !empty($r[price]) && $r[price]!="一房一价"} 均价{if $r[priceunit]=="0" }{$r[price]}元/平方米{elseif  $r[priceunit]=="2"}{price_short($r[price])}/套{/if} {else}一房一价{/if}</label>
+        <label class="wz">{menu_linkinfo('3360',$r[region])}<b>|</b> {getbox_val('13','character',$r[character])}</label>
+    </p>
+</a>
+{/loop}
+</section>
+<div class="list_page">
+	<em></em>{$mobilepages}</div>
+{/h5}
+</body>
+</html>

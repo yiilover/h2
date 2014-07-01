@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+		<title>房贷计算器-购房工具 - by House5</title>
+		<meta name="keywords" content="房贷计算器,贷款计算器,等额本金计算器,等额本息计算器,还款方式比较,购房工具" /> 
+		<meta name="description" content="house5房贷计算器，提供最新的房贷计算公式,房贷利率，可用于房贷计算,等额本息还款方式计算,等额本金还款方式计算比较等，是买房时的购房工具。" /> 
+		<link rel="shortcut icon" href="http://www.house5.cn/favicon.ico" />
+		<link href="/statics/default/css/tools/tools_style.css" rel="stylesheet" type="text/css" />
+		<script language="javascript" type="text/javascript" src="/statics/default/js/tools/calculate2.js"></script>
+		<script language="javascript" type="text/javascript" src="/statics/default/js/tools/dkll.js"></script>
+	</head>
+	<body>
+		<div id="wrap">
+	
+		
+<div class="cArea">
+			<!--通用头部 begin -->
+		
+			<!--通用头部 end-->
+			<!--logo+搜索 begin -->
+			<div class="logo_search">
+				<div class="logo"><img src="/statics/default/img/logo.png" /></div>
+				<div class="search">
+					<script src="/index.php?s=content/index/topsearch" type="text/javascript"></script>
+				</div>
+			</div>
+			<!--logo+搜索 end -->
+		</div>
+		<div class="hr15"></div>
+			<div id="calculate01" class="main">
+				<form name="calc1" id="calc1">
+					<div class="cArea">
+						<div class="left">
+							<div class="left_wrap">
+								<div class="left_title">
+									
+<div id="cal1"><span class="atv"><a href="fdjsq.html">房贷计算器</a><em></em></span><span ><a href="tqhkjsq.html">提前还货计算器</a><em></em></span><span ><a href="sfjsq.html">税费计算器</a><em></em></span><span ><a href="gfnlpg.html">购房能力评估</a><em></em></span><span ><a href="gjjdkjsq.html">个人住房公积金贷款计算器</a><em></em></span></div>								</div>
+								<div class="left_cont">
+									<div class="results">
+										<div class="hlist_c">
+											<ul>
+												<li>
+													<span class="td_1">还款方式：</span>
+													<span class="td_3"><input id="dengeben1" type="radio" name="dengeben" value="radiobutton" checked onclick="chanage_type_mm();document.getElementById('disp_debxT').style.display='block';document.getElementById('disp_debx').style.display='block';document.getElementById('disp_debjT').style.display='none';document.getElementById('disp_debj').style.display='none';" />等额本息<input id="dengeben2" type="radio"  name="dengeben" value="radiobutton" onclick="chanage_type_mm();document.getElementById('disp_debxT').style.display='none';document.getElementById('disp_debx').style.display='none';document.getElementById('disp_debjT').style.display='block';document.getElementById('disp_debj').style.display='block';"/>等额本金</span>
+												</li>
+												<li>
+													<span class="td_1">贷款类别：</span>
+													<span class="td_3"> 
+														<select style="line-height:22px; width:160px;" name="type"  id="type"  onchange=exc_zuhe(this.form,this.value);>
+															<option value="1" selected="true">商业贷款</option>
+															<option value="2">公积金</option>
+															<option value="3">组合型</option>
+														</select>
+													</span>
+												</li>
+												<li id="calc1_zuhe" style="display: none">
+													<ul style="margin-left:100px;">
+														<li>&nbsp;&nbsp;商业性：<input id="total_sy" name="total_sy" maxLength="8" size="8" type="text" class="guestbook01" />元</li>
+														<li>&nbsp;&nbsp;公积金：<input id="total_gjj"  name="total_gjj" maxLength="8" size="8" type="text" class="guestbook01" />元</li>
+													</ul>
+												</li>
+												<li><span class="td_4"></span></li>
+												<li class="hr10"></li>
+												<font id="calc1_ctype">
+													<li>
+														<span class="td_1">计算方式：</span>
+														<span class="td_3"><input id="calc1_radio1" onclick="exc_js(this.form,1);" type="radio" checked value="1" name="jisuan_radio" />据按揭成数计算</span>
+													</li>
+													<font id="calc1_js_div1">
+														<li ><span class="td_1">&nbsp;</span><span class="td_3">房屋总价：</span><span class="td_3"><input id="price" name="price" type="text" class="waptextarea3"/>&nbsp;万元</span></li>
+														<li>
+															<span class="td_1">&nbsp;</span>
+															<span class="td_3">按揭成数：</span>
+															<span class="td_3">
+															<select size="1" id="anjie" name="anjie" style="line-height:22px; width:85px;">
+																<option value="9">9成</option>
+																<option value="8">8成</option>
+																<option value="7" selected="true">7成</option>
+																<option value="6">6成</option>
+																<option value="5">5成</option>
+																<option value="4">4成</option>
+																<option value="3">3成</option>
+																<option value="2">2成</option>
+															</select>
+															</span>
+														</li>
+													</font>
+													<li>
+														<span class="td_1">&nbsp;</span>
+														<span class="td_3"><input id="calc1_radio2" onclick="exc_js(this.form,2);" type="radio" value="2" name="jisuan_radio" />根据贷款总额计算</span>
+													</li>
+													<li id="calc1_js_div2" style="display: none">
+														<span class="td_1">&nbsp;</span>
+														<span class="td_3">贷款总额：</span>
+														<span class="td_3"><input maxlength="8" size="10" id="daikuan_total000" name="daikuan_total000" style="line-height:20px; width:78px;"/>万元</span>
+													</li>
+													<li>
+														<span class="td_4"></span>
+													</li>
+													<li class="hr15" ></li>
+												</font>
+												<li>
+													<span class="td_1">按揭年数：</span>
+													<span class="td_3">
+													<select id="years" size="1" name="years" style="line-height:22px; width:160px;"  onchange="ShowLilv(this.value,document.calc1.lilv.value)">
+														<option value="1">1年（12期）</option>
+														<option value="2">2年（24期）</option>
+														<option value="3">3年（36期）</option>
+														<option value="4">4年（48期）</option>
+														<option value="5">5年（60期）</option>
+														<option value="6">6年（72期）</option>
+														<option value="7">7年（84期）</option>
+														<option value="8">8年（96期）</option>
+														<option value="9">9年（108期）</option>
+														<option value="10">10年（120期）</option>
+														<option value="11">11年（132期）</option>
+														<option value="12">12年（144期）</option>
+														<option value="13">13年（156期）</option>
+														<option value="14">14年（168期）</option>
+														<option value="15">15年（180期）</option>
+														<option value="16">16年（192期）</option>
+														<option value="17">17年（204期）</option>
+														<option value="18">18年（216期）</option>
+														<option value="19">19年（228期）</option>
+														<option value="20" selected="true">20年（240期）</option>
+														<option value="25">25年（300期）</option>
+														<option value="30">30年（360期）</option>
+													</select>
+												</span>
+												</li>
+												<li>
+													<span class="td_1">银行利率：</span>
+													<span class="td_3">
+														<select id="lilv" name="lilv" style="line-height:22px; width:160px;" onchange="ShowLilv(document.calc1.years.value,this.value)">
+															<script>
+															var s;
+															var words;
+																for(i=1;i<=12;i++)
+																{
+																if (i==2){s=' selected';}else{s='';}
+																if(i!=3){
+																html='<option value='+i+' '+s+'>'+lilv_array[i][3]+'</option>';
+																document.write(html);
+																}
+																}
+															</script>
+														</select>
+														<ul style="display:none;">
+															<li>&nbsp;&nbsp;公 积 金：   <span id="gjlv">4.7</span>%</li>
+															<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商    业：  <span id="sdlv" class="font02">6.8%</span> </li>							 
+														</ul>
+													</span>
+												</li>
+												<li class="hr10"></li>
+												<li>
+													<span class="td_1">&nbsp;</span>
+													<span class="td_3 linkd"><input type="button" value="开始计算" class="smb_btn" onclick="ext_total(document.calc1)" /></span>
+													<span class="td_3 linkd">&nbsp;<a href="javascript:formReset(document.calc1);">重新填写</a></span>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="view">
+										<div class="title_view linkb">
+											<span class="linkc" id="disp_debxT">等额本息还款方式计算结果</span>
+											<span class="linkc" id="disp_debjT" style="display:none;">等额本金还款方式计算结果</span>查看结果
+										</div>
+										<div class="view_cont">
+											<div class="hlist_b">
+												<ul>
+													<li><span class="td_1">房款总额：</span><span class="td_2"><input id="fangkuan_total1" name="fangkuan_total1" class="input" type="text" readonly="true"/></span><span class="td_3">元</span></li>
+													<li><span class="td_1">贷款总额：</span><span class="td_2"><input id="daikuan_total1" name="daikuan_total1" type="text" class="input" readonly="true" /></span><span class="td_3">元</span></li>
+													<li><span class="td_1">还款总额：</span><span class="td_2"><input id="all_total1" name="all_total1" type="text" class="input" readonly="true" /></span><span class="td_3">元</span></li>
+													<li><span class="td_1">支付利息款：</span><span class="td_2"><input id="accrual1" name="accrual1" type="text" class="input" readonly="true" /></span><span class="td_3">元</span></li>
+													<li><span class="td_1">首期付款：</span><span class="td_2"><input id="money_first1" name="money_first1" type="text" class="input" readonly="true" /></span><span class="td_3">元</span></li>
+													<li><span class="td_1">贷款月数：</span><span class="td_2"><input id="month1" name="month1" type="text" class="input" readonly="true" /></span><span class="td_3">月</span></li>
+													<li id="type1_mm1"><span class="td_1">月均还款：</span><span class="td_2"><input id="month_money1" name="month_money1" type="text" class="input" readonly="true" /></span><span class="td_3">元</span></li>
+													<li id="calc1_benjin" style="display: none;">
+														<input type="hidden" id="fangkuan_total2" name="fangkuan_total2">
+														<input type="hidden" id="daikuan_total2" name="daikuan_total2">
+														<input type="hidden" id="all_total2" name="all_total2">
+														<input type="hidden" id="accrual2" name="accrual2">
+														<input type="hidden" id="money_first2" name="money_first2">
+														<input type="hidden" id="month2" name="month2">
+														<input type="hidden" id="month_money2" name="month_money2" >
+													</li>
+													<li><span class="td_4">以上结果仅供参考!</span></li>
+													<li id="disp_debx"><span class="td_5" ><b>等额本息还款方式：</b>是在还款期内，每月偿还同等数额的贷款(包括本金和利息)，这样由于每月的还款额固定，可以有计划地控制家庭收入的支出，也便于每个家庭根据自己的收入情况，确定还贷能力。</span></li>
+													<li id="disp_debj" style="display:none;width:45px;"><span class="td_5" ><b>等额本金还款方式：</b>是将本金每月等额偿还，然后根据剩余本金计算利息，所以初期由于本金较多，将支付较多的利息，从而使还款额在初期较多，而在随后的时间每月递减，这种方式的好处是，由于在初期偿还较大款项而减少利息的支出，比较适合还款能力较强的家庭。 </span></li>
+												</ul>
+											</div>
+										</div>
+										<div class="view_end"></div>
+									</div>
+								</div>
+								<div class="left_end"></div>
+							</div>
+						</div>
+						<div class="right">
+							<div class="rig_wrap">
+								<div class="title_rig linka"><a href="#">商业贷款利率</a></div>
+								<div class="rig_cont px7">
+									<ul class="hlist_a">
+										<li class="title"><span class="td_1">年限</span><span class="td_2">1-5年</span><span class="td_3">5-10年</span></li>
+										<script>
+											for(i=1;i<=12;i++)
+											{
+											
+											if (i!=3){
+											html='<li><span class="td_1">'+lilv_array[i][3]+'</span><span class="td_2">'+(Math.round(lilv_array[i][1][5]*10000))/100+'%</span><span class="td_3">'+(Math.round(lilv_array[i][1][10]*10000))/100+'%</span></li>';
+											document.write(html);}
+											}
+										</script>
+									</ul>
+								</div>
+								<div class="rig_end"></div>
+							</div>
+							<div class="hr10"></div>
+							<div class="rig_wrap">
+								<div class="title_rig linka"><a href="#">公积金贷款利率</a></div>
+								<div class="rig_cont px7">
+									<ul class="hlist_a">
+										<li class="title"><span class="td_1">年限</span><span class="td_2">1-5年</span><span class="td_3">5-10年</span></li>
+										<script>
+										for(i=1;i<=12;i++)
+										{
+											if(i==2||i==5||i==8||i==12){
+											if (i!=3){
+											html='<li><span class="td_1">'+lilv_array[i][3].replace('后基准','')+'</span><span class="td_2">'+(Math.round(lilv_array[i][2][5]*10000))/100+'%</span><span class="td_3">'+(Math.round(lilv_array[i][2][10]*10000))/100+'%</span></li>';
+											document.write(html);}
+											}
+										}
+										</script>
+									</ul>
+								</div>
+								<div class="rig_end"></div>
+							</div>
+							<div class="hr10"></div>
+						</div>
+
+					</div>
+				</form>
+			</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={CHARSET}" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<link href="{CSS_PATH}reset.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}show_school.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="{JS_PATH}jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="{JS_PATH}jquery.sGallery.js"></script>
+<style>
+body{background:none;}
+</style>
+</head>
+<body onload="iframe_height()">
+{h5:reviews action="get_reviews" reviewsid="$reviewsid"}
+{php $reviews = $data;}
+{/h5}
+<div id="bodyheight">
+<form action="{APP_PATH}index.php?s=reviews/index/post&reviewsid={$reviewsid}" method="post" onsubmit="return on_submit()">
+<input type="hidden" name="title" value="{urlencode(($reviews[title] ? $reviews[title] : $title))}">
+<input type="hidden" name="url" value="{urlencode(($reviews[url] ? $reviews[url] : $url))}">
+      <div class="reviews-form">
+      <style type="text/css">
+		#star{padding:0 0 0 0; overflow:hidden; zoom:1; clear:both}
+		#star  img{margin:0px; padding:0px;}
+	</style>
+      <div class="reviews-box">
+      	<div class="reviews-box-left">
+        <div id="star">
+          <?php
+            	include HOUSE5_PATH.'star_config.php';
+                $star_type = $_GET['star_type'];
+            	$star_li = explode('|', $star_config[$star_type]['star_name']);
+                $star_img = explode('|', $star_config[$star_type]['star_images']);
+                $star_n = 0;
+          ?>
+          {loop $star_li $star_code}
+          <?php $star_n++; $star_code = explode('$$', $star_code);?>
+          <b>{$star_code[0]}：</b><?php for($star_nn=1; $star_nn <= 5; $star_nn++){ ?><img id="star{$star_n}_{$star_nn}" onclick="changeScore('star{$star_n}', {$star_nn});" alt="{$star_nn}分" src="{$star_img[0]}" /><?php } ?>
+            <input id="star{$star_n}_c" type="hidden" name="star{$star_n}" />
+          {/loop}
+          <input type="hidden" name="startype" value="{$star_type}" />
+          <input type="hidden" name="starnum" value="{count($star_li)}" />
+      </div>
+      <script type="text/javascript"> 
+			var star1="{$star_img[0]}";
+			var star2="{$star_img[1]}";
+			function changeScore(id, n){
+				for(var i=1;i<=5;i++){
+					var div=document.getElementById(id + "_" + i);
+					if(i <= n){
+						div.src= star2;
+					}else{
+						div.src= star1;
+					}
+				}
+				document.getElementById(id+"_c").value=n;
+			}
+	window.parent.star_ajax();
+        </script></div>
+        <div class="reviews-box-right"><div class="revieboxpad"><input type="submit" class="reviews_buts" value="发 布" />&nbsp;&nbsp;{if $userid}{get_nickname()}{else}<a href="{APP_PATH}index.php?s=member/index/login&forward={urlencode(($comment[url] ? $comment[url] : $url))}" target="_top" class="blue">登录</a><span> | </span><a href="{APP_PATH}index.php?s=member/index/register" class="blue"  target="_top">注册</a> {if !$setting[guest]}<span style="color:red">需要登陆才可发布评论</span>{/if}{/if}</div></div>
+      </div>
+        <textarea rows="8" cols="80" name="content"></textarea>
+      </div>  
+</form>
+<script type="text/javascript">
+function support(id, reviewsid) {
+	$.getJSON('{APP_PATH}index.php?s=reviews/index/support&format=jsonp&reviewsid='+reviewsid+'&id='+id+'&callback=?', function(data){
+		if(data.status == 1) {
+			$('#support_'+id).html(parseInt($('#support_'+id).html())+1);
+		} else {
+			alert(data.msg);
+		}
+	});
+}
+
+function hide_code() {
+	if ($('#yzmText').data('hide')==0) {
+		$('#yzm').hide();
+	}
+}
+function iframe_height(height) {
+	if (!height) {
+		var height = document.getElementById('bodyheight').scrollHeight;
+	}
+	$('#top_src').attr('src', "{$domain}js.html?"+height+'|'+{if $reviews['total']}{$reviews['total']}{else}0{/if});
+}
+
+
+
+</script>
+</div>
+<iframe width='0' id='top_src' height='0' src=''></iframe>
+<div class="hidden text-c" id="loading">
+<img src="{IMG_PATH}msg_img/loading.gif" /> 正在提交中...
+</div>
+</body>
+</html>

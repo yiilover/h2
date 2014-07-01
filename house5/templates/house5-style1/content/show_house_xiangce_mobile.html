@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="format-detection" content="telephone=no" />
+<title>手机问房网触屏版</title>
+<link href="{APP_PATH}css/mobile/css.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<a id="filter"></a>
+<div class="wrap">
+  <div class="backbox">
+    <div class="back" style="margin-bottom:2px;margin-top:-2px" onclick="history.back(-1)"><a><img src="{APP_PATH}css/mobile/images/btnback.png" width="70" ></a></div>
+    <div class="nxqbacktit">楼盘相册</div>
+    <div class="clear"></div>
+  </div>
+ <div class="content">
+ {h5:content action="huxingtype" relation="$id" catid="8" num="10" order="inputtime DESC" cache="86400"}<!--相册 -->
+ {loop $data $r}
+ {php $xx=0;}
+	{h5:content action="huxinginfo" relation="$id" typeid="$r[typeid]" catid="8" num="1" order="inputtime DESC" cache="86400"}<!-- 相册列表 -->
+	{loop $data $rs}
+	{loop string2array($rs['pictureurls']) $pic_k $v}
+	{php $xx++}
+{php if($xx>1) break;}
+    <div class="alist-box"><div id="0" class="alist"><a href="{HOUSE_PATH}xclist-{$id}-{$r[typeid]}-{$rs[id]}.html#{$n}"><img src="{thumb($v[url], 400, 350, 0)}" alt="{$title}{$rs[title]}"  /></a></div>
+	{/loop}
+{/loop}
+	{/h5}
+	{h5:content action="pictypecount" relation="$id" catid="8" typeid="$r[typeid]" cache="172800" return="info"}
+    <div class="alist-name">{get_typename_bytypeid($siteid,$r[typeid])}&nbsp;(&nbsp;{$info}&nbsp;)</div>
+    </div>
+	{/h5}
+   {/loop}
+   {/h5}
+  
+   <div class="clear"></div>
+  
+<div class="foot">
+   <div id="top" class="backtop f16"><a href="#filter"><img src="{APP_PATH}css/mobile/images/backtop.png" >返回顶部</a></div>
+   <div class="copy f12">Copyright &copy; 2012 VenFang.com 问房网 版权所有<BR><BR> 鲁ICP备11018261号-3</div>
+</div>
+<script type="text/javascript">
+	window.scrollTo(0, 1);
+</script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<div class="w230 fr">
+	<div class="modC">
+		<h4 class="modBT"><sub></sub>
+			您最近浏览过的小区
+		</h4>
+			<?php
+ if(isset($recentlyXiaoqu))
+ {
+	$prowhere1 = implode(',',$recentlyXiaoqu);
+}
+ ?>
+{if $prowhere1}
+    {php $sql = "id in($prowhere1) ORDER BY listorder DESC,inputtime DESC";}
+    {h5:content action="lists" catid="110" where="$sql" num="10" cache="3600"}
+	<ul class="t3List">
+	{loop $data $r}
+	{php $menu_info = menu_info('3360',$r[region])}
+				<li>
+			<span class="lettsub7"><a href="{ESF_PATH}xiaoqu-show-{$r[id]}.html" title="{$r[title]}" target="_blank">{$r[title]}</a></span>
+			<span class="w2">{$menu_info[0]}</span>
+			<span class="w3">{if $r[price]}{$r[price]}元/㎡{else}待定{/if}</span>
+		</li>
+		{/loop}
+		{/h5}
+			</ul>
+	{/if}
+			</div>
+	<div class="modC">
+		<h4 class="modBT"><sub></sub>
+			您最近浏览过的二手房
+		</h4>
+			<?php
+ if(isset($recentlyEsf))
+ {
+	$prowhere = implode(',',$recentlyEsf);
+}
+ ?>
+{if $prowhere}
+    {php $sql = "id in($prowhere) ORDER BY listorder DESC,inputtime DESC";}
+    {h5:content action="lists" catid="112" where="$sql" num="10" cache="3600"}
+	<ul class="t3List">
+	{loop $data $r}
+		{php $relationxq = get_relationxq($r[id],112,110)}
+				<li>
+			<span class="lettsub7"><a href="{ESF_PATH}show-{$r[id]}.html" title="{$r[title]}" target="_blank">{$relationxq[title]}</a></span>
+			<span class="w2">{$r[total_area]}㎡</span>
+			<span class="w3">{$r[price]}万元</span>
+		</li>
+		{/loop}
+		{/h5}
+			</ul>
+	{/if}
+			</div>
+	<div class="modC">
+		<h4 class="modBT"><sub></sub>
+			您最近浏览过的出租房
+		</h4>
+		<?php
+ if(isset($recentlyEsfrent))
+ {
+	$prowhere2 = implode(',',$recentlyEsfrent);
+}
+ ?>
+{if $prowhere2}
+    {php $sql = "id in($prowhere2) ORDER BY listorder DESC,inputtime DESC";}
+    {h5:content action="lists" catid="113" where="$sql" num="10" cache="3600"}
+	<ul class="t3List">
+	{loop $data $r}
+		{php $relationxq = get_relationxq($r[id],113,110)}
+				<li>
+			<span class="lettsub7"><a href="{ESF_PATH}rent-show-{$r[id]}.html" title="{$r[title]}" target="_blank">{$relationxq[title]}</a></span>
+			<span class="w2">{$r[total_area]}㎡</span>
+			<span class="w3">{$r[price]}元/月</span>
+		</li>
+		{/loop}
+		{/h5}
+			</ul>
+	{/if}
+			</div>
+	</div>

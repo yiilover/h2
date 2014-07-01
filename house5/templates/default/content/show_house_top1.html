@@ -1,0 +1,15 @@
+<style type="text/css">
+	.subNav{height:40px;}
+	.subNav ul{padding-top:7px;}
+</style>
+<DIV class="subNav">
+
+<UL class="clearfix"><li{if $t=="zhuye"} class="this"{/if}><a href="{HOUSE_PATH}{$id}" title="{$title}">楼盘主页</a></li><li{if $t=="xinxi"} class="this"{/if}><a href="{HOUSE_PATH}{$id}/xinxi.html" title="{$title}-楼盘详情">详细信息</a></li><li{if $t=="huxing"||$t=="showpic"} class="this"{/if}><a href="{HOUSE_PATH}{$id}/huxing.html" title="{$title}户型">户型</a></li><li{if $t=="dongtai"} class="this"{/if}><a href="{HOUSE_PATH}{$id}/dongtai.html" title="{$title}楼盘动态">销售动态</a></li><li{if $t=="jiage"} class="this"{/if}><a href="{HOUSE_PATH}{$id}/jiage.html" title="{$title}房价">价格明细</a></li>
+{if $shapan}
+<li{if $t=="shapan"} class="this"{/if}><a href="{HOUSE_PATH}{$id}/shapan.html" title="{$title} 网络沙盘 在售房源一览">沙盘图</a></li>
+{else}
+<li{if $t=="peitao"} class="this"{/if}><a href="{HOUSE_PATH}{$id}/peitao.html" title="{$title}楼盘配套地图">地图配套</a></li>
+{/if}
+<li{if $t=="xiangce"||$t=="showphoto"} class="this"{/if}><a href="{HOUSE_PATH}{$id}/xiangce.html" title="{$title}楼盘相册">图片相册</a></li><li{if $t=="dianping"} class="this"{/if}><a href="{HOUSE_PATH}{$id}/dianping.html" title="{$title}怎么样？">楼盘点评</a></li><li{if $t=="zixun"} class="this"{/if}><a href="{HOUSE_PATH}{$id}/zixun.html" title="{$title}新闻报道">相关资讯</a></li><li{if $t=="wenfang"} class="this"{/if}><a href="{HOUSE_PATH}{$id}/wenfang-p1.html" title="{$title}问答">问房</a></li><li><a href="{if !empty($bbs)}{$bbs}{else}{BBS_PATH}{/if}" target="_blank" title="{$title}业主社区">业主论坛</a></li></UL>
+
+</DIV>

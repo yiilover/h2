@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link rel="shortcut icon" href="{APP_PATH}favicon.ico" />
+<link href="{APP_PATH}statics/default/css/news/news_style.css" rel="stylesheet" type="text/css" />
+<script language="Javascript" src="{APP_PATH}statics/default/js/news/default.js"></script>
+<script type="text/javascript" src="{APP_PATH}statics/default/js/lib/jquery.min.js"></script>
+<script type="text/javascript" src="{APP_PATH}statics/default/js/lib/jquery.sGallery.js"></script>
+<script type="text/javascript" src="{APP_PATH}statics/default/js/news/search_common.js"></script>
+
+
+    <script type="text/javascript">//输入框文字消失
+ 		function OnFocusFun(element,elementvalue)
+		{
+			if(element.value==elementvalue)
+			{
+				element.value="";
+				
+			}
+		}
+ 		function OnBlurFun(element,elementvalue)
+		{
+			if(element.value==""||element.value.replace(/\s/g,"")=="")
+			{
+				element.value=elementvalue;
+			
+			}
+		} 
+    </script> 
+</head>
+
+<style type="text/css">
+.partbd ul li{display:block; float:left; width:50px; line-height:22px;  height:22px; text-align:center; text-decoration:none;}
+.partbd ul li a{display:inline-block;}
+.partbd li a:link, .partbd li a:visited {display: inline-block; height: 17px;line-height: 17px;padding: 0 5px;text-decoration:none;}
+.partbd li a:hover{background: none repeat scroll 0 0 #30c8f7;color:#ffffff;text-decoration:none;}
+</style>
+
+<script>
+function MM_over(mmObj) {
+	var mSubObj = mmObj.getElementsByTagName("div")[0];
+	mSubObj.style.display = "block";
+	mSubObj.style.backgroundColor = "#fff";
+}
+function MM_out(mmObj) {
+	var mSubObj = mmObj.getElementsByTagName("div")[0];
+	mSubObj.style.display = "none";
+	
+}
+</script>
+
+<body>
+<div id="wrap">
+<div class="cArea">
+{template "ssi","ssi_8"}
+<div class="hr10"></div>
+<!--logo+搜索 begin -->
+<div class="logo_search">
+  <div class="logo"><a href="{APP_PATH}"><img src="{APP_PATH}statics/default/img/logo.png" /></a></div>  
+   <!-- 切换城市开始 -->
+      <div onmouseover="MM_over(this)" onmouseout="MM_out(this)" class="city" style=" line-height:40px; padding-left:5px; width:70px;  float:left; position:relative; top:5px; border-left:1px dashed #CCCCCC; z-index:9999"> <span  style="display:block; float:left; cursor:pointer; padding-left:5px; padding-right:0px;">{$default_city}</span><span style="float:left; cursor:pointer; width:12px; display:block; background:url({APP_PATH}statics/default/img/icon/city.jpg) center no-repeat; height:40px;"></span>
+         
+      </div>
+      <!-- 切换城市结束 -->
+  
+   <div class="rss linka" style="float:left"><a target=_top href="javascript:window.external.addFavorite('{APP_PATH}','{$site_title}')">收藏本页</a>&nbsp;&nbsp;<a onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('{APP_PATH}');" href="{APP_PATH}">设为首页</a></div>
+  <div class="searcha">
+  													<a href="javascript:;" onclick="setmodel(1, $(this));" style="outline:medium none;" hidefocus="true"  class="on" ></a>										<a href="javascript:;" onclick="setmodel(91, $(this));" style="outline:medium none;" hidefocus="true" ></a>										<a href="javascript:;" onclick="setmodel(205, $(this));" style="outline:medium none;" hidefocus="true" ></a>										<a href="javascript:;" onclick="setmodel(267, $(this));" style="outline:medium none;" hidefocus="true" ></a>										<a href="javascript:;" onclick="setmodel(316, $(this));" style="outline:medium none;" hidefocus="true" ></a>								
+         <form action="{APP_PATH}index.php" method="get" target="_blank">
+				<input type="hidden" name="s" value="search/index/init"/>
+				<input type="hidden" name="typeid" value="1" id="typeid"/>
+				<input type="hidden" name="siteid" value="1" id="siteid"/>
+  
+    <div class="d3">
+      <input name="q" type="text" class="input01" id="q" value="输入关键字" onfocus="OnFocusFun(this,'输入关键字')" onblur="OnBlurFun(this,'输入关键字')" />
+    </div>
+    <div class="d2">
+      <input name="submit" type="submit" class="smb_btn" value="新闻搜索" />
+    </div>
+	 </form>
+  </div>
+</div>
+<!--logo+搜索 end -->
+<!--导航 begin -->
+<div class="nav">
+<ul class="linkb">
+<li><a href="{catlink(6)}" target="_blank">资讯首页</a></li>
+<li class="line"> </li>
+{h5:content action="category" catid="6" num="25" siteid="$siteid" order="listorder ASC"}{loop $data $r}
+<li><a href={$r[url]}>{$r[catname]}</a></li> 
+<li class="line"> </li>
+{/loop} {/h5} 
+</ul>
+</div>
+<div class="hr10"></div>
+<!--导航 end -->
+</div>
+<div class="cArea">
+<div class="cen_boxA">
+
+<div class="listwap">
+  <div class="listtitle_a linkaa"><a href="http://www.venfang.com/" target="_blank">{$site_title}</a> > <a href="{catlink(6)}" target="_blank">资讯中心</a> > 标签：<font color="red">{$tag}</font> 总共有 {$total} 条记录
+<a name="top" id="top"></a></div>
+<div class="listtitle">
+<div class="f2 linkcc">{$tag}相关新闻</div>
+</div>
+<div class="title_news_lra" id="l2">
+<ul>
+<div class="title_news_lra">
+<ul>
+{loop $datas $r}
+	<li class="linkf"><span>{date('Y-m-d H:i:s',$r[inputtime])}</span>·<a href="{$r[url]}" target="_blank"{title_style($r[style])}>{$r[title]}</a></li>
+	{if $n%5==0}<li class="linebb"></li>{/if}
+{/loop}
+        </ul>
+	</div>
+</div>
+        <div class="title_news">
+<div class="g1 pages cl"><div class="pg">{$pages}</div></div>
+<div class="g2 linkaa"><a href="#top">返回顶部</a></div>
+ </div>
+</div>
+
+</div>
+<div class="rightA">
+ 
+
+<!-- 广告位：新闻内页右侧旗帜1 -->
+
+   <!-- 广告位：新闻内页右侧旗帜2 -->
+
+ 
+
+  <!--每日头条 begin-->
+  <div class="rightwapa">
+    <div class="lefttitlea">
+      <div class="righttitlel linkc"><a href="http://news.venfang.com/list.html" target="_blank">每日头条</a></div>
+      <div class="lefttitlerrr"><a href="http://news.venfang.com/list.html" target="_blank">更多>></a></div>
+    </div>
+    <div class="rightnewsc rightnewsc02">
+	<ul>
+     {h5:content  action="position" posid="2" order="listorder DESC" num="4"}
+	  {loop $data $v}
+	  <li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}" style="text-align:center"{title_style($v[style])}>{str_cut($v[title],48)}</a>
+        </li>
+		{/loop}
+	  {/h5}
+	  {h5:content  action="position" posid="35" order="listorder DESC" num="4"}
+	  {loop $data $v}
+	  <li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}" style="text-align:center"{title_style($v[style])}>{str_cut($v[title],48)}</a>
+        </li>
+		{/loop}
+	  {/h5}
+	  {h5:content  action="position" posid="36" order="listorder DESC" num="2"}
+	  {loop $data $v}
+	  <li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}" style="text-align:center"{title_style($v[style])}>{str_cut($v[title],48)}</a>
+        </li>
+		{/loop}
+	  {/h5}
+      </ul>
+    </div>
+  </div>
+  <!--每日头条 begin-->
+  <div class="rightwapa">
+    <div class="lefttitlea">
+      <div class="righttitlel linkc"><a href="{APP_PATH}list.html" target="_blank">每日头条</a></div>
+      <div class="lefttitlerrr"><a href="{APP_PATH}list.html" target="_blank">更多>></a></div>
+    </div>
+    <div class="rightnewsc rightnewsc02">
+      <ul>
+     {h5:content  action="position" posid="2" order="listorder DESC" num="4" cache="3600"}
+	  {loop $data $v}
+	  <li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}" style="text-align:center"{title_style($v[style])}>{str_cut($v[title],48)}</a>
+        </li>
+		{/loop}
+	  {/h5}
+	  {h5:content  action="position" posid="35" order="listorder DESC" num="4" cache="3600"}
+	  {loop $data $v}
+	  <li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}" style="text-align:center"{title_style($v[style])}>{str_cut($v[title],48)}</a>
+        </li>
+		{/loop}
+	  {/h5}
+	  {h5:content  action="position" posid="36" order="listorder DESC" num="2" cache="3600"}
+	  {loop $data $v}
+	  <li>·<a href="{$v[url]}" target="_blank" title="{$v[title]}" style="text-align:center"{title_style($v[style])}>{str_cut($v[title],48)}</a>
+        </li>
+		{/loop}
+	  {/h5}
+      </ul>
+    </div>
+  </div>
+  <!--每日头条 end-->
+  <div class="hr10"></div>
+  <!--文字新闻 begin-->
+
+  <!--文字新闻 end-->
+
+
+<!-- 广告位：新闻内页右侧小横幅1 -->
+
+  <!-- 广告位：新闻内页右侧小横幅2 -->
+
+ 
+    <!--图片推荐 begin-->
+  <div class="rightwapa">
+    <div class="lefttitlea">
+      <div class="righttitlel linkc"><a href="{APP_PATH}/piclist.html" target="_blank">图片推荐</a></div>
+      <div class="lefttitlerrr"><a href="{APP_PATH}piclist.html" target="_blank">更多>></a></div>
+    </div>
+    <div class="rigcona">
+       {h5:content  action="position" posid="30" thumb="1" order="listorder DESC" num="4" cache="3600"}
+      <ul>
+	  {loop $data $v}
+		<li><a href="{$v[url]}" target="_blank" title="{$v[title]}"><img src="{thumb($v[thumb],120,90)}" width="120" height="90"/></a>
+            <div class="d4"><a href="{$v[url]}" target="_blank" title="{$v[title]}" style="text-align:center"  style="" >{str_cut($v[title],22)}</a></div>
+        </li>
+		{/loop}
+      </ul>
+	  {/h5}
+    </div>
+  </div>
+  <!--图片推荐 begin-->
+  <div class="hr10"></div>
+
+  <!--论坛热帖 begin-->
+    <div class="hr10"></div>
+  <!--热点楼盘+最新开盘 begin-->
+  <div class="rightwapa">
+    <div class="PartAs">
+      <div class="PartAsc1">
+        <ul>
+          <li class="SearchD" id="e1" onmouseover="Search2(1)">热点楼盘</li>
+          <li class="SearchC" id="e2" onmouseover="Search2(2)">最新开盘</li>
+        </ul>
+      </div>
+      <div id="f1">
+        <div class="rig_contA px1">
+          <ul class="hlist_b">
+           {h5:content action="hits" catid="14" num="10" order="views DESC" cache="3600"}
+			<li class="title"><span class="td_4">楼盘名称</span><span class="td_06">区域</span><span class="td_5">价格(元/㎡)</span><span class="td_7">点击(次)</span></li>
+			{loop $data $v}
+				{php $menu_info = menu_info('3360',$v[region])}
+                   				<li><span class="td_4"><a title="{$v[title]}" href="{$v[url]}" target="_blank" >{str_cut($v[title],16,'')}</a></span><span class="td_06"><a href="{HOUSE_PATH}list-r{$menu_info[1]}.html" target="_blank" >{$menu_info[0]}</a></span><span class="td_05 link6">{if !empty($v[price]) && $v[price]!="一房一价"}{$v[price]}{else}一房一价{/if}</span><span class="td_07">{$v[views]}</span></li>
+				{/loop}
+			{/h5}            
+          </ul>
+        </div>
+      </div>
+      <div class="search_undis"  id="f2">
+        <div class="rig_contA px1">
+          <ul class="hlist_b">
+		  {php $where= "status=99";}
+		  {h5:content action="lists" catid="14" where="$where" num="10" order="opentime desc" cache="3600"}
+            <li class="title"><span class="td_4">楼盘名称</span><span class="td_06">区域</span><span class="td_5">价格(元/㎡)</span><span class="td_7">开盘时间</span></li>
+			{loop $data $v}
+				{php $menu_info = menu_info('3360',$v[region])}
+			          				<li><span class="td_4"><a title="{$v[title]}" href="{$v[url]}" target="_blank" >{str_cut($v[title],16,'')}</a></span><span class="td_06"><a href="{HOUSE_PATH}list-r{$menu_info[1]}.html" target="_blank" >{$menu_info[0]}</a></span><span class="td_05 link6">{if !empty($v[price]) && $v[price]!="一房一价"}{$v[price]}{else}一房一价{/if}</span><span class="td_07">{date('m-d',strtotime($v[opentime]))}</span></li>
+			{/loop}
+		{/h5}
+
+          </ul>
+        </div>
+      </div>
+   
+      <div class="rig_end"></div>
+    </div>
+  </div>
+  <!--热点楼盘+最新开盘 end-->
+  <div class="hr10"></div>
+</div></div>
+
+
+</div>
+{template "content","footer"}

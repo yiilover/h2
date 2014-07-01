@@ -1,0 +1,51 @@
+{template "wap","header"}
+<link type="text/css" rel="stylesheet" href="/statics/default/3g/css/3g_common.css" />
+<link type="text/css" rel="stylesheet" href="/statics/default/3g/css/3g_detail.css" />
+<link type="text/css" rel="stylesheet" href="/statics/default/3g/css/3g_mapfj.css" />
+<script>
+window.addEventListener("load",function() {
+  setTimeout(function(){
+    window.scrollTo(0, 1);
+  }, 0);
+}); 
+</script>
+</head>
+
+<body>
+<div class="top_head">
+<header class="header">
+	<a href="{WAP_SITEURL}" class="logo">{$WAP['sitename']}</a>
+    <a href="{WAP_SITEURL}" class="bn_back bn_back2" >返回</a>
+    <a href="#" class="bn_search">搜索</a>
+    <a href="#" class="bn_nav">导航</a>
+    <i></i>
+</header>
+
+<div class="map_list_dh">
+          <div class="map_t">
+		  {$weizhi}
+        </div>
+   <div class="map_qh">
+	<a href="{WAP_SITEURL}maplist.html" class="sel_on">列表</a><a href="{WAP_SITEURL}map">地图</a>
+</div>
+</div>
+
+</div>
+<section class="ss_list" style="padding-top:86px">
+{if $where}
+{h5:content action="lists" catid="14" where="$where" num="$num" order="id DESC"}<!-- 楼盘列表 -->
+{loop $data $r}
+                        <a href="{WAP_SITEURL}detail/{$r[id]}/">
+            	            	<label class="lpic" style="background:url({if !empty($r[thumb])}{thumb($r[thumb],140,140)}{else}{APP_PATH}statics/default/img/index/nopic.jpg{/if})"></label>
+                <p class="ltxt">
+                	<label class="h1">{$r[title]}</label>
+                    <label class="jg">{if !empty($r[price]) && $r[price]!="一房一价"} 均价{if $r[priceunit]=="0" }{$r[price]}元/平方米{elseif  $r[priceunit]=="2"}{price_short($r[price])}/套{/if} {else}一房一价{/if}</label>
+                    <label class="wz"><span class="t_blue"></span> <b>|</b> {getbox_val('13','character',$r[character])}</label>
+                </p>
+            </a>
+{/loop}
+{/h5}
+{/if}
+            </section>
+
+{template "wap","footer"}

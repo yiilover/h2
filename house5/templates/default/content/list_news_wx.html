@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD>
+<META content="text/html; charset=gb2312" http-equiv="Content-Type">
+<TITLE>微信新闻_问房网</TITLE>
+<META name="description" content="微信新闻_问房网">
+<META name="keywords" content="问房网,微信,微信新闻_问房网,微信新闻平台">
+<LINK rel="stylesheet" type="text/css" href="{IMG_PATH}wx/css/index.css" 
+media="screen">
+<META name="GENERATOR" content="MSHTML 9.00.8112.16450"></HEAD>
+<BODY>
+<DIV style="display: none;" id="dialog-modal"></DIV>
+<!------------------------------ 顶部文件 ------------------------------>
+<DIV class="headout">
+<DIV class="clearfix head"><SPAN class="r"><!--<A title="注销" href="http://wx.pp.cc/wb_u/logout">注销</A>　-->　		
+		</SPAN><A title="/wenfang" href="http://www.venfang.com">问房网</A></DIV></DIV>
+		<!------------------------------ 顶部文件 结束 ------------------------------>
+		<!------------------------------ 主体文件 ------------------------------>
+<DIV class="clearfix index"><!---------- 导航 ---------->
+<DIV class="clearfix index"><!---------- 内容 ---------->
+<DL style="margin: 0px auto; float: none;" class="main">
+  <DT class="weixin">问房网微信新闻列表</DT>
+  <DD>
+  {h5:content  action="position" posid="82" order="listorder DESC" num="50" cache="10800"}
+  <UL class="writing_list">
+  <!------------------------------第一条新闻开始 ------------------------------>
+	{loop $data $r}
+    <LI>
+    <DIV class="til"><SPAN class="r">{date('m月d日H:i',$r[inputtime])}</SPAN>{$r[title]}</DIV>
+    <DIV class="box">
+    <DIV class="caret_Up"><EM>◆</EM><SPAN>◆</SPAN></DIV>
+    <DIV class="text">{str_cut(strip_tags($r[description]), 180)}</DIV>
+    <DIV class="bot">
+	<!--<A class="l" 
+    href="#"><EM 
+    class="weixin"></EM>推送到微信</A>-->
+	<A href="http://news.venfang.com/wx-showinfo-109-{$r[id]}.html" 
+    target="_blank">查看全文</A></DIV></DIV></LI>
+	{/loop}
+	<!------------------------------第一条结束 ------------------------------>
+   
+    <LI></LI></UL>
+	{/h5}
+	</DD></DL></DIV>
+<!--统计代码-->
+<div style="display:none;">
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F8321d5953a7049ac4ddbd63293fcc360' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</div>
+</DIV></BODY></HTML>

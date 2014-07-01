@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>专题</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link rel="shortcut icon" href="{APP_PATH}favicon.ico" />
+<link href="{APP_PATH}statics/house5-style1/css/news/news_style.css" rel="stylesheet" type="text/css" />
+<script language="Javascript" src="{APP_PATH}statics/house5-style1/css/news/default.js"></script>
+<style type="text/css">
+.partbd ul li{display:block; float:left; width:50px; line-height:22px;  height:22px; text-align:center; text-decoration:none;}
+.partbd ul li a{display:inline-block;}
+.partbd li a:link, .partbd li a:visited {display: inline-block; height: 17px;line-height: 17px;padding: 0 5px;text-decoration:none;}
+.partbd li a:hover{background: none repeat scroll 0 0 #30c8f7;color:#ffffff;text-decoration:none;}
+</style>
+</head>
+<script>
+function MM_over(mmObj) {
+	var mSubObj = mmObj.getElementsByTagName("div")[0];
+	mSubObj.style.display = "block";
+	mSubObj.style.backgroundColor = "#fff";
+}
+function MM_out(mmObj) {
+	var mSubObj = mmObj.getElementsByTagName("div")[0];
+	mSubObj.style.display = "none";
+	
+}
+function OnFocusFun(element,elementvalue)
+		{
+			if(element.value==elementvalue)
+			{
+				element.value="";
+				
+			}
+		}
+ 		function OnBlurFun(element,elementvalue)
+		{
+			if(element.value==""||element.value.replace(/\s/g,"")=="")
+			{
+				element.value=elementvalue;
+			
+			}
+		} 
+</script>
+
+<body>
+<div id="wrap">
+{template "ssi","ssi_8"}	 
+  <!--通用头部 end-->
+<div class="hr10"></div>
+<!--logo+搜索 begin -->
+<div class="logo_search">
+  <div class="logo"><a href="{APP_PATH}"><img src="{APP_PATH}statics/house5-style1/img/logo.png" alt="{$site_title}" /></a></div>
+  
+    
+   <!-- 切换城市开始 -->
+      <div onmouseover="MM_over(this)" onmouseout="MM_out(this)" class="city" style=" line-height:40px; padding-left:5px; width:300px;  float:left; position:relative; top:5px; border-left:1px dashed #CCCCCC; z-index:9999"> <span  style="display:block; float:left; cursor:pointer; padding-left:5px; padding-right:0px;">{$default_city}</span><span style="float:left; cursor:pointer; width:12px; display:block; background:url({APP_PATH}statics/house5-style1/img/icon/city.jpg) center no-repeat; height:40px;"></span>
+      
+      </div>
+      <!-- 切换城市结束 -->
+
+  
+  
+  <div class="rss linka" style="float:left"><a target=_top href="javascript:window.external.addFavorite('{APP_PATH}','{$site_title}')">收藏本页</a>&nbsp;&nbsp;<a onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('{APP_PATH}');" href="{APP_PATH}">设为首页</a></div>
+  <div class="searcha">
+  													<a href="javascript:;" onclick="setmodel(1, $(this));" style="outline:medium none;" hidefocus="true"  class="on" ></a>										<a href="javascript:;" onclick="setmodel(91, $(this));" style="outline:medium none;" hidefocus="true" ></a>										<a href="javascript:;" onclick="setmodel(205, $(this));" style="outline:medium none;" hidefocus="true" ></a>										<a href="javascript:;" onclick="setmodel(267, $(this));" style="outline:medium none;" hidefocus="true" ></a>										<a href="javascript:;" onclick="setmodel(316, $(this));" style="outline:medium none;" hidefocus="true" ></a>								
+         <form action="{APP_PATH}index.php" method="get" target="_blank">
+				<input type="hidden" name="s" value="search/index/init"/>
+				<input type="hidden" name="typeid" value="1" id="typeid"/>
+				<input type="hidden" name="siteid" value="1" id="siteid"/>
+  
+    <div class="d3">
+      <input name="q" type="text" class="input01" id="q" value="输入关键字" onfocus="OnFocusFun(this,'输入关键字')" onblur="OnBlurFun(this,'输入关键字')" />
+    </div>
+    <div class="d2">
+      <input name="submit" type="submit" class="smb_btn" value="新闻搜索" />
+    </div>
+	 </form>
+  </div>
+</div>
+<!--logo+搜索 end -->
+<!--导航 begin -->
+
+<div class="nav">
+<ul class="linkb">
+<li><a href="{catlink(6)}" target="_blank">资讯首页</a></li>
+<li class="line"> </li>
+{h5:content action="category" catid="6" num="25" siteid="$siteid" order="listorder ASC"}{loop $data $r}
+<li><a href={$r[url]}>{$r[catname]}</a></li> 
+<li class="line"> </li>
+{/loop} {/h5} 
+</ul>
+</div>
+<!--导航 end -->
+
+<div class="cArea">
+<!--当前位置 begin-->
+<div class="columna">
+  <div class="b2"><img src="{APP_PATH}statics/house5-style1/img/news/tbb.png" /></div>
+  <div class="b1 linkaa"><a href="{APP_PATH}">首页</a> &gt; <a href="{catlink(6)}special/">专题</a> </div>
+</div>
+<div class="hr10"></div>
+<!--当前位置 end-->
+<div class="PartFs">
+  <div class="PartFsc1">
+  <ul>
+      <li class="SearchH"><a href="{catlink(6)}special/">专题首页</a></li>
+      <li class="SearchG"><a href="{catlink(6)}special-3-1.html">热点专题</a></li>
+      <li class="SearchG"><a href="{catlink(6)}special-2-1.html">楼盘专题</a></li>
+      <li class="SearchG"><a href="{catlink(6)}special-1-1.html">活动专题</a></li>
+    </ul>
+  </div>
+  </div>
+    <div id="l2">
+<div class="topwapa">
+		{h5:special  action="lists" typeids="$typeids" listorder="3" page="$page" num="40" cache="10800"}
+            {loop $data $r}
+  <div class="topthematic">
+ <a href="{$r[url]}"><img src="{thumb($r['thumb'], 220, 165)}" width="220" height="165" alt="{$r[title]}" /></a>
+<div class="e1 linkc"><a href="{$r[url]}" title="{$r[title]}">{$r[title]}</a></div>
+
+<div class="e3">导读：<span class="texta">{$r[description]}</span></div>
+</div>
+{/loop}
+{/h5}
+<div class="lineaa"></div>   </div>
+    </div>
+
+<div class="rightpage">
+<div class="pages cl"><div class="pg">{$pages}</div></div></div>
+
+	<div class="hr10"></div>
+    <div style="clear:both;font-size:1px;"></div>
+  </div>
+
+{template 'content', 'footer'}

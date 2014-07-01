@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>注册会员 - {$site_title}</title>
+<link href="{APP_PATH}statics/default/member/css/member.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{APP_PATH}statics/js/jquery.min.js"></script>
+<script type="text/javascript" src="{APP_PATH}statics/js/formvalidator.js" ></script>
+<script language="JavaScript">
+<!--
+$(function(){
+	$.formValidator.initConfig({autotip:true,formid:"myform",onerror:function(msg){}});
+
+	$("#username").formValidator({onshow:"请输入用户名",onfocus:"用户名应该为2-20位之间"}).inputValidator({min:2,max:20,onerror:"用户名应该为2-20位之间"}).regexValidator({regexp:"ps_username",datatype:"enum",onerror:"用户名格式错误"}).ajaxValidator({
+	    type : "get",
+		url : "",
+		data :"m=member&c=index&a=public_checkname_ajax",
+		datatype : "html",
+		async:'false',
+		success : function(data){
+            if( data == "1" ) {
+                return true;
+			} else {
+                return false;
+			}
+		},
+		buttons: $("#dosubmit"),
+		onerror : "禁止注册或用户已存在。",
+		onwait : "请稍候..."
+	});
+	$("#password").formValidator({onshow:"请输入密码",onfocus:"密码应该为6-20位之间"}).inputValidator({min:6,max:20,onerror:"密码应该为6-20位之间"});
+	//$("#pwdconfirm").formValidator({onshow:"请输入确认密码",onfocus:"两次密码不同。",oncorrect:"密码输入一致"}).compareValidator({desid:"password",operateor:"=",onerror:"两次密码不同。"});
+	$("#email").formValidator({onshow:"请输入邮箱",onfocus:"邮箱格式错误",oncorrect:"邮箱格式正确"}).inputValidator({min:2,max:32,onerror:"邮箱应该为2-32位之间"}).regexValidator({regexp:"email",datatype:"enum",onerror:"邮箱格式错误"}).ajaxValidator({
+	    type : "get",
+		url : "",
+		data :"m=member&c=index&a=public_checkemail_ajax",
+		datatype : "html",
+		async:'false',
+		success : function(data){	
+            if( data == "1" ) {
+                return true;
+			} else {
+                return false;
+			}
+		},
+		buttons: $("#dosubmit"),
+		onerror : "禁止注册或邮箱已存在",
+		onwait : "请稍候..."
+	});
+	$("#nickname").formValidator({onshow:"请输入昵称",onfocus:"昵称应该为2-20位之间"}).inputValidator({min:2,max:20,onerror:"昵称应该为2-20位之间"}).regexValidator({regexp:"ps_username",datatype:"enum",onerror:"昵称格式错误"}).ajaxValidator({
+			type : "get",
+			url : "",
+			data :"m=member&c=index&a=public_checknickname_ajax",
+			datatype : "html",
+			async:'false',
+			success : function(data){
+				if( data == "1" ) {
+					return true;
+				} else {
+					return false;
+				}
+			},
+			buttons: $("#dosubmit"),
+			onerror : "已经存在已经存在",
+			onwait : "请稍候..."
+		});
+
+	$(":checkbox[name='protocol']").formValidator({tipid:"protocoltip",onshow:"请阅读协议",onfocus:"请阅读协议"}).inputValidator({min:1,onerror:"请阅读协议"});
+
+	
+	});
+
+function show_protocol() {
+	art.dialog({lock:false,title:'会员注册协议',id:'protocoliframe', iframe:'index.php?m=member&c=index&a=register&protocol=1',width:'500',height:'310',yesText:'同意'}, function(){
+		$("#protocol").attr("checked",true);
+	});
+}
+
+//-->
+</script>
+
+</head>
+
+<body class="mybody">
+<!--[if lte IE 6]>
+<script src="js/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('div,ul,span,li,input,a,dd,p');
+</script>
+<![endif]-->
+<div class="w950 clear mber_in_t"><span><a class="blue" href="">成为会员</a> 可以享受更多相关服务</span><a href="" class="logo">house5</a>
+</div>
+
+<div class="w950 clear">
+<div class="reg_con">
+<div class="regstep">您正在使用QQ账户登录</div>
+
+<ul>
+<form method="post" action="" id="myform">
+<input type="hidden" name="siteid" value="1" />
+<li class="qqxlmsg"><label><input name="" type="radio" class="fx" value="" checked="checked" /></label><span>请完善以下信息</span></li>
+<li><label><em>*</em>用户名：</label><input type="text" name="username" id="username" maxlength="50" size="26" class="input padd"/><div id="usernameTip" class="onShow">请输入用户名</div></li>
+<li><label><em>*</em>设置密码：</label><input type="password" name="password" id="password" maxlength="16" class="input padd"/><div id="passwordTip" class="onShow">请输入密码</div></li>
+<li> <label><em>*</em>邮箱：</label><input type="text" name="email" id="email" maxlength="36" size="26" class="input padd"/><div id="emailTip" class="onShow">请输入邮箱</div></li>
+<li><label><em>*</em>昵称：</label><input type="text" id="nickname" name="nickname" size="26" class="input padd"/><div id="nicknameTip" class="onShow">请输入昵称</div></li>
+
+<li><label>&nbsp;</label><input type="checkbox" name="protocol" id="protocol" class="fx" value=""><span>我已经看过并同意<a href="javascript:void(0);" onclick="show_protocol();return false;" class="blue">《网络服务协议》</a></span><div id="protocoltip" class="onShow">请阅读协议</div></li>
+<li><label>&nbsp;</label><input name="dosubmit" type="submit" value="提交注册" class="mber_enter"/>
+</li>
+</form>
+</ul>
+<dl>
+<dd class="laizhi">欢迎来至QQ的用户：</dd>
+<dd class="f_c"><img class="face" src="{APP_PATH}statics/default/member/img/qq_ico.png" width="120" height="120" /></dd>
+</dl>
+</div></div>
+
+<div class="w950 clear">
+ {template 'content', 'footer'}
+</div>
+</body>
+</html>
